@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_text": "#1B1718",
@@ -22,11 +31,40 @@
     "sections": {
       "header": {
         "type": "header",
-        "settings": {}
+        "settings": {
+          "enable_section_css": true,
+          "logo_svg_code": "",
+          "menu_1": "main-menu",
+          "menu_2": "collections",
+          "bottom_menu_1": "customer-account-main-menu",
+          "bottom_menu_2": ""
+        }
       },
       "footer": {
         "type": "footer",
-        "settings": {}
+        "settings": {
+          "enable_section_css": true,
+          "show_lyrics": true,
+          "fallback_lyric": "Let me die in my footsteps",
+          "footer_logo_svg": "",
+          "footer_menu_1": "",
+          "footer_menu_2": "",
+          "footer_menu_3": "",
+          "footer_menu_4": "",
+          "footer_menu_5": "",
+          "footer_menu_6": "",
+          "show_newsletter": true,
+          "newsletter_heading": "Newsletter",
+          "newsletter_button_text": "Subscribe",
+          "newsletter_privacy_text": "<p>By signing up, you accept the terms of our Privacy Policy.</p>",
+          "newsletter_success_text": "Thanks for subscribing!",
+          "show_contact_info": true,
+          "phone": "",
+          "mobile": "",
+          "email": "",
+          "address": "",
+          "show_payment_icons": true
+        }
       }
     },
     "content_for_index": []
