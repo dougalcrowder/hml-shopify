@@ -4,21 +4,14 @@
       "type": "hero-video",
       "settings": {
         "enable_section_css": true,
-        "video_file": "",
         "autoplay": true,
         "loop": true,
-        "muted": true
-      }
-    },
-    "category-links": {
-      "type": "category-quick-links",
-      "settings": {
-        "enable_section_css": true
+        "muted": true,
+        "mobile_respect": false
       }
     }
   },
   "order": [
-    "hero",
-    "category-links"
+    "hero"
   ]
 }

@@ -1,24 +1,25 @@
 {
   "sections": {
-    "collection-gallery": {
+    "banner": {
       "type": "collection-gallery",
-      "blocks": {},
       "settings": {
         "enable_section_css": true
       }
     },
     "product-grid": {
-      "type": "product-grid",
+      "type": "main-collection",
       "settings": {
         "enable_section_css": true,
-        "show_filters": true,
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": 2
+        "products_per_page": 24,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "enable_load_more": false
       }
     }
   },
   "order": [
-    "collection-gallery",
+    "banner",
     "product-grid"
   ]
 }

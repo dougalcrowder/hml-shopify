@@ -40,7 +40,7 @@
     {%- endif -%}
 
     {%- if section.settings.show_button -%}
-      <div class="button_container{{ if section.settings.button_color == 'white' }} white{% endif %}">
+      <div class="button_container{% if section.settings.button_color == 'white' %} white{% endif %}">
         <a href="{{ section.settings.button_link }}" class="button">
           {{ section.settings.button_text }}
         </a>
