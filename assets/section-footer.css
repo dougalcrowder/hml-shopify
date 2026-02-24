@@ -1,0 +1,191 @@
+/*
+  SECTION-FOOTER.CSS
+  Footer layout and styling
+  
+  Converted from _footer.scss (111 lines)
+  Variables: $border: #F1F1EF
+  
+  Includes:
+  - Footer grid layout (responsive columns)
+  - Logo section
+  - Navigation columns
+  - Newsletter form
+  - Payment icons
+  - Copyright section
+  - Complex responsive column reordering
+*/
+
+.siteFooter {
+  position: relative;
+  z-index: 10;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .siteFooter {
+    padding: 0 20px;
+  }
+}
+
+.siteFooter .footer-inner {
+  padding: 56px 10px 0;
+  background-color: #F1F1EF; /* $border */
+}
+
+@media screen and (min-width: 415px) {
+  .siteFooter .footer-inner {
+    padding: 56px 20px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .siteFooter .footer-inner {
+    padding: 56px 40px 0;
+  }
+}
+
+/* Logo section */
+.siteFooter .footer-inner .footer-logotype .svg {
+  width: 100%;
+  height: auto;
+  max-width: 410px;
+}
+
+/* Main footer flex container */
+.siteFooter .footer-inner > .flex {
+  justify-content: space-between;
+  padding: 40px 0 0 0;
+  gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .siteFooter .footer-inner > .flex {
+    padding: 50px 0 0 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .siteFooter .footer-inner > .flex {
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .siteFooter .footer-inner > .flex {
+    padding: 100px 0 0 0;
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .siteFooter .footer-inner > .flex {
+    gap: 40px;
+  }
+}
+
+/* Footer column sizing */
+.siteFooter .footer-inner > .flex > div {
+  flex: 1;
+}
+
+@media screen and (min-width: 1260px) {
+  .siteFooter .footer-inner > .flex > div {
+    flex-basis: 190px;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col5 {
+    flex-basis: 222px;
+  }
+}
+
+/* Mobile column sizing */
+@media screen and (max-width: 768px) {
+  .siteFooter .footer-inner > .flex > div {
+    flex-basis: 33%;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col5 {
+    flex-basis: 66%;
+  }
+}
+
+/* Tablet column layout for col5 */
+@media screen and (max-width: 768px) and (min-width: 720px) {
+  .siteFooter .footer-inner > .flex > div.col5 {
+    display: flex;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col5 .contact {
+    flex: 1;
+    order: 2;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col5 .payments {
+    flex: 1;
+    order: 1;
+  }
+}
+
+/* Small mobile column reordering */
+@media screen and (max-width: 415px) {
+  .siteFooter .footer-inner > .flex > div {
+    flex-basis: 50%;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col1 {
+    order: 1;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col2 {
+    order: 3;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col3 {
+    order: 2;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col4 {
+    order: 4;
+  }
+
+  .siteFooter .footer-inner > .flex > div.col5 {
+    order: 5;
+    flex-basis: 100%;
+  }
+}
+
+/* Alternative footer padding (desktop) */
+@media screen and (min-width: 768px) {
+  .siteFooter .footer-inner {
+    padding: 55px 50px 0;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .siteFooter .footer-inner {
+    padding: 110px 100px 0;
+  }
+}
+
+/* Footer headings */
+.siteFooter h4 {
+  margin-bottom: 4px;
+}
+
+/* Copyright section */
+.siteFooter .copyright {
+  width: 100%;
+  padding: 32px 0;
+  text-align: center;
+}
+
+.siteFooter .copyright p {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .siteFooter .copyright {
+    padding: 56px 0;
+  }
+}

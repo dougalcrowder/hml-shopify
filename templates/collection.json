@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "collection-gallery": {
+      "type": "collection-gallery",
+      "blocks": {},
+      "settings": {
+        "enable_section_css": true
+      }
+    },
+    "product-grid": {
+      "type": "product-grid",
+      "settings": {
+        "enable_section_css": true,
+        "show_filters": true,
+        "products_per_row_desktop": 4,
+        "products_per_row_mobile": 2
+      }
+    }
+  },
+  "order": [
+    "collection-gallery",
+    "product-grid"
+  ]
+}

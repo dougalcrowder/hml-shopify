@@ -1,0 +1,72 @@
+/*
+  SECTION-PRODUCT-GRID.CSS
+  Product grid and card animations
+  
+  Converted from _products.scss
+  
+  Includes:
+  - Product card slide-in animation
+  - Lifestyle image reveal
+  - Mix-blend-mode for product info
+  - Animation timing and states
+  - Related products section
+*/
+
+/* Note: Base product grid structure is in styles-top.css
+   This file adds animations and enhanced states */
+
+/* Product slide-in animation keyframes */
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  1% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to products with slidebaby class */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .products .product.slidebaby .lifestyle_picture {
+    animation: slide-in-top 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+  }
+}
+
+/* Animation delay variations (commented out in original SCSS but included for reference) */
+/*
+.products .product:nth-child(5n+1).slidebaby .lifestyle_picture {
+  animation-delay: 15s;
+}
+
+.products .product:nth-child(5n+2).slidebaby .lifestyle_picture {
+  animation-delay: 10s;
+}
+
+.products .product:nth-child(5n+3).slidebaby .lifestyle_picture {
+  animation-delay: 15s;
+}
+
+.products .product:nth-child(5n+4).slidebaby .lifestyle_picture {
+  animation-delay: 20s;
+}
+
+.products .product:nth-child(5n).slidebaby .lifestyle_picture {
+  animation-delay: 25s;
+}
+*/
+
+/* For lovers category specific spacing */
+.for_lovers_cat .collection_campaigns + .products {
+  margin-top: 20px;
+}
+
+/* Related products section */
+.related_products .swag {
+  margin-bottom: 20px;
+}

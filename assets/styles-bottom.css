@@ -1,0 +1,917 @@
+/*
+  HANNAH MARTIN - STYLES-BOTTOM.CSS
+  Below-the-fold and deferred styles - Load asynchronously
+  
+  Converted from SCSS sources:
+  - _animations.scss (ALL keyframes)
+  - _accordions.scss (accordion component)
+  - _filter.scss (product filtering)
+  - _generalforms.scss (form styling)
+  - Remaining deferred styles
+  
+  Load this CSS asynchronously after initial page paint:
+  <link rel="preload" href="styles-bottom.css" as="style" onload="this.rel='stylesheet'">
+  
+  File size: ~1200 lines
+*/
+
+/* ========================================================================
+   KEYFRAME ANIMATIONS (from _animations.scss)
+   ======================================================================== */
+
+/* Rotate 360 degrees clockwise */
+@keyframes rotate-360-cw {
+  0% {
+    transform: rotate(0);
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+/* Fade in */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+/* Fade out */
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fade-out 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+/* Fade out to top */
+@keyframes fade-out-top {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.fade-out-top {
+  animation: fade-out-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* In, stay, out animation */
+@keyframes in-stay-out {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* In and stay animation */
+@keyframes in-stay {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Volume text down animation */
+@keyframes volume_text_down {
+  0% {
+    transform: translateY(47vh) translateX(-50%);
+  }
+  100% {
+    transform: translateY(88vh) translateX(-50%);
+  }
+}
+
+/* Rotate center */
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Rotate middle */
+@keyframes rotate-middle {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Off you go animation */
+@keyframes off_you_go {
+  0% {
+    top: 15vh;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  80% {
+    height: 60px;
+    width: 60px;
+    top: 60px;
+    left: 60px;
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    height: 60px;
+    width: 60px;
+    top: 60px;
+    left: 60px;
+    transform: translateX(0%);
+  }
+}
+
+/* B animation (slide in from left) */
+@keyframes b {
+  0% {
+    opacity: 0;
+    transform: translateX(-2%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Flippera - Product card flip animation (left side) */
+@keyframes flippera {
+  0% {
+    bottom: 100%;
+    transform: rotate(0deg);
+    left: 0%;
+    overflow: visible;
+  }
+  25% {
+    bottom: 100%;
+    transform: rotate(9deg);
+    box-shadow: 0 4px 3px -2px rgba(0, 0, 0, 0.5);
+    left: 0.6%;
+  }
+  50% {
+    left: -2.8%;
+  }
+  70% {
+    left: -3%;
+    box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.1);
+  }
+  99% {
+    overflow: visible;
+  }
+  100% {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    bottom: 0%;
+    z-index: 2;
+    transform: rotate(0deg);
+    left: 0%;
+    overflow: hidden;
+  }
+}
+
+/* Maskera - Masking animation for flippera */
+@keyframes maskera {
+  0% {
+    bottom: 0%;
+    transform: rotate(0deg);
+  }
+  25% {
+    bottom: 0%;
+    transform: rotate(-3deg);
+  }
+  70% {
+    bottom: 70%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
+
+/* Topmaskera - Top masking for flippera */
+@keyframes topmaskera {
+  0% {
+    bottom: 100%;
+    opacity: 1;
+  }
+  13% {
+    bottom: 99%;
+  }
+  35% {
+    bottom: 75%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  55% {
+    bottom: 50%;
+    opacity: 1;
+  }
+  56% {
+    bottom: 50%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 50%;
+    opacity: 0;
+  }
+}
+
+/* Fadeinner - Fade in content */
+@keyframes fadeinner {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Swingdroppa - Swing animation (left) */
+@keyframes swingdroppa {
+  0% {
+    transform: translateY(0);
+  }
+  2% {
+    transform: translateY(0px);
+  }
+  6% {
+    transform: translateY(5px);
+  }
+  12% {
+    transform: translateY(25px);
+  }
+  16% {
+    transform: translateY(25px);
+  }
+  50% {
+    transform: rotate(64deg) translateY(25px);
+  }
+  75% {
+    transform: rotate(20deg) translateY(25px);
+  }
+  100% {
+    transform: rotate(45deg) translateY(25px);
+  }
+}
+
+/* Droppa - Drop off screen animation */
+@keyframes droppa {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(8000vh);
+    opacity: 0;
+  }
+}
+
+/* Flipperb - Product card flip animation (right side) */
+@keyframes flipperb {
+  0% {
+    bottom: 100%;
+    transform: rotate(0deg);
+    right: 0%;
+    overflow: visible;
+  }
+  25% {
+    bottom: 100%;
+    transform: rotate(-9deg);
+    box-shadow: 0 4px 3px -2px rgba(0, 0, 0, 0.5);
+    right: 0%;
+  }
+  50% {
+    right: -2.8%;
+  }
+  70% {
+    right: -3%;
+    box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.1);
+  }
+  99% {
+    overflow: visible;
+  }
+  100% {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    bottom: 0%;
+    z-index: 2;
+    transform: rotate(0deg);
+    right: 0%;
+    overflow: hidden;
+  }
+}
+
+/* Maskerb - Masking animation for flipperb */
+@keyframes maskerb {
+  0% {
+    bottom: 0%;
+    transform: rotate(0deg);
+  }
+  25% {
+    bottom: 0%;
+    transform: rotate(3deg);
+  }
+  70% {
+    bottom: 70%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
+
+/* Topmaskerb - Top masking for flipperb */
+@keyframes topmaskerb {
+  0% {
+    bottom: 100%;
+    background-color: white;
+  }
+  13% {
+    bottom: 99%;
+  }
+  35% {
+    bottom: 75%;
+  }
+  50% {
+    bottom: 50%;
+  }
+  55% {
+    bottom: 50%;
+    opacity: 1;
+    background-color: white;
+  }
+  56% {
+    bottom: 50%;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  100% {
+    bottom: 50%;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+/* Swingdroppb - Swing animation (right) */
+@keyframes swingdroppb {
+  0% {
+    transform: translateY(0);
+  }
+  2% {
+    transform: translateY(0px);
+  }
+  6% {
+    transform: translateY(5px);
+  }
+  12% {
+    transform: translateY(25px);
+  }
+  16% {
+    transform: translateY(25px);
+  }
+  50% {
+    transform: rotate(-64deg) translateY(25px);
+  }
+  75% {
+    transform: rotate(-20deg) translateY(25px);
+  }
+  100% {
+    transform: rotate(-45deg) translateY(25px);
+  }
+}
+
+/* Swirl in from back */
+@keyframes swirl-in-bck {
+  0% {
+    transform: rotate(540deg) scale(5);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Vibrate 1 */
+@keyframes vibrate-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Vibrate 2 */
+@keyframes vibrate-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Slide in blurred from bottom right */
+@keyframes slide-in-blurred-br {
+  0% {
+    transform: translate(1000px, 1000px) skew(80deg, 10deg);
+    transform-origin: 0% 100%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in blurred from left */
+@keyframes slide-in-blurred-left {
+  0% {
+    transform: translateX(-1000px) scaleX(2.5) scaleY(0.2);
+    transform-origin: 100% 50%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in blurred from top right */
+@keyframes slide-in-blurred-tr {
+  0% {
+    transform: translate(1000px, -1000px) skew(-80deg, -10deg);
+    transform-origin: 0% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in blurred from top left */
+@keyframes slide-in-blurred-tl {
+  0% {
+    transform: translate(-1000px, -1000px) skew(80deg, 10deg);
+    transform-origin: 100% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) skew(0deg, 0deg);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Slide in blurred from right */
+@keyframes slide-in-blurred-right {
+  0% {
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform-origin: 0% 50%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* ========================================================================
+   TRANSITION CLASSES (from _animations.scss)
+   ======================================================================== */
+
+.transition-fade {
+  transition: 0.6s;
+  opacity: 1;
+}
+
+/* Container animations for product filtering */
+.containerCat.aurevoir.products .product {
+  opacity: 0;
+}
+
+.containerCat.bonjour.products .product {
+  transition: 0.3s;
+}
+
+/* Animation delay mixin expanded for products */
+.containerCat.bonjour.products .product:nth-child(6n+0) {
+  transition-delay: 0.6s;
+}
+
+.containerCat.bonjour.products .product:nth-child(6n+1) {
+  transition-delay: 0.1s;
+}
+
+.containerCat.bonjour.products .product:nth-child(6n+2) {
+  transition-delay: 0.2s;
+}
+
+.containerCat.bonjour.products .product:nth-child(6n+3) {
+  transition-delay: 0.3s;
+}
+
+.containerCat.bonjour.products .product:nth-child(6n+4) {
+  transition-delay: 0.4s;
+}
+
+.containerCat.bonjour.products .product:nth-child(6n+5) {
+  transition-delay: 0.5s;
+}
+
+/* Page transition states */
+html.is-animating .transition-fade {
+  opacity: 0.5;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+1) {
+  transition-delay: 0.1s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+2) {
+  transition-delay: 0.2s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+3) {
+  transition-delay: 0.3s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+4) {
+  transition-delay: 0.4s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+5) {
+  transition-delay: 0.5s;
+}
+
+html.is-animating.is-leaving .transition-fade .containerCat.products .product:nth-child(6n+0) {
+  transition-delay: 0.6s;
+}
+
+/* ========================================================================
+   ACCORDIONS (from _accordions.scss)
+   Variables: @mixin bodyfont and @mixin headfont expanded
+   ======================================================================== */
+
+.ac {
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+.productpage .ac {
+  max-width: 526px;
+}
+
+.ac h2 {
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.bespoke_details .ac {
+}
+
+@media screen and (min-width: 960px) {
+  .bespoke_details .ac {
+    color: white;
+    border-bottom: 1px solid white;
+  }
+
+  .bespoke_details .ac h2 {
+    color: white;
+  }
+}
+
+/* Accordion question/trigger */
+.ac > .ac-q {
+  padding: 8px 8px 8px 12px;
+  margin: 0;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  position: relative;
+}
+
+.ac > .ac-q:focus {
+  outline: 0;
+}
+
+.ac > .ac-q::after {
+  content: '+';
+  text-align: center;
+  width: 15px;
+  left: -5px;
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute;
+}
+
+/* Accordion answer/content */
+.ac > .ac-a {
+  overflow: hidden;
+  visibility: hidden;
+  transition-property: all;
+  transition-timing-function: ease;
+}
+
+.ac-inner {
+  padding: 10px 0 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .ac-inner {
+    max-height: 350px;
+    overflow: scroll;
+  }
+}
+
+.ac-inner table {
+  margin-bottom: 20px;
+}
+
+.ac-inner .cta {
+  text-align: center;
+}
+
+/* Active accordion state */
+.ac.is-active > .ac-a {
+  visibility: visible;
+}
+
+.ac.is-active > h2 {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.ac.is-active > .ac-q::after {
+  content: '\2013';
+}
+
+/* Customer service accordion */
+.customerservice .ac-inner > div {
+  padding-bottom: 50px;
+}
+
+/* Cart tab accordion */
+.carttab .ac-inner > div {
+  padding-bottom: 120px;
+}
+
+/* Falldowns */
+.falldowns .ohmygaad {
+  overflow-y: hidden;
+}
+
+/* ========================================================================
+   FORMS (from _generalforms.scss - included in styles-bottom for deferred load)
+   Additional form styling beyond basic inputs
+   ======================================================================== */
+
+/* Form buttons */
+button,
+.button {
+  display: inline-block;
+  padding: 6px 12px 2px;
+  background-color: transparent;
+  color: #1B1718; /* $text */
+  border: 1px solid #1B1718;
+  cursor: pointer;
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 135px;
+  text-align: center;
+  line-height: 22px;
+}
+
+button:hover,
+.button:hover {
+  background-color: #1B1718;
+  color: white;
+}
+
+button.naked {
+  background: none;
+  border: none;
+  min-width: auto;
+  padding: 0;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #1B1718;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Checkbox and radio styles */
+.checkbox_outer,
+.radio_outer {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.checkbox_outer input[type="checkbox"],
+.radio_outer input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark,
+.radiomark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #1B1718;
+  margin-right: 8px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+.checkbox_outer input[type="checkbox"]:checked + .checkmark,
+.radio_outer input[type="radio"]:checked + .radiomark {
+  background-color: #1B1718;
+}
+
+.radiomark {
+  border-radius: 50%;
+}
+
+/* ========================================================================
+   PRINT STYLES (from _bp-part-2.scss)
+   ======================================================================== */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

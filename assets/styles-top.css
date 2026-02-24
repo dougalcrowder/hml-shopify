@@ -1,0 +1,1368 @@
+/* 
+  HANNAH MARTIN - STYLES-TOP.CSS
+  Critical above-the-fold styles - Load synchronously
+  
+  Converted from SCSS sources:
+  - _normalize.scss (normalize/reset)
+  - _bp-part-1.scss (HTML5 boilerplate base)
+  - _fonts.scss (font-face + typography)
+  - _vars.scss (variables substituted)
+  - _layout.scss (grid, flex, header structure)
+  - _nav.scss (navigation basics)
+  - _campaigns.scss (critical flex layouts)
+  - _products.scss (grid structure)
+  
+  Variables substituted:
+  $text: #1B1718 | $bg: white | $grey: #f1f1ee | $border: #F1F1EF
+  $red: #cc6600 | $green: #003333 | $blue: #0F5178
+  
+  Mixins expanded:
+  @mixin transit → transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1)
+  @mixin transitDelay → transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.3s
+  @mixin bodyfont → font-family: 'marrthinitalic', serif; font-weight: 300; font-style: italic
+  @mixin headfont → font-family: 'marritalic', serif; font-weight: normal; font-style: italic
+  @mixin druk → font-family: 'Druk Cond Super', Baskerville, serif; font-weight: normal; font-style: normal
+*/
+
+/* ========================================================================
+   NORMALIZE / RESET (from _normalize.scss)
+   ======================================================================== */
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+/* ========================================================================
+   HTML5 BOILERPLATE BASE STYLES (from _bp-part-1.scss)
+   ======================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ========================================================================
+   CUSTOM FONTS (from _fonts.scss)
+   ======================================================================== */
+
+@font-face {
+  font-family: 'marrthinitalic';
+  src: url('marrthinitalic.woff2') format('woff2'),
+       url('marrthinitalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: 'marritalic';
+  src: url('marritalic.woff2') format('woff2'),
+       url('marritalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+@font-face {
+  font-family: 'Druk Cond Super';
+  src: url('DrukCond-Super.woff2') format('woff2'),
+       url('DrukCond-Super.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+}
+
+/* ========================================================================
+   BODY & BASE TYPOGRAPHY (from _fonts.scss)
+   Variables: $text = #1B1718, $blue = #0F5178
+   ======================================================================== */
+
+body {
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1B1718;
+}
+
+body.naked {
+  padding: 0;
+}
+
+body.naked .cc-window {
+  display: none;
+}
+
+body.category {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #1B1718;
+}
+
+.rte a {
+  color: #0F5178;
+}
+
+cite {
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 1.05px;
+}
+
+blockquote {
+  font-style: italic;
+  text-align: center;
+  padding: 16px 16px 8px 16px;
+  margin: 0;
+}
+
+@media screen and (min-width: 960px) {
+  blockquote {
+    padding: 32px 32px 8px 32px;
+  }
+}
+
+blockquote + cite {
+  text-align: center;
+  display: block;
+}
+
+/* Headings with @mixin headfont expanded */
+h1,
+.h1,
+h4 {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 100%;
+  color: #1B1718;
+  letter-spacing: 0;
+  text-align: left;
+  margin: 0 0 14px 0;
+}
+
+h2,
+h3 {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+  color: #1B1718;
+  font-size: 100%;
+  margin: 0 0 14px 0;
+}
+
+h5 {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 13px;
+  margin: 0 0 14px 0;
+}
+
+p {
+  margin: 0 0 8px 0;
+}
+
+p a {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.font_bold,
+strong,
+b {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Druk display headings - @mixin druk expanded */
+h1.drukster,
+strong.drukster {
+  font-family: 'Druk Cond Super', Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+  font-weight: normal;
+  font-style: normal;
+  color: white;
+  font-size: 28vw;
+  line-height: 0.8;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 20;
+}
+
+@media screen and (min-width: 768px) {
+  h1.drukster,
+  strong.drukster {
+    font-size: 23vw;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  h1.drukster,
+  strong.drukster {
+    font-size: 23vw;
+  }
+}
+
+h1.drukster.outline,
+strong.drukster.outline {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h1.drukster.page {
+  color: black;
+  margin: 20px auto 40px 0;
+  text-align: left;
+  max-width: 100%;
+}
+
+/* Modern browsers outline support */
+@supports((text-stroke: 1px black) or (-webkit-text-stroke: 1px black)) {
+  h1.drukster.outline,
+  strong.drukster.outline {
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+    text-stroke: 1px black;
+    text-shadow: none;
+  }
+}
+
+h1.drukster,
+.scroll_text strong.drukster {
+  max-width: 94%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  h1.drukster,
+  .scroll_text strong.drukster {
+    max-width: 90%;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  h1.drukster,
+  .scroll_text strong.drukster {
+    max-width: 80%;
+  }
+}
+
+h2.drukster,
+h3.drukster {
+  font-family: 'Druk Cond Super', Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+  font-weight: normal;
+  font-style: normal;
+  color: white;
+  font-size: 22vw;
+  line-height: 0.8;
+  width: 94%;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 auto;
+  z-index: 20;
+}
+
+@media screen and (min-width: 768px) {
+  h2.drukster,
+  h3.drukster {
+    width: 90%;
+    font-size: 17vw;
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  h2.drukster,
+  h3.drukster {
+    width: 80%;
+    font-size: 18vw;
+  }
+}
+
+/* Messaging colors - Variables: $red = #cc6600, $green = #003333 */
+.error,
+.pristine-error {
+  color: #cc6600;
+}
+
+.success {
+  color: #003333;
+}
+
+/* Lyrics section (from _fonts.scss) */
+.lyrics {
+  position: relative;
+  z-index: 23;
+  padding: 32px 16px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .lyrics {
+    padding: 64px 32px 0 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .lyrics {
+    padding: 48px 32px 0 32px;
+  }
+}
+
+.lyrics .lyric {
+  width: 100%;
+}
+
+.lyrics .lyric strong {
+  width: auto;
+}
+
+/* Cookie consent (from _fonts.scss) */
+.cc-window.cc-banner {
+  padding: 5px 20px;
+}
+
+.cc-banner .cc-message,
+.cc-compliance {
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1B1718;
+}
+
+.cc-banner .cc-message .cc-btn,
+.cc-compliance .cc-btn {
+  display: block;
+  padding: 4px 4px;
+  font-size: 13px;
+  font-weight: 300;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 22px;
+  min-width: 135px;
+  transition: all 0.3s ease;
+}
+
+/* ========================================================================
+   LAYOUT - Grid & Flex Systems (from _layout.scss)
+   ======================================================================== */
+
+.inner {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.inner img {
+  width: 100%;
+  height: auto;
+}
+
+/* Grid system */
+.grid {
+  display: grid;
+  min-height: 359px;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* 12 column grid variant */
+.grid.twelve {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media screen and (min-width: 768px) {
+  .grid.twelve {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  .grid.twelve {
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .grid.twelve {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Flex system */
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+/* Full browser mixin expanded */
+.fullbrowser img {
+  position: absolute;
+  z-index: 0;
+  left: 12px;
+  right: 12px;
+  top: 12px;
+  bottom: 12px;
+  object-fit: cover;
+  height: calc(100vh - 24px);
+  width: calc(100vw - 24px);
+}
+
+@media screen and (min-width: 768px) {
+  .fullbrowser img {
+    left: 20px;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    height: calc(100vh - 40px);
+    width: calc(100vw - 40px);
+  }
+}
+
+/* ========================================================================
+   HEADER & NAVIGATION (from _layout.scss)
+   @mixin transitDelay expanded
+   ======================================================================== */
+
+header.siteNav {
+  scroll-snap-align: none;
+  z-index: 99991;
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.3s;
+  position: sticky;
+  flex-direction: column;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 48px;
+}
+
+header.siteNav.light {
+  background-color: white;
+  box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.16);
+}
+
+/* Logo - @mixin transit expanded */
+header.siteNav .logo {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 74vw;
+  top: 60px;
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1);
+  transform: rotate(30deg);
+}
+
+@media screen and (min-width: 620px) {
+  header.siteNav .logo {
+    top: calc(22.1096vw - 93px);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  header.siteNav .logo {
+    width: 60px;
+    height: 60px;
+    max-width: 60px;
+  }
+
+  .productpage header.siteNav .logo {
+    top: 90px;
+    left: calc(50vw - 100px);
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .collection.lightnav header.siteNav .logo svg path {
+    fill: white;
+  }
+}
+
+header.siteNav .logo:hover {
+  transform: rotate(690deg);
+}
+
+/* Header controls */
+header.siteNav .controls {
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.video_home header.siteNav .controls {
+  display: none;
+  visibility: hidden;
+}
+
+header.siteNav .controls .menu_toggle {
+  min-width: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header.siteNav .controls .menu_toggle:hover {
+  background-color: transparent;
+}
+
+header.siteNav .controls #goFilter {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+header.siteNav .basket a {
+  display: block;
+  line-height: 48px;
+}
+
+/* Main navigation slide-out - @mixin transit expanded */
+header.siteNav .main-navigation {
+  background-color: black;
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 320px;
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1);
+  transform: translateX(-320px);
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 500px) {
+  header.siteNav .main-navigation {
+    width: 432px;
+    transform: translateX(-432px);
+  }
+}
+
+header.siteNav .main-navigation.alive {
+  display: block;
+  visibility: visible;
+}
+
+header.siteNav .main-navigation.active {
+  transform: translateX(0);
+}
+
+/* Nav overlay */
+#navClose {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0px;
+  height: 0px;
+}
+
+#navClose.active {
+  z-index: 9990;
+  width: 100vw;
+  height: 100vh;
+}
+
+#content {
+  padding: 0 0 48px 0;
+}
+
+/* ========================================================================
+   NAVIGATION (from _nav.scss)
+   @mixin activeState and @mixin headfont expanded
+   ======================================================================== */
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+
+nav ul a {
+  display: block;
+  line-height: 1.6;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Active state */
+nav ul li.active a {
+  font-family: 'marritalic', serif;
+  font-weight: normal;
+  font-style: italic;
+}
+
+nav ul li.active a:before {
+  content: "+ ";
+  display: inline;
+}
+
+/* Main nav items */
+.nav-items {
+  height: 100%;
+  align-content: space-between;
+  padding: 20px 20px 20px 0;
+}
+
+.nav-items .topnav,
+.nav-items .bottomnav {
+  flex: 1 0 100%;
+}
+
+.nav-items ul a {
+  color: white;
+}
+
+.nav-items button.naked {
+  color: white;
+  min-width: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav-items .navrow {
+  padding-top: 20px;
+}
+
+.nav-items .navrow .nav {
+  flex: 1;
+  padding-left: 20px;
+}
+
+/* Hover state opacity for non-hovered items */
+.nav-items.over .navrow ul li a:not(.hover) {
+  opacity: 0.4;
+}
+
+/* Footer nav hover states */
+.navitems.over ul li a:not(.hover) {
+  opacity: 0.4;
+}
+
+/* ========================================================================
+   UTILITIES (from _layout.scss)
+   ======================================================================== */
+
+.social_service {
+  flex: 0 1 auto;
+  margin: 0 10px;
+  width: 18px;
+  text-align: center;
+}
+
+.social_service img {
+  width: 18px;
+  height: 18px;
+}
+
+.flash-notice .flashy-inner {
+  display: inline-block;
+  padding: 8px;
+  background-color: white;
+}
+
+.flash-notice .flashy-inner p {
+  margin: 0;
+}
+
+/* Cookie consent z-index */
+body .cc-revoke,
+body .cc-window {
+  z-index: 99993;
+}
+
+/* ========================================================================
+   CAMPAIGNS - Critical Flex Layouts (from _campaigns.scss)
+   Z-index stacking and basic flex structure
+   ======================================================================== */
+
+.campaigning {
+  overflow-x: hidden;
+}
+
+.collection_campaigns {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .collection_campaigns {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Campaign flex containers */
+.campaigns .flex,
+.collection_campaigns .flex {
+  position: relative;
+}
+
+.campaigns .flex.gap,
+.collection_campaigns .flex.gap {
+  padding-top: 10px;
+  gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .campaigns .flex.gap,
+  .collection_campaigns .flex.gap {
+    padding-top: 20px;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+}
+
+/* Z-index stacking for animation layering */
+.campaigns .flex:nth-child(1),
+.collection_campaigns .flex:nth-child(1) {
+  z-index: 50;
+}
+
+.campaigns .flex:nth-child(2),
+.collection_campaigns .flex:nth-child(2) {
+  z-index: 49;
+}
+
+.campaigns .flex:nth-child(3),
+.collection_campaigns .flex:nth-child(3) {
+  z-index: 48;
+}
+
+.campaigns .flex:nth-child(4),
+.collection_campaigns .flex:nth-child(4) {
+  z-index: 47;
+}
+
+.campaigns .flex:nth-child(5),
+.collection_campaigns .flex:nth-child(5) {
+  z-index: 46;
+}
+
+.campaigns .flex:nth-child(6),
+.collection_campaigns .flex:nth-child(6) {
+  z-index: 45;
+}
+
+.campaigns .flex:nth-child(7),
+.collection_campaigns .flex:nth-child(7) {
+  z-index: 42;
+}
+
+.campaigns .flex:nth-child(8),
+.collection_campaigns .flex:nth-child(8) {
+  z-index: 40;
+}
+
+.campaigns .flex:nth-child(9),
+.collection_campaigns .flex:nth-child(9) {
+  z-index: 38;
+}
+
+.campaigns .flex:nth-child(10),
+.collection_campaigns .flex:nth-child(10) {
+  z-index: 36;
+}
+
+.campaigns .flex:nth-child(11),
+.collection_campaigns .flex:nth-child(11) {
+  z-index: 34;
+}
+
+.campaigns .flex:nth-child(12),
+.collection_campaigns .flex:nth-child(12) {
+  z-index: 32;
+}
+
+.campaigns .flex:nth-child(13),
+.collection_campaigns .flex:nth-child(13) {
+  z-index: 30;
+}
+
+.campaigns .flex:nth-child(14),
+.collection_campaigns .flex:nth-child(14) {
+  z-index: 28;
+}
+
+.campaigns .flex:nth-child(15),
+.collection_campaigns .flex:nth-child(15) {
+  z-index: 26;
+}
+
+.campaigns .flex:nth-child(16),
+.collection_campaigns .flex:nth-child(16) {
+  z-index: 24;
+}
+
+.campaigns .flex:nth-child(17),
+.collection_campaigns .flex:nth-child(17) {
+  z-index: 22;
+}
+
+.campaigns .flex:nth-child(18),
+.collection_campaigns .flex:nth-child(18) {
+  z-index: 20;
+}
+
+.campaigns .flex:nth-child(19),
+.collection_campaigns .flex:nth-child(19) {
+  z-index: 18;
+}
+
+.campaigns .flex:nth-child(20),
+.collection_campaigns .flex:nth-child(20) {
+  z-index: 16;
+}
+
+/* Mobile z-index for images within flex */
+@media screen and (max-width: 960px) {
+  .campaigns .flex .image:nth-child(1),
+  .collection_campaigns .flex .image:nth-child(1) {
+    z-index: 50;
+  }
+
+  .campaigns .flex .image:nth-child(2),
+  .collection_campaigns .flex .image:nth-child(2) {
+    z-index: 49;
+  }
+
+  .campaigns .flex .image:nth-child(3),
+  .collection_campaigns .flex .image:nth-child(3) {
+    z-index: 48;
+  }
+
+  .campaigns .flex .story,
+  .collection_campaigns .flex .story {
+    z-index: 51;
+  }
+}
+
+.campaigns .scrollytext,
+.collection_campaigns .scrollytext {
+  z-index: 51;
+}
+
+/* Three column layout */
+.flex.three {
+  position: relative;
+  z-index: 1;
+}
+
+.flex.three .image,
+.flex.three .story,
+.flex.three .col,
+.flex.three .empty {
+  flex: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+.flex.three .image .druk,
+.flex.three .story .druk,
+.flex.three .col .druk,
+.flex.three .empty .druk {
+  font-size: 25vw;
+}
+
+@media screen and (min-width: 768px) {
+  .flex.three .image,
+  .flex.three .story,
+  .flex.three .col,
+  .flex.three .empty {
+    flex-basis: 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .flex.three .image .druk,
+  .flex.three .story .druk,
+  .flex.three .col .druk,
+  .flex.three .empty .druk {
+    font-size: 6.5vw;
+  }
+}
+
+/* Two column layout */
+.flex.two .image,
+.flex.two .story,
+.flex.two .empty {
+  flex: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+.flex.two .image .druk,
+.flex.two .story .druk,
+.flex.two .empty .druk {
+  font-size: 25vw;
+}
+
+@media screen and (min-width: 768px) {
+  .flex.two .image,
+  .flex.two .story,
+  .flex.two .empty {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .flex.two .image .druk,
+  .flex.two .story .druk,
+  .flex.two .empty .druk {
+    font-size: 13vw;
+  }
+}
+
+/* Two column with bigger image (66/33 split) */
+.flex.two.bigger-image .image.bigger {
+  flex: 2;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .flex.two.bigger-image .image.bigger {
+    flex-basis: 66.66666%;
+    max-width: 66.66666%;
+  }
+}
+
+.flex.two.bigger-image .story,
+.flex.two.bigger-image .empty {
+  flex: 2;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .flex.two.bigger-image .story,
+  .flex.two.bigger-image .empty {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%;
+  }
+
+  .flex.two.bigger-image .story .druk,
+  .flex.two.bigger-image .empty .druk {
+    font-size: 6.5vw;
+  }
+}
+
+/* One column layout */
+.flex.one .image,
+.flex.one .story,
+.flex.one .blank,
+.flex.one .video,
+.flex.one .music,
+.flex.one .button_container {
+  flex: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+.flex.one .image .druk,
+.flex.one .story .druk,
+.flex.one .blank .druk {
+  font-size: 25vw;
+}
+
+.flex.one .story {
+  flex: 2;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .flex.one .story .druk {
+    font-size: 16vw;
+  }
+}
+
+/* Story section styling - @mixin druk expanded */
+.flex .story {
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width: 960px) {
+  .flex .story {
+    min-height: 66vh;
+  }
+}
+
+.flex .story .story_inner {
+  height: 100%;
+}
+
+.flex .story .form {
+  flex: 1;
+  align-self: center;
+}
+
+@media screen and (min-width: 960px) {
+  .flex .story .form.padme {
+    padding: 0 24px;
+  }
+}
+
+.flex .story .rte {
+  flex: 1;
+  align-self: center;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.flex .story .rte.fullwidth {
+  max-width: 100%;
+}
+
+.flex .story .rte.wider {
+  max-width: 728px;
+}
+
+.flex .story .druk {
+  font-family: 'Druk Cond Super', Baskerville, 'Baskerville Old Face', 'Hoefler Text', Garamond, 'Times New Roman', serif;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-transform: uppercase;
+  line-height: 0.8;
+}
+
+.flex.one .story {
+  min-height: 40vh;
+}
+
+.flex.one .story .story_inner {
+  min-height: 300px;
+  padding: 32px 0;
+}
+
+/* ========================================================================
+   PRODUCTS - Grid Structure (from _products.scss)
+   Critical product grid layout only
+   ======================================================================== */
+
+.products.grid {
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.964);
+}
+
+@media screen and (min-width: 768px) {
+  .products.grid {
+    padding: 0 20px;
+  }
+}
+
+.products.grid .product,
+.products.grid .gridimage {
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.products.grid .product video,
+.products.grid .gridimage video {
+  max-width: 100%;
+  height: auto;
+}
+
+.products.grid .product .product_info {
+  position: absolute;
+  left: 23px;
+  top: 20px;
+  z-index: 200;
+}
+
+.products.grid .product .product_info h3 {
+  margin-bottom: 4px;
+}
+
+.products.grid .product .product-name {
+  position: absolute;
+  left: 23px;
+  top: 20px;
+  z-index: 200;
+}
+
+/* Product card link structure */
+.products .product a.linkouter {
+  position: relative;
+  display: block;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.products .product a.linkouter .main_picture {
+  position: relative;
+  z-index: 1;
+}
+
+.products .product a.linkouter .lifestyle_picture {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+/* Product slidebaby state - mix-blend-mode for product info */
+.products .product.slidebaby .product_info {
+  mix-blend-mode: difference;
+  color: white;
+}
+
+.products .product.slidebaby .product_info span,
+.products .product.slidebaby .product_info h3 {
+  color: white;
+}

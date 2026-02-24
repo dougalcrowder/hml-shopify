@@ -1,0 +1,157 @@
+{% comment %}
+  Hero Video/Image Row
+  Full-width video or image section, typically used as the first element
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-hero-video.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<article class="campaign-row hero-video">
+  <div class="videofile{% if section.settings.mobile_respect == false %} norespect{% endif %}">
+    
+    {%- if section.settings.video_file != blank -%}
+      {%- comment -%} Video file {%- endcomment -%}
+      <video 
+        {% if section.settings.autoplay %}autoplay{% endif %}
+        {% if section.settings.loop %}loop{% endif %}
+        {% if section.settings.muted %}muted{% endif %}
+        playsinline
+        {% if section.settings.video_poster %}poster="{{ section.settings.video_poster | image_url: width: 1920 }}"{% endif %}>
+        <source src="{{ section.settings.video_file }}" type="video/mp4">
+      </video>
+    {%- elsif section.settings.desktop_image != blank -%}
+      {%- comment -%} Fallback to image {%- endcomment -%}
+      <picture>
+        {%- if section.settings.mobile_image != blank -%}
+          <source 
+            media="(max-width: 767px)" 
+            srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">
+        {%- endif -%}
+        <img 
+          src="{{ section.settings.desktop_image | image_url: width: 1920 }}"
+          srcset="{{ section.settings.desktop_image | image_url: width: 600 }} 600w,
+                  {{ section.settings.desktop_image | image_url: width: 1200 }} 1200w,
+                  {{ section.settings.desktop_image | image_url: width: 1920 }} 1920w"
+          sizes="100vw"
+          alt="{{ section.settings.desktop_image.alt | default: section.settings.heading }}"
+          loading="lazy">
+      </picture>
+    {%- endif -%}
+
+    {%- if section.settings.show_button -%}
+      <div class="button_container{{ if section.settings.button_color == 'white' }} white{% endif %}">
+        <a href="{{ section.settings.button_link }}" class="button">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Hero Video/Image",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "url",
+      "id": "video_file",
+      "label": "Video file URL",
+      "info": "MP4 or WebM URL. Use Shopify Files or external CDN."
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video poster image",
+      "info": "Shown before video loads"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted",
+      "default": true,
+      "info": "Required for autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_respect",
+      "label": "Respect mobile aspect ratio",
+      "default": true,
+      "info": "If disabled, video will be cropped on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Fallback Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image",
+      "info": "Shown if no video provided"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Optional mobile-specific image"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button color",
+      "options": [
+        {"value": "black", "label": "Black"},
+        {"value": "white", "label": "White"}
+      ],
+      "default": "black"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Video/Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,228 @@
+{% comment %}
+  Two Column Row
+  50/50 or 66/33 split with image and text
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-two-column-row.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<article class="campaign-row flex two{% if section.settings.bigger_image %} bigger-image{% endif %}{% if section.settings.add_gap %} gap{% endif %}">
+  
+  {%- if section.settings.image_first -%}
+    {%- comment -%} Image First {%- endcomment -%}
+    <div class="image{% if section.settings.bigger_image %} bigger{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <picture>
+          {%- if section.settings.mobile_image != blank -%}
+            <source media="(max-width: 767px)" 
+                    srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">
+          {%- endif -%}
+          
+          <img src="{{ section.settings.image | image_url: width: 1200 }}"
+               srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                       {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               sizes="(max-width: 767px) 100vw, {% if section.settings.bigger_image %}66vw{% else %}50vw{% endif %}"
+               alt="{{ section.settings.image.alt | default: section.settings.heading }}"
+               loading="lazy">
+        </picture>
+      {%- endif -%}
+      
+      {%- if section.settings.show_image_link and section.settings.image_link != blank -%}
+        <a href="{{ section.settings.image_link }}" class="image-overlay-link"></a>
+      {%- endif -%}
+    </div>
+
+    <div class="story">
+      <div class="story_inner flex">
+        <div class="rte {{ section.settings.text_width }}">
+          {%- if section.settings.heading != blank -%}
+            <div class="paratitles titleone">
+              <h2 class="druk rellax">{{ section.settings.heading }}</h2>
+            </div>
+          {%- endif -%}
+          
+          {{ section.settings.text }}
+          
+          {%- if section.settings.heading != blank -%}
+            <div class="paratitles titlethree">
+              <span class="druk rellax">{{ section.settings.heading }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    {%- comment -%} Text First {%- endcomment -%}
+    <div class="story">
+      <div class="story_inner flex">
+        <div class="rte {{ section.settings.text_width }}">
+          {%- if section.settings.heading != blank -%}
+            <div class="paratitles titleone">
+              <h2 class="druk rellax">{{ section.settings.heading }}</h2>
+            </div>
+          {%- endif -%}
+          
+          {{ section.settings.text }}
+          
+          {%- if section.settings.heading != blank -%}
+            <div class="paratitles titlethree">
+              <span class="druk rellax">{{ section.settings.heading }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="image{% if section.settings.bigger_image %} bigger{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <picture>
+          {%- if section.settings.mobile_image != blank -%}
+            <source media="(max-width: 767px)" 
+                    srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">
+          {%- endif -%}
+          
+          <img src="{{ section.settings.image | image_url: width: 1200 }}"
+               srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                       {{ section.settings.image | image_url: width: 1200 }} 1200w"
+               sizes="(max-width: 767px) 100vw, {% if section.settings.bigger_image %}66vw{% else %}50vw{% endif %}"
+               alt="{{ section.settings.image.alt | default: section.settings.heading }}"
+               loading="lazy">
+        </picture>
+      {%- endif -%}
+      
+      {%- if section.settings.show_image_link and section.settings.image_link != blank -%}
+        <a href="{{ section.settings.image_link }}" class="image-overlay-link"></a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  
+</article>
+
+{%- if section.settings.enable_parallax -%}
+<script>
+  // Simple parallax effect on .rellax elements
+  (function() {
+    const rellaxElements = document.querySelectorAll('.rellax');
+    if (rellaxElements.length === 0) return;
+    
+    function updateParallax() {
+      rellaxElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const scrolled = window.pageYOffset;
+        const speed = -2;
+        const yPos = -(scrolled * speed / 100);
+        el.style.transform = `translateY(${yPos}px)`;
+      });
+    }
+    
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Two Column Row",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_first",
+      "label": "Image first (left)",
+      "default": true,
+      "info": "Unchecked = text first"
+    },
+    {
+      "type": "checkbox",
+      "id": "bigger_image",
+      "label": "Bigger image (66/33 split)",
+      "default": false,
+      "info": "Default is 50/50"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_gap",
+      "label": "Add gap between columns",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Optional"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_link",
+      "label": "Make image clickable",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image link"
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Large display text - appears top and bottom"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_width",
+      "label": "Text width",
+      "options": [
+        {"value": "", "label": "Narrow (300px)"},
+        {"value": "wider", "label": "Wider (728px)"},
+        {"value": "fullwidth", "label": "Full width"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable parallax on headings",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column Row"
+    }
+  ]
+}
+{% endschema %}

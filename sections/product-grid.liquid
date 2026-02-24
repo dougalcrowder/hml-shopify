@@ -1,0 +1,204 @@
+{% comment %}
+  Product Grid with Filtering
+  Displays products from current collection with type and material filters
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-product-grid.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<div class="swag">
+  <div class="products containerCat grid" id="grid">
+    {%- for product in collection.products -%}
+      {% render 'product-card', product: product %}
+    {%- else -%}
+      <p class="no-products">{{ 'collections.general.no_matches' | t }}</p>
+    {%- endfor -%}
+  </div>
+
+  {%- if collection.products.size > 16 and section.settings.show_filters -%}
+    <div class="filter-container">
+      <button class="filter-toggle" id="filterToggle">
+        Filter by:
+      </button>
+
+      <div class="filter-panel" id="filterPanel">
+        <button class="filter-close" id="filterClose">Close</button>
+        
+        <div class="filter-section">
+          <h3>Type</h3>
+          <ul class="filter-list" data-filter-type="type">
+            {%- assign product_types = collection.products | map: 'type' | uniq -%}
+            {%- for type in product_types -%}
+              {%- if type != blank -%}
+                <li>
+                  <label>
+                    <input type="checkbox" value="{{ type | handle }}" data-count="{{ collection.products | where: 'type', type | size }}">
+                    {{ type }} <span class="count">{{ collection.products | where: 'type', type | size }}</span>
+                  </label>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+            <li>
+              <label>
+                <input type="checkbox" value="all">
+                This is everything <span class="count">{{ collection.products.size }}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter-section">
+          <h3>Material</h3>
+          <ul class="filter-list" data-filter-type="material">
+            {%- assign all_tags = collection.products | map: 'tags' | join: ',' | split: ',' | uniq -%}
+            {%- for tag in all_tags -%}
+              {%- if tag contains 'Gold' or tag contains 'Silver' or tag contains 'Diamond' or tag contains 'Pearl' or tag contains 'Ebony' or tag contains 'Obsidian' -%}
+                {%- assign tag_count = 0 -%}
+                {%- for product in collection.products -%}
+                  {%- if product.tags contains tag -%}
+                    {%- assign tag_count = tag_count | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                <li>
+                  <label>
+                    <input type="checkbox" value="{{ tag | handle }}" data-count="{{ tag_count }}">
+                    {{ tag }} <span class="count">{{ tag_count }}</span>
+                  </label>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <button class="filter-reset" id="filterReset">Reset</button>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- if section.settings.show_filters and collection.products.size > 16 -%}
+<script>
+  // Product Grid Filtering
+  (function() {
+    const filterToggle = document.getElementById('filterToggle');
+    const filterPanel = document.getElementById('filterPanel');
+    const filterClose = document.getElementById('filterClose');
+    const filterReset = document.getElementById('filterReset');
+    const products = document.querySelectorAll('#grid .product');
+    
+    if (!filterToggle || !filterPanel) return;
+
+    // Toggle filter panel
+    filterToggle.addEventListener('click', () => {
+      filterPanel.classList.toggle('active');
+    });
+
+    filterClose.addEventListener('click', () => {
+      filterPanel.classList.remove('active');
+    });
+
+    // Reset filters
+    filterReset.addEventListener('click', () => {
+      document.querySelectorAll('.filter-list input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+      });
+      applyFilters();
+    });
+
+    // Apply filters
+    function applyFilters() {
+      const activeFilters = {
+        type: [],
+        material: []
+      };
+
+      document.querySelectorAll('.filter-list').forEach(list => {
+        const filterType = list.dataset.filterType;
+        list.querySelectorAll('input:checked').forEach(cb => {
+          if (cb.value !== 'all') {
+            activeFilters[filterType].push(cb.value);
+          }
+        });
+      });
+
+      products.forEach(product => {
+        const productType = product.dataset.type;
+        const productTags = (product.dataset.tags || '').split(',');
+        
+        let showProduct = true;
+
+        // Type filter
+        if (activeFilters.type.length > 0) {
+          showProduct = activeFilters.type.includes(productType);
+        }
+
+        // Material filter (AND logic with type)
+        if (showProduct && activeFilters.material.length > 0) {
+          showProduct = activeFilters.material.some(filter => productTags.includes(filter));
+        }
+
+        product.style.display = showProduct ? '' : 'none';
+      });
+    }
+
+    // Listen for filter changes
+    document.querySelectorAll('.filter-list input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', applyFilters);
+    });
+
+    // Product grid animation stagger
+    setTimeout(() => {
+      products.forEach((product, index) => {
+        setTimeout(() => {
+          product.classList.add('slidebaby');
+        }, Math.random() * 35000);
+      });
+    }, 12000);
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show filters",
+      "default": true,
+      "info": "Displays if collection has more than 16 products"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "label": "Products per row (mobile)",
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

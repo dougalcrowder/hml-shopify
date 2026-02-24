@@ -1,0 +1,462 @@
+/*
+  SECTION-PRODUCT-TEMPLATE.CSS
+  Product page layout and styling
+  
+  Converted from _products.scss (lines 35-446)
+  Variables: $text: #1B1718, @mixin transit expanded
+  
+  Includes:
+  - Product flypage 50/50 layout
+  - Sticky product details on desktop
+  - Image gallery (mobile horizontal scroll)
+  - Mobile slide navigation
+  - Variant selectors
+  - Add to cart form
+  - Other materials thumbnails
+  - Wishlist heart button
+  - Accordions integration
+*/
+
+.productfly {
+  padding-bottom: 24px;
+  padding-top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .productfly {
+    padding-top: 24px;
+  }
+}
+
+.productfly .flex {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Product images column */
+.productfly .flex .product-images {
+  flex: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .productfly .flex .product-images {
+    padding-top: 0;
+    flex: 1;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Helper text overlay (for mobile guidance) */
+.productfly .flex .product-images .helper {
+  display: none;
+  z-index: 30;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 24px 10px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.productfly .flex .product-images .helper .button {
+  display: inline-block;
+}
+
+.productfly .flex .product-images .helper.showme {
+  display: block;
+}
+
+.hover .productfly .flex .product-images .helper.showme {
+  display: none;
+}
+
+.hover .productfly .flex .product-images .helper {
+  display: none;
+}
+
+/* Product details column */
+.productfly .flex .product-details {
+  flex: 1;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .productfly .flex .product-details {
+    flex: 1;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .productfly .flex .product-details .details_inner {
+    height: calc(50vw - 20px);
+    padding: 10px 0 10px 0;
+    position: sticky;
+    top: 48px;
+    align-items: flex-start;
+    align-content: space-between;
+    max-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productfly .flex .product-details .details_inner > div {
+    flex: 1 0 100%;
+    max-width: calc(100% - 20px);
+    padding: 0 20px 10px 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .productfly .flex .product-details .details_inner {
+    height: calc(50vw - 40px);
+    padding: 20px 0 20px 0;
+  }
+
+  .productfly .flex .product-details .details_inner > div {
+    max-width: calc(100% - 20px);
+    padding: 0 20px 20px 0;
+  }
+}
+
+/* Product title */
+.productfly .flex .product-details h1 {
+  margin-bottom: 0;
+}
+
+/* Product price */
+.productfly .flex .product-details .product-price {
+  margin-bottom: 14px;
+}
+
+.productfly .flex .product-details .product-price > span {
+  display: none;
+}
+
+.productfly .flex .product-details .product-price > span.checkme {
+  display: inline;
+}
+
+/* Other materials section */
+.productfly .other_materials h4 {
+  margin: 10px 0 6px 0;
+  line-height: 1;
+}
+
+.productfly .other_materials .flex {
+  justify-content: flex-start;
+}
+
+.productfly .other_materials a {
+  display: block;
+  flex: 0 1 74px;
+  max-width: 74px;
+  margin: 0 4px 20px 0;
+}
+
+.productfly .other_materials a:nth-child(4),
+.productfly .other_materials a:nth-child(8) {
+  margin-right: 0;
+}
+
+.productfly .other_materials a span {
+  display: block;
+  margin-top: 4px;
+}
+
+.productfly .other_materials img {
+  max-width: 80px;
+  margin: 0;
+  border: 1px solid white;
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1); /* @mixin transit */
+}
+
+.productfly .other_materials img:hover {
+  border: 1px solid black;
+}
+
+/* Product images list */
+.productfly .product_images {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile horizontal scroll */
+@media screen and (max-width: 767px) {
+  .productfly .product_images {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    margin: 10px 10px 0 10px;
+    gap: 10px;
+  }
+
+  .productfly .product_images::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Image wrapper */
+.productfly .product_images .imager {
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+  .productfly .product_images .imager {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .productfly .product_images .imager {
+    flex: 1 0 100%;
+    width: 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+  }
+}
+
+/* Mobile slide navigation dots */
+.productfly .mobile_slideNav {
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .productfly .mobile_slideNav {
+    display: flex;
+    visibility: visible;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .productfly .mobile_slideNav button {
+    min-width: 20px;
+    width: 40px;
+    padding: 16px;
+    margin: 0;
+    flex: 0 1 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .productfly .mobile_slideNav button span {
+    display: block;
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1); /* @mixin transit */
+    background-color: #A2A2A2;
+  }
+
+  .productfly .mobile_slideNav button.intersecting span {
+    background-color: #000;
+  }
+}
+
+/* Holall container (mobile wrapper) */
+.productfly .holall {
+}
+
+@media screen and (max-width: 767px) {
+  .productfly .holall {
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+/* Add to cart form */
+.productfly .addto {
+  justify-content: flex-start;
+  padding: 20px 0 0 0;
+  column-gap: 16px;
+  max-width: 526px;
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 1024px) {
+  .productfly .addto {
+    max-width: 65%;
+  }
+}
+
+.productfly .addto .field,
+.productfly .addto .buttons {
+  flex: 1;
+  max-width: calc(50% - 8px);
+}
+
+.productfly .addto .field .radio_group.flex {
+  min-width: 100px;
+}
+
+.productfly .addto .field input,
+.productfly .addto .field select,
+.productfly .addto .buttons button {
+  min-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .productfly .addto .field,
+  .productfly .addto .buttons {
+    flex-basis: calc(50% - 8px);
+  }
+}
+
+.productfly .addto .field.hide {
+  display: none;
+}
+
+.productfly .addto .messages {
+  flex: 1 0 100%;
+  order: 1;
+}
+
+.productfly .addto .messages p {
+  margin-bottom: 12px;
+}
+
+.productfly .addto .buttons {
+  flex: 1 1;
+  order: 3;
+}
+
+.productfly .addto .field {
+  order: 2;
+}
+
+/* Lead time container */
+.productfly .leadtime-container {
+  font-size: 87.5%;
+  padding-top: 2px;
+  padding-left: calc(50% + 12px);
+  flex: 1;
+  flex-basis: 100%;
+  order: 4;
+}
+
+.productfly.cufflinks .leadtime-container,
+.productfly.bracelets .leadtime-container,
+.productfly.necklaces .leadtime-container {
+  padding-left: 0;
+}
+
+/* Wishlist section */
+.flypage_wishlist {
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* Wishlist form and button */
+.wishlist_form .wishlist {
+  display: block;
+  width: 26px;
+  height: 26px;
+  overflow: hidden;
+  position: relative;
+  border: 0;
+  min-width: 26px;
+  transition: opacity 0.3s ease-in-out;
+  outline: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.wishlist_form .wishlist:focus {
+  outline: 0;
+}
+
+.wishlist_form .wishlist:hover {
+  background-color: transparent;
+}
+
+.wishlist_form .wishlist span {
+  position: absolute;
+  text-indent: -99999999px;
+}
+
+.wishlist_form .wishlist svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.wishlist_form .wishlist svg path.star_inside {
+  transition: fill 0.3s ease-in-out;
+  fill: rgba(0, 0, 0, 0);
+}
+
+.wishlist_form .wishlist.loading {
+  animation: rotate-360-cw 1.2s linear infinite both;
+}
+
+.wishlist_form .wishlist.loaded svg path.star_inside {
+  fill: rgba(0, 0, 0, 1);
+}
+
+.hover .wishlist_form .wishlist.loaded {
+  opacity: 1;
+}
+
+/* Wishlist link */
+.wishlist_link {
+  position: absolute;
+}
+
+.hover .wishlist_link {
+  opacity: 0;
+}
+
+.flypage_wishlist .wishlist_link {
+  left: 28px;
+  top: 7px;
+}
+
+.wishlist_form.wishedfor + .wishlist_link {
+  opacity: 1;
+}
+
+.hover .wishlist_form.wishedfor + .wishlist_link {
+  opacity: 0;
+}
+
+.flypage_wishlist:hover .wishlist_link {
+  opacity: 1;
+}
+
+.flypage_wishlist:hover .wishlist_form.wishedfor + .wishlist_link {
+  opacity: 1;
+}
+
+.hover .flypage_wishlist:hover .wishlist_form.wishedfor + .wishlist_link {
+  opacity: 1;
+}
+
+/* Accordions in product page */
+.productpage .ac {
+  max-width: 526px;
+}

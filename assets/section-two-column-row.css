@@ -1,0 +1,185 @@
+/* 
+  SECTION: TWO COLUMN ROW
+  50/50 or 66/33 image/text split
+*/
+
+.flex.two {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 0;
+}
+
+.flex.two.gap {
+  gap: 10px;
+  padding-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .flex.two.gap {
+    gap: 20px;
+    padding-top: 20px;
+  }
+}
+
+.flex.two .image,
+.flex.two .story,
+.flex.two .empty {
+  flex: 1 1 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .flex.two .image,
+  .flex.two .story,
+  .flex.two .empty {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+/* Bigger image layout (66/33) */
+.flex.two.bigger-image .image.bigger {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .flex.two.bigger-image .image.bigger {
+    flex: 2 1 calc(66.66% - 10px);
+    max-width: calc(66.66% - 10px);
+  }
+}
+
+.flex.two.bigger-image .story,
+.flex.two.bigger-image .empty {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .flex.two.bigger-image .story,
+  .flex.two.bigger-image .empty {
+    flex: 1 1 calc(33.33% - 10px);
+    max-width: calc(33.33% - 10px);
+  }
+}
+
+/* Image */
+.flex.two .image {
+  overflow: hidden;
+  background: #f5f5f5;
+  position: relative;
+}
+
+.flex.two .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flex.two .image picture {
+  display: block;
+  width: 100%;
+}
+
+.image-overlay-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* Story/Text */
+.flex.two .story {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+@media (max-width: 960px) {
+  .flex.two .story {
+    min-height: 66vh;
+  }
+}
+
+.story_inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  padding: 32px 0;
+}
+
+.story_inner .rte {
+  flex: 1;
+  align-self: center;
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 0 20px;
+}
+
+.story_inner .rte.wider {
+  max-width: 728px;
+}
+
+.story_inner .rte.fullwidth {
+  max-width: 100%;
+}
+
+/* Display headings */
+.druk {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.8;
+  font-size: 25vw;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .flex.two .druk {
+    font-size: 13vw;
+  }
+}
+
+.flex.two.bigger-image .story .druk {
+  font-size: 25vw;
+}
+
+@media (min-width: 768px) {
+  .flex.two.bigger-image .story .druk {
+    font-size: 6.5vw;
+  }
+}
+
+/* Parallax titles */
+.paratitles {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  width: calc(100% - 40px);
+  text-align: center;
+  pointer-events: none;
+}
+
+.titleone {
+  bottom: 83%;
+}
+
+.titletwo {
+  top: 30px;
+}
+
+.titlethree {
+  top: 83%;
+}
+
+.paratitles .rellax {
+  transition: transform 0.1s ease-out;
+}

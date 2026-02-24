@@ -1,0 +1,84 @@
+{% comment %}
+  Product Recommendations
+  Uses Shopify's native recommendations API
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
+  
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <div class="recommendations-container">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="recommendations-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <div class="products grid" id="recommendationsGrid">
+        {%- for product in recommendations.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  // Fetch product recommendations
+  (function() {
+    const container = document.querySelector('.product-recommendations');
+    if (!container) return;
+
+    const url = container.dataset.url;
+    
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newContent = doc.querySelector('.product-recommendations');
+        
+        if (newContent && newContent.querySelector('.products')) {
+          container.innerHTML = newContent.innerHTML;
+        }
+      })
+      .catch(error => {
+        console.error('Error loading product recommendations:', error);
+      });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "label": "Number of products to show",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendations"
+    }
+  ]
+}
+{% endschema %}

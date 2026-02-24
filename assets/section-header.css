@@ -1,0 +1,162 @@
+/*
+  SECTION-HEADER.CSS
+  Header and navigation styling
+  
+  Converted from _layout.scss (header section) and _nav.scss
+  All styles specific to header.liquid section
+  
+  Includes:
+  - Sticky header positioning
+  - Logo and hover animation
+  - Mobile menu toggle
+  - Slide-out navigation
+  - Navigation hover states
+  - Basket/cart link
+*/
+
+/* Note: Base header structure is in styles-top.css
+   This file contains enhanced navigation-specific styles */
+
+/* Navigation items - expanded structure */
+.nav-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button in navigation */
+.nav-items button.naked {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+
+.nav-items button.naked:hover {
+  opacity: 0.7;
+}
+
+/* Navigation sections */
+.nav-items .navrow,
+.nav-items .bottomnav,
+.nav-items .nav-basket {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-items .navrow:last-of-type,
+.nav-items .bottomnav:last-of-type {
+  border-bottom: none;
+}
+
+/* Navigation headings */
+.nav-items .nav-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  opacity: 0.6;
+  font-weight: 600;
+  color: white;
+}
+
+/* Navigation lists */
+.nav-items .nav {
+  list-style: none;
+  margin: 0;
+}
+
+.nav-items .nav li {
+  margin-bottom: 8px;
+}
+
+.nav-items .nav a {
+  font-size: 16px;
+  display: block;
+  padding: 4px 0;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.nav-items .nav a:hover,
+.nav-items .nav a.hover {
+  opacity: 0.7;
+}
+
+/* Basket link in navigation */
+.nav-items .nav-basket a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 4px 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-items .nav-basket a:hover {
+  opacity: 0.7;
+}
+
+/* Header basket (in controls) */
+header.siteNav .basket {
+  display: flex;
+  align-items: center;
+}
+
+/* Menu toggle button */
+header.siteNav .menu_toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1B1718; /* $text */
+  transition: opacity 0.2s ease;
+}
+
+header.siteNav .menu_toggle:hover {
+  opacity: 0.7;
+}
+
+header.siteNav.light .menu_toggle {
+  color: #1B1718;
+}
+
+/* Filter button */
+header.siteNav .controls #goFilter {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: background 0.2s ease;
+  font-family: 'marrthinitalic', serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+header.siteNav .controls #goFilter:hover {
+  background: #333;
+}
+
+/* Logo SVG path color */
+header.siteNav .logo svg path {
+  transition: fill 0.3s ease;
+}
+
+header.siteNav.light .logo svg path {
+  fill: #1B1718;
+}

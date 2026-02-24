@@ -1,0 +1,112 @@
+/* 
+  SECTION: HERO VIDEO
+  Full-width video/image hero section
+*/
+
+.hero-video {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.videofile {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+
+.videofile video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.videofile picture {
+  display: block;
+  width: 100%;
+}
+
+.videofile img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Mobile aspect ratio handling */
+.videofile.norespect {
+  min-height: 80vh;
+}
+
+@media (max-width: 800px) {
+  .videofile.norespect video {
+    width: auto;
+    height: 100%;
+    min-height: 80vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 460px) {
+  .videofile.norespect {
+    min-height: 90vh;
+  }
+}
+
+/* Button overlay */
+.videofile .button_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.videofile .button {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.videofile .button:hover {
+  background: transparent;
+  color: #000;
+}
+
+.videofile .button_container.white .button {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.videofile .button_container.white .button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* First video in campaign - remove side padding */
+.campaign article:first-child .videofile {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+@media (min-width: 768px) {
+  .campaign article:first-child .videofile {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}

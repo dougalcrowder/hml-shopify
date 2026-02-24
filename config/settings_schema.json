@@ -1,0 +1,271 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Hannah Martin",
+    "theme_version": "1.0.0",
+    "theme_author": "Hannah Martin London",
+    "theme_documentation_url": "https://hannahmartin.london",
+    "theme_support_url": "https://hannahmartin.london/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#1B1718"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg",
+        "label": "Footer Background",
+        "default": "#F1F1EF"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#F1F1EF"
+      },
+      {
+        "type": "color",
+        "id": "color_error",
+        "label": "Error Messages",
+        "default": "#cc6600"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Success Messages",
+        "default": "#003333"
+      },
+      {
+        "type": "color",
+        "id": "color_link",
+        "label": "Links",
+        "default": "#0F5178"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Fonts"
+      },
+      {
+        "type": "paragraph",
+        "content": "This theme uses custom fonts: marrthinitalic (body), marritalic (headings), and Druk Cond Super (display). Upload font files to theme assets."
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page Width"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_hover",
+        "label": "Enable hover effects",
+        "default": true,
+        "info": "Shows hover states on products and navigation"
+      }
+    ]
+  },
+  {
+    "name": "Product Grid",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Cards"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_type",
+        "label": "Show product type",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_grid_image_size",
+        "label": "Image size",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square (1:1)"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          }
+        ],
+        "default": "square",
+        "info": "Hannah Martin theme uses square aspect ratio"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_animations",
+        "label": "Enable product card animations",
+        "default": true,
+        "info": "Lifestyle images slide in on hover"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart Type"
+      },
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          },
+          {
+            "value": "notification",
+            "label": "Notification"
+          }
+        ],
+        "default": "drawer",
+        "info": "Drawer recommended for best user experience"
+      },
+      {
+        "type": "header",
+        "content": "Free Shipping"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_free_shipping_threshold",
+        "label": "Show free shipping progress",
+        "default": false,
+        "info": "Shows progress bar toward free shipping threshold"
+      },
+      {
+        "type": "text",
+        "id": "cart_free_shipping_threshold",
+        "label": "Free shipping minimum amount",
+        "default": "50",
+        "info": "Amount in your store currency (e.g., 50 for £50)"
+      },
+      {
+        "type": "header",
+        "content": "Cart Notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Search Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Enable predictive search",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_vendor",
+        "label": "Show vendor in search results",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "search_type",
+        "label": "Search type",
+        "options": [
+          {
+            "value": "product",
+            "label": "Products only"
+          },
+          {
+            "value": "product,article,page",
+            "label": "Products, articles, and pages"
+          }
+        ],
+        "default": "product,article,page"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/hannahmartin"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

@@ -1,0 +1,240 @@
+{% comment %}
+  Product Template - Main Product Display
+  Includes gallery, details, accordions, and add to cart
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-product-template.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<div class="product-template">
+  <div class="product-gallery">
+    {%- if product.images.size > 0 -%}
+      <div class="gallery-main" id="productGallery">
+        {%- for image in product.images -%}
+          <a href="{{ image | image_url: width: 2560 }}" 
+             class="gallery-item{% if forloop.first %} active{% endif %}"
+             data-index="{{ forloop.index0 }}">
+            <img src="{{ image | image_url: width: 1200 }}"
+                 srcset="{{ image | image_url: width: 600 }} 600w,
+                         {{ image | image_url: width: 1200 }} 1200w,
+                         {{ image | image_url: width: 1800 }} 1800w"
+                 sizes="(max-width: 767px) 100vw, 50vw"
+                 alt="{{ image.alt | default: product.title }}"
+                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="product-details">
+    <h1 class="product-title">{{ product.title }}</h1>
+
+    <div class="product-price">
+      {%- if product.compare_at_price > product.price -%}
+        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+        <span class="price-sale">{{ product.price | money }}</span>
+      {%- else -%}
+        <span class="price">{{ product.price | money }}</span>
+      {%- endif -%}
+
+      {%- comment -%} Price ex VAT {%- endcomment -%}
+      <br>
+      {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
+      {%- if product.compare_at_price > product.price -%}
+        {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
+        <span class="price-compare">{{ compare_ex_vat | money }}</span>
+      {%- endif -%}
+      <span class="price{% if product.compare_at_price > product.price %}-sale{% endif %}">
+        {{ price_ex_vat | money }}
+      </span>
+    </div>
+
+    {%- if product.description != blank -%}
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Product Details Accordions {%- endcomment -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="product-accordions">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'accordion' -%}
+              <details class="accordion" {{ block.shopify_attributes }}>
+                <summary>{{ block.settings.title }}</summary>
+                <div class="accordion-content">
+                  {{ block.settings.content }}
+                </div>
+              </details>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Product Form {%- endcomment -%}
+    {% form 'product', product, id: 'product-form' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+      {%- unless product.has_only_default_variant -%}
+        <div class="product-variants">
+          {%- for option in product.options_with_values -%}
+            <div class="product-option">
+              <label for="Option{{ option.position }}">{{ option.name }}</label>
+              <select id="Option{{ option.position }}" 
+                      name="options[{{ option.name | escape }}]"
+                      class="product-option-select">
+                {%- for value in option.values -%}
+                  <option value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected{% endif %}>
+                    {{ value }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+
+      {%- if section.settings.show_quantity -%}
+        <div class="product-quantity">
+          <label for="Quantity">Quantity</label>
+          <input type="number" 
+                 id="Quantity" 
+                 name="quantity" 
+                 value="1" 
+                 min="1">
+        </div>
+      {%- endif -%}
+
+      <button type="submit" 
+              name="add"
+              class="product-submit"
+              {% unless product.available %}disabled{% endunless %}>
+        {%- if product.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </button>
+
+      {%- if section.settings.show_note -%}
+        <p class="product-note">{{ section.settings.note_text }}</p>
+      {%- endif -%}
+    {% endform %}
+  </div>
+</div>
+
+{%- comment -%} Gallery click functionality {%- endcomment -%}
+<script>
+  (function() {
+    const galleryItems = document.querySelectorAll('#productGallery .gallery-item');
+    
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        // You can integrate a lightbox library here if needed
+        // For now, just cycle through images
+        galleryItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Variant selection
+    const selects = document.querySelectorAll('.product-option-select');
+    const form = document.getElementById('product-form');
+    
+    if (selects.length > 0) {
+      selects.forEach(select => {
+        select.addEventListener('change', () => {
+          // Find matching variant
+          const options = Array.from(selects).map(s => s.value);
+          const variant = {{ product.variants | json }}.find(v => {
+            return options.every((opt, i) => v.options[i] === opt);
+          });
+          
+          if (variant) {
+            form.querySelector('input[name="id"]').value = variant.id;
+            
+            // Update price
+            const priceEl = document.querySelector('.product-price .price, .product-price .price-sale');
+            if (priceEl && variant.price) {
+              priceEl.textContent = new Intl.NumberFormat('en-GB', {
+                style: 'currency',
+                currency: '{{ cart.currency.iso_code }}'
+              }).format(variant.price / 100);
+            }
+
+            // Update availability
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (variant.available) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = {{ 'products.product.add_to_cart' | t | json }};
+            } else {
+              submitBtn.disabled = true;
+              submitBtn.textContent = {{ 'products.product.sold_out' | t | json }};
+            }
+          }
+        });
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Template",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_note",
+      "label": "Show product note",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "note_text",
+      "label": "Product note text",
+      "info": "E.g., 'Depending on the size you choose, we may need 5-7 weeks to make to order.'"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Product Details"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Template"
+    }
+  ]
+}
+{% endschema %}

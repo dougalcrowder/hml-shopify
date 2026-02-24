@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-video",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "",
+        "autoplay": true,
+        "loop": true,
+        "muted": true
+      }
+    },
+    "category-links": {
+      "type": "category-quick-links",
+      "settings": {
+        "enable_section_css": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "category-links"
+  ]
+}

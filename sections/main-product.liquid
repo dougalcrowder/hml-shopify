@@ -1,0 +1,223 @@
+{{ 'section-product-template.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.enable_section_css -%}
+  <link rel="stylesheet" href="{{ 'section-product-template.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+<div class="productfly product-template productpage" data-section="{{ section.id }}">
+  <div class="flex">
+    
+    <!-- Hannah Martin Custom Product Gallery -->
+    <div class="product-images">
+      <ul class="product_images" id="product-images-{{ section.id }}">
+        {%- for image in product.images -%}
+          <li class="imager">
+            <img 
+              src="{{ image | image_url: width: 1000 }}" 
+              alt="{{ image.alt | escape }}"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            >
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <!-- Mobile Slide Navigation -->
+      <div class="mobile_slideNav" id="mobile-nav-{{ section.id }}">
+        {%- for image in product.images -%}
+          <button type="button" aria-label="Go to slide {{ forloop.index }}">
+            <span></span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Product Details (Hannah Martin layout + Dawn functionality) -->
+    <div class="product-details">
+      <div class="details_inner flex" style="flex-direction: column;">
+        <div class="holall">
+          
+          <!-- Product Title -->
+          <h1>{{ product.title }}</h1>
+
+          <!-- Vendor (if enabled) -->
+          {%- if section.settings.show_vendor and product.vendor != blank -%}
+            <div class="product-vendor">
+              <span>{{ product.vendor }}</span>
+            </div>
+          {%- endif -%}
+
+          <!-- Dawn's Price Display -->
+          <div class="product-price" id="price-{{ section.id }}">
+            {% render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' %}
+          </div>
+
+          <!-- Product Description -->
+          {%- if product.description != blank -%}
+            <div class="product-description rte">
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+
+          <!-- Dawn's Buy Buttons (Variant Selection + Add to Cart) -->
+          <div class="product-form-container">
+            {% render 'buy-buttons', 
+              product: product, 
+              block: section.blocks.first, 
+              product_form_id: product_form_id,
+              section_id: section.id,
+              show_pickup_availability: true
+            %}
+          </div>
+
+          <!-- Hannah Martin Accordions -->
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'accordion' -%}
+                <div class="ac" {{ block.shopify_attributes }}>
+                  <h2 class="ac-q">{{ block.settings.heading }}</h2>
+                  <div class="ac-a">
+                    <div class="ac-inner rte">
+                      {{ block.settings.content }}
+                    </div>
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+
+          <!-- Share Button -->
+          {%- if section.settings.enable_share_button -%}
+            <div class="product-share">
+              {% render 'share-button', share_link: product.selected_or_first_available_variant.url %}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Product Schema for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  {% if product.featured_image %}
+    "image": [
+      {{ product.featured_image | image_url: width: 1920 | prepend: "https:" | json }}
+    ],
+  {% endif %}
+  "description": {{ product.description | strip_html | json }},
+  {% if product.selected_or_first_available_variant.sku != blank %}
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  {% endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type": "Offer",
+        "availability": "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price": {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "url": {{ request.origin | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+<!-- Initialize Accordions -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordions = document.querySelectorAll('.ac');
+    
+    accordions.forEach(accordion => {
+      const question = accordion.querySelector('.ac-q');
+      const answer = accordion.querySelector('.ac-a');
+      
+      if (question && answer) {
+        question.addEventListener('click', function() {
+          const isActive = accordion.classList.contains('is-active');
+          
+          // Close all other accordions
+          accordions.forEach(acc => {
+            if (acc !== accordion) {
+              acc.classList.remove('is-active');
+              const ans = acc.querySelector('.ac-a');
+              if (ans) ans.style.maxHeight = null;
+            }
+          });
+          
+          // Toggle current accordion
+          if (isActive) {
+            accordion.classList.remove('is-active');
+            answer.style.maxHeight = null;
+          } else {
+            accordion.classList.add('is-active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Information",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_share_button",
+      "label": "Enable share button",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Details"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add product details here.</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,34 @@
+{
+  "current": {
+    "color_text": "#1B1718",
+    "color_background": "#FFFFFF",
+    "color_footer_bg": "#F1F1EF",
+    "color_border": "#F1F1EF",
+    "color_error": "#cc6600",
+    "color_success": "#003333",
+    "color_link": "#0F5178",
+    "show_hover": true,
+    "show_vendor": false,
+    "show_product_type": false,
+    "product_grid_image_size": "square",
+    "enable_product_animations": true,
+    "cart_type": "drawer",
+    "cart_show_free_shipping_threshold": false,
+    "cart_free_shipping_threshold": "50",
+    "cart_notes_enable": true,
+    "predictive_search_enabled": true,
+    "search_show_vendor": false,
+    "search_type": "product,article,page",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
+  }
+}

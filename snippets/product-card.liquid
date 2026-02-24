@@ -1,0 +1,71 @@
+{% comment %}
+  Product Card Snippet
+  Used in product grids throughout the site
+  
+  Parameters:
+  - product: product object
+{% endcomment %}
+
+<article class="product" 
+         data-type="{{ product.type | handle }}"
+         data-tags="{{ product.tags | join: ',' | handle }}">
+  <a href="{{ product.url }}" class="product-link">
+    
+    {%- if product.featured_image -%}
+      <div class="product-image">
+        <img src="{{ product.featured_image | image_url: width: 600 }}"
+             srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                     {{ product.featured_image | image_url: width: 600 }} 600w"
+             sizes="(max-width: 767px) 50vw, 25vw"
+             alt="{{ product.featured_image.alt | default: product.title }}"
+             loading="lazy"
+             class="product-image-primary">
+        
+        {%- if product.images[1] != blank -%}
+          <img src="{{ product.images[1] | image_url: width: 600 }}"
+               srcset="{{ product.images[1] | image_url: width: 300 }} 300w,
+                       {{ product.images[1] | image_url: width: 600 }} 600w"
+               sizes="(max-width: 767px) 50vw, 25vw"
+               alt="{{ product.images[1].alt | default: product.title }}"
+               loading="lazy"
+               class="product-image-hover">
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="product-info">
+      <h3 class="product-title">{{ product.title }}</h3>
+      
+      <div class="product-price">
+        {%- if product.compare_at_price > product.price -%}
+          <span class="price-compare">
+            {{ product.compare_at_price | money }}
+          </span>
+          <span class="price-sale">
+            {{ product.price | money }}
+          </span>
+        {%- else -%}
+          <span class="price">
+            {{ product.price | money }}
+          </span>
+        {%- endif -%}
+
+        {%- comment -%} Show price without VAT (divide by 1.2) {%- endcomment -%}
+        {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
+        {%- if product.compare_at_price > product.price -%}
+          {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
+        {%- endif -%}
+        
+        <br>
+        <span class="price-ex-vat">
+          {%- if product.compare_at_price > product.price -%}
+            <span class="price-compare">{{ compare_ex_vat | money }}</span>
+          {%- endif -%}
+          <span class="price{% if product.compare_at_price > product.price %}-sale{% endif %}">
+            {{ price_ex_vat | money }}
+          </span>
+        </span>
+      </div>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,205 @@
+{% comment %}
+  Header with navigation - Hannah Martin
+  Features:
+  - SVG logo with optional inline code
+  - Two menu selectors for main navigation rows
+  - Two menu selectors for bottom navigation
+  - Mobile menu overlay
+  - Cart icon with count
+{% endcomment %}
+
+{%- if section.settings.enable_section_css -%}
+  {{ 'section-header.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<header class="header" id="header">
+  <div class="header-wrapper">
+    {%- comment -%} Logo {%- endcomment -%}
+    <a href="{{ routes.root_url }}" class="header-logo">
+      {%- if section.settings.logo_svg_code != blank -%}
+        {{ section.settings.logo_svg_code }}
+      {%- elsif section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" 
+             alt="{{ shop.name }}"
+             width="{{ section.settings.logo.width }}"
+             height="{{ section.settings.logo.height }}">
+      {%- else -%}
+        <span class="logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Desktop Menu Button {%- endcomment -%}
+    <button type="button" 
+            class="header-menu-toggle" 
+            id="menuNavButton"
+            aria-expanded="false"
+            aria-controls="mainNav">
+      <span class="visually-hidden">Menu</span>
+      <span class="menu-text">Menu</span>
+    </button>
+
+    {%- comment -%} Cart Icon {%- endcomment -%}
+    <a href="{{ routes.cart_url }}" class="header-cart">
+      <span class="cart-text">Cart</span>
+      <span class="cart-count" id="cart-count">{{ cart.item_count }}</span>
+    </a>
+  </div>
+
+  {%- comment -%} Mobile/Overlay Navigation {%- endcomment -%}
+  <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+    <div class="nav-overlay" id="navClose"></div>
+    
+    <div class="nav-items">
+      <button type="button" class="nav-close" id="navCloseMenu" aria-label="Close menu">
+        <span>Close</span>
+      </button>
+
+      {%- comment -%} Navigation Row 1 {%- endcomment -%}
+      {%- if section.settings.menu_1 != blank -%}
+        <div class="navrow">
+          {%- assign menu_1 = linklists[section.settings.menu_1] -%}
+          {%- if menu_1.links.size > 0 -%}
+            <h3 class="nav-heading">{{ menu_1.title }}</h3>
+            <ul class="nav">
+              {%- for link in menu_1.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Navigation Row 2 {%- endcomment -%}
+      {%- if section.settings.menu_2 != blank -%}
+        <div class="navrow">
+          {%- assign menu_2 = linklists[section.settings.menu_2] -%}
+          {%- if menu_2.links.size > 0 -%}
+            <h3 class="nav-heading">{{ menu_2.title }}</h3>
+            <ul class="nav">
+              {%- for link in menu_2.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Bottom Navigation Row 1 {%- endcomment -%}
+      {%- if section.settings.bottom_menu_1 != blank -%}
+        <div class="bottomnav">
+          {%- assign bottom_menu_1 = linklists[section.settings.bottom_menu_1] -%}
+          {%- if bottom_menu_1.links.size > 0 -%}
+            <h3 class="nav-heading">{{ bottom_menu_1.title }}</h3>
+            <ul class="nav">
+              {%- for link in bottom_menu_1.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Bottom Navigation Row 2 {%- endcomment -%}
+      {%- if section.settings.bottom_menu_2 != blank -%}
+        <div class="bottomnav">
+          {%- assign bottom_menu_2 = linklists[section.settings.bottom_menu_2] -%}
+          {%- if bottom_menu_2.links.size > 0 -%}
+            <h3 class="nav-heading">{{ bottom_menu_2.title }}</h3>
+            <ul class="nav">
+              {%- for link in bottom_menu_2.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Basket Link {%- endcomment -%}
+      <div class="nav-basket">
+        <h3 class="nav-heading">Basket</h3>
+        <ul class="nav">
+          <li>
+            <a href="{{ routes.cart_url }}">
+              {%- if cart.item_count > 0 -%}
+                Your cart ({{ cart.item_count }})
+              {%- else -%}
+                Your cart is empty
+              {%- endif -%}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true,
+      "info": "Load section-header.css"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "html",
+      "id": "logo_svg_code",
+      "label": "Logo SVG code",
+      "info": "Optional: Paste inline SVG code. Takes priority over logo image."
+    },
+    {
+      "type": "header",
+      "content": "Main Navigation (Top 2 Menus)"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Navigation Menu 1",
+      "default": "main-menu",
+      "info": "First navigation row (e.g., Collections)"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Navigation Menu 2",
+      "info": "Second navigation row (e.g., Pieces)"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Navigation (Bottom 2 Menus)"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_menu_1",
+      "label": "Bottom Menu 1",
+      "info": "First bottom navigation (e.g., Special)"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_menu_2",
+      "label": "Bottom Menu 2",
+      "info": "Second bottom navigation (e.g., About)"
+    }
+  ]
+}
+{% endschema %}

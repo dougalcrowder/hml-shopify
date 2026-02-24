@@ -1,0 +1,254 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <!-- Global JavaScript -->
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    <!-- Hannah Martin Custom CSS - Critical Path -->
+    {{ 'styles-top.css' | asset_url | stylesheet_tag }}
+    
+    <!-- Dawn Infrastructure CSS -->
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    {{ 'component-price.css' | asset_url | stylesheet_tag }}
+    
+    <!-- Hannah Martin Design Overrides for Dawn Components -->
+    <style>
+      /* Cart Drawer - Match Hannah Martin design */
+      .cart-drawer {
+        background-color: #F1F1EF;
+        font-family: 'marrthinitalic', serif;
+        font-weight: 300;
+        font-style: italic;
+      }
+      
+      .cart-drawer__heading {
+        font-family: 'marritalic', serif;
+        font-weight: normal;
+        font-style: italic;
+        color: #1B1718;
+      }
+      
+      .cart-item__name,
+      .cart-item__details {
+        font-family: 'marrthinitalic', serif;
+        color: #1B1718;
+      }
+      
+      /* Facets (Filtering) - Match design */
+      .facets__form {
+        background: white;
+        border: 1px solid #1B1718;
+        font-family: 'marrthinitalic', serif;
+      }
+      
+      .facets__heading {
+        font-family: 'marritalic', serif;
+        font-weight: normal;
+        font-style: italic;
+      }
+      
+      /* Buttons - Match Hannah Martin style */
+      .button,
+      .cart-drawer .button,
+      .facets .button {
+        font-family: 'marrthinitalic', serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 1px solid #1B1718;
+        background-color: transparent;
+        color: #1B1718;
+        padding: 6px 12px 2px;
+        min-width: 135px;
+        transition: all 0.3s ease;
+      }
+      
+      .button:hover,
+      .cart-drawer .button:hover {
+        background-color: #1B1718;
+        color: white;
+      }
+      
+      /* Price display */
+      .price {
+        font-family: 'marrthinitalic', serif;
+        color: #1B1718;
+      }
+    </style>
+    
+    <!-- Deferred CSS -->
+    <link rel="preload" href="{{ 'styles-bottom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    {{ content_for_header }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+  </head>
+
+  <body class="gradient{% if template.name %} template-{{ template.name }}{% endif %}{% if template.suffix %} template-suffix-{{ template.suffix }}{% endif %}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      assign has_hover = false
+      if settings.show_hover or template.name == 'product' or template.name == 'collection'
+        assign has_hover = true
+      endif
+    -%}
+
+    <div id="app"{% if has_hover %} class="hover"{% endif %}>
+      {%- sections 'header-group' -%}
+
+      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {%- sections 'footer-group' -%}
+    </div>
+
+    <!-- Dawn Cart Drawer -->
+    {% render 'cart-drawer' %}
+    
+    <!-- Dawn Cart Notification -->
+    {% render 'cart-notification' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ request.origin }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      };
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+      };
+    </script>
+
+    <!-- Hannah Martin Navigation JavaScript -->
+    <script>
+      // Menu toggle
+      function toggleMenu() {
+        const nav = document.querySelector('.main-navigation');
+        const overlay = document.getElementById('navClose');
+        const toggle = document.querySelector('.menu_toggle');
+        
+        if (nav && overlay && toggle) {
+          const isActive = nav.classList.contains('active');
+          
+          if (!isActive) {
+            nav.classList.add('alive');
+            setTimeout(() => nav.classList.add('active'), 10);
+            overlay.classList.add('active');
+            toggle.setAttribute('aria-expanded', 'true');
+          } else {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+            setTimeout(() => nav.classList.remove('alive'), 400);
+          }
+        }
+      }
+
+      // Nav hover states
+      function initNavHoverStates() {
+        const navItems = document.querySelector('.nav-items');
+        if (!navItems) return;
+        
+        const links = navItems.querySelectorAll('.nav a, .navrow a');
+        
+        links.forEach(link => {
+          link.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+            navItems.classList.add('over');
+          });
+          
+          link.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+            const anyHovered = navItems.querySelector('.nav a.hover, .navrow a.hover');
+            if (!anyHovered) {
+              navItems.classList.remove('over');
+            }
+          });
+        });
+      }
+
+      // Product grid stagger animation
+      function initProductAnimations() {
+        const products = document.querySelectorAll('.products .product');
+        if (products.length === 0) return;
+        
+        setTimeout(() => {
+          products.forEach((product, index) => {
+            const randomDelay = Math.random() * 35000;
+            setTimeout(() => {
+              product.classList.add('slidebaby');
+            }, randomDelay);
+          });
+        }, 12000);
+      }
+
+      // Initialize on DOM ready
+      document.addEventListener('DOMContentLoaded', function() {
+        initNavHoverStates();
+        initProductAnimations();
+      });
+
+      // Close nav on overlay click
+      document.addEventListener('click', function(e) {
+        if (e.target.id === 'navClose' && e.target.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    </script>
+  </body>
+</html>

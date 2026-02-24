@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template",
+      "blocks": {
+        "details": {
+          "type": "accordion",
+          "settings": {
+            "title": "Product Details",
+            "content": "<p>Meticulously crafted functioning hinges give this piece its seductive movement.</p>"
+          }
+        },
+        "materials": {
+          "type": "accordion",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>18 carat white and yellow gold</p>"
+          }
+        },
+        "delivery": {
+          "type": "accordion",
+          "settings": {
+            "title": "Delivery & Returns",
+            "content": "<p>UK Shipping: £10 or Free for orders over £300.</p><p>Worldwide Shipping: £40 or Free on orders over £300.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "details",
+        "materials",
+        "delivery"
+      ],
+      "settings": {
+        "enable_section_css": true,
+        "show_quantity": true
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "enable_section_css": true,
+        "heading": "You may also like",
+        "products_to_show": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations"
+  ]
+}

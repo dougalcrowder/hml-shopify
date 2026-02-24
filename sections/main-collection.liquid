@@ -1,0 +1,134 @@
+{{ 'section-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.enable_section_css -%}
+  <link rel="stylesheet" href="{{ 'section-product-grid.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+
+<div class="collection-page" data-id="{{ section.id }}">
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    
+    <!-- Dawn's Filtering and Sorting -->
+    {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+      <div class="facets-container page-width">
+        {% render 'facets', 
+          results: collection, 
+          enable_filtering: section.settings.enable_filtering, 
+          enable_sorting: section.settings.enable_sorting, 
+          filter_type: section.settings.filter_type
+        %}
+      </div>
+    {%- endif -%}
+
+    <!-- Hannah Martin Custom Product Grid -->
+    <div class="products grid containerCat{% if collection.products_count == 0 %} is-empty{% endif %}" id="product-grid" data-id="{{ section.id }}">
+      {%- if collection.products.size == 0 -%}
+        <div class="collection-product-list" id="product-grid" data-id="{{ section.id }}">
+          <div class="loading-overlay gradient"></div>
+          <div class="title-wrapper center">
+            <h2 class="title title--primary">
+              {{ 'sections.collection_template.empty' | t }}<br>
+              {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+            </h2>
+          </div>
+        </div>
+      {%- else -%}
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product, section_id: section.id %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    <!-- Pagination -->
+    {%- if paginate.pages > 1 -%}
+      <div class="pagination-wrapper">
+        {% render 'pagination', paginate: paginate, anchor: '' %}
+      </div>
+    {%- endif -%}
+
+  {%- endpaginate -%}
+
+  <!-- Load More Button (if needed) -->
+  {%- if section.settings.enable_load_more and paginate.next -%}
+    <div class="swag">
+      <button class="button" data-load-more="{{ paginate.next.url }}">
+        {{ 'sections.collection_template.load_more' | t }}
+      </button>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section_css",
+      "label": "Enable section CSS",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product Grid"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 12,
+      "default": 24,
+      "label": "Products per page"
+    },
+    {
+      "type": "header",
+      "content": "Filtering and Sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true,
+      "info": "Uses Dawn's faceted filtering system"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "Horizontal"
+        },
+        {
+          "value": "vertical",
+          "label": "Vertical"
+        },
+        {
+          "value": "drawer",
+          "label": "Drawer"
+        }
+      ],
+      "default": "drawer",
+      "label": "Filter layout",
+      "info": "Drawer is recommended for mobile-first design"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_load_more",
+      "label": "Enable load more button",
+      "default": false,
+      "info": "Show load more instead of pagination numbers"
+    }
+  ]
+}
+{% endschema %}
