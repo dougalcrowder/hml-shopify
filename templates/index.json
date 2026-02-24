@@ -23,9 +23,26 @@
         "button_link": "",
         "button_color": "black"
       }
+    },
+    "two_column_row_tbxhbY": {
+      "type": "two-column-row",
+      "name": "Two Column Row",
+      "settings": {
+        "enable_section_css": true,
+        "image_first": true,
+        "bigger_image": false,
+        "add_gap": false,
+        "show_image_link": false,
+        "image_link": "",
+        "heading": "",
+        "text": "",
+        "text_width": "",
+        "enable_parallax": false
+      }
     }
   },
   "order": [
-    "hero"
+    "hero",
+    "two_column_row_tbxhbY"
   ]
 }
