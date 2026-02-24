@@ -1,0 +1,15 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "enable_section_css": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
