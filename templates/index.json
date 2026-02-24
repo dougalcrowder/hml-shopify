@@ -1,13 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-video",
       "settings": {
         "enable_section_css": true,
+        "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/PD2-Web-Banner-9mb.mp4",
         "autoplay": true,
         "loop": true,
         "muted": true,
-        "mobile_respect": false
+        "mobile_respect": false,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
       }
     }
   },
