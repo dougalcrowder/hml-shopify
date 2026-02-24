@@ -8,14 +8,20 @@
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+      <link
+        rel="icon"
+        type="image/png"
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
     <title>
       {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- if current_tags %}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %}
+        &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %}
+        &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
@@ -25,11 +31,12 @@
     {% render 'meta-tags' %}
 
     <!-- Global JavaScript -->
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'global.js' | asset_url }}" defer="defer">
+  </script>
 
     <!-- Hannah Martin Custom CSS - Critical Path -->
-    {{ 'styles-top.css' | asset_url | stylesheet_tag }}
-    
+  {{ 'styles-top.css' | asset_url | stylesheet_tag }}
+
     <!-- Dawn Infrastructure CSS -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
@@ -37,48 +44,54 @@
     {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     {{ 'component-price.css' | asset_url | stylesheet_tag }}
-    
+
     <!-- Hannah Martin Design Overrides for Dawn Components -->
     <style>
       /* Cart Drawer - Match Hannah Martin design */
       .cart-drawer {
         background-color: #F1F1EF;
-        font-family: 'marrthinitalic', serif;
+        font-family: 'marrthinitalic'
+        , serif;
         font-weight: 300;
         font-style: italic;
       }
-      
+
       .cart-drawer__heading {
-        font-family: 'marritalic', serif;
+        font-family: 'marritalic'
+        , serif;
         font-weight: normal;
         font-style: italic;
         color: #1B1718;
       }
-      
+
       .cart-item__name,
       .cart-item__details {
-        font-family: 'marrthinitalic', serif;
+        font-family: 'marrthinitalic'
+        , serif;
         color: #1B1718;
       }
-      
+
       /* Facets (Filtering) - Match design */
       .facets__form {
         background: white;
         border: 1px solid #1B1718;
-        font-family: 'marrthinitalic', serif;
+        font-family: 'marrthinitalic'
+        , serif;
       }
-      
+
       .facets__heading {
-        font-family: 'marritalic', serif;
+        font-family: 'marritalic'
+        , serif;
         font-weight: normal;
         font-style: italic;
       }
-      
+
       /* Buttons - Match Hannah Martin style */
       .button,
       .cart-drawer .button,
       .facets .button {
-        font-family: 'marrthinitalic', serif;
+        font-family: 'marrthinitalic'
+        , serif;
         font-weight: 300;
         font-style: italic;
         font-size: 13px;
@@ -91,23 +104,28 @@
         min-width: 135px;
         transition: all 0.3s ease;
       }
-      
+
       .button:hover,
       .cart-drawer .button:hover {
         background-color: #1B1718;
         color: white;
       }
-      
+
       /* Price display */
       .price {
-        font-family: 'marrthinitalic', serif;
+        font-family: 'marrthinitalic'
+        , serif;
         color: #1B1718;
       }
     </style>
-    
+
     <!-- Deferred CSS -->
-    <link rel="preload" href="{{ 'styles-bottom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
+    <link
+      rel="preload"
+      href="{{ 'styles-bottom.css' | asset_url }}"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+
     {{ content_for_header }}
 
     <script>
@@ -130,19 +148,27 @@
       endif
     -%}
 
-    <div id="app"{% if has_hover %} class="hover"{% endif %}>
-      {%- sections 'header-group' -%}
+    <div
+      id="app"
+      {% if has_hover %}
+      class="hover"
+      {% endif %}>
+      {% section 'header' %}
 
-      <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      <main
+        id="MainContent"
+        class="content-for-layout focus-none"
+        role="main"
+        tabindex="-1">
         {{ content_for_layout }}
       </main>
 
-      {%- sections 'footer-group' -%}
-    </div>
+      {%- section 'footer' -%}
+  </div>
 
     <!-- Dawn Cart Drawer -->
-    {% render 'cart-drawer' %}
-    
+  {% render 'cart-drawer' %}
+
     <!-- Dawn Cart Notification -->
     {% render 'cart-notification' %}
 
