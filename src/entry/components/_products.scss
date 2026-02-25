@@ -12,7 +12,7 @@
         max-width: 100%;
         height: auto;
       }
-      .product_info {
+      .product_info { 
         position: absolute;
         left: 23px;
         top: 20px;
@@ -498,31 +498,31 @@
         &.slidebaby .lifestyle_picture {
           animation: slide-in-top 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s both;
         }
-        // &:nth-child(5n+1) {
-        //   .lifestyle_picture {
-        //     animation-delay: 15s;
-        //   }
-        // } 
-        // &:nth-child(5n+2) {
-        //   .lifestyle_picture {
-        //     animation-delay: 10s;
-        //   }
-        // } 
-        // &:nth-child(5n+3) {
-        //   .lifestyle_picture {
-        //     animation-delay: 15s;
-        //   }
-        // } 
-        // &:nth-child(5n+4) {
-        //   .lifestyle_picture {
-        //     animation-delay: 20s;
-        //   }
-        // } 
-        // &:nth-child(5n) {
-        //   .lifestyle_picture {
-        //     animation-delay: 25s;
-        //   }
-        // } 
+        &:nth-child(5n+1) {
+          .lifestyle_picture {
+            animation-delay: 15s;
+          }
+        } 
+        &:nth-child(5n+2) {
+          .lifestyle_picture {
+            animation-delay: 10s;
+          }
+        } 
+        &:nth-child(5n+3) {
+          .lifestyle_picture {
+            animation-delay: 15s;
+          }
+        } 
+        &:nth-child(5n+4) {
+          .lifestyle_picture {
+            animation-delay: 20s;
+          }
+        } 
+        &:nth-child(5n) {
+          .lifestyle_picture {
+            animation-delay: 25s;
+          }
+        } 
       }
     }
   }

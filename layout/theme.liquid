@@ -37,7 +37,7 @@
     {% comment %} {{ 'styles-top.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
     <!-- Dawn Infrastructure CSS -->
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
     {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
     {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
@@ -55,7 +55,7 @@
   </head>
 
   <body class="template-{{ template.name }}{% if template.suffix %} template-suffix-{{ template.suffix }}{% endif %}">
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+    <a class="skip-to-content-link button visuallyhidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 

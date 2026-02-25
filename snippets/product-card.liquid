@@ -9,21 +9,21 @@
   class="product slidebaby"
   data-type="{{ product.type | handle }}"
   data-tags="{{ product.tags | join: ',' | handle }}">
-  <a href="{{ product.url }}" class="product-info">
+  <a href="{{ product.url }}" class="product_info">
     <h3 class="product-title">{{ product.title }}</h3>
 
-    <span class="prod-price">
+    <span class="prod_price">
       {%- if product.compare_at_price > product.price -%}
-        <span class="price-compare">
+        <i class="price-compare strikethrough">
           {{ product.compare_at_price | money }}
-        </span>
-        <span class="price-sale">
+        </i>
+        <i class="vat">
           {{ product.price | money }}
-        </span>
+        </i>
       {%- else -%}
-        <span class="price">
+        <i class="vat">
           {{ product.price | money }}
-        </span>
+        </i>
       {%- endif -%}
     </span>
   </a>

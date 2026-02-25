@@ -95,6 +95,7 @@
   position: relative;
   overflow: hidden;
   transition: var(--transit);
+  padding-top: 20px;
 }
 .open {
   @media screen and (min-width: 1250px) {
