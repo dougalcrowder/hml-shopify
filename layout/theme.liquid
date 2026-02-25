@@ -108,8 +108,9 @@
         unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
       };
     </script>
-    {{ 'styles-bottom.css' | asset_url | stylesheet_tag }}
+
     <script src="{{ 'fitty.js' | asset_url }}"></script>
     <script src="{{ 'scripts.js' | asset_url }}"></script>
+    <div id="navClose"></div>
   </body>
 </html>

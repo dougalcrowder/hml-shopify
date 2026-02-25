@@ -3,8 +3,6 @@
   Always loads section-header.css
 {% endcomment %}
 
-{{ 'section-header.css' | asset_url | stylesheet_tag }}
-
 <header id="header" class="siteNav flex light">
   <div id="logo" class="logo">
     <a href="/">
@@ -25,8 +23,7 @@
       class="menu_toggle naked"
       aria-expanded="false"
       aria-controls="mainNav"
-      id="menuNavButton"
-      onclick="toggleMenu()">Menu</button>
+      id="menuNavButton">Menu</button>
 
     <div class="flex rightside">
       <div id="miniCart">
@@ -44,10 +41,7 @@
   <nav class="main-navigation flex" id="mainNav">
     <div class="nav-items flex">
       <div class="topnav">
-        <button
-          id="navCloseMenu"
-          class="naked"
-          onclick="toggleMenu()">Close</button>
+        <button id="navCloseMenu" class="naked">Close</button>
 
         {%- if section.settings.menu_1 != blank -%}
           <div class="navrow flex">

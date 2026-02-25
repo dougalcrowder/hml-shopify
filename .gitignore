@@ -3,7 +3,7 @@ node_modules
 test/results
 test/coverage
 config.yml
-
+.parcel-cache
 ## OS X
 .DS_Store
 ._*

@@ -40,7 +40,7 @@ if (document.getElementById('navClose')) {
   var navClose = document.getElementById('navClose');
   navClose.addEventListener('click', function() {
     toggleMenu();
-    console.log('ello')
+    console.log('ello');
   });
 }
 
@@ -322,17 +322,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //   }
     // });
     
-    // Use forms callback to add a cookie if successfully submitted
-    if (document.getElementById('newsletterForm')) {
-      const form = document.getElementById('newsletterForm');
-      form.addEventListener('freeform-ready', function(event) {
-        const freeform = event.target.freeform;
-        freeform.addOnSuccessfulAjaxSubmit((event, form, response) => {
-          docCookies.setItem("emailPopInteracted", "Clicked", maxAgeToGMT(31536000));
-          console.log("submitted and dandy");
-        })
-      }); 
-    }
 
     // refresh waypoints when mixitup has finished dickin around
     // if (document.getElementById('grid')) {
@@ -496,20 +485,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
           modalybg.classList.remove("active");
         }
       });
-    }
-
-    if (document.getElementById('newsletterForm')) {
-
-      const daform = document.getElementById('newsletterForm');
-      form.addEventListener('freeform-ready', function(event) {
-        const freeform = event.target.freeform;
-        freeform.addOnAfterAjaxSubmit((event, daform, response) => {
-          // Do something on a successful ajax submit
-          console.log("I think it happened");
-          dataLayer.push({'event':'signedUp'});
-        })
-      });
-
     }
   });
 
