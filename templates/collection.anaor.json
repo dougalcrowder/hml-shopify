@@ -160,7 +160,8 @@
           "type": "grid-scrolling-images",
           "name": "grid-scrolling-images",
           "settings": {
-            "z_index": 1
+            "z_index": 1,
+            "heightimage": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-3_feb2ce24-5b9c-4005-abed-79501f04f89a.jpg"
           },
           "blocks": {
             "scrolling_image_item_JaTRP7": {
