@@ -39,38 +39,10 @@
         "text_width": "",
         "enable_parallax": false
       }
-    },
-    "collection_gallery_3taPLe": {
-      "type": "collection-gallery",
-      "blocks": {
-        "image_6maecJ": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Strapped-Stone-Ring-07.jpg",
-            "link": ""
-          }
-        },
-        "image_hcDRdW": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Strapped-Orb-Ring-04.jpg",
-            "link": "shopify://collections/a-new-act-of-rebellion"
-          }
-        }
-      },
-      "block_order": [
-        "image_6maecJ",
-        "image_hcDRdW"
-      ],
-      "name": "Collection Gallery",
-      "settings": {
-        "enable_section_css": true
-      }
     }
   },
   "order": [
     "hero",
-    "two_column_row_tbxhbY",
-    "collection_gallery_3taPLe"
+    "two_column_row_tbxhbY"
   ]
 }
