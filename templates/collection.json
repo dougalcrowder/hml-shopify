@@ -9,13 +9,17 @@
  */
 {
   "sections": {
-    "main-collection-header":{
-      "type": "main-collection-header"
+    "main-collection-header": {
+      "type": "main-collection-header",
+      "settings": {
+        "image_alt": "",
+        "classes": ""
+      }
     },
     "product-grid": {
       "type": "main-collection",
       "settings": {
-        "products_per_page": 24,
+        "products_per_page": 48,
         "enable_filtering": false,
         "filter_type": "drawer",
         "enable_sorting": false,
