@@ -1,13 +1,4 @@
 // Top Navigation
-@mixin activeState {
-  font-family: var(--font-head);
-  font-weight: var(--font-head-weight);
-  font-style: var(--font-head-style);
-  &:before {
-    content: "+ ";
-    display: inline;
-  }
-}
 
 nav {
   ul {
@@ -21,7 +12,13 @@ nav {
     }
     li.active {
       a {
-        @include activeState();
+        font-family: var(--font-head);
+        font-weight: var(--font-head-weight);
+        font-style: var(--font-head-style);
+        &:before {
+          content: "+ ";
+          display: inline;
+        }
       }
     }
     &.footNav {

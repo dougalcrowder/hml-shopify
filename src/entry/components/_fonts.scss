@@ -1,83 +1,14 @@
-@font-face {
-    font-family: 'marrthinitalic';
-    src: url('/assets/fonts/marrthinitalic.woff2') format('woff2'),
-        url('/assets/fonts/marrthinitalic.woff') format('woff');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap; /* Read next point */  
-    unicode-range: U+000-5FF; /* Download only latin glyphs */  
-}
-
-@font-face {
-    font-family: 'marritalic';
-    src: url('/assets/fonts/marritalic.woff2') format('woff2'),
-        url('/assets/fonts/marritalic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap; /* Read next point */  
-    unicode-range: U+000-5FF; /* Download only latin glyphs */  
-}
-
-@font-face {
-    font-family: 'Druk Cond Super';
-    src: url('/assets/fonts/DrukCond-Super.woff2') format('woff2'),
-        url('/assets/fonts/DrukCond-Super.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap; /* Read next point */  
-    unicode-range: U+000-5FF; /* Download only latin glyphs */  
-}
-
-
-@mixin headfont {
-    font-family: 'marritalic', serif;
-    font-weight: normal;
-    font-style: italic;
-}
-
-@mixin bodyfont {
-    font-family: 'marrthinitalic', serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
 body {
-    @include bodyfont;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-style: var(--font-body-style);
     font-weight: 300;
     font-weight: normal;
     font-size: 15px;
     line-height: 1.5;
     color: var(--colour-text);
 }
-@mixin druk {
-    font-family: 'Druk Cond Super', Baskerville, Baskerville Old Face, Hoefler Text, Garamond, Times New Roman, serif;
-    font-weight: normal;
-    font-style: normal;
-}
-.cc-window.cc-banner {
-    padding: 5px 20px;
-}
-.cc-banner .cc-message, .cc-compliance {
-    font-family: var(--font-body);
-    font-weight: var(--font-body-weight);
-    font-style: var(--font-body-style);
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--colour-text);
-    .cc-btn {
-        display: block;
-        padding: 4px 4px;
-        font-size: 13px;
-        font-weight: 300;
-        border-width: 1px;
-        border-style: solid;
-        text-align: center;
-        white-space: nowrap;
-        line-height: 22px;
-        min-width: 135px;
-        transition: all 0.3s ease;
-    }
-}
+
 a {
     text-decoration: none;
     transition: all 0.3s ease;
@@ -184,7 +115,9 @@ h1.drukster, .scroll_text strong.drukster {
   }
 }
 h2, h3 {
-    @include headfont;
+    font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
     color: var(--colour-text);
     font-size: 100%;
     margin: 0 0 14px 0;
@@ -196,7 +129,9 @@ h2, h3 {
     }
 }
 h2.drukster, h3.drukster {
-  @include druk;
+  font-family: var(--font-druk);
+    font-weight: var(--font-druk-weight);
+    font-style: var(--font-druk-style);
   color: white;
   font-size: 196px;
   font-size: 22vw;
@@ -217,7 +152,9 @@ h2.drukster, h3.drukster {
 }
 h5 {
     // font-size: 16px;
-    @include headfont;
+    font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
     font-size: 13px;
     // text-transform: uppercase;
     // letter-spacing: 0.3px;
@@ -227,7 +164,9 @@ h5 {
 p {
     margin: 0 0 8px 0;
     a {
-      @include headfont;
+      font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
     }
     @media screen and (min-width: 768px) {
         // letter-spacing: 0.3px;
@@ -259,7 +198,9 @@ p {
 // }
 
 .font_bold, strong, b {
-    @include headfont;
+    font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
 }
 
 // messageing

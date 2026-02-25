@@ -64,7 +64,13 @@
           }
         }
         &.mixitup-control-active {
-          @include activeState;
+          font-family: var(--font-head);
+        font-weight: var(--font-head-weight);
+        font-style: var(--font-head-style);
+        &:before {
+          content: "+ ";
+          display: inline;
+        }
         }
       }      
     }

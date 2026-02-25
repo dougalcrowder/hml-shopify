@@ -464,7 +464,9 @@
     width: 100%;
   }
   .full_on {
-    @include druk;
+    font-family: var(--font-druk);
+    font-weight: var(--font-druk-weight);
+    font-style: var(--font-druk-style);
     text-transform: uppercase;
   }
 }

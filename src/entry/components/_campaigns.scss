@@ -323,7 +323,9 @@
       }
     }
     .druk {
-      @include druk;
+      font-family: var(--font-druk);
+    font-weight: var(--font-druk-weight);
+    font-style: var(--font-druk-style);
       // font-size: 145px;
       display: inline-block;
       text-transform: uppercase;
@@ -469,7 +471,9 @@
         text-align: center;
       }
       h3 {
-        @include druk();
+        font-family: var(--font-druk);
+        font-weight: var(--font-druk-weight);
+        font-style: var(--font-druk-style);
         font-size: 750%;
         text-transform: uppercase;
         text-shadow: 0px 0px 10px #00000019;
@@ -820,7 +824,7 @@
       strong {
         display: block;
         max-width: 100%;
-        @include transit();
+        transition: var(--transit);
         //word-break: break-word;
         font-size: 25vw;
         @media screen and (min-width: 768px) {
@@ -880,7 +884,7 @@
         object-fit: cover;
         width: 100%;
         height: auto;
-        @include transit();
+        transition: var(--transit);
         opacity: 0;
       }
       &.intersecting {

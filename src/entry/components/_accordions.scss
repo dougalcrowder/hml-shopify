@@ -15,7 +15,9 @@
     max-width: 526px;
   }
   h2 {
-    @include bodyfont;
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-style: var(--font-body-style);
   }
   .bespoke_details & {
     @media screen and (min-width: 960px) {
@@ -77,7 +79,9 @@
   visibility: visible;
 }
 .ac.is-active > h2 {
-  @include headfont;
+  font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
 }
 .ac.is-active > .ac-q::after {
   content: '\2013';

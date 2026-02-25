@@ -53,7 +53,7 @@
   left: 0;
   align-items: center;
   align-content: center;
-  @include transit();
+  transition: var(--transit);
   @media screen and (min-width: 768px) {
     width: calc(100% - 40px);
     z-index: 2;

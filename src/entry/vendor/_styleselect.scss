@@ -96,7 +96,9 @@ select[data-ss-uuid] {
 				text-transform: uppercase;
 			}
 			&.highlighted {
-				@include headfont;
+				font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
 			}
 			.addto & {
 				&:before {

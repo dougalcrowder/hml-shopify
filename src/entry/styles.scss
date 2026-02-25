@@ -2,25 +2,25 @@
 
 //@use "bourbon";
 /*================ Common ================*/
-@use "normalize.scss";
-@use "bp-part-1.scss";
-@use "vars.scss" as *;
-@use "fonts.scss" as *;
-@use "layout.scss";
-@use "nav.scss";
-@use "footer.scss";
-@use "tables.scss";
-@use "generalforms.scss";
-@use "media.scss";
-@use "animations.scss";
-@use "pages.scss";
-@use "homepage.scss";
-@use "campaigns.scss";
-@use "information.scss";
-@use "videopage.scss";
-@use "pricing.scss";
+@use "components/normalize.scss";
+@use "components/bp-part-1.scss";
+@use "components/vars.scss" as *;
+@use "components/fonts.scss" as *;
+@use "components/layout.scss";
+@use "components/nav.scss";
+@use "components/footer.scss";
+@use "components/tables.scss";
+@use "components/generalforms.scss";
+@use "components/media.scss";
+@use "components/animations.scss";
+@use "components/pages.scss";
+@use "components/homepage.scss";
+@use "components/campaigns.scss";
+@use "components/information.scss";
+@use "components/videopage.scss";
+@use "components/pricing.scss";
 // @use "email_gate.scss";
-@use "topbanner.scss";
+@use "components/topbanner.scss";
 // @use "accounts.scss";
 // @use "wishlist.scss";
 
@@ -28,9 +28,9 @@
 @use "panels/category_image.scss";
 
 /*================ Commerce ================*/ 
-@use "products.scss";
-@use "category.scss";
-@use "cart.scss";
+@use "components/products.scss";
+@use "components/category.scss";
+@use "components/cart.scss";
 
 /*================ Modules ================*/
 @use "accordions.scss";

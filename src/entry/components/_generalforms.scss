@@ -1,4 +1,4 @@
-[type=button], [type=reset], [type=submit], button, .button, .button_container a {
+button, .button, .button_container a {
     font-size: 100%;
     text-align: center;
     display: inline-block;
@@ -80,7 +80,7 @@
     }
 }
 
-#{$all-buttons-active}, #{$all-buttons-hover}, .button:hover, .button:active, .button_container a:hover {
+button:active, button:hover, .button:hover, .button:active, .button_container a:hover {
     background-color: rgba(255,255,255,0.9);
     &.outline {
       background-color: rgba(0,0,0,0.9);
@@ -224,7 +224,7 @@ span.styled, label.styled {
 }
 
 // Text Inputs
-#{$all-text-inputs} {
+input[type="text"] {
     transition: var(--transit);
     border: 1px solid rgba(0,0,0,0.9);
     width: 100%;

@@ -149,7 +149,7 @@
       max-width: 80px;
       margin: 0;
       border: 1px solid white;
-      @include transit;
+      transition: var(--transit);
       &:hover {
         border: 1px solid black;
       }
@@ -216,7 +216,7 @@
           border-radius: 50%;
           height: 8px;
           width: 8px;
-          @include transit;
+          transition: var(--transit);
           background-color: #A2A2A2;
         }
         &.intersecting {

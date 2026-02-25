@@ -317,7 +317,9 @@ $choices-icon-cross-inverse: none;
       }
     }
     &.is-highlighted {
-      @include headfont;
+      font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
       &:before {
 				opacity: 1;
 			}

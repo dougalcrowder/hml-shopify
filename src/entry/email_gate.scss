@@ -17,7 +17,9 @@
   }
   .title {
     h2 {
-      @include druk;
+      font-family: var(--font-druk);
+    font-weight: var(--font-druk-weight);
+    font-style: var(--font-druk-style);
       text-transform: uppercase;
       font-size: 15.5vw;
       line-height: 1;
