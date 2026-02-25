@@ -1,0 +1,242 @@
+{% comment %}
+  Campaign Three Column Row
+  Supports: image, text, form, empty blocks
+{% endcomment %}
+
+{{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+
+<article class="campaign-row flex three{% if section.settings.column_gap %} gap{% endif %}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      
+      {%- when 'image' -%}
+        <div class="image image-falls" {{ block.shopify_attributes }}>
+          {%- if block.settings.image_link != blank -%}
+            <a href="{{ block.settings.image_link }}">
+          {%- endif -%}
+          
+          <div class="main_picture">
+            <div class="picture_mask"></div>
+            <div class="picture_outer">
+              <div class="picture_inner">
+                <picture>
+                  <source srcset="{{ block.settings.image | image_url: width: 884 }}" media="(min-width: 1140px)">
+                  <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 768px)">
+                  {%- if block.settings.mobile_image != blank -%}
+                    <source srcset="{{ block.settings.mobile_image | image_url: width: 442 }}" media="(min-width: 480px)">
+                    <source srcset="{{ block.settings.mobile_image | image_url: width: 442 }}">
+                  {%- else -%}
+                    <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 480px)">
+                    <source srcset="{{ block.settings.image | image_url: width: 442 }}">
+                  {%- endif -%}
+                  <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                </picture>
+              </div>
+            </div>
+            <div class="flipper_outer">
+              <div class="flipper-container">
+                <div class="flipper_inner">
+                  <picture class="flipper">
+                    <source srcset="{{ block.settings.image | image_url: width: 884 }}" media="(min-width: 1140px)">
+                    <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 768px)">
+                    {%- if block.settings.mobile_image != blank -%}
+                      <source srcset="{{ block.settings.mobile_image | image_url: width: 442 }}" media="(min-width: 480px)">
+                      <source srcset="{{ block.settings.mobile_image | image_url: width: 442 }}">
+                    {%- else -%}
+                      <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 480px)">
+                      <source srcset="{{ block.settings.image | image_url: width: 442 }}">
+                    {%- endif -%}
+                    <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                  </picture>
+                  <div class="mask"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {%- if block.settings.image_link != blank -%}
+            </a>
+          {%- endif -%}
+        </div>
+
+      {%- when 'text' -%}
+        <div class="story" {{ block.shopify_attributes }}>
+          <div class="story_inner flex">
+            <div class="rte">
+              {%- if block.settings.simple_title_only -%}
+                {%- if block.settings.text_title != blank -%}
+                  <h2 class="druk centered">{{ block.settings.text_title }}</h2>
+                {%- endif -%}
+                {{ block.settings.text }}
+              {%- else -%}
+                {%- if forloop.first and block.settings.text_title != blank -%}
+                  <div class="paratitles titleone">
+                    <h2 class="druk rellax">
+                      {{ block.settings.text_title }}
+                      {%- if block.settings.title_line_2 != blank -%}<br>{{ block.settings.title_line_2 }}{%- endif -%}
+                      {%- if block.settings.title_line_3 != blank -%}<br>{{ block.settings.title_line_3 }}{%- endif -%}
+                      {%- if block.settings.title_line_4 != blank -%}<br>{{ block.settings.title_line_4 }}{%- endif -%}
+                    </h2>
+                  </div>
+                {%- elsif block.settings.text_title != blank -%}
+                  <div class="paratitles titleone">
+                    <h2 class="druk rellax">{{ block.settings.text_title }}</h2>
+                  </div>
+                {%- endif -%}
+                
+                {{ block.settings.text }}
+                
+                {%- if block.settings.text_title != blank -%}
+                  <div class="paratitles titlethree">
+                    <span class="druk rellax">
+                      {{ block.settings.text_title }}
+                      {%- if block.settings.title_line_2 != blank -%}<br>{{ block.settings.title_line_2 }}{%- endif -%}
+                      {%- if block.settings.title_line_3 != blank -%}<br>{{ block.settings.title_line_3 }}{%- endif -%}
+                      {%- if block.settings.title_line_4 != blank -%}<br>{{ block.settings.title_line_4 }}{%- endif -%}
+                    </span>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+      {%- when 'form' -%}
+        <div class="story" {{ block.shopify_attributes }}>
+          <div class="story_inner flex">
+            <div class="form{% if block.settings.add_spacing %} padme{% endif %}">
+              {%- if block.settings.form_title != blank -%}
+                <h3 class="druk{% if block.settings.centre_title %} centered{% endif %}">{{ block.settings.form_title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.form_html != blank -%}
+                {{ block.settings.form_html }}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+      {%- when 'empty' -%}
+        <div class="empty" {{ block.shopify_attributes }}>
+          <div class="empty_inner flex"></div>
+        </div>
+
+    {%- endcase -%}
+  {%- endfor -%}
+</article>
+
+{% schema %}
+{
+  "name": "Campaign Three Column",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "column_gap",
+      "label": "Add gap between columns",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image (optional)"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text content"
+        },
+        {
+          "type": "checkbox",
+          "id": "simple_title_only",
+          "label": "Show only simple title above text",
+          "default": false,
+          "info": "If enabled, shows centered title only. If disabled, shows paratitles with parallax."
+        },
+        {
+          "type": "text",
+          "id": "text_title",
+          "label": "Title (Druk)"
+        },
+        {
+          "type": "text",
+          "id": "title_line_2",
+          "label": "Title line 2"
+        },
+        {
+          "type": "text",
+          "id": "title_line_3",
+          "label": "Title line 3"
+        },
+        {
+          "type": "text",
+          "id": "title_line_4",
+          "label": "Title line 4"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "Form",
+      "settings": [
+        {
+          "type": "text",
+          "id": "form_title",
+          "label": "Form title"
+        },
+        {
+          "type": "checkbox",
+          "id": "centre_title",
+          "label": "Centre title",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "add_spacing",
+          "label": "Add spacing (padme class)",
+          "default": false
+        },
+        {
+          "type": "html",
+          "id": "form_html",
+          "label": "Form HTML",
+          "info": "Paste complete form code"
+        }
+      ]
+    },
+    {
+      "type": "empty",
+      "name": "Empty Column",
+      "settings": []
+    }
+  ],
+  "presets": [
+    {
+      "name": "Campaign Three Column"
+    }
+  ],
+  "max_blocks": 3
+}
+{% endschema %}
