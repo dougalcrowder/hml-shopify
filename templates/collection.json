@@ -11,6 +11,17 @@
   "sections": {
     "banner": {
       "type": "collection-gallery",
+      "blocks": {
+        "image_yzDGmG": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_yzDGmG"
+      ],
       "settings": {
         "enable_section_css": true
       }
