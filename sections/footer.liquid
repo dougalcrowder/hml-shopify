@@ -1,411 +1,104 @@
 {% comment %}
   Footer - Hannah Martin
-  Features:
-  - Multiple menu selectors for footer navigation
-  - Random lyrics from metaobject
-  - Newsletter signup
-  - Social links
-  - Contact information
+  Always loads section-footer.css
 {% endcomment %}
 
-{%- if section.settings.enable_section_css -%}
-  {{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
 
-{%- comment -%} Random Lyrics Section {%- endcomment -%}
-{%- if section.settings.show_lyrics -%}
-  <div class="lyrics-section">
-    <div class="lyrics-content">
-      {%- comment -%}
-        Get all lyrics metaobjects and select one randomly
-        Note: This uses Liquid's random filter on the current second to pseudo-randomize
-      {%- endcomment -%}
-      {%- assign all_lyrics = shop.metaobjects.lyrics.values -%}
-      {%- if all_lyrics.size > 0 -%}
-        {%- assign random_index = 'now' | date: '%S' | modulo: all_lyrics.size -%}
-        {%- assign random_lyric = all_lyrics[random_index] -%}
-        
-        {%- if random_lyric.quote_text -%}
-          <p class="lyric-text">{{ random_lyric.quote_text.value }}</p>
-        {%- endif -%}
+<footer>
+  <div class="footer-inner">
+
+    <div class="logo">
+      {%- if section.settings.footer_logo != blank -%}
+        <img src="{{ section.settings.footer_logo | image_url: width: 410 }}" alt="{{ shop.name }}">
       {%- else -%}
-        {%- comment -%} Fallback if no lyrics configured {%- endcomment -%}
-        <p class="lyric-text">{{ section.settings.fallback_lyric }}</p>
+        {{ shop.name }}
       {%- endif -%}
     </div>
-  </div>
-{%- endif -%}
 
-<footer id="footer" class="footer">
-  <div class="footer-content">
-    
-    {%- comment -%} Footer Logo {%- endcomment -%}
-    <div class="footer-logo">
-      <a href="{{ routes.root_url }}">
-        {%- if section.settings.footer_logo_svg != blank -%}
-          {{ section.settings.footer_logo_svg }}
-        {%- elsif section.settings.footer_logo != blank -%}
-          <img src="{{ section.settings.footer_logo | image_url: width: 150 }}" 
-               alt="{{ shop.name }}">
-        {%- else -%}
-          <span>{{ shop.name }}</span>
+    <div class="navitems flex">
+
+      {%- for i in (1..6) -%}
+        {%- assign menu_setting = 'footer_menu_' | append: i -%}
+        {%- if section.settings[menu_setting] != blank -%}
+          <div class="col col{{ i }}">
+            <div class="footNav">
+              {%- for link in linklists[section.settings[menu_setting]].links -%}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- endfor -%}
+            </div>
+          </div>
         {%- endif -%}
-      </a>
-    </div>
-
-    {%- comment -%} Footer Navigation {%- endcomment -%}
-    <div class="navitems">
-      
-      {%- comment -%} Menu 1 - Collections {%- endcomment -%}
-      {%- if section.settings.footer_menu_1 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_1].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_1].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_1].links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} Menu 2 - Pieces {%- endcomment -%}
-      {%- if section.settings.footer_menu_2 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_2].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_2].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_2].links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} Menu 3 - Special {%- endcomment -%}
-      {%- if section.settings.footer_menu_3 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_3].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_3].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_3].links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} Menu 4 - Online Services {%- endcomment -%}
-      {%- if section.settings.footer_menu_4 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_4].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_4].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_4].links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} Social Links {%- endcomment -%}
-      {%- if section.settings.footer_menu_5 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_5].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_5].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_5].links -%}
-              <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} About {%- endcomment -%}
-      {%- if section.settings.footer_menu_6 != blank -%}
-        <nav class="footNav" aria-label="{{ linklists[section.settings.footer_menu_6].title }}">
-          <h4>{{ linklists[section.settings.footer_menu_6].title }}</h4>
-          <ul>
-            {%- for link in linklists[section.settings.footer_menu_6].links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        </nav>
-      {%- endif -%}
-
-      {%- comment -%} Newsletter Signup {%- endcomment -%}
-      {%- if section.settings.show_newsletter -%}
-        <div class="footNav newsletter">
-          <h4>{{ section.settings.newsletter_heading }}</h4>
-          {% form 'customer', class: 'newsletter-form' %}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            
-            <div class="newsletter-field">
-              <label for="newsletter-first-name" class="visually-hidden">First Name</label>
-              <input type="text" 
-                     id="newsletter-first-name" 
-                     name="contact[first_name]" 
-                     placeholder="First Name"
-                     required>
-            </div>
-
-            <div class="newsletter-field">
-              <label for="newsletter-last-name" class="visually-hidden">Last Name</label>
-              <input type="text" 
-                     id="newsletter-last-name" 
-                     name="contact[last_name]" 
-                     placeholder="Last Name"
-                     required>
-            </div>
-
-            <div class="newsletter-field">
-              <label for="newsletter-email" class="visually-hidden">Email</label>
-              <input type="email" 
-                     id="newsletter-email" 
-                     name="contact[email]" 
-                     placeholder="Email"
-                     required>
-            </div>
-
-            {%- if section.settings.newsletter_privacy_text != blank -%}
-              <p class="newsletter-privacy">{{ section.settings.newsletter_privacy_text }}</p>
-            {%- endif -%}
-
-            <button type="submit" class="newsletter-submit">
-              {{ section.settings.newsletter_button_text | default: 'Subscribe' }}
-            </button>
-
-            {%- if form.posted_successfully? -%}
-              <p class="newsletter-success">{{ section.settings.newsletter_success_text }}</p>
-            {%- endif -%}
-          {% endform %}
-        </div>
-      {%- endif -%}
-
-      {%- comment -%} Contact Information {%- endcomment -%}
-      {%- if section.settings.show_contact_info -%}
-        <div class="footNav contact-info">
-          <h4>Contact</h4>
-          <ul>
-            {%- if section.settings.phone != blank -%}
-              <li><a href="tel:{{ section.settings.phone | remove: ' ' }}">T: {{ section.settings.phone }}</a></li>
-            {%- endif -%}
-            {%- if section.settings.mobile != blank -%}
-              <li><a href="tel:{{ section.settings.mobile | remove: ' ' }}">M: {{ section.settings.mobile }}</a></li>
-            {%- endif -%}
-            {%- if section.settings.email != blank -%}
-              <li><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
-            {%- endif -%}
-            {%- if section.settings.address != blank -%}
-              <li>{{ section.settings.address }}</li>
-            {%- endif -%}
-          </ul>
-        </div>
-      {%- endif -%}
-
-      {%- comment -%} Payment Icons {%- endcomment -%}
-      {%- if section.settings.show_payment_icons -%}
-        <div class="footNav payment-icons">
-          <h4>Payments Accepted</h4>
-          {%- if section.settings.payment_icons_image != blank -%}
-            <img src="{{ section.settings.payment_icons_image | image_url: width: 300 }}" 
-                 alt="Payment methods accepted"
-                 loading="lazy">
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+      {%- endfor -%}
 
     </div>
 
-    {%- comment -%} Copyright {%- endcomment -%}
-    <div class="footer-bottom">
-      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
-    </div>
+    {%- if section.settings.show_lyrics -%}
+      <div class="lyrics">
+        {%- assign all_lyrics = shop.metaobjects.rad_lyrics.values -%}
+        {%- if all_lyrics.size > 0 -%}
+          {%- assign random_index = 'now' | date: "%s" | modulo: all_lyrics.size -%}
+          {%- assign random_lyric = all_lyrics[random_index] -%}
+          {{ random_lyric.lyric }}
+        {%- else -%}
+          {{ section.settings.lyrics_fallback }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
 
+  </div>
+
+  <div class="copyright">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</p>
   </div>
 </footer>
 
-{%- comment -%} Inline JavaScript for lyrics random selection {%- endcomment -%}
-<script>
-  // Refresh lyrics on page load to get different random quote
-  // Uses client-side randomization for better variety
-  {%- if section.settings.show_lyrics and all_lyrics.size > 1 -%}
-    (function() {
-      const lyrics = [
-        {%- for lyric in all_lyrics -%}
-          {
-            text: {{ lyric.quote_text.value | json }},
-            attribution: {{ lyric.attribution.value | default: '' | json }}
-          }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ];
-      
-      const lyricsEl = document.querySelector('.lyric-text');
-      if (lyricsEl && lyrics.length > 0) {
-        const randomIndex = Math.floor(Math.random() * lyrics.length);
-        lyricsEl.textContent = lyrics[randomIndex].text;
-      }
-    })();
-  {%- endif -%}
-</script>
-
 {% schema %}
-{
-  "name": "Footer",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_section_css",
-      "label": "Enable section CSS",
-      "default": true,
-      "info": "Load section-footer.css"
-    },
-    {
-      "type": "header",
-      "content": "Lyrics Section"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_lyrics",
-      "label": "Show random lyrics",
-      "default": true,
-      "info": "Displays random quote from Lyrics metaobject"
-    },
-    {
-      "type": "text",
-      "id": "fallback_lyric",
-      "label": "Fallback lyric",
-      "default": "Let me die in my footsteps",
-      "info": "Shown if no lyrics metaobject is configured"
-    },
-    {
-      "type": "header",
-      "content": "Footer Logo"
-    },
-    {
-      "type": "image_picker",
-      "id": "footer_logo",
-      "label": "Footer logo image"
-    },
-    {
-      "type": "html",
-      "id": "footer_logo_svg",
-      "label": "Footer logo SVG code"
-    },
-    {
-      "type": "header",
-      "content": "Footer Navigation Menus"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_1",
-      "label": "Footer Menu 1",
-      "info": "Collections menu"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_2",
-      "label": "Footer Menu 2",
-      "info": "Pieces menu"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_3",
-      "label": "Footer Menu 3",
-      "info": "Special menu"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_4",
-      "label": "Footer Menu 4",
-      "info": "Online Services menu"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_5",
-      "label": "Footer Menu 5",
-      "info": "Follow/Social links"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_menu_6",
-      "label": "Footer Menu 6",
-      "info": "About menu"
-    },
-    {
-      "type": "header",
-      "content": "Newsletter"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_newsletter",
-      "label": "Show newsletter signup",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "newsletter_heading",
-      "label": "Newsletter heading",
-      "default": "Newsletter"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_button_text",
-      "label": "Button text",
-      "default": "Subscribe"
-    },
-    {
-      "type": "richtext",
-      "id": "newsletter_privacy_text",
-      "label": "Privacy notice",
-      "default": "<p>By signing up, you accept the terms of our Privacy Policy.</p>"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_success_text",
-      "label": "Success message",
-      "default": "Thanks for subscribing!"
-    },
-    {
-      "type": "header",
-      "content": "Contact Information"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_contact_info",
-      "label": "Show contact information",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "phone",
-      "label": "Phone number"
-    },
-    {
-      "type": "text",
-      "id": "mobile",
-      "label": "Mobile number"
-    },
-    {
-      "type": "text",
-      "id": "email",
-      "label": "Email address"
-    },
-    {
-      "type": "textarea",
-      "id": "address",
-      "label": "Address"
-    },
-    {
-      "type": "header",
-      "content": "Payment Icons"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": true
-    },
-    {
-      "type": "image_picker",
-      "id": "payment_icons_image",
-      "label": "Payment icons image"
-    }
-  ]
-}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "footer_logo",
+        "label": "Footer logo"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_1",
+        "label": "Footer menu 1"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_2",
+        "label": "Footer menu 2"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu_3",
+        "label": "Footer menu 3"
+      }, {
+        "type": "link_list",
+        "id": "footer_menu_4",
+        "label": "Footer menu 4"
+      }, {
+        "type": "link_list",
+        "id": "footer_menu_5",
+        "label": "Footer menu 5"
+      }, {
+        "type": "link_list",
+        "id": "footer_menu_6",
+        "label": "Footer menu 6"
+      }, {
+        "type": "checkbox",
+        "id": "show_lyrics",
+        "label": "Show lyrics",
+        "default": true
+      }, {
+        "type": "text",
+        "id": "lyrics_fallback",
+        "label": "Lyrics fallback text",
+        "info": "Shown if no lyrics metaobjects exist"
+      }
+    ]
+  }
 {% endschema %}

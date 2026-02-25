@@ -682,23 +682,25 @@ h3.drukster {
    HEADER & NAVIGATION (from _layout.scss)
    @mixin transitDelay expanded
    ======================================================================== */
-
-header.siteNav {
+.site_header {
   scroll-snap-align: none;
   z-index: 99991;
   transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.3s;
   position: sticky;
-  flex-direction: column;
   left: 0;
   right: 0;
   top: 0;
   width: 100%;
   height: 48px;
 }
+header.siteNav {
+  flex-direction: column;
+}
 
 header.siteNav.light {
   background-color: white;
   box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.16);
+  opacity: 1;
 }
 
 /* Logo - @mixin transit expanded */
@@ -1365,4 +1367,19 @@ body .cc-window {
 .products .product.slidebaby .product_info span,
 .products .product.slidebaby .product_info h3 {
   color: white;
+}
+
+
+.visuallyhidden {
+    clip: rect(0 0 0 0);
+    border: 0;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }

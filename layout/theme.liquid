@@ -30,11 +30,10 @@
 
     {% render 'meta-tags' %}
 
-    <!-- Global JavaScript -->
     <script src="{{ 'global.js' | asset_url }}" defer="defer">
   </script>
 
-    <!-- Hannah Martin Custom CSS - Critical Path -->
+    <!-- Critical CSS -->
   {{ 'styles-top.css' | asset_url | stylesheet_tag }}
 
     <!-- Dawn Infrastructure CSS -->
@@ -44,80 +43,6 @@
     {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
-    <!-- Hannah Martin Design Overrides for Dawn Components -->
-    <style>
-      /* Cart Drawer - Match Hannah Martin design */
-      .cart-drawer {
-        background-color: #F1F1EF;
-        font-family: 'marrthinitalic'
-        , serif;
-        font-weight: 300;
-        font-style: italic;
-      }
-
-      .cart-drawer__heading {
-        font-family: 'marritalic'
-        , serif;
-        font-weight: normal;
-        font-style: italic;
-        color: #1B1718;
-      }
-
-      .cart-item__name,
-      .cart-item__details {
-        font-family: 'marrthinitalic'
-        , serif;
-        color: #1B1718;
-      }
-
-      /* Facets (Filtering) - Match design */
-      .facets__form {
-        background: white;
-        border: 1px solid #1B1718;
-        font-family: 'marrthinitalic'
-        , serif;
-      }
-
-      .facets__heading {
-        font-family: 'marritalic'
-        , serif;
-        font-weight: normal;
-        font-style: italic;
-      }
-
-      /* Buttons - Match Hannah Martin style */
-      .button,
-      .cart-drawer .button,
-      .facets .button {
-        font-family: 'marrthinitalic'
-        , serif;
-        font-weight: 300;
-        font-style: italic;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        border: 1px solid #1B1718;
-        background-color: transparent;
-        color: #1B1718;
-        padding: 6px 12px 2px;
-        min-width: 135px;
-        transition: all 0.3s ease;
-      }
-
-      .button:hover,
-      .cart-drawer .button:hover {
-        background-color: #1B1718;
-        color: white;
-      }
-
-      /* Price display */
-      .price {
-        font-family: 'marrthinitalic'
-        , serif;
-        color: #1B1718;
-      }
-    </style>
 
     <!-- Deferred CSS -->
     <link
@@ -136,23 +61,12 @@
     </script>
   </head>
 
-  <body class="gradient{% if template.name %} template-{{ template.name }}{% endif %}{% if template.suffix %} template-suffix-{{ template.suffix }}{% endif %}">
+  <body class="template-{{ template.name }}{% if template.suffix %} template-suffix-{{ template.suffix }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
-    {%- liquid
-      assign has_hover = false
-      if settings.show_hover or template.name == 'product' or template.name == 'collection'
-        assign has_hover = true
-      endif
-    -%}
-
-    <div
-      id="app"
-      {% if has_hover %}
-      class="hover"
-      {% endif %}>
+    <div id="app">
       {% section 'header' %}
 
       <main
@@ -163,13 +77,13 @@
         {{ content_for_layout }}
       </main>
 
-      {%- section 'footer' -%}
+      {% section 'footer' %}
   </div>
 
-    <!-- Dawn Cart Drawer -->
+    <!-- Cart Drawer -->
   {% render 'cart-drawer' %}
 
-    <!-- Dawn Cart Notification -->
+    <!-- Cart Notification -->
     {% render 'cart-notification' %}
 
     <ul hidden>
@@ -200,9 +114,8 @@
       };
     </script>
 
-    <!-- Hannah Martin Navigation JavaScript -->
+    <!-- Navigation JavaScript -->
     <script>
-      // Menu toggle
       function toggleMenu() {
         const nav = document.querySelector('.main-navigation');
         const overlay = document.getElementById('navClose');
@@ -226,7 +139,7 @@
       }
 
       // Nav hover states
-      function initNavHoverStates() {
+      document.addEventListener('DOMContentLoaded', function() {
         const navItems = document.querySelector('.nav-items');
         if (!navItems) return;
         
@@ -246,33 +159,18 @@
             }
           });
         });
-      }
 
-      // Product grid stagger animation
-      function initProductAnimations() {
+        // Product grid animations
         const products = document.querySelectorAll('.products .product');
-        if (products.length === 0) return;
-        
-        setTimeout(() => {
-          products.forEach((product, index) => {
-            const randomDelay = Math.random() * 35000;
-            setTimeout(() => {
-              product.classList.add('slidebaby');
-            }, randomDelay);
-          });
-        }, 12000);
-      }
-
-      // Initialize on DOM ready
-      document.addEventListener('DOMContentLoaded', function() {
-        initNavHoverStates();
-        initProductAnimations();
-      });
-
-      // Close nav on overlay click
-      document.addEventListener('click', function(e) {
-        if (e.target.id === 'navClose' && e.target.classList.contains('active')) {
-          toggleMenu();
+        if (products.length > 0) {
+          setTimeout(() => {
+            products.forEach((product) => {
+              const randomDelay = Math.random() * 35000;
+              setTimeout(() => {
+                product.classList.add('slidebaby');
+              }, randomDelay);
+            });
+          }, 12000);
         }
       });
     </script>
