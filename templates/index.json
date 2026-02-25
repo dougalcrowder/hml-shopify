@@ -24,25 +24,57 @@
         "button_color": "black"
       }
     },
-    "two_column_row_tbxhbY": {
-      "type": "two-column-row",
-      "name": "Two Column Row",
+    "campaign_image_tmPnkR": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
       "settings": {
         "enable_section_css": true,
-        "image_first": true,
-        "bigger_image": false,
-        "add_gap": false,
-        "show_image_link": false,
-        "image_link": "",
+        "desktop_image": "shopify://shop_images/HML-HM10-Homepage-Hero-Desktop-2.jpg",
         "heading": "",
-        "text": "",
-        "text_width": "",
-        "enable_parallax": false
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "collection_gallery_waCXPD": {
+      "type": "collection-gallery",
+      "blocks": {
+        "image_iTHDVL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
+            "link": "shopify://collections/a-new-act-of-rebellion"
+          }
+        },
+        "image_GYkG3z": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
+            "link": "shopify://products/all-access-bracelet"
+          }
+        },
+        "image_qcKc3x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
+            "link": "shopify://collections/its-only-rock-n-roll"
+          }
+        }
+      },
+      "block_order": [
+        "image_iTHDVL",
+        "image_GYkG3z",
+        "image_qcKc3x"
+      ],
+      "name": "Collection Gallery",
+      "settings": {
+        "enable_section_css": true
       }
     }
   },
   "order": [
     "hero",
-    "two_column_row_tbxhbY"
+    "campaign_image_tmPnkR",
+    "collection_gallery_waCXPD"
   ]
 }
