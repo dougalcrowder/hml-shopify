@@ -9,6 +9,24 @@
  */
 {
   "sections": {
+    "the_grid_wrk8GC": {
+      "type": "the-grid",
+      "blocks": {
+        "grid_scrolling_images_rhgPbE": {
+          "type": "grid-scrolling-images",
+          "name": "grid-scrolling-images",
+          "settings": {
+            "z_index": 1
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "grid_scrolling_images_rhgPbE"
+      ],
+      "name": "The Grid",
+      "settings": {}
+    },
     "main-collection-header": {
       "type": "main-collection-header",
       "settings": {
@@ -28,6 +46,7 @@
     }
   },
   "order": [
+    "the_grid_wrk8GC",
     "main-collection-header",
     "product-grid"
   ]
