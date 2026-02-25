@@ -18,7 +18,55 @@
           "settings": {
             "z_index": 1
           },
-          "blocks": {}
+          "blocks": {
+            "scrolling_image_item_JaTRP7": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-3.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_EBGw68": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Two-Tone-Strap-Ring-9.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_E77wm4": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/Harnessed-Earring-Long-05.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_7RgkUL": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/Harnessed-Earring-Long-03.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_if394g": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-8.jpg"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "scrolling_image_item_JaTRP7",
+            "scrolling_image_item_EBGw68",
+            "scrolling_image_item_E77wm4",
+            "scrolling_image_item_7RgkUL",
+            "scrolling_image_item_if394g"
+          ]
         }
       },
       "block_order": [
