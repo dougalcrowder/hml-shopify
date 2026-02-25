@@ -5,27 +5,45 @@
 
 {{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
 
+{%- assign all_lyrics = shop.metaobjects['rad_lyrics'].values -%}
+{%- assign first_lyric = all_lyrics[0] -%}
+
+<ul>
+  {%- for field in first_lyric.fields -%}
+    <li>
+      key: {{ field.key }} – value: {{ field.value }}
+    </li>
+  {%- endfor -%}
+</ul>
+
 <section class="lyrics hiya">
   <div class="lyric">
-    {%- assign all_lyrics = shop.metaobjects.rad_lyrics.values -%}
-    {%- if all_lyrics.size > 0 -%}
+    {%- assign all_lyrics = shop.metaobjects['rad_lyrics'].values -%}
+    {%- if all_lyrics and all_lyrics.size > 0 -%}
       {%- assign random_index = 'now' | date: "%s" | modulo: all_lyrics.size -%}
       {%- assign random_lyric = all_lyrics[random_index] -%}
-      {%- assign lyric_text = random_lyric.lyric | default: section.settings.fallback_lyric -%}
-      {%- assign font_size = lyric_text.size | times: 2.5 | at_least: 100 | at_most: 300 -%}
-      {% if random_lyric.lyric_line_1 %}
+
+      {% if random_lyric.lyric_line_1 != blank %}
         <div class="lyric">
-          <strong class="drukster outline lyric_one">{{ random_lyric.lyric_line_1 }}</strong>
+          <strong class="drukster outline lyric_one">
+            {{ random_lyric.lyric_line_1.value }}
+          </strong>
         </div>
       {% endif %}
-      {% if random_lyric.lyric_line_2 %}
+
+      {% if random_lyric.lyric_line_2 != blank %}
         <div class="lyric">
-          <strong class="drukster outline lyric_two">{{ random_lyric.lyric_line_2 }}</strong>
+          <strong class="drukster outline lyric_two">
+            {{ random_lyric.lyric_line_2.value }}
+          </strong>
         </div>
       {% endif %}
-      {% if random_lyric.lyric_line_2 %}
+
+      {% if random_lyric.lyric_line_3 != blank %}
         <div class="lyric">
-          <strong class="drukster outline lyric_three">{{ random_lyric.lyric_line_3 }}</strong>
+          <strong class="drukster outline lyric_three">
+            {{ random_lyric.lyric_line_3.value }}
+          </strong>
         </div>
       {% endif %}
     {%- endif -%}
