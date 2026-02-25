@@ -31,9 +31,9 @@
       "settings": {
         "enable_section_css": true,
         "products_per_page": 24,
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "drawer",
-        "enable_sorting": true,
+        "enable_sorting": false,
         "enable_load_more": false
       }
     }
