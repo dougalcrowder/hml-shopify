@@ -9,27 +9,9 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "collection-gallery",
-      "blocks": {
-        "image_yzDGmG": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_yzDGmG"
-      ],
-      "settings": {
-        "enable_section_css": true
-      }
-    },
     "product-grid": {
       "type": "main-collection",
       "settings": {
-        "enable_section_css": true,
         "products_per_page": 24,
         "enable_filtering": false,
         "filter_type": "drawer",
@@ -39,7 +21,6 @@
     }
   },
   "order": [
-    "banner",
     "product-grid"
   ]
 }
