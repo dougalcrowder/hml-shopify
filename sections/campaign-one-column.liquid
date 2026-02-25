@@ -3,7 +3,7 @@
   Supports: image, text, video, button, musicTrack, videoFile, blank blocks
 {% endcomment %}
 
-{{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'section-campaigns.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
 <article class="campaign-row one flex">
   {%- for block in section.blocks -%}
@@ -194,7 +194,7 @@
   {
     "name": "Campaign One Column",
     "tag": "section",
-    "class": "section",
+    "class": "section campaigns",
     "settings": [],
     "blocks": [
       {

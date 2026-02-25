@@ -3,7 +3,7 @@
   Supports: image, text, form, empty blocks
 {% endcomment %}
 
-{{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'section-campaigns.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
 {%- assign has_bigger_image = false -%}
 {%- for block in section.blocks -%}
@@ -16,13 +16,13 @@
 <article class="campaign-row flex two{% if has_bigger_image %} bigger-image{% endif %}{% if section.settings.column_gap %} gap{% endif %}">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
-      
+
       {%- when 'image' -%}
         <div class="image{% if block.settings.make_bigger %} bigger{% endif %}" {{ block.shopify_attributes }}>
           {%- if block.settings.image_link != blank -%}
             <a href="{{ block.settings.image_link }}">
           {%- endif -%}
-          
+
           <div class="main_picture">
             <div class="picture_mask"></div>
             <div class="picture_outer">
@@ -37,7 +37,10 @@
                     <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 480px)">
                     <source srcset="{{ block.settings.image | image_url: width: 442 }}">
                   {%- endif -%}
-                  <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                  <img
+                    class="faller"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                    alt="hello">
                 </picture>
               </div>
             </div>
@@ -54,7 +57,10 @@
                       <source srcset="{{ block.settings.image | image_url: width: 442 }}" media="(min-width: 480px)">
                       <source srcset="{{ block.settings.image | image_url: width: 442 }}">
                     {%- endif -%}
-                    <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                    <img
+                      class="faller"
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                      alt="hello">
                   </picture>
                   <div class="mask"></div>
                 </div>
@@ -64,11 +70,15 @@
               <div class="image_overlay" style="opacity: 0.{{ block.settings.image_overlay_opacity }}"></div>
             {%- endif -%}
           </div>
-          
+
           {%- if block.settings.headline != blank or block.settings.subtitle != blank or block.settings.link_is_button -%}
             <div class="card_content flex">
-              {%- if block.settings.headline != blank -%}<h3>{{ block.settings.headline }}</h3>{%- endif -%}
-              {%- if block.settings.subtitle != blank -%}<p>{{ block.settings.subtitle }}</p>{%- endif -%}
+              {%- if block.settings.headline != blank -%}
+                <h3>{{ block.settings.headline }}</h3>
+              {%- endif -%}
+              {%- if block.settings.subtitle != blank -%}
+                <p>{{ block.settings.subtitle }}</p>
+              {%- endif -%}
               {%- if block.settings.link_is_button and block.settings.image_link != blank -%}
                 <div>
                   <span class="button">{{ block.settings.button_text }}</span>
@@ -76,7 +86,7 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-          
+
           {%- if block.settings.image_link != blank -%}
             </a>
           {%- endif -%}
@@ -100,9 +110,9 @@
                   <h2 class="druk rellax">{{ block.settings.text_title }}</h2>
                 </div>
               {%- endif -%}
-              
+
               {{ block.settings.text }}
-              
+
               {%- if block.settings.text_title != blank -%}
                 <div class="paratitles titlethree">
                   <span class="druk rellax">
@@ -136,130 +146,121 @@
 </article>
 
 {% schema %}
-{
-  "name": "Campaign Two Column",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "column_gap",
-      "label": "Add gap between columns",
-      "default": false
-    }
-  ],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile image (optional)"
-        },
-        {
-          "type": "url",
-          "id": "image_link",
-          "label": "Link"
-        },
-        {
-          "type": "checkbox",
-          "id": "make_bigger",
-          "label": "Make this image bigger (66% width)",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "headline",
-          "label": "Headline"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle"
-        },
-        {
-          "type": "checkbox",
-          "id": "link_is_button",
-          "label": "Show link as button",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button text"
-        },
-        {
-          "type": "range",
-          "id": "image_overlay_opacity",
-          "min": 0,
-          "max": 9,
-          "step": 1,
-          "label": "Image overlay opacity (0.X)",
-          "default": 0
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text content"
-        },
-        {
-          "type": "text",
-          "id": "text_title",
-          "label": "Title (Druk)"
-        },
-        {
-          "type": "text",
-          "id": "title_line_2",
-          "label": "Title line 2"
-        },
-        {
-          "type": "text",
-          "id": "title_line_3",
-          "label": "Title line 3"
-        },
-        {
-          "type": "text",
-          "id": "title_line_4",
-          "label": "Title line 4"
-        }
-      ]
-    },
-    {
-      "type": "form",
-      "name": "Form",
-      "settings": [
-        {
-          "type": "html",
-          "id": "form_html",
-          "label": "Form HTML",
-          "info": "Paste complete form code"
-        }
-      ]
-    },
-    {
-      "type": "empty",
-      "name": "Empty Column",
-      "settings": []
-    }
-  ],
-  "presets": [
-    {
-      "name": "Campaign Two Column"
-    }
-  ],
-  "max_blocks": 2
-}
+  {
+    "name": "Campaign Two Column",
+    "tag": "section",
+    "class": "section campaigns",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "column_gap",
+        "label": "Add gap between columns",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image (optional)"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "make_bigger",
+            "label": "Make this image bigger (66% width)",
+            "default": false
+          }, {
+            "type": "text",
+            "id": "headline",
+            "label": "Headline"
+          }, {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle"
+          }, {
+            "type": "checkbox",
+            "id": "link_is_button",
+            "label": "Show link as button",
+            "default": false
+          }, {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+          }, {
+            "type": "range",
+            "id": "image_overlay_opacity",
+            "min": 0,
+            "max": 9,
+            "step": 1,
+            "label": "Image overlay opacity (0.X)",
+            "default": 0
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text content"
+          },
+          {
+            "type": "text",
+            "id": "text_title",
+            "label": "Title (Druk)"
+          },
+          {
+            "type": "text",
+            "id": "title_line_2",
+            "label": "Title line 2"
+          },
+          {
+            "type": "text",
+            "id": "title_line_3",
+            "label": "Title line 3"
+          }, {
+            "type": "text",
+            "id": "title_line_4",
+            "label": "Title line 4"
+          }
+        ]
+      }, {
+        "type": "form",
+        "name": "Form",
+        "settings": [
+          {
+            "type": "html",
+            "id": "form_html",
+            "label": "Form HTML",
+            "info": "Paste complete form code"
+          }
+        ]
+      }, {
+        "type": "empty",
+        "name": "Empty Column",
+        "settings": []
+      }
+    ],
+    "presets": [
+      {
+        "name": "Campaign Two Column"
+      }
+    ],
+    "max_blocks": 2
+  }
 {% endschema %}

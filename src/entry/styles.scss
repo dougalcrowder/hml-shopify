@@ -33,8 +33,8 @@
 @use "components/cart.scss";
 
 /*================ Modules ================*/
-@use "accordions.scss";
-@use "filter.scss";
+@use "components/accordions.scss";
+@use "components/filter.scss";
 
 /*================ Sections ================*/
 @use "sections/griddy.scss";
@@ -47,4 +47,8 @@
 
 
 /*================ Common end ================*/
-@use "bp-part-2.scss";
+@use "components/bp-part-2.scss";
+
+.body {
+    background-color: aliceblue;
+}

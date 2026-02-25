@@ -3,7 +3,7 @@
   Supports: image, text, form, empty blocks
 {% endcomment %}
 
-{{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'section-campaigns.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
 <article class="campaign-row flex three{% if section.settings.column_gap %} gap{% endif %}">
   {%- for block in section.blocks -%}
@@ -153,7 +153,7 @@
   {
     "name": "Campaign Three Column",
     "tag": "section",
-    "class": "section",
+    "class": "section campaigns",
     "settings": [
       {
         "type": "checkbox",

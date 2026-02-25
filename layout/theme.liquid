@@ -30,10 +30,11 @@
 
     {% render 'meta-tags' %}
     {{ 'fonts.css' | asset_url | stylesheet_tag: preload: true }}
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-  {{ 'styles-old.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'global.js' | asset_url }}" defer="defer">
+  </script>
+
     <!-- Critical CSS -->
-  {{ 'styles-top.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'styles-top.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
     <!-- Dawn Infrastructure CSS -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -42,7 +43,7 @@
     {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
 
     <script>
