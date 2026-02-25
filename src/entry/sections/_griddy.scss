@@ -93,235 +93,92 @@
     }
   }
  //  mobile span
-  .m-span-1 {
-    grid-column: 1 / span 1;
-  }
-  .m-span-2 {
-    grid-column: 1 / span 2;
-  }
-  .m-span-3 {
-    grid-column: 1 / span 3;
-  }
-  .m-span-4 {
-    grid-column: 1 / span 4;
-  }
-  .m-span-5 {
-    grid-column: 1 / span 5;
-  }
-  .m-span-6 {
-    grid-column: 1 / span 6;
-  }
-  .m-span-7 {
-    grid-column: 1 / span 7;
-  }
-  .m-span-8 {
-    grid-column: 1 / span 8;
-  }
-  .m-span-9 {
-    grid-column: 1 / span 9;
-  }
-  .m-span-10 {
-    grid-column: 1 / span 10;
-  }
-  .m-span-11 {
-    grid-column: 1 / span 11;
-  }
-  .m-span-12 {
-    grid-column: 1 / span 12;
-  }
-  
+  .shopify-block:has(.m-span-1) { grid-column: 1 / span 1; }
+  .shopify-block:has(.m-span-2) { grid-column: 1 / span 2; }
+  .shopify-block:has(.m-span-3) { grid-column: 1 / span 3; }
+  .shopify-block:has(.m-span-4) { grid-column: 1 / span 4; }
+  .shopify-block:has(.m-span-5) { grid-column: 1 / span 5; }
+  .shopify-block:has(.m-span-6) { grid-column: 1 / span 6; }
+  .shopify-block:has(.m-span-7) { grid-column: 1 / span 7; }
+  .shopify-block:has(.m-span-8) { grid-column: 1 / span 8; }
+  .shopify-block:has(.m-span-9) { grid-column: 1 / span 9; }
+  .shopify-block:has(.m-span-10) { grid-column: 1 / span 10; }
+  .shopify-block:has(.m-span-11) { grid-column: 1 / span 11; }
+  .shopify-block:has(.m-span-12) { grid-column: 1 / span 12; }
+
   //  mobile start
-  .m-start-1 {
-    grid-column-start: 1;
-  }
-  .m-start-2 {
-    grid-column-start: 2;
-  }
-  .m-start-3 {
-    grid-column-start: 3;
-  }
-  .m-start-4 {
-    grid-column-start: 4;
-  }
-  .m-start-5 {
-    grid-column-start: 5;
-  }
-  .m-start-6 {
-    grid-column-start: 6;
-  }
-  .m-start-7 {
-    grid-column-start: 7;
-  }
-  .m-start-8 {
-    grid-column-start: 8;
-  }
+  .shopify-block:has(.m-start-1) { grid-column-start: 1; }
+  .shopify-block:has(.m-start-2) { grid-column-start: 2; }
+  .shopify-block:has(.m-start-3) { grid-column-start: 3; }
+  .shopify-block:has(.m-start-4) { grid-column-start: 4; }
+  .shopify-block:has(.m-start-5) { grid-column-start: 5; }
+  .shopify-block:has(.m-start-6) { grid-column-start: 6; }
+  .shopify-block:has(.m-start-7) { grid-column-start: 7; }
+  .shopify-block:has(.m-start-8) { grid-column-start: 8; }
   // Mobile Rows
-  .m-row-1 {
-    grid-row-start: 1;
-  }
-  .m-row-2 {
-    grid-row-start: 2;
-  }
-  .m-row-3 {
-    grid-row-start: 3;
-  }
+  .shopify-block:has(.m-row-1) { grid-row-start: 1; }
+  .shopify-block:has(.m-row-2) { grid-row-start: 2; }
+  .shopify-block:has(.m-row-3) { grid-row-start: 3; }
 
   @media screen and (min-width: 768px) {
     //  tablet span
-    .t-span-1 {
-      grid-column: 1 / span 1;
-    }
-    .t-span-2 {
-      grid-column: 1 / span 2;
-    }
-    .t-span-3 {
-      grid-column: 1 / span 3;
-    }
-    .t-span-4 {
-      grid-column: 1 / span 4;
-    }
-    .t-span-5 {
-      grid-column: 1 / span 5;
-    }
-    .t-span-6 {
-      grid-column: 1 / span 6;
-    }
-    .t-span-7 {
-      grid-column: 1 / span 7;
-    }
-    .t-span-8 {
-      grid-column: 1 / span 8;
-    }
-    .t-span-9 {
-      grid-column: 1 / span 9;
-    }
-    .t-span-10 {
-      grid-column: 1 / span 10;
-    }
-    .t-span-11 {
-      grid-column: 1 / span 11;
-    }
-    .t-span-12 {
-      grid-column: 1 / span 12;
-    }
-    
+    .shopify-block:has(.t-span-1) { grid-column: 1 / span 1; }
+    .shopify-block:has(.t-span-2) { grid-column: 1 / span 2; }
+    .shopify-block:has(.t-span-3) { grid-column: 1 / span 3; }
+    .shopify-block:has(.t-span-4) { grid-column: 1 / span 4; }
+    .shopify-block:has(.t-span-5) { grid-column: 1 / span 5; }
+    .shopify-block:has(.t-span-6) { grid-column: 1 / span 6; }
+    .shopify-block:has(.t-span-7) { grid-column: 1 / span 7; }
+    .shopify-block:has(.t-span-8) { grid-column: 1 / span 8; }
+    .shopify-block:has(.t-span-9) { grid-column: 1 / span 9; }
+    .shopify-block:has(.t-span-10) { grid-column: 1 / span 10; }
+    .shopify-block:has(.t-span-11) { grid-column: 1 / span 11; }
+    .shopify-block:has(.t-span-12) { grid-column: 1 / span 12; }
+
     //  tablet start
-    .t-start-1 {
-      grid-column-start: 1;
-    }
-    .t-start-2 {
-      grid-column-start: 2;
-    }
-    .t-start-3 {
-      grid-column-start: 3;
-    }
-    .t-start-4 {
-      grid-column-start: 4;
-    }
-    .t-start-5 {
-      grid-column-start: 5;
-    }
-    .t-start-6 {
-      grid-column-start: 6;
-    }
-    .t-start-7 {
-      grid-column-start: 7;
-    }
-    .t-start-8 {
-      grid-column-start: 8;
-    }
+    .shopify-block:has(.t-start-1) { grid-column-start: 1; }
+    .shopify-block:has(.t-start-2) { grid-column-start: 2; }
+    .shopify-block:has(.t-start-3) { grid-column-start: 3; }
+    .shopify-block:has(.t-start-4) { grid-column-start: 4; }
+    .shopify-block:has(.t-start-5) { grid-column-start: 5; }
+    .shopify-block:has(.t-start-6) { grid-column-start: 6; }
+    .shopify-block:has(.t-start-7) { grid-column-start: 7; }
+    .shopify-block:has(.t-start-8) { grid-column-start: 8; }
     // tablet Rows
-    .t-row-1 {
-      grid-row-start: 1;
-    }
-    .t-row-2 {
-      grid-row-start: 2;
-    }
-    .t-row-3 {
-      grid-row-start: 3;
-    }
+    .shopify-block:has(.t-row-1) { grid-row-start: 1; }
+    .shopify-block:has(.t-row-2) { grid-row-start: 2; }
+    .shopify-block:has(.t-row-3) { grid-row-start: 3; }
   }
   @media screen and (min-width: 1024px) {
-    
     //  desk span
-    .d-span-1 {
-      grid-column: 1 / span 1;
-    }
-    .d-span-2 {
-      grid-column: 1 / span 2;
-    }
-    .d-span-3 {
-      grid-column: 1 / span 3;
-    }
-    .d-span-4 {
-      grid-column: 1 / span 4;
-    }
-    .d-span-5 {
-      grid-column: 1 / span 5;
-    }
-    .d-span-6 {
-      grid-column: 1 / span 6;
-    }
-    .d-span-7 {
-      grid-column: 1 / span 7;
-    }
-    .d-span-8 {
-      grid-column: 1 / span 8;
-    }
-    .d-span-9 {
-      grid-column: 1 / span 9;
-    }
-    .d-span-10 {
-      grid-column: 1 / span 10;
-    }
-    .d-span-11 {
-      grid-column: 1 / span 11;
-    }
-    .d-span-12 {
-      grid-column: 1 / span 12;
-    }
-    
+    .shopify-block:has(.d-span-1) { grid-column: 1 / span 1; }
+    .shopify-block:has(.d-span-2) { grid-column: 1 / span 2; }
+    .shopify-block:has(.d-span-3) { grid-column: 1 / span 3; }
+    .shopify-block:has(.d-span-4) { grid-column: 1 / span 4; }
+    .shopify-block:has(.d-span-5) { grid-column: 1 / span 5; }
+    .shopify-block:has(.d-span-6) { grid-column: 1 / span 6; }
+    .shopify-block:has(.d-span-7) { grid-column: 1 / span 7; }
+    .shopify-block:has(.d-span-8) { grid-column: 1 / span 8; }
+    .shopify-block:has(.d-span-9) { grid-column: 1 / span 9; }
+    .shopify-block:has(.d-span-10) { grid-column: 1 / span 10; }
+    .shopify-block:has(.d-span-11) { grid-column: 1 / span 11; }
+    .shopify-block:has(.d-span-12) { grid-column: 1 / span 12; }
+
     //  desk start
-    .d-start-1 {
-      grid-column-start: 1;
-    }
-    .d-start-2 {
-      grid-column-start: 2;
-    }
-    .d-start-3 {
-      grid-column-start: 3;
-    }
-    .d-start-4 {
-      grid-column-start: 4;
-    }
-    .d-start-5 {
-      grid-column-start: 5;
-    }
-    .d-start-6 {
-      grid-column-start: 6;
-    }
-    .d-start-7 {
-      grid-column-start: 7;
-    }
-    .d-start-8 {
-      grid-column-start: 8;
-    }
-    .d-start-9 {
-      grid-column-start: 9;
-    }
-    .d-start-10 {
-      grid-column-start: 10;
-    }
+    .shopify-block:has(.d-start-1) { grid-column-start: 1; }
+    .shopify-block:has(.d-start-2) { grid-column-start: 2; }
+    .shopify-block:has(.d-start-3) { grid-column-start: 3; }
+    .shopify-block:has(.d-start-4) { grid-column-start: 4; }
+    .shopify-block:has(.d-start-5) { grid-column-start: 5; }
+    .shopify-block:has(.d-start-6) { grid-column-start: 6; }
+    .shopify-block:has(.d-start-7) { grid-column-start: 7; }
+    .shopify-block:has(.d-start-8) { grid-column-start: 8; }
+    .shopify-block:has(.d-start-9) { grid-column-start: 9; }
+    .shopify-block:has(.d-start-10) { grid-column-start: 10; }
     // Desktop Rows
-    .d-row-1 {
-      grid-row-start: 1;
-    }
-    .d-row-2 {
-      grid-row-start: 2;
-    }
-    .d-row-3 {
-      grid-row-start: 3;
-    }
+    .shopify-block:has(.d-row-1) { grid-row-start: 1; }
+    .shopify-block:has(.d-row-2) { grid-row-start: 2; }
+    .shopify-block:has(.d-row-3) { grid-row-start: 3; }
   }
 }
 
