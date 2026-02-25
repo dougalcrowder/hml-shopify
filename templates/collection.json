@@ -9,6 +9,9 @@
  */
 {
   "sections": {
+    "main-collection-header":{
+      "type": "main-collection-header"
+    },
     "product-grid": {
       "type": "main-collection",
       "settings": {
@@ -21,6 +24,7 @@
     }
   },
   "order": [
+    "main-collection-header",
     "product-grid"
   ]
 }

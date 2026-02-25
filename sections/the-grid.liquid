@@ -1,0 +1,29 @@
+{% if section.blocks.size > 0 %}
+<div class="thegrid inner" id="catGrid">
+
+  <div class="page_title level-3">
+    <div class="h1holder flex">
+      <h1 class="drukster outline" id="fullwidth">
+        {{ collection.title }}
+      </h1>
+    </div>
+  </div>
+
+  {% content_for 'blocks' %}
+
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "The Grid",
+  "blocks": [
+    { "type": "grid-scrolling-images" },
+    { "type": "grid-column-row" },
+    { "type": "grid-large-text" }
+  ],
+  "presets": [
+    { "name": "The Grid" }
+  ]
+}
+{% endschema %}

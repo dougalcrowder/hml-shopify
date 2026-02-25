@@ -1,0 +1,28 @@
+<div class="row bigtext level-{{ block.settings.z_index }}">
+  <div>
+    <strong class="full_on">
+      {{ block.settings.big_text }}
+    </strong>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Large Text Row",
+  "settings": [
+    {
+      "type": "range",
+      "id": "z_index",
+      "label": "Z Index",
+      "min": 0,
+      "max": 20,
+      "default": 1
+    },
+    {
+      "type": "textarea",
+      "id": "big_text",
+      "label": "Big Text"
+    }
+  ]
+}
+{% endschema %}

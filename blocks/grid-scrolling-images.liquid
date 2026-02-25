@@ -1,0 +1,53 @@
+<div class="row scrollimages sticky-container level-{{ block.settings.z_index }} count-{{ block.blocks.size }}">
+
+  {% assign heightImageBlock = block.blocks.first %}
+  {% assign heightImage = heightImageBlock.settings.image %}
+
+  {% if heightImage %}
+  <div class="sizer">
+    <picture>
+      <source 
+        srcset="{{ heightImage | image_url: width: 604 }} 1x, {{ heightImage | image_url: width: 1208 }} 2x"
+        media="(min-width: 960px)" />
+      <source 
+        srcset="{{ heightImage | image_url: width: 400 }} 1x, {{ heightImage | image_url: width: 800 }} 2x"
+        media="(min-width: 600px)" />
+      <source 
+        srcset="{{ heightImage | image_url: width: 294 }} 1x, {{ heightImage | image_url: width: 588 }} 2x" />
+      <img
+        class="scrollyimgs"
+        src="{{ heightImage | image_url: width: 294 }}"
+        alt="{{ heightImage.alt | escape }}"
+        width="{{ heightImage.width }}"
+        height="{{ heightImage.height }}"
+      >
+    </picture>
+  </div>
+  {% endif %}
+
+  <div class="jackouter">
+    {% content_for 'blocks' %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Scrolling Images Row",
+  "settings": [
+    {
+      "type": "range",
+      "id": "z_index",
+      "label": "Z Index",
+      "min": 0,
+      "max": 20,
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scrolling-image-item"
+    }
+  ]
+}
+{% endschema %}

@@ -95,7 +95,7 @@ body {
 .site_header {
   scroll-snap-align:none;
     z-index: 99991;
-    transit: var(--transit-delay);
+    transition: var(--transit-delay);
     position: sticky;
   left: 0;
     right: 0;
@@ -350,4 +350,79 @@ body {
     .order & {
         padding: 24px 0 0 0;
     }
+}
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .pt-10-m {
+    padding-top: 10px;
+  }
+  .pb-10-m {
+    padding-bottom: 10px;
+  }
+  .pt-20-m {
+    padding-top: 20px;
+  }
+  .pb-20-m {
+    padding-bottom: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .pt-10-d {
+    padding-top: 10px;
+  }
+  .pb-10-d {
+    padding-bottom: 10px;
+  }
+  .pt-20-d {
+    padding-top: 20px;
+  }
+  .pb-20-d {
+    padding-bottom: 20px;
+  }
+}
+
+// z-indexing
+.z1 {
+  z-index: 1;
+}
+.z2 {
+  z-index: 2;
+}
+.z3 {
+  z-index: 3;
+}
+.z4 {
+  z-index: 4;
+}
+.z5 {
+  z-index: 5;
+}
+.z6 {
+  z-index: 6;
+}
+.z7 {
+  z-index: 7;
+}
+.z8 {
+  z-index: 8;
 }

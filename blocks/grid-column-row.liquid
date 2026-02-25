@@ -1,0 +1,34 @@
+<div class="row level-{{ block.settings.z_index }} top-{{ block.settings.padding_top }} bottom-{{ block.settings.padding_bottom }}">
+
+  {% content_for 'blocks' %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Column Row",
+  "settings": [
+    {
+      "type": "range",
+      "id": "z_index",
+      "label": "Z Index",
+      "min": 0,
+      "max": 20,
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "padding_top",
+      "label": "Padding Top Class"
+    },
+    {
+      "type": "text",
+      "id": "padding_bottom",
+      "label": "Padding Bottom Class"
+    }
+  ],
+  "blocks": [
+    { "type": "grid-column-item" }
+  ]
+}
+{% endschema %}
