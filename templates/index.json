@@ -48,21 +48,36 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
-            "image_link": ""
+            "image_link": "shopify://collections/rings",
+            "headline": "Rings",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
           }
         },
         "image_8bnabr": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
-            "image_link": ""
+            "image_link": "shopify://collections/necklaces",
+            "headline": "Necklaces",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
           }
         },
         "image_DLGMTy": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
-            "image_link": ""
+            "image_link": "shopify://collections/bracelets",
+            "headline": "Bracelets",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
           }
         }
       },
@@ -73,7 +88,7 @@
       ],
       "name": "Campaign Three Column",
       "settings": {
-        "column_gap": false
+        "column_gap": true
       }
     },
     "campaign_two_column_EkPHBQ": {
