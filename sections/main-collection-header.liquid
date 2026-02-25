@@ -1,0 +1,48 @@
+<div class="category_image">
+  {% assign header_image = section.settings.override_image | default: collection.image %}
+  {% if header_image %}
+    <picture>
+      <source srcset="{{ header_image | img_url: '2560x1167', crop: 'center' }}" media="(min-width: 1440px)">
+      <source srcset="{{ header_image | img_url: '1440x656', crop: 'center' }}" media="(min-width: 1024px)">
+      <source srcset="{{ header_image | img_url: '1024x467', crop: 'center' }}" media="(min-width: 768px)">
+      <source srcset="{{ header_image | img_url: '768x350', crop: 'center' }}" media="(min-width: 660px)">
+      <source srcset="{{ header_image | img_url: '640x640', crop: 'center' }}" media="(min-width: 415px)">
+      <source srcset="{{ header_image | img_url: '394x547', crop: 'center' }}" media="(min-width: 376px)">
+      <source srcset="{{ header_image | img_url: '355x547', crop: 'center' }}">
+      <img
+        class="lazyloaded"
+        src="{{ header_image | img_url: '355x547', crop: 'center' }}"
+        alt="{{ section.settings.image_alt | default: header_image.alt | default: collection.title }}"
+        width="355"
+        height="547">
+    </picture>
+  {% endif %}
+  {% schema %}
+    {
+      "name": "Collection Header",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "override_image",
+          "label": "Override collection image",
+          "info": "Upload an image to override the collection image."
+        }, {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "info": "Custom alt text for the header image."
+        }
+      ],
+      "presets": [
+        {
+          "name": "Collection Header",
+          "category": "Collection"
+        }
+      ],
+      "templates": ["collection"]
+    }
+  {% endschema %}
+  <div class="h1holder flex">
+    <h1 class="drukster">{{ collection.title }}</h1>
+  </div>
+</div>
