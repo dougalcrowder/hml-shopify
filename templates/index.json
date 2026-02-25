@@ -11,6 +11,7 @@
   "sections": {
     "hero": {
       "type": "hero-video",
+      "disabled": true,
       "settings": {
         "enable_section_css": true,
         "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/PD2-Web-Banner-9mb.mp4",
@@ -23,6 +24,26 @@
         "button_link": "",
         "button_color": "black"
       }
+    },
+    "campaign_one_column_ffrJxc": {
+      "type": "campaign-one-column",
+      "blocks": {
+        "video_file_atJgrY": {
+          "type": "video_file",
+          "settings": {
+            "video_mp4": "https://s3.eu-west-2.amazonaws.com/hannahmartin/PD2-Web-Banner-9mb.mp4",
+            "disrespect_mobile": false,
+            "button_text": "",
+            "button_link": "",
+            "make_button_white": false
+          }
+        }
+      },
+      "block_order": [
+        "video_file_atJgrY"
+      ],
+      "name": "Campaign One Column",
+      "settings": {}
     },
     "campaign_one_column_hWixMj": {
       "type": "campaign-one-column",
@@ -91,6 +112,45 @@
         "column_gap": true
       }
     },
+    "campaign_two_column_EkPHBQ": {
+      "type": "campaign-two-column",
+      "blocks": {
+        "image_KWwgfV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Bespoke-Desktop-1.jpg",
+            "image_link": "#",
+            "make_bigger": false,
+            "headline": "BESPOKE",
+            "subtitle": "A journey of discovery, discussion, collaboration and creation. One-of-a-kind jewels designed for you and with you. Get in touch with us and join the family.",
+            "link_is_button": true,
+            "button_text": "Learn more",
+            "image_overlay_opacity": 0
+          }
+        },
+        "image_YpGYMC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-For-Lovers-Desktop_2025-09-10-142408_esoe.jpg",
+            "image_link": "shopify://collections/rings",
+            "make_bigger": false,
+            "headline": "For Lovers",
+            "subtitle": "Engagement Rings, Weddings Bands and everything in between. Seal your pact with gold, whatever form it may take.",
+            "link_is_button": true,
+            "button_text": "See our rings",
+            "image_overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_KWwgfV",
+        "image_YpGYMC"
+      ],
+      "name": "Campaign Two Column",
+      "settings": {
+        "column_gap": true
+      }
+    },
     "campaign_three_column_KpRWHV": {
       "type": "campaign-three-column",
       "blocks": {
@@ -140,49 +200,11 @@
       "settings": {
         "column_gap": true
       }
-    },
-    "campaign_two_column_EkPHBQ": {
-      "type": "campaign-two-column",
-      "blocks": {
-        "image_KWwgfV": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Bespoke-Desktop-1.jpg",
-            "image_link": "#",
-            "make_bigger": false,
-            "headline": "BESPOKE",
-            "subtitle": "A journey of discovery, discussion, collaboration and creation. One-of-a-kind jewels designed for you and with you. Get in touch with us and join the family.",
-            "link_is_button": true,
-            "button_text": "Learn more",
-            "image_overlay_opacity": 0
-          }
-        },
-        "image_YpGYMC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-For-Lovers-Desktop_2025-09-10-142408_esoe.jpg",
-            "image_link": "shopify://collections/rings",
-            "make_bigger": false,
-            "headline": "For Lovers",
-            "subtitle": "Engagement Rings, Weddings Bands and everything in between. Seal your pact with gold, whatever form it may take.",
-            "link_is_button": true,
-            "button_text": "See our rings",
-            "image_overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "image_KWwgfV",
-        "image_YpGYMC"
-      ],
-      "name": "Campaign Two Column",
-      "settings": {
-        "column_gap": true
-      }
     }
   },
   "order": [
     "hero",
+    "campaign_one_column_ffrJxc",
     "campaign_one_column_hWixMj",
     "campaign_three_column_VXCF3G",
     "campaign_two_column_EkPHBQ",
