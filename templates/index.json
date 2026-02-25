@@ -24,74 +24,62 @@
         "button_color": "black"
       }
     },
-    "campaign_image_tmPnkR": {
-      "type": "campaign-image",
-      "name": "Campaign Image",
-      "settings": {
-        "enable_section_css": true,
-        "desktop_image": "shopify://shop_images/HML-HM10-Homepage-Hero-Desktop-2.jpg",
-        "heading": "",
-        "loading": "lazy",
-        "enable_flipper": false,
-        "link": ""
-      }
-    },
-    "collection_gallery_waCXPD": {
-      "type": "collection-gallery",
+    "campaign_one_column_hWixMj": {
+      "type": "campaign-one-column",
       "blocks": {
-        "image_iTHDVL": {
+        "image_33y7dY": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
-            "link": "shopify://collections/a-new-act-of-rebellion"
-          }
-        },
-        "image_GYkG3z": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
-            "link": "shopify://products/all-access-bracelet"
-          }
-        },
-        "image_qcKc3x": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
-            "link": "shopify://collections/its-only-rock-n-roll"
+            "image": "shopify://shop_images/HML-HM10-Homepage-Hero-Desktop-2.jpg",
+            "image_link": ""
           }
         }
       },
       "block_order": [
-        "image_iTHDVL",
-        "image_GYkG3z",
-        "image_qcKc3x"
+        "image_33y7dY"
       ],
-      "name": "Collection Gallery",
-      "settings": {
-        "enable_section_css": true
-      }
+      "name": "Campaign One Column",
+      "settings": {}
     },
-    "two_column_row_hmhtxM": {
-      "type": "two-column-row",
-      "name": "Two Column Row",
+    "campaign_three_column_VXCF3G": {
+      "type": "campaign-three-column",
+      "blocks": {
+        "image_TEMUMU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
+            "image_link": ""
+          }
+        },
+        "image_8bnabr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
+            "image_link": ""
+          }
+        },
+        "image_DLGMTy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_TEMUMU",
+        "image_8bnabr",
+        "image_DLGMTy"
+      ],
+      "name": "Campaign Three Column",
       "settings": {
-        "enable_section_css": true,
-        "image_first": true,
-        "bigger_image": false,
-        "add_gap": false,
-        "show_image_link": false,
-        "image_link": "",
-        "heading": "",
-        "text": "",
-        "text_width": "",
-        "enable_parallax": false
+        "column_gap": false
       }
     }
   },
   "order": [
     "hero",
-    "campaign_image_tmPnkR",
-    "collection_gallery_waCXPD",
-    "two_column_row_hmhtxM"
+    "campaign_one_column_hWixMj",
+    "campaign_three_column_VXCF3G"
   ]
 }
