@@ -91,6 +91,56 @@
         "column_gap": true
       }
     },
+    "campaign_three_column_KpRWHV": {
+      "type": "campaign-three-column",
+      "blocks": {
+        "image_QP7xMG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
+            "image_link": "shopify://collections/rings",
+            "headline": "Rings",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
+          }
+        },
+        "image_6kgLcL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
+            "image_link": "shopify://collections/necklaces",
+            "headline": "Necklaces",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
+          }
+        },
+        "image_pnxXpa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
+            "image_link": "shopify://collections/bracelets",
+            "headline": "Bracelets",
+            "subtitle": "",
+            "link_is_button": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_QP7xMG",
+        "image_6kgLcL",
+        "image_pnxXpa"
+      ],
+      "name": "Campaign Three Column",
+      "settings": {
+        "column_gap": true
+      }
+    },
     "campaign_two_column_EkPHBQ": {
       "type": "campaign-two-column",
       "blocks": {
@@ -127,7 +177,7 @@
       ],
       "name": "Campaign Two Column",
       "settings": {
-        "column_gap": false
+        "column_gap": true
       }
     }
   },
@@ -135,6 +185,7 @@
     "hero",
     "campaign_one_column_hWixMj",
     "campaign_three_column_VXCF3G",
-    "campaign_two_column_EkPHBQ"
+    "campaign_two_column_EkPHBQ",
+    "campaign_three_column_KpRWHV"
   ]
 }
