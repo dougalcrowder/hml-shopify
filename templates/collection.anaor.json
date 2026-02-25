@@ -1,0 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "the_grid_wrk8GC": {
+      "type": "the-grid",
+      "blocks": {
+        "grid_column_row_wXymib": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 1,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_bQfDVR": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/ANAOR_5.png",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 6,
+                "desktop_width": 7,
+                "desktop_row": 1,
+                "tablet_start": 6,
+                "tablet_width": 7,
+                "tablet_row": 1,
+                "mobile_start": 6,
+                "mobile_width": 7,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_bQfDVR"
+          ]
+        },
+        "grid_column_row_6mCkjb": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 1,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_kz9U6Y": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/ANAOR_3.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 9,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 9,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 9,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_UzcaaH": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/ANAOR_2.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 5,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 5,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 5,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_VBAnJM": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/ANAOR_1.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 1,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 1,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 1,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_kz9U6Y",
+            "grid_column_item_UzcaaH",
+            "grid_column_item_VBAnJM"
+          ]
+        },
+        "grid_scrolling_images_rhgPbE": {
+          "type": "grid-scrolling-images",
+          "name": "grid-scrolling-images",
+          "settings": {
+            "z_index": 1
+          },
+          "blocks": {
+            "scrolling_image_item_JaTRP7": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-3.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_EBGw68": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Two-Tone-Strap-Ring-9.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_E77wm4": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/Harnessed-Earring-Long-05.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_7RgkUL": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/Harnessed-Earring-Long-03.jpg"
+              },
+              "blocks": {}
+            },
+            "scrolling_image_item_if394g": {
+              "type": "scrolling-image-item",
+              "name": "Scrolling Image",
+              "settings": {
+                "image": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-8.jpg"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "scrolling_image_item_JaTRP7",
+            "scrolling_image_item_EBGw68",
+            "scrolling_image_item_E77wm4",
+            "scrolling_image_item_7RgkUL",
+            "scrolling_image_item_if394g"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_column_row_wXymib",
+        "grid_column_row_6mCkjb",
+        "grid_scrolling_images_rhgPbE"
+      ],
+      "name": "The Grid",
+      "settings": {}
+    },
+    "main-collection-header": {
+      "type": "main-collection-header",
+      "settings": {
+        "image_alt": "",
+        "classes": ""
+      }
+    },
+    "product-grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 48,
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": false,
+        "enable_load_more": false
+      }
+    }
+  },
+  "order": [
+    "the_grid_wrk8GC",
+    "main-collection-header",
+    "product-grid"
+  ]
+}
