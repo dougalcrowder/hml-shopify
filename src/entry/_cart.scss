@@ -1,0 +1,137 @@
+.basketcarrier {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 32px 24px 16px;
+}
+#hmlCart > .flex {
+  gap: 24px;
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    flex-wrap: nowrap;
+  }
+}
+.lineItems {
+  padding: 24px 0 0 0;
+  border-top: 1px solid #F1F1EF;
+  flex: 3;
+  @media screen and (max-width: 767px) {
+    flex-basis: 100%;
+  }
+  .item {
+    border-bottom: 1px solid #F1F1EF;
+    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .item_image {
+      flex: 1 0 120px;
+      max-width: 120px;
+      @media screen and (min-width: 768px) {
+        flex-basis: 240px;
+        max-width: 240px;
+      }
+    }
+    .item_details {
+      flex: 1;
+      flex-basis: calc(100% - 256px);
+      justify-content: space-between;
+      align-content: space-between;
+      align-items: space-between;
+      > div {
+        width: calc(100% - 16px);
+        flex: 1 0 100%;
+      }
+      .top {
+        gap: 16px;
+        margin-bottom: 16px;
+        @media screen and (min-width: 768px) {
+          flex-wrap: nowrap;
+        }
+        justify-content: space-between;
+        .left {
+          flex: 4;
+          > div, > strong {
+            margin-bottom: 3px;
+          }
+          @media screen and (max-width: 767px) {
+            flex-basis: 100%;
+          }
+        }
+        .right {
+          flex: 1;
+          text-align: right;
+          @media screen and (max-width: 767px) {
+            flex-basis: 100%;
+            text-align: left;
+          }
+        } 
+      }
+      input[type="number"] {
+        width: auto;
+        max-width: 50px;
+        border: 0;
+      }
+      .adj_type {
+        text-transform: capitalize;
+      }
+      .adj_desc {
+        opacity: 0.7;
+      }
+      label.remove {
+        font-size: 87.5%;
+        line-height: 1;
+      }
+    }
+  }
+}
+.totals {
+  flex: 1;
+  background-color: #F1F1EF;
+  padding: 24px;
+  gap: 20px;
+  @media screen and (max-width: 767px) {
+    flex-basis: 100%;
+  }
+  // box-shadow: 0px 0px 36px rgb(0 0 0 / 16%);
+  .payments {
+    margin-bottom: 24px;
+  }
+  img {
+    max-width: 188px;
+  }
+  .grand-total, .buttons, .coupons {
+    margin-bottom: 24px;
+  }
+  h4 {
+    margin-bottom: 4px;
+  }
+  a.button.reverse.big {
+    width: 100%;
+    line-height: 44px;
+  }
+}
+.error {
+  color: red;
+  border-color: red;
+}
+
+.cart-notices {
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.coupon.flex {
+  gap: 8px;
+  INPUT {
+    flex: 2;
+  }
+  button.button {
+    min-width: 20px;
+    flex: 1;
+  }  
+}

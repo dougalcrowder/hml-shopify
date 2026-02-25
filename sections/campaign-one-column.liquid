@@ -8,13 +8,13 @@
 <article class="campaign-row one flex">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
-      
+
       {%- when 'image' -%}
         <div class="image" {{ block.shopify_attributes }}>
           {%- if block.settings.image_link != blank -%}
             <a href="{{ block.settings.image_link }}">
           {%- endif -%}
-          
+
           <div class="main_picture">
             <div class="picture_mask"></div>
             <div class="picture_outer">
@@ -30,7 +30,10 @@
                     <source srcset="{{ block.settings.image | image_url: width: 768 }}" media="(min-width: 480px)">
                     <source srcset="{{ block.settings.image | image_url: width: 442 }}">
                   {%- endif -%}
-                  <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                  <img
+                    class="faller"
+                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                    alt="hello">
                 </picture>
               </div>
             </div>
@@ -48,14 +51,17 @@
                       <source srcset="{{ block.settings.image | image_url: width: 768 }}" media="(min-width: 480px)">
                       <source srcset="{{ block.settings.image | image_url: width: 442 }}">
                     {%- endif -%}
-                    <img class="faller" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="hello">
+                    <img
+                      class="faller"
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                      alt="hello">
                   </picture>
                   <div class="mask"></div>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {%- if block.settings.image_link != blank -%}
             </a>
           {%- endif -%}
@@ -79,9 +85,9 @@
                   <h2 class="druk rellax">{{ block.settings.text_title }}</h2>
                 </div>
               {%- endif -%}
-              
+
               {{ block.settings.text }}
-              
+
               {%- if block.settings.text_title != blank -%}
                 <div class="paratitles titlethree">
                   <span class="druk rellax">
@@ -105,7 +111,9 @@
                   {{ block.settings.video_embed_code }}
                 {%- endif -%}
               </div>
-              {%- if block.settings.caption != blank -%}<p>{{ block.settings.caption }}</p>{%- endif -%}
+              {%- if block.settings.caption != blank -%}
+                <p>{{ block.settings.caption }}</p>
+              {%- endif -%}
             </div>
           </div>
         </div>
@@ -122,7 +130,13 @@
           <div class="music_inner flex">
             <div class="musicwrapper">
               {%- if block.settings.spotify_link != blank -%}
-                <iframe src="{{ block.settings.spotify_link }}" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe
+                  src="{{ block.settings.spotify_link }}"
+                  width="300"
+                  height="80"
+                  frameborder="0"
+                  allowtransparency="true"
+                  allow="encrypted-media"></iframe>
               {%- endif -%}
               {%- if block.settings.background_image != blank -%}
                 <div class="bgimage">
@@ -142,7 +156,16 @@
       {%- when 'video_file' -%}
         <div class="videofile{% if block.settings.disrespect_mobile %} norespect{% endif %}" {{ block.shopify_attributes }}>
           {%- if block.settings.video_mp4 != blank -%}
-            <video {% if block.settings.video_poster != blank %}poster="{{ block.settings.video_poster | image_url: width: 1024 }}"{% endif %} width="1280" height="720" playsinline autoplay muted loop>
+            <video
+              {% if block.settings.video_poster != blank %}
+              poster="{{ block.settings.video_poster | image_url: width: 1024 }}"
+              {% endif %}
+              width="1280"
+              height="720"
+              playsinline
+              autoplay
+              muted
+              loop>
               <source src="{{ block.settings.video_mp4 }}" type="video/mp4">
             </video>
             {%- if block.settings.button_link != blank -%}
@@ -154,7 +177,12 @@
         </div>
 
       {%- when 'blank' -%}
-        <div class="empty"{% if block.settings.height %} style="height:{{ block.settings.height }}px;"{% endif %} {{ block.shopify_attributes }}>
+        <div
+          class="empty"
+          {% if block.settings.height %}
+          style="height:{{ block.settings.height }}px;"
+          {% endif %}
+          {{ block.shopify_attributes }}>
           <div class="empty_inner flex"></div>
         </div>
 
@@ -163,207 +191,216 @@
 </article>
 
 {% schema %}
-{
-  "name": "Campaign One Column",
-  "tag": "section",
-  "class": "section",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile image (optional)"
-        },
-        {
-          "type": "url",
-          "id": "image_link",
-          "label": "Link"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text content"
-        },
-        {
-          "type": "text",
-          "id": "text_title",
-          "label": "Title (Druk)"
-        },
-        {
-          "type": "text",
-          "id": "title_line_2",
-          "label": "Title line 2"
-        },
-        {
-          "type": "text",
-          "id": "title_line_3",
-          "label": "Title line 3"
-        },
-        {
-          "type": "text",
-          "id": "title_line_4",
-          "label": "Title line 4"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Width",
-          "options": [
-            {"value": "", "label": "Default (300px)"},
-            {"value": "wider", "label": "Wider (728px)"},
-            {"value": "fullwidth", "label": "Full width"}
-          ],
-          "default": ""
-        }
-      ]
-    },
-    {
-      "type": "video",
-      "name": "Video Embed",
-      "settings": [
-        {
-          "type": "html",
-          "id": "video_embed_code",
-          "label": "Video embed code",
-          "info": "Paste iframe or embed code"
-        },
-        {
-          "type": "text",
-          "id": "caption",
-          "label": "Caption"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Width",
-          "options": [
-            {"value": "", "label": "Default"},
-            {"value": "wider", "label": "Wider"},
-            {"value": "fullwidth", "label": "Full width"}
-          ],
-          "default": ""
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {"value": "", "label": "Default"},
-            {"value": "left", "label": "Left"},
-            {"value": "center", "label": "Center"},
-            {"value": "right", "label": "Right"}
-          ],
-          "default": ""
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "Button",
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button text"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button link"
-        }
-      ]
-    },
-    {
-      "type": "music_track",
-      "name": "Music Track (Spotify)",
-      "settings": [
-        {
-          "type": "text",
-          "id": "spotify_link",
-          "label": "Spotify embed URL"
-        },
-        {
-          "type": "image_picker",
-          "id": "background_image",
-          "label": "Background image"
-        }
-      ]
-    },
-    {
-      "type": "video_file",
-      "name": "Video File",
-      "settings": [
-        {
-          "type": "text",
-          "id": "video_mp4",
-          "label": "Video MP4 URL",
-          "info": "Upload to Files and paste URL"
-        },
-        {
-          "type": "image_picker",
-          "id": "video_poster",
-          "label": "Video poster image"
-        },
-        {
-          "type": "checkbox",
-          "id": "disrespect_mobile",
-          "label": "Crop on mobile (norespect)",
-          "default": false
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button text (optional)"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "Button link"
-        },
-        {
-          "type": "checkbox",
-          "id": "make_button_white",
-          "label": "Make button white",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "blank",
-      "name": "Blank Space",
-      "settings": [
-        {
-          "type": "range",
-          "id": "height",
-          "min": 50,
-          "max": 500,
-          "step": 10,
-          "unit": "px",
-          "label": "Height",
-          "default": 100
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Campaign One Column"
-    }
-  ]
-}
+  {
+    "name": "Campaign One Column",
+    "tag": "section",
+    "class": "section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile image (optional)"
+          }, {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text content"
+          },
+          {
+            "type": "text",
+            "id": "text_title",
+            "label": "Title (Druk)"
+          },
+          {
+            "type": "text",
+            "id": "title_line_2",
+            "label": "Title line 2"
+          },
+          {
+            "type": "text",
+            "id": "title_line_3",
+            "label": "Title line 3"
+          }, {
+            "type": "text",
+            "id": "title_line_4",
+            "label": "Title line 4"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+              {
+                "value": "",
+                "label": "Default (300px)"
+              }, {
+                "value": "wider",
+                "label": "Wider (728px)"
+              }, {
+                "value": "fullwidth",
+                "label": "Full width"
+              }
+            ],
+            "default": ""
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": "Video Embed",
+        "settings": [
+          {
+            "type": "html",
+            "id": "video_embed_code",
+            "label": "Video embed code",
+            "info": "Paste iframe or embed code"
+          }, {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": "Width",
+            "options": [
+              {
+                "value": "",
+                "label": "Default"
+              }, {
+                "value": "wider",
+                "label": "Wider"
+              }, {
+                "value": "fullwidth",
+                "label": "Full width"
+              }
+            ],
+            "default": ""
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "",
+                "label": "Default"
+              }, {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": ""
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }
+        ]
+      }, {
+        "type": "music_track",
+        "name": "Music Track (Spotify)",
+        "settings": [
+          {
+            "type": "text",
+            "id": "spotify_link",
+            "label": "Spotify embed URL"
+          }, {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background image"
+          }
+        ]
+      }, {
+        "type": "video_file",
+        "name": "Video File",
+        "settings": [
+          {
+            "type": "text",
+            "id": "video_mp4",
+            "label": "Video MP4 URL",
+            "info": "Upload to Files and paste URL"
+          },
+          {
+            "type": "image_picker",
+            "id": "video_poster",
+            "label": "Video poster image"
+          },
+          {
+            "type": "checkbox",
+            "id": "disrespect_mobile",
+            "label": "Crop on mobile (norespect)",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text (optional)"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }, {
+            "type": "checkbox",
+            "id": "make_button_white",
+            "label": "Make button white",
+            "default": false
+          }
+        ]
+      }, {
+        "type": "blank",
+        "name": "Blank Space",
+        "settings": [
+          {
+            "type": "range",
+            "id": "height",
+            "min": 50,
+            "max": 500,
+            "step": 10,
+            "unit": "px",
+            "label": "Height",
+            "default": 100
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Campaign One Column"
+      }
+    ]
+  }
 {% endschema %}

@@ -1,0 +1,85 @@
+// Top Navigation
+@mixin activeState {
+  font-family: var(--font-head);
+  font-weight: var(--font-head-weight);
+  font-style: var(--font-head-style);
+  &:before {
+    content: "+ ";
+    display: inline;
+  }
+}
+
+nav {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    a {
+      display: block;
+      line-height: 1.6;
+      transition: all 0.2s ease-in-out;
+    }
+    li.active {
+      a {
+        @include activeState();
+      }
+    }
+    &.footNav {
+      a {
+        // &:hover {
+        //   @include headfont();
+        // }
+      }
+    }
+  }
+}
+// footer
+.navitems {
+  &.over {
+      ul {
+        li {
+          a:not(.hover) {
+            opacity: 0.4;
+          }
+        }
+      }
+  }
+}
+//main nav
+.nav-items {
+  height: 100%;
+  align-content: space-between;
+  .topnav, .bottomnav {
+    flex: 1 0 100%;
+  }
+  ul {
+    a {
+      color: white;
+    }
+  }
+  button.naked {
+    color: white;
+    min-width: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  padding: 20px 20px 20px 0;
+  .navrow {
+    padding-top: 20px;
+    .nav {
+      flex: 1;
+      padding-left: 20px;
+    }
+  }
+  &.over {
+    .navrow {
+      ul {
+        li {
+          a:not(.hover) {
+            opacity: 0.4;
+          }
+        }
+      }
+    }
+  }
+}

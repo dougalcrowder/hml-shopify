@@ -1,0 +1,62 @@
+.category {
+  scroll-behavior: smooth;
+  .thegrid {
+    position: relative;
+    z-index: 1;
+    cursor: url('../../assets/img/shop_cursor.svg'), auto;
+  }
+  main, footer {
+    position: relative;
+    z-index: 2;
+  }
+  .thegrid + header + main#content {
+    padding-top: 10px;
+    background-color: white;
+    @media screen and (min-width: 768px) {
+      padding-top: 20px;
+    }
+  }
+  .scrollhelp {
+    position: absolute;
+    top: -48px;
+  }
+}
+
+.collection, .category {
+  main > .sprig-component {
+    position: relative;
+    overflow: hidden;
+    z-index: 24;
+    padding-top: 10px;
+    @media screen and (min-width: 768px) {
+      padding-top: 20px;
+    }
+  }
+}
+
+.swag + button {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+.swag.hiddenButton + button {
+  display: none;
+  visibility: hidden;
+}
+
+.for_lovers_cat {
+  .collection_campaigns {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @media screen and (min-width: 768px) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.product_collection.oncats {
+  margin-top: 20px;
+}

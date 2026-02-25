@@ -1,0 +1,207 @@
+.account_area {
+  max-width: 960px;
+  margin: 12px auto;
+  .address_head {
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: flex-end;
+    padding: 4px 0;
+    border-bottom: 1px solid;
+  }
+  .gaddresses {
+    padding: 24px 0;
+    justify-content: flex-start;
+  }
+  .address-card {
+    flex: 0 1 calc(100% - 16px);
+    padding: 4px;
+    margin: 8px 8px 24px 8px; 
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px solid rgba(var(--colour-text), 0.2);
+    @media screen and (min-width: 660px) {
+      flex: 0 1 calc(50% - 32px);
+      padding: 8px;
+      margin: 8px 8px 32px 8px; 
+    }
+    @media screen and (min-width: 960px) {
+      flex: 0 1 calc(50% - 64px);
+      padding: 16px;
+      margin: 8px 16px 40px 16px; 
+    }
+    .notes {
+      position: absolute;
+      top: calc(100% - 10px);
+      .address_note {
+        flex: 0 0 auto;
+        margin-right: 8px;
+        color: white;
+        padding: 2px 4px;
+        font-size: 12px;
+        background-color: var(--colour-text);
+      }
+    }
+  }
+  .address-data-outer {
+    flex: 1 0 60%;
+    ul {
+      padding: 0;
+    }
+  }
+  .buttons {
+    flex: 0 1 40%;
+    .button+form {
+      margin-top: 12px;
+    }
+  }
+  .newsletter_signup {
+    margin-top: 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(var(--colour-text), 0.2);
+  }
+}
+
+.customer_login {
+  max-width: 320px;
+  margin: 0 auto;
+  form .field {
+    grid-template-columns: 60px 6fr;
+    &.full {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.order {
+  .deets {
+    border-bottom: 1px solid var(--colour-border);
+    h1 {
+      margin-bottom: 4px;
+    }
+  }
+  .order_kpis {
+    border-bottom: 1px solid var(--colour-border);
+    .order_atts {
+      justify-content: flex-start;
+      div:first-child {
+        min-width: 110px;
+      }
+      &:first-child {
+        padding: 16px 0 0 0;
+      }
+      &:last-child {
+        padding: 0 0 16px 0;
+      }
+    }
+  }
+  .thanks_text.bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 32px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.flex.addresses {
+  margin-top: 24px;
+}
+
+.checkout {
+  .address-fieldset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    h2 {
+      flex: 1 1 100%;
+    }
+    .address-select {
+      flex: 1 1 220px;
+      padding: 12px 12px 32px 12px;
+      margin-bottom: 24px;
+      transition: border 0.3s ease-in-out;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.0);
+      &.bill_selected, &.ship_selected {
+        border: 1px solid var(--colour-border);
+      }
+      .radio_outer {
+        margin-top: 0;
+      }
+      .radio:not(.add_new) {
+        // position: relative;
+        label {
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
+        .radio_outer .checkmark {
+          top: 22px;
+          left: 10px;
+        }
+      }
+      .actions {
+        position: absolute;
+        bottom: 18px;
+        left: 0;
+        z-index: 4;
+        ul {
+          list-style-type: none;
+          margin: 0;
+        }
+        li {
+          padding: 0;
+          a {
+            padding: 8px;
+            border: 1px solid var(--colour-text);
+          }
+        }
+      }
+      .addressBox {
+        .field {
+          grid-template-columns: 100px 5fr;
+        }
+      }
+    }
+  }
+}
+.account_nav-items {
+  .account_nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    li {
+      display: inline-block;
+      padding: 12px 24px;
+    }
+    li.active {
+      @include activeState;
+    }
+  }
+}
+
+.forgotton_password {
+  margin-top: 12px;
+}
+.create_account {
+  margin-top: 32px;
+}
+
+.signup.notice {
+  margin-bottom: 12px;
+}
+.empty-index {
+  p > .button {
+    margin-top: 12px;
+  }
+}

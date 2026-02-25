@@ -1,0 +1,118 @@
+// .noVat {
+//   display: inline;
+// }
+// .vat {
+//   display: none;
+// }
+// .adjustment.VAT {
+//   display: none;
+// }
+// .AT, .BE, .BG, .HR, .CY, .CZ, .DK, .EE, .FI, .FR, .DE, .EL, .HU, .IE, .IT, .LV, .LT, .LU, .MT, .NL, .PL, .PT, .RO, .SK, .SI, .ES, .SE, .GB {
+//   .noVat {
+//     display: none;
+//   }
+//   .vat {
+//     display: inline;
+//   }
+//   .adjustment.VAT {
+//     display: table-row;
+//   }
+// }
+// .GB {
+//   .noVat {
+//     display: none;
+//   }
+//   .vat {
+//     display: inline;
+//   }
+//   .adjustment.VAT {
+//     display: table-row;
+//   }
+// }
+
+// Currencies Based on IP Best guess
+// World Sees USD
+// span.gbp, span.eur {
+//   display: none;
+//   visibility: hidden;
+// }
+// // EU
+// .AT, .BE, .BG, .HR, .CY, .CZ, .DK, .EE, .FI, .FR, .DE, .EL, .HU, .IE, .IT, .LV, .LT, .LU, .MT, .NL, .PL, .PT, .RO, .SK, .SI, .ES, .SE {
+//   span.gbp, span.usd {
+//     display: none;
+//     visibility: hidden;
+//   }
+//   span.eur {
+//     display: inline;
+//     visibility: visible;
+//   }
+// }
+// // Blighty
+// .GB {
+//   span.eur, span.usd {
+//     display: none;
+//     visibility: hidden;
+//   }
+//   span.gbp{
+//     display: inline;
+//     visibility: visible;
+//   }
+// }
+
+// Currencies Based on choice
+// .currencyChosen {
+//   &.USD {
+//     span.gbp, span.eur {
+//       display: none;
+//       visibility: hidden;
+//     }
+//     span.usd{
+//       display: inline;
+//       visibility: visible;
+//     }
+//   }
+//   &.GBP {
+//     span.eur, span.usd {
+//       display: none;
+//       visibility: hidden;
+//     }
+//     span.gbp{
+//       display: inline;
+//       visibility: visible;
+//     }
+//   }
+//   &.EUR {
+//     span.gbp, span.usd {
+//       display: none;
+//       visibility: hidden;
+//     }
+//     span.eur {
+//       display: inline;
+//       visibility: visible;
+//     }
+//   }
+// }
+
+// All prices inc mode
+body {
+    .noVat {
+      display: none;
+    }
+    .vat {
+      display: inline;
+    }
+    .adjustment.VAT {
+      display: table-row;
+    }
+  }
+// Default no currency mode
+body {
+  span.eur, span.usd {
+    display: none;
+    visibility: hidden;
+  }
+  span.gbp{
+    display: inline;
+    visibility: visible;
+  }
+}

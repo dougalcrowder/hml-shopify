@@ -1,0 +1,894 @@
+.campaigning {
+  overflow-x: hidden;
+}
+.collection_campaigns {
+  padding-left: 10px;
+  padding-right: 10px;
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.campaigns, .collection_campaigns {
+  .flex {
+    position: relative;
+    &.gap {
+      padding-top: 10px;
+      gap: 10px;
+      @media screen and (min-width: 768px) {
+        padding-top: 20px;
+        gap: 20px;
+        flex-wrap: nowrap;
+      }
+    }
+    &:nth-child(1) {
+      z-index: 50;
+    }
+    &:nth-child(2) {
+      z-index: 49;
+    }
+    &:nth-child(3) {
+      z-index: 48;
+    }
+    &:nth-child(4) {
+      z-index: 47;
+    }
+    &:nth-child(5) {
+      z-index: 46;
+    }
+    &:nth-child(6) {
+      z-index: 45;
+    }
+    &:nth-child(7) {
+      z-index: 42;
+    }
+    &:nth-child(8) {
+      z-index: 40;
+    }
+    &:nth-child(9) {
+      z-index: 38;
+    }
+    &:nth-child(10) {
+      z-index: 36;
+    }
+    &:nth-child(11) {
+      z-index: 34;
+    }
+    &:nth-child(12) {
+      z-index: 32;
+    }
+    &:nth-child(13) {
+      z-index: 30;
+    }
+    &:nth-child(14) {
+      z-index: 28;
+    }
+    &:nth-child(15) {
+      z-index: 26;
+    }
+    &:nth-child(16) {
+      z-index: 24;
+    }
+    &:nth-child(17) {
+      z-index: 22;
+    }
+    &:nth-child(18) {
+      z-index: 20;
+    }
+    &:nth-child(19) {
+      z-index: 18;
+    }
+    &:nth-child(20) {
+      z-index: 16;
+    }
+    @media screen and (max-width: 960px) {
+      .image {
+        &:nth-child(1) {
+          z-index: 50;
+        }
+        &:nth-child(2) {
+          z-index: 49;
+        }
+        &:nth-child(3) {
+          z-index: 48;
+        }
+      }
+      .story {
+        z-index: 51;
+      }
+    }
+  }
+  .scrollytext {
+    z-index: 51;
+  }
+}
+
+.flex.three {
+  position: relative;
+  z-index:1;
+  .image, .story, .col, .empty {
+    flex: 1;
+    flex-basis: 100%;
+    max-width: 100%;
+    .druk {
+      font-size: 25vw;
+    }
+    @media screen and (min-width: 768px) {
+      flex-basis: 33.333333%;
+      max-width: 33.333333%;
+      .druk {
+        font-size: 6.5vw;
+      }
+    }
+  }
+}
+.flex.two {
+  .image, .story, .empty {
+    flex: 1;
+    flex-basis: 100%;
+    max-width: 100%;
+    .druk {
+      font-size: 25vw;
+    }
+    @media screen and (min-width: 768px) {
+      flex-basis: 50%;
+      max-width: 50%;
+      .druk {
+        font-size: 13vw;
+      }
+    }
+  }
+  &.bigger-image {
+    .image.bigger {
+      flex: 2;
+      flex-basis: 100%;
+      max-width: 100%;
+      @media screen and (min-width: 768px) {
+        flex-basis: 66.66666%;
+        max-width: 66.66666%;
+      }
+    }
+    .story, .empty {
+      flex: 2;
+      flex-basis: 100%;
+      max-width: 100%;
+      @media screen and (min-width: 768px) {
+        flex-basis: 33.33333%;
+        max-width: 33.33333%;
+        .druk {
+          font-size: 6.5vw;
+        }
+      }
+    }
+  }
+}
+
+.flex.one {
+  .image, .story, .blank, .video, .music, .button_container {
+    flex: 1;
+    flex-basis: 100%;
+    max-width: 100%;
+    .druk {
+      font-size: 25vw;
+    }
+  }
+  .story {
+    @media screen and (min-width: 768px) {
+      .druk {
+        font-size: 16vw; 
+      }
+    }
+  }
+  .alignment {
+    flex: 1 1 100%;
+    &.left {
+      justify-content: flex-start;
+    }
+    &.right {
+      justify-content: flex-end;
+    }
+    &.centre {
+      justify-content: center;
+    }
+  }
+  .video {
+    @media screen and (min-width: 768px) {
+      &.twoThirds {
+        max-width: 66.6666%;
+      }
+      &.half {
+        max-width: 50%;
+      }
+      &.oneThird {
+        max-width: 33.3333%;
+      }
+    }
+    .videowrapper + p {
+      margin-top: 12px;
+    }
+  }
+  .button_container {
+    padding: 20px 0;
+    text-align: center;
+    a {
+      padding: 6px 12px 2px;
+    }
+  }
+  .story, .empty {
+    flex: 2;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .music {
+    .musicwrapper {
+      position: relative;
+      iframe {
+        position: absolute;
+        right: 10%;
+        bottom: calc(50% - 40px);
+        z-index: 2;
+      }
+      .bgimage {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+  .videofile {
+    width: 100%;
+    flex: 1 1 100%;
+    overflow: hidden;
+    video {
+      width: 100%;
+      height: auto;
+    }
+    .button_container {
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      &.white {
+        a {
+          border-color: white;
+          color: white;
+          &:hover {
+            color: var(--colour-text);
+          }
+        }
+      }
+    }
+    &.norespect {
+      @media screen and (max-width: 800px) {
+        video {
+          width: auto;
+          height: 100%;
+          min-height: 80vh;
+          margin-left: 60%;
+          transform: translateX(-50%);
+        }
+      }
+      @media screen and (max-width: 460px) {
+        min-height: 90vh;
+      }
+    }
+  }
+}
+
+.campaign {
+  article {
+    &:first-child {
+      .videofile {
+        margin-left: -10px;
+        margin-right: -10px;
+        @media screen and (min-width: 768px) {
+          margin-left: -20px;
+          margin-right: -20px;
+        }
+      }
+    }
+  }
+}
+
+.flex {
+  .story {
+    overflow: hidden;
+    position: relative;
+    @media screen and (max-width: 960px) {
+      min-height: 66vh;
+      // order: 2;
+    }
+    .story_inner {
+      height: 100%;
+    }
+    .form {
+      flex: 1;
+      align-self: center;
+      @media screen and (min-width: 960px) {
+        &.padme {
+          padding: 0 24px;
+        }
+      }
+    }
+    .rte {
+      flex: 1;
+      align-self: center;
+      margin: 0 auto;
+      max-width: 300px;
+      &.fullwidth {
+        max-width: 100%;
+      }
+      &.wider {
+        max-width: 728px;
+      }
+    }
+    .druk {
+      @include druk;
+      // font-size: 145px;
+      display: inline-block;
+      text-transform: uppercase;
+      line-height: 0.8;
+    }
+    .paratitles {
+      position: absolute;
+      // left: -20px;
+      // width: calc(100% + 40px);
+      left: 20px;
+      width: calc(100% - 40px);;
+      text-align: center;
+    }
+    .titleone {
+      bottom: 83%;
+      // top: -60px;
+    }
+    .titletwo {
+      top: 30px;
+    }
+    .titlethree {
+      top: 83%;
+      // bottom: -60px;
+    }
+  }
+  &.one {
+    .story {
+      @media screen and (max-width: 960px) {
+        min-height: 40vh;
+      }
+      .story_inner {
+        min-height: 300px;
+        padding: 32px 0;
+      }
+    }
+  }
+}
+
+.campaigns, .collection_campaigns {
+  // we need some mad indexing fro the animation
+  .campaign, .product {
+    position: relative;
+    &:nth-child(1) {
+      z-index: 21;
+    }
+    &:nth-child(2) {
+      z-index: 20;
+    }
+    &:nth-child(3) {
+      z-index: 19;
+    }
+    &:nth-child(4) {
+      z-index: 18;
+    }
+    &:nth-child(5) {
+      z-index: 17;
+    }
+    &:nth-child(6) {
+      z-index: 16;
+    }
+    &:nth-child(7) {
+      z-index: 15;
+    }
+    &:nth-child(8) {
+      z-index: 14;
+    }
+    &:nth-child(9) {
+      z-index: 13;
+    }
+    &:nth-child(10) {
+      z-index: 12;
+    }
+    &:nth-child(11) {
+      z-index: 11;
+    }
+    &:nth-child(12) {
+      z-index: 10;
+    }
+    &:nth-child(13) {
+      z-index: 9;
+    }
+    &:nth-child(14) {
+      z-index: 8;
+    }
+    &:nth-child(15) {
+      z-index: 7;
+    }
+    &:nth-child(16) {
+      z-index: 6;
+    }
+    &:nth-child(17) {
+      z-index: 5;
+    }
+    &:nth-child(18) {
+      z-index: 4;
+    }
+    &:nth-child(19) {
+      z-index: 3;
+    }
+    &:nth-child(20) {
+      z-index: 2;
+    }
+    &:nth-child(21) {
+      z-index: 1;
+    }
+  }
+  .story {
+    z-index: 2;
+  }
+  .image {
+    z-index: 1;
+    position: relative;
+    .main_picture {
+      position: relative;
+      .picture_inner {
+        position: relative;
+        overflow: hidden;
+      }
+      .picture_mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        background-color: white;
+        z-index: 30;
+      }
+      .image_overlay {
+        position: absolute;
+        inset: 0;
+        background-color: black;
+      }
+    }
+    .card_content {
+      position: absolute;
+      inset: 0;
+      padding: 20px;
+      align-content: center;
+      > * {
+        flex: 1 0 100%;
+        color: white;
+        text-align: center;
+      }
+      h3 {
+        @include druk();
+        font-size: 750%;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 10px #00000019;
+        line-height: 1;
+        margin-bottom: 0;
+        transition: all 0.2s ease-in-out;
+        @media screen and (min-width: 768px) {
+          font-size: 530%;
+        }
+        @media screen and (min-width: 960px) {
+          font-size: 750%;
+        }
+      }
+      p {
+        max-width: 410px;
+        margin: 0 auto;
+        &+div {
+          margin-top: 12%;
+        }
+      }
+      span.button {
+        color: white;
+        &:hover {
+          background-color: black;
+          border-color: black;
+        }
+      }
+      &:hover h3 {
+        @supports((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+            text-stroke: 1px white;
+            text-shadow: none;
+        }
+      }
+    }
+    .flipper_outer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: -40px;
+      overflow: hidden;
+    }
+    .flipper-container {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 40px;
+      // overflow-y: hidden;
+    }
+    .flipper_inner {
+      position: absolute;
+      bottom: 100%;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      
+      .mask {
+        position: absolute;
+        width: 102%;
+        height: 102%;
+        left: -1%;
+        right: -1%;
+        bottom: 100%;
+        color: white;
+        transform-origin: left bottom;
+        box-shadow: 0 0 5px rgba(255,255,255,1);
+        &:after {
+          content: " ";
+          height: 6px;
+          top: 103%;
+          left: 0;
+          right: 0;
+          background-color: white;
+          border-radius: 3px;
+          display: block;
+          z-index: 7;
+          position: absolute;
+          filter: blur(3px);
+          transition: opacity 1.2s ease-in;
+        }
+      }
+    }
+    .flipper {
+      position: absolute; 
+      display: block;
+      right: 0;
+      // width: 95.5%;
+      width:100%;
+      // max-width: 95.5%;
+      max-width: 100%;
+      z-index: 2;
+      transform: scaleY(-1) rotate(0);
+      transform-origin: top left;
+      transform-origin: left 25%;
+      opacity: 1;
+      transition: all 1s ease-in;
+      // box-shadow: 0 2px 4px red;
+    }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      &:nth-child(1) {
+        .ohmygaad & {
+          transform-origin: center center;
+          animation: droppa 10.0s ease-in both 20s;
+          .main_picture {
+            transform-origin: 100% 53%;
+            animation: swingdroppb 1.5s ease-in-out both 10.8s;
+          }
+          .picture_mask {
+            animation: topmaskerb 5s linear both 8s;
+          }
+          .picture_outer {
+            animation: fade-out 0.1s linear both 10.5s;
+          }
+          .flipper_outer {
+            right: -40px;
+            left: 0;
+
+          }
+          .flipper-container {
+            left: 0;
+            right: 40px;
+          }
+          .flipper_inner {
+            transform-origin: right bottom;
+            animation: flipperb 2.5s linear both 8s;
+            .mask {
+              animation: maskerb 2.5s linear both 8s;
+              left: auto;
+              right: 0;
+              transform-origin: right bottom;
+              &:after {
+                animation: fadeinner 2.5s linear both 8s;
+              }
+            }
+            .flipper {
+              img {
+                // animation: imagescale 2.0s linear both 5s;
+              }
+            }
+          }
+        }
+        .settle & {
+          animation: fade-in 0.65s ease-out both;
+        }
+      }
+      &:nth-child(2) {
+        .ohmygaad & {
+          transform-origin: center center;
+          animation: droppa 9.0s ease-in both 8.2s;
+          .main_picture {
+            transform-origin: 100% 53%;
+            animation: swingdroppb 1.5s ease-in-out both 7.8s;
+          }
+          .picture_mask {
+            animation: topmaskerb 5s linear both 5s;
+          }
+          .picture_outer {
+            animation: fade-out 0.1s linear both 7.5s;
+          }
+          .flipper_outer {
+            right: -40px;
+            left: 0;
+
+          }
+          .flipper-container {
+            left: 0;
+            right: 40px;
+          }
+          .flipper_inner {
+            transform-origin: right bottom;
+            animation: flipperb 2.5s linear both 5s;
+            .mask {
+              animation: maskerb 2.5s linear both 5s;
+              left: auto;
+              right: 0;
+              transform-origin: right bottom;
+              &:after {
+                animation: fadeinner 2.5s linear both 5s;
+              }
+            }
+            .flipper {
+              img {
+                // animation: imagescale 2.0s linear both 5s;
+              }
+            }
+          }
+        }
+        .settle & {
+          animation: fade-in 0.65s ease-out both;
+        }
+      }
+      &:nth-child(3) {
+        .ohmygaad & {
+          transform-origin: center center;
+          animation: droppa 11s ease-in both 6.3s;
+          .main_picture {
+            transform-origin: 0% 53%;
+            animation: swingdroppa 1.5s ease-in-out both 4.8s;
+          }
+          .picture_mask {
+            animation: topmaskera 5s linear both 2s;
+          }
+          .picture_outer {
+            animation: fade-out 0.1s linear both 4.5s;
+          }
+          .flipper_inner {
+            transform-origin: left bottom;
+            animation: flippera 2.5s linear both 2s;
+            .mask {
+              animation: maskera 2.5s linear both 2s;
+              &:after {
+                animation: fadeinner 2.5s linear both 2s;
+              }
+            }
+            .flipper {
+              img {
+                // animation: imagescale 2.5s linear both 2s;
+              }
+            }
+          }
+        }
+        .settle & {
+          animation: fade-in 0.65s ease-out both;
+        }
+      }
+    }
+    .mask-outer {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+  
+    .mask {
+      position: absolute;
+      display: block;
+      width: 140%;
+      left: 0;
+      bottom: 100%;
+      background-color: white;
+      height: 50%;
+      z-index: 6;
+      // transform: rotate(10deg);
+      transition: opacity 1s ease-in;
+ 
+    }
+  }
+}
+
+.campaigns {
+  
+  .paginate {
+    margin: 60px 0 40px 0;
+  }
+  .pager{
+    flex: 1;
+    padding: 0 20px;
+    &.prev {
+      text-align: right;
+    }
+  }
+}
+
+.flex .story {
+  .druk.centered {
+    display: block;
+    text-align: center;
+  } 
+}
+
+.one.grid {
+  margin: 20px auto 0 auto;
+  max-width: 1920px;
+  @media screen and (min-width: 2000px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .gridimage.white {
+    color: white;
+    a.button {
+      color: white;
+      border-color: white;
+      &:hover {
+        background-color: rgba(0,0,0,0.4);
+      }
+    }
+  }
+}
+
+// 1220 x 720 so 61 / 36
+.scrollytext {
+  margin-top: 16px;
+  position: relative;
+  scroll-snap-align: center;
+  // overflow-y: scroll;
+  // &:before {
+  //   display: block;
+  //   content: "";
+  //   width: 100%;
+  //   padding-top: (36 / 61) * 100%;
+  // }
+  .scroll_text {
+    position: absolute;
+    inset: 0;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll; 
+    &::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
+  }
+  .scroll_text {
+    z-index: 3;
+    padding-top: 16%;
+    padding-bottom: 16%;
+    a {
+      display: block;
+      text-align: center;
+      margin: 0;
+      &:first-child {
+        margin-top: 36%;
+        @media screen and (min-width: 460px) {
+          margin-top: 20%;
+        }
+        @media screen and (min-width: 800px) {
+          margin-top: 0;
+        }
+      }
+      &:last-child {
+        margin-bottom: 51%;
+        @media screen and (min-width: 460px) {
+          margin-bottom: 45%;
+        }
+        @media screen and (min-width: 800px) {
+          margin-bottom: 3%;
+        }
+        // @media screen and (min-width: 1260px) {
+        //   margin-bottom: 0;
+        // }
+      }
+      strong {
+        display: block;
+        max-width: 100%;
+        @include transit();
+        //word-break: break-word;
+        font-size: 25vw;
+        @media screen and (min-width: 768px) {
+          font-size: 23vw;
+        }
+        @media screen and (min-width: 1260px) {
+          font-size: 23vw;
+          max-width: 82%;
+        }
+        @media screen and (min-width: 1400px) {
+          max-width: 74%;
+        }
+      }
+      &.outline {
+        strong {
+          color: white; /* Unfortunately you can't use transparent here … */
+          text-shadow:
+           -1px -1px 0 #fff,  
+          1px -1px 0 #fff,
+          -1px 1px 0 #fff,
+           1px 1px 0 #fff
+        }
+        @supports((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+          strong {
+              color: transparent;
+              -webkit-text-stroke: 1px white;
+              text-stroke: 1px white;
+              text-shadow: none;
+          }
+        }
+      }
+    }
+  }
+  .fixed_image {
+    z-index: 1;
+    overflow: hidden;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: 155.492958%;
+        
+      @media screen and (min-width: 480px) {
+        padding-top: 135.576923%;
+      }
+      @media screen and (min-width: 800px) {
+        padding-top: 59.0163934426%;
+      }
+    }
+    .bgimage {
+      overflow: hidden;
+      position: absolute;
+      inset: 0;
+      img {
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+        @include transit();
+        opacity: 0;
+      }
+      &.intersecting {
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+}

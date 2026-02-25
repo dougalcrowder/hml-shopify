@@ -1,0 +1,10 @@
+{
+    "targets": {
+      "default": {
+        "browsers": "> 0.25%, not dead"
+      }
+    },
+    "drafts": {
+      "nesting": true
+    }
+  }

@@ -1,0 +1,138 @@
+.filtration {
+  position: fixed;
+  right: -300px;
+  z-index: 99990;
+  padding: 20px;
+  width: 260px;
+  background-color: rgba(255,255,255,0.92);
+  overflow: scroll;
+  color: var(--colour-text);
+  transition: all 0.3s ease;
+  .filterhaus {
+    padding-top: 48px;
+  }
+  .filterApsolute & {
+    position: absolute;
+    .filterhaus {
+      padding-top: 0;
+    }
+  }
+  .open & {
+    transform: translateX(-300px);
+  }
+  h3 {
+    color: var(--colour-text);
+    font-size: 120%;
+    margin-bottom: 10px;
+  }
+  .nav-items {
+    position: relative;
+  }
+  strong {
+    display: block;
+    font-weight: normal;
+    font-size: 110%;
+    margin-bottom: 10px;
+    font-family: var(--font-head);
+    font-weight: var(--font-head-weight);
+    font-style: var(--font-head-style);
+  }
+  ul {
+    list-style-type: none;
+    margin: 0 0 30px 0;
+    padding: 0;
+    li {
+      span {
+        display: none;
+        visibility: hidden;
+        opacity: 0.4;
+        color: var(--colour-text);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        .number {
+          opacity: 0;
+          margin-left: 4px;
+        }
+        &.action {
+          display: inline-block;
+          visibility: visible;
+        }
+        &.hasitems {
+          opacity: 1;
+          .number {
+            opacity: 1;
+          }
+        }
+        &.mixitup-control-active {
+          @include activeState;
+        }
+      }      
+    }
+  }
+  .flex {
+    margin-top: 40px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  button.filterBtn {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 60px;
+    flex: 0 1 50%;
+    flex-basis: calc(50% - 10px);
+    &.mixitup-control-active {
+      opacity: 0.4;
+    }
+  }
+}
+.swag {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transit);
+}
+.open {
+  @media screen and (min-width: 1250px) {
+    .swag {
+      margin-right: 300px;
+    }
+  }
+  // @media screen and (max-width: 1249px) {
+  //   .bgCloser {
+  //     position: fixed;
+  //     right: 300px;
+  //     left: 0;
+  //     top: 0;
+  //     bottom: 0;
+  //     z-index: 99998;
+  //   }
+  // }
+}
+
+
+.siteNav {
+  &+main .filtration {
+    height: 100vh;
+    top: 0;
+  }
+}
+
+#filterClose {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  @media screen and (max-width: 1249px) {
+    .open & {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9998;
+    }
+  }
+}
+header.siteNav .logo.filter_open {
+  transform: translateX(-280px) rotate(270deg);
+}

@@ -1,0 +1,15 @@
+{
+  "name": "hml-build",
+  "type": "module",
+  "scripts": {
+    "dev": "parcel \"src/entry/*.{js,scss}\" --no-cache --dist-dir assets",
+    "build": "parcel build \"src/entry/*.{js,scss}\" --no-cache --dist-dir assets"
+  },
+  "devDependencies": {
+    "@parcel/optimizer-css": "^2.14.4",
+    "@parcel/transformer-sass": "^2.14.4",
+    "lightningcss": "^1.29.3",
+    "parcel": "^2.11.0",
+    "svgo": "^3.3.2"
+  }
+}

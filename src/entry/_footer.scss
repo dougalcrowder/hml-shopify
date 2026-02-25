@@ -1,0 +1,111 @@
+.siteFooter {
+  position: relative;
+  z-index: 10;
+  padding: 0 10px;
+  @media screen and (min-width: 768px) {
+    padding: 0 20px;
+  }
+  .footer-inner {
+    padding: 56px 10px 0;
+    background-color: #F1F1EF;
+    @media screen and (min-width: 415px) {
+      padding: 56px 20px 0;
+    }
+    @media screen and (min-width: 768px) {
+      padding: 56px 40px 0;
+    }
+    .footer-logotype {
+      .svg {
+        width: 100%;
+        height: auto;
+        max-width: 410px;
+      }
+    }
+    > .flex {
+      justify-content: space-between;
+      padding: 40px 0 0 0;
+      gap: 8px;
+      @media screen and (min-width: 768px) {
+        padding: 50px 0 0 0;
+      }
+      @media screen and (min-width: 1024px) {
+        gap: 16px;
+      }
+      @media screen and (min-width: 1260px) {
+        padding: 100px 0 0 0;
+        flex-wrap: nowrap;
+        gap: 24px;
+      }
+      @media screen and (min-width: 1440px) {
+        gap: 40px;
+      }
+      > div {
+        flex: 1;
+        @media screen and (min-width: 1260px) {
+          flex-basis: 190px;
+          &.col5 {
+            flex-basis: 222px;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          flex-basis: 33%;
+          &.col5 {
+            flex-basis: 66%;
+          }
+        }
+        @media screen and (max-width: 768px) and (min-width: 720px) {
+          &.col5 {
+            display: flex;
+            .contact {
+              flex: 1;
+              order: 2;
+            }
+            .payments {
+              flex: 1;
+              order: 1;
+            }
+          }
+        }
+        @media screen and (max-width: 415px) {
+          flex-basis: 50%;
+          &.col1 {
+            order: 1;
+          }
+          &.col2 {
+            order: 3;
+          }
+          &.col3 {
+            order: 2;
+          }
+          &.col4 {
+            order: 4;
+          }
+          &.col5 {
+            order: 5;
+            flex-basis: 100%;
+          }
+        }
+      }
+    }
+    @media screen and (min-width: 768px) {
+      padding: 55px 50px 0;
+    }
+    @media screen and (min-width: 1260px) {
+      padding: 110px 100px 0;
+    }
+  }
+  h4 {
+    margin-bottom: 4px;
+  }
+  .copyright {
+    width: 100%;
+    padding: 32px 0;
+    text-align: center;
+    p {
+      margin-bottom: 0;
+    }
+    @media screen and (min-width: 768px) {
+      padding: 56px 0;
+    }
+  }
+}

@@ -1,0 +1,160 @@
+.videoPage {
+  min-width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  > a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+  .buttonup {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translateY(-50%) translateX(-50%);
+    z-index: 20;
+    // @media screen and (min-width:768px) {
+    //   top: 50%;
+    // }
+    margin: 40px 0;
+    display: inline-block;
+    @media screen and (min-height:800px) {
+      margin: 60px 0;
+    }
+  }
+  .button {
+    &.white {
+      color: white;
+      border-color: white;
+    }
+    &.whiteLandscapeBlackPortrait {
+      @media screen and (orientation: landscape) {
+        color: white;
+        border-color: white;
+      }
+    }
+    &.blackLandscapeWhitePortrait {
+      @media screen and (orientation: portrait) {
+        color: white;
+        border-color: white;
+      }
+    }
+  }
+  
+  video {
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    @media screen and (orientation: landscape) {
+      min-width: 100%;
+      min-height: 100vh;
+    }
+    @media screen and (orientation: portrait) {
+      width: auto;
+      height: auto;
+      max-width: 145%;
+      max-height: 110%;
+    }
+    // width: calc(100vw - 16px);
+    // @media screen and (min-width: 800px) {
+    //   width: calc(100vw - (100vw - 100%));
+    // }
+  }
+}
+.border {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 8px solid white;
+  @media screen and (min-width:768px) {
+    border: 20px solid white;
+  }
+}
+.video_home {
+  padding: 0;;
+  .menu_toggle, .delivery_notice {
+    visibility: hidden;
+    display: none;
+  }
+  .hometext, .logo_cta {
+    // width: 100%;
+    width: calc(100% - 32px);
+    text-align: center;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    padding: 0 16px;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    @media screen and (min-width:700px) {
+      max-width: 662px;
+    }
+    .logotype {
+      margin-bottom: 0;
+      z-index: 2;
+      margin-top: 0;
+      // @media screen and (min-height:900px) {
+      //   margin-top: 11vh;
+      // }
+      svg {
+        &.white {
+          g {
+            fill: white;
+          }
+        }
+        &.whiteLandscapeBlackPortrait {
+          @media screen and (orientation: landscape) {
+            g {
+              fill: white;
+            }
+          }
+        }
+        &.blackLandscapeWhitePortrait {
+          @media screen and (orientation: portrait) {
+            g {
+              fill: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  #content {
+    margin-bottom: 0;
+    @media screen and (max-width:768px) {
+      padding-top: 160px;
+    }
+  }
+}
+
+*::-webkit-media-controls-panel {
+  display: none!important;
+ -webkit-appearance: none;
+}
+
+/* Old shadow dom for play button */
+
+*::--webkit-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* New shadow dom for play button */
+
+/* This one works */
+
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}

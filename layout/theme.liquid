@@ -30,9 +30,8 @@
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer">
-  </script>
-
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
     <!-- Critical CSS -->
   {{ 'styles-top.css' | asset_url | stylesheet_tag }}
 
@@ -43,13 +42,6 @@
     {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
-    <!-- Deferred CSS -->
-    <link
-      rel="preload"
-      href="{{ 'styles-bottom.css' | asset_url }}"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'">
 
     {{ content_for_header }}
 
@@ -115,66 +107,8 @@
         unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
       };
     </script>
-
-    <!-- Navigation JavaScript -->
-    <script>
-      function toggleMenu() {
-        const nav = document.querySelector('.main-navigation');
-        const overlay = document.getElementById('navClose');
-        const toggle = document.querySelector('.menu_toggle');
-        
-        if (nav && overlay && toggle) {
-          const isActive = nav.classList.contains('active');
-          
-          if (!isActive) {
-            nav.classList.add('alive');
-            setTimeout(() => nav.classList.add('active'), 10);
-            overlay.classList.add('active');
-            toggle.setAttribute('aria-expanded', 'true');
-          } else {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-            setTimeout(() => nav.classList.remove('alive'), 400);
-          }
-        }
-      }
-
-      // Nav hover states
-      document.addEventListener('DOMContentLoaded', function() {
-        const navItems = document.querySelector('.nav-items');
-        if (!navItems) return;
-        
-        const links = navItems.querySelectorAll('.nav a, .navrow a');
-        
-        links.forEach(link => {
-          link.addEventListener('mouseenter', function() {
-            this.classList.add('hover');
-            navItems.classList.add('over');
-          });
-          
-          link.addEventListener('mouseleave', function() {
-            this.classList.remove('hover');
-            const anyHovered = navItems.querySelector('.nav a.hover, .navrow a.hover');
-            if (!anyHovered) {
-              navItems.classList.remove('over');
-            }
-          });
-        });
-
-        // Product grid animations
-        const products = document.querySelectorAll('.products .product');
-        if (products.length > 0) {
-          setTimeout(() => {
-            products.forEach((product) => {
-              const randomDelay = Math.random() * 35000;
-              setTimeout(() => {
-                product.classList.add('slidebaby');
-              }, randomDelay);
-            });
-          }, 12000);
-        }
-      });
-    </script>
+    {{ 'styles-bottom.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'fitty.js' | asset_url }}"></script>
+    <script src="{{ 'scripts.js' | asset_url }}"></script>
   </body>
 </html>

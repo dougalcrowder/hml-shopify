@@ -1,0 +1,88 @@
+.category_image, .h1holder {
+  margin: 0 10px;
+  aspect-ratio: 355/547;
+  @media screen and (min-width: 376px) {
+    aspect-ratio: 394/547;
+  }
+  @media screen and (min-width: 415px) {
+    aspect-ratio: 1/1;
+  }
+  @media screen and (min-width: 660px) {
+    aspect-ratio: 305/139
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0 20px;
+  }
+  .productpage &, .oncats & {
+    aspect-ratio: 355/195;
+    @media screen and (min-width: 376px) {
+      aspect-ratio: 394/195;
+    }
+    @media screen and (min-width: 415px) {
+      aspect-ratio: 640/316;
+    }
+    @media screen and (min-width: 660px) {
+      aspect-ratio: 768/250
+    }
+  }
+}
+
+.category_image {
+  background: #cdcdcd;
+  .productpage &, .oncats & {
+    position: relative;
+  }
+  .action {
+    position: absolute;
+    color: white;
+    bottom: 12px;
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 32px;
+    display: block;
+    text-align: center;
+    z-index: 4;
+  }
+}
+
+.h1holder {
+  position: fixed;
+  width: calc(100% - 20px);
+  padding-top: 0;
+  top: 80px;
+  left: 0;
+  align-items: center;
+  align-content: center;
+  @include transit();
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 40px);
+    z-index: 2;
+  }
+  .productpage &, .oncats & {
+    top: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0 10%;
+    box-sizing: border-box;
+    &.small {
+      padding: 0 20%;
+    }
+    @media screen and (min-width: 768px) {
+      width: 100%;
+    }
+    > div {
+      width: 100%;
+    }
+    h3.drukster {
+      box-sizing: content-box;
+      width: auto;
+    }
+  }
+  .h1holder h1 {
+    flex: 1;
+  }
+}
+.page_title .h1holder.flex {
+  top: 0;
+  height: 100vh;
+}

@@ -1,0 +1,89 @@
+.email_gate_active {
+  .logo, .main-navigation {
+    display: none;
+  }
+  #content {
+    padding-top: 110px;
+  }
+}
+
+.email_gate {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  .inner {
+    flex: 1 1 100%;
+  }
+  .title {
+    h2 {
+      @include druk;
+      text-transform: uppercase;
+      font-size: 15.5vw;
+      line-height: 1;
+    }
+  }
+  small {
+    margin-top: 8px;
+    font-size: 12px;
+    display: block;
+    max-width: 410px;
+  }
+  input[type="submit"] {
+    margin-top: 16px;
+    min-width: 30px;
+    padding: 5px 16px 3px;
+  }
+  input[type="email"] {
+    line-height: 30px;
+    padding-right: 4px;
+    padding-left: 4px;
+    max-width: 410px;
+  }
+  .text_and_form, .image {
+    flex: 1 1 100%;
+  }
+  .text_and_form {
+    margin-bottom: 24px;
+  }
+  @media screen and (min-width: 768px) {
+    .text_and_form {
+      position: relative;
+      z-index: 2;
+      .inner {
+        align-self: center;
+      }
+      .title {
+        width: 140%;
+        h2 {
+          font-size: 11vw;
+        }
+      }
+      flex-basis: calc(50% - 20px);
+      padding-right: 20px;
+    }
+    .image {
+      position: relative;
+      z-index: 1;
+      flex-basis: calc(50% - 20px);
+      padding-left: 20px;
+    }
+  }
+  @media screen and (min-width: 1260px) {
+    .title {
+    }
+    .text_and_form {
+    }
+    .image {
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    .text_and_form {
+      .title {
+        h2 {
+          font-size: 180px;
+        }
+      }
+    }
+  }
+}

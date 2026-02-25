@@ -1,0 +1,49 @@
+:root {
+  --colour-text: #1B1718;
+  --colour-grey: #f1f1ee;
+  --colour-lightgrey: #95A3A9;
+  --colour-border: #F1F1EF;
+  --colour-black: var(--colour-text);
+  --colour-bg: white;
+
+  --colour-red: #cc6600;
+  --colour-green: #003333;
+  --colour-blue: #0F5178;
+
+  /* Font families */
+  --font-head: 'marritalic', serif;
+  --font-body: 'marrthinitalic', serif;
+  --font-druk: 'Druk Cond Super', Baskerville, Baskerville Old Face, Hoefler Text, Garamond, Times New Roman, serif;
+
+  /* Font weights and styles */
+  --font-head-weight: normal;
+  --font-head-style: italic;
+  --font-body-weight: 300;
+  --font-body-style: italic;
+  --font-druk-weight: normal;
+  --font-druk-style: normal;
+
+  /* Transitions */
+  --transit: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1);
+  --transit-delay: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.3s;
+  /* Add more as needed */
+}
+
+// Colours
+
+@mixin fullBrowser {
+  height: calc(100vh - 24px);
+  width: calc(100vw - 24px);
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - 40px);
+    width: calc(100vw - 40px);
+  }
+}
+
+@mixin transit {
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1);
+}
+
+@mixin transitDelay {
+  transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.3s;
+}

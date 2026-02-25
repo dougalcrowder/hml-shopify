@@ -5,47 +5,42 @@
 
 {{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
 
-{%- assign all_lyrics = shop.metaobjects['rad_lyrics'].values -%}
-{%- assign first_lyric = all_lyrics[0] -%}
-
-<ul>
-  {%- for field in first_lyric.fields -%}
-    <li>
-      key: {{ field.key }} – value: {{ field.value }}
-    </li>
-  {%- endfor -%}
-</ul>
-
 <section class="lyrics hiya">
   <div class="lyric">
-    {%- assign all_lyrics = shop.metaobjects['rad_lyrics'].values -%}
+    {%- assign all_lyrics = shop.metaobjects.rad_lyrics.values -%}
     {%- if all_lyrics and all_lyrics.size > 0 -%}
       {%- assign random_index = 'now' | date: "%s" | modulo: all_lyrics.size -%}
-      {%- assign random_lyric = all_lyrics[random_index] -%}
 
-      {% if random_lyric.lyric_line_1 != blank %}
-        <div class="lyric">
-          <strong class="drukster outline lyric_one">
-            {{ random_lyric.lyric_line_1.value }}
-          </strong>
-        </div>
-      {% endif %}
+      {% for lyric in all_lyrics %}
+        {% if forloop.index0 == random_index %}
 
-      {% if random_lyric.lyric_line_2 != blank %}
-        <div class="lyric">
-          <strong class="drukster outline lyric_two">
-            {{ random_lyric.lyric_line_2.value }}
-          </strong>
-        </div>
-      {% endif %}
+          {% if lyric.lyric_line_1 and lyric.lyric_line_1.value != blank %}
+            <div class="lyric">
+              <strong class="drukster outline lyric_one">
+                {{ lyric.lyric_line_1.value }}
+              </strong>
+            </div>
+          {% endif %}
 
-      {% if random_lyric.lyric_line_3 != blank %}
-        <div class="lyric">
-          <strong class="drukster outline lyric_three">
-            {{ random_lyric.lyric_line_3.value }}
-          </strong>
-        </div>
-      {% endif %}
+          {% if lyric.lyric_line_2 and lyric.lyric_line_2.value != blank %}
+            <div class="lyric">
+              <strong class="drukster outline lyric_two">
+                {{ lyric.lyric_line_2.value }}
+              </strong>
+            </div>
+          {% endif %}
+
+          {% if lyric.lyric_line_3 and lyric.lyric_line_3.value != blank %}
+            <div class="lyric">
+              <strong class="drukster outline lyric_three">
+                {{ lyric.lyric_line_3.value }}
+              </strong>
+            </div>
+          {% endif %}
+
+          {% break %}
+        {% endif %}
+      {% endfor %}
     {%- endif -%}
   </div>
 </section>

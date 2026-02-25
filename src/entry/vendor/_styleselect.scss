@@ -1,0 +1,146 @@
+$ss-line-height: 18px !default;
+$ss-border-width: 1px !default;
+$ss-spacing: 24px !default;
+
+$ss-highlight-color: rgb(242, 244, 248) !default;
+$ss-selected-option-background: white !default;
+$ss-dropdown-shadow:none !default;
+
+$ss-standard-border: $ss-border-width solid #000 !default;
+
+$ss-spacing-small: $ss-spacing / 2 !default;
+$ss-spacing-tiny: $ss-spacing / 4 !default;
+
+// Hide real select boxes which have seen styled.
+select[data-ss-uuid] {
+	display: none;
+	pointer-events: none;
+}
+
+.style-select {
+	display: block;
+	position: relative;
+	width: 135px; // Default width
+
+	// Set reasonable defaults on this element and its children
+	&, * {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		text-align: left;
+		line-height: $ss-line-height;
+		color: black;
+		.bespoke_details & {
+			color: white;
+		}
+		font-weight: 300;
+		cursor: pointer;
+	}
+
+	.ss-selected-option {
+		width: 100%;
+		background-image: $ss-selected-option-background;
+		padding: $ss-spacing-tiny;
+		border: $ss-standard-border;
+		.bespoke_details & {
+			border:1px solid white;
+		}
+		text-align: center;
+		// text-transform: uppercase;
+		.addto & {
+			// &::before {
+			// 	content: "Size ";
+			// 	display: inline;
+			// 	text-transform: none;
+			// }
+			&[data-value=""] {
+				text-transform: none;
+			}
+		}
+		// The down arrow
+		// &::after {
+		// 	content: "▾";
+		// 	position: absolute;
+		// 	top: $ss-spacing-tiny;
+		// 	right: $ss-spacing-small;
+		// 	display: block;
+		// }
+	}
+
+	.ss-dropdown {
+		top: $ss-line-height + 2 * $ss-spacing-tiny + $ss-border-width;
+		left: 0;
+		position: absolute;
+		float: left;
+		width: 100%;
+		display: none;
+		box-shadow: $ss-dropdown-shadow;
+		border: $ss-standard-border;
+		border-top: 0 none;
+		z-index: 999;
+		max-height: 140px;
+		overflow: hidden;
+		overflow-y: scroll;
+		scrollbar-width: none;
+		-webkit-scrollbar-width: none;
+		&::-webkit-scrollbar{
+			width: 0px;
+		}
+		.ss-option {
+			width: 100%;
+			padding: $ss-spacing-tiny;
+			background-color: white;
+			text-align: center;
+			transition: opacity 0.3s ease-in-out;
+			.addto & {
+				text-transform: uppercase;
+			}
+			&.highlighted {
+				@include headfont;
+			}
+			.addto & {
+				&:before {
+					display: inline;
+					content: "» ";
+					opacity: 0;
+					transition: opacity 0.3s ease-in-out;
+				}
+				&:after {
+					display: inline;
+					content: " «";
+					opacity: 0;
+					transition: opacity 0.3s ease-in-out;
+				}
+				// We don't use :hover as that's only for mouse
+				// and we want keyboard highlighting too
+				&.highlighted {
+					&:before {
+						opacity: 1;
+					}
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+			
+			&.disabled {
+				color: #d0d0d0;
+				display: none;
+			}
+			&.ticked::before {
+				content: " ";
+				padding-right: 3px;
+			}
+		}
+	}
+
+	&.open {
+		.ss-dropdown {
+			display: block;
+		}
+		// .ss-selected-option::after {
+		// 	content: "▴";
+		// }
+	}
+
+}
