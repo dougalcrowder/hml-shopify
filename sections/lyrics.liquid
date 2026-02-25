@@ -13,13 +13,21 @@
       {%- assign random_lyric = all_lyrics[random_index] -%}
       {%- assign lyric_text = random_lyric.lyric | default: section.settings.fallback_lyric -%}
       {%- assign font_size = lyric_text.size | times: 2.5 | at_least: 100 | at_most: 300 -%}
-      <strong class="drukster outline lyric_one" style="white-space: nowrap; display: inline-block; font-size: {{ font_size }}px;">
-        {{ lyric_text }}
-      </strong>
-    {%- else -%}
-      <strong class="drukster outline lyric_one" style="white-space: nowrap; display: inline-block; font-size: 288.689px;">
-        {{ section.settings.fallback_lyric }}
-      </strong>
+      {% if random_lyric.lyric_line_1 %}
+        <div class="lyric">
+          <strong class="drukster outline lyric_one">{{ random_lyric.lyric_line_1 }}</strong>
+        </div>
+      {% endif %}
+      {% if random_lyric.lyric_line_2 %}
+        <div class="lyric">
+          <strong class="drukster outline lyric_two">{{ random_lyric.lyric_line_2 }}</strong>
+        </div>
+      {% endif %}
+      {% if random_lyric.lyric_line_2 %}
+        <div class="lyric">
+          <strong class="drukster outline lyric_three">{{ random_lyric.lyric_line_3 }}</strong>
+        </div>
+      {% endif %}
     {%- endif -%}
   </div>
 </section>
