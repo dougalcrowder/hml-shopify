@@ -1,7 +1,7 @@
 <div class="row scrollimages sticky-container level-{{ block.settings.z_index }} count-{{ block.blocks.size }}">
 
-  {% assign heightImageBlock = block.blocks.first %}
-  {% assign heightImage = heightImageBlock.settings.image %}
+
+  {% assign heightImage = block.settings.heightimage %}
 
   {% if heightImage %}
   <div class="sizer">
@@ -28,6 +28,23 @@
   <div class="jackouter">
     {% content_for 'blocks' %}
   </div>
+
+  <script>
+    
+    function scrollSize() {
+      const scrollContainer = document.querySelector(".jackouter");
+      let height = document.querySelector('.sizer').offsetHeight
+      console.log(height);
+      let imgHeight = height + 'px';
+      scrollContainer.style.width = imgHeight;
+    }
+    window.addEventListener('resize', function(event){
+      scrollSize();
+    });
+    
+    scrollSize();
+      
+    </script>
 
 </div>
 
