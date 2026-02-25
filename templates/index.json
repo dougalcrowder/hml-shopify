@@ -79,19 +79,6 @@
     "campaign_two_column_EkPHBQ": {
       "type": "campaign-two-column",
       "blocks": {
-        "image_YpGYMC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-For-Lovers-Desktop_2025-09-10-142408_esoe.jpg",
-            "image_link": "shopify://collections/rings",
-            "make_bigger": false,
-            "headline": "For Lovers",
-            "subtitle": "Engagement Rings, Weddings Bands and everything in between. Seal your pact with gold, whatever form it may take.",
-            "link_is_button": true,
-            "button_text": "See our rings",
-            "image_overlay_opacity": 0
-          }
-        },
         "image_KWwgfV": {
           "type": "image",
           "settings": {
@@ -104,11 +91,24 @@
             "button_text": "Learn more",
             "image_overlay_opacity": 0
           }
+        },
+        "image_YpGYMC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HML-HM10-Homepage-For-Lovers-Desktop_2025-09-10-142408_esoe.jpg",
+            "image_link": "shopify://collections/rings",
+            "make_bigger": false,
+            "headline": "For Lovers",
+            "subtitle": "Engagement Rings, Weddings Bands and everything in between. Seal your pact with gold, whatever form it may take.",
+            "link_is_button": true,
+            "button_text": "See our rings",
+            "image_overlay_opacity": 0
+          }
         }
       },
       "block_order": [
-        "image_YpGYMC",
-        "image_KWwgfV"
+        "image_KWwgfV",
+        "image_YpGYMC"
       ],
       "name": "Campaign Two Column",
       "settings": {
