@@ -70,11 +70,28 @@
       "settings": {
         "enable_section_css": true
       }
+    },
+    "two_column_row_hmhtxM": {
+      "type": "two-column-row",
+      "name": "Two Column Row",
+      "settings": {
+        "enable_section_css": true,
+        "image_first": true,
+        "bigger_image": false,
+        "add_gap": false,
+        "show_image_link": false,
+        "image_link": "",
+        "heading": "",
+        "text": "",
+        "text_width": "",
+        "enable_parallax": false
+      }
     }
   },
   "order": [
     "hero",
     "campaign_image_tmPnkR",
-    "collection_gallery_waCXPD"
+    "collection_gallery_waCXPD",
+    "two_column_row_hmhtxM"
   ]
 }
