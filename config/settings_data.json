@@ -47,7 +47,7 @@
           "footer_menu_4": "online-services",
           "footer_menu_5": "follow",
           "footer_menu_6": "about",
-          "footer_menu_7": ""
+          "footer_menu_7": "<h4>Contact</h4>\n<ul class=\"footNav\">                                  <li><a itemprop=\"url\" href=\"tel:00442072516700\">T: +44 20 7251 6700</a></li>\n                                                    <li><a id=\"press\" itemprop=\"url\" href=\"tel:00447526116873\">M: +44 75 2611 6873</a></li>\n                                                   <li><a itemprop=\"url\" href=\"mailto:studio@hannahmartinlondon.com\" class=\"\">studio@hannahmartinlondon.com</a></li>\n                                      <li><p>Hannah Martin Ltd, 74a Clerkenwell Road, London, EC1M 5QA</p></li>\n </ul>"
         }
       },
       "lyrics": {
@@ -55,6 +55,10 @@
         "settings": {
           "fallback_lyric": "You can call me crazy"
         }
+      },
+      "sidecart": {
+        "type": "sidecart",
+        "settings": {}
       }
     },
     "content_for_index": []
