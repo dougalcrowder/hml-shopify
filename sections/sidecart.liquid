@@ -1,0 +1,194 @@
+<div class="sidecart sidecart_in custom_scroll {% if section.settings.scoop == blank %}no_scoop{% endif %}" id="sidecart">
+
+  <div data-ajax-cart-section class="mr_ajax">
+    {% if cart.item_count > 0 %}
+      <form
+        action="{{ routes.cart_url }}"
+        method="post"
+        class="my-cart"
+        {% for item in cart.items %}
+        {{ item.product.handle }}
+        {% endfor %}>
+        <!-- data-ajax-cart-section makes the element's HTML update
+          when the cart gets changed -->
+        <div class="live_action">
+          <div class="cart_header">
+            <div class="h2">{{ section.settings.title }}</div>
+          </div>
+
+          <div class="line_items custom_scroll">
+            <div class="my-cart__items">
+              {% for item in cart.items %}
+                {% assign item_index = forloop.index %}
+                <div class="cart_item flex justify-start nowrap">
+                  <a class="cart_item_image  flex items-center" href="{{ item.url }}">
+                    <picture class="productShots">
+                      <source srcset="{{  item.image | image_url: width: 200, height: 200, crop: 'bottom' }} 2x, {{  item.image | image_url: width: 100, height: 100, crop: 'bottom' }}" media="(min-width: 320px)" />
+                      <source srcset="{{  item.image | image_url: width: 200, height: 200, crop: 'bottom' }} 2x, {{  item.image | image_url: width: 100, height: 100, crop: 'bottom' }}" media="(min-width: 300px)" />
+                      <img
+                        class="prod-shot"
+                        src="{{  item.image | image_url: width: 100, height: 100, crop: 'bottom' }}"
+                        alt="{{  item.image.alt | escape }}"
+                        width="100"
+                        height="100" />
+                    </picture>
+                  </a>
+
+                  <a
+                    data-ajax-cart-request-button
+                    href="{{ item.url_to_remove }}"
+                    class="remove-button cart_remove">
+                    <small class="close_left">Remove</small>
+                  </a>
+
+                  <div class="cart_item_text flex flexwrap justify-start content-between">
+                    <div classs="title">
+                      <h4>{{ item.title }}</h4>
+                      {%- if item.selling_plan_allocation != null -%}
+                        <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                      {%- endif -%}
+                      {%- for property in item.properties -%}
+                        {%- assign property_first_char = property.first | slice: 0 -%}
+                        {%- if property.last != blank and property_first_char != '_' -%}
+                          {% if property.first == 'Recipient email' %}
+                            <p class="product-option mb-none">For: {{ property.last }}</p>
+                            {% break %}
+                          {% endif %}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    <div class="amount_price flex justify-between">
+
+                      <ajax-cart-quantity>
+                        <div class="cart_qty flex content-start">
+
+                          <label class="visuallyhidden">Quantity:</label>
+                          <a
+                            class="qty_adjust"
+                            data-ajax-cart-quantity-minus
+                            href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | minus: 1 }}">
+                            -
+                          </a>
+                          <input
+                            data-ajax-cart-quantity-input="{{ item_index }}"
+                            name="updates[]"
+                            value="{{ item.quantity }}"
+                            type="number" />
+
+                          <a
+                            class="qty_adjust"
+                            data-ajax-cart-quantity-plus
+                            href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | plus: 1 }}">
+                            +
+                          </a>
+
+                        </div>
+                      </ajax-cart-quantity>
+                      <div class="price_with_discounts text-right">
+                        {% if item.selling_plan_allocation %}
+                          {% assign original_price = item.variant.compare_at_price | default: item.variant.price %}
+                          {% assign discounted_price = item.final_line_price | divided_by: item.quantity %}
+                          {% if discounted_price < original_price %}
+                            <s>{{ original_price | money }}</s>
+                          {% endif %}
+                        {% else %}
+                          {% if item.original_price > item.final_price %}
+                            <s>{{ item.original_price | money }}</s>
+                          {% endif %}
+                        {% endif %}
+
+                        {{ item.final_price | money }}
+
+                        {% if item.line_level_discount_allocations.size > 0 %}
+                          <div class="text-m-80">
+                            <span class="visuallyhidden">Discounts:</span>
+                            {% for discount_allocation in item.line_level_discount_allocations %}
+                              <span class="pill flex items-center">
+                                {{- 'icon-discount.svg' | inline_asset_content -}} {{ discount_allocation.discount_application.title }}
+                              </span>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    <!-- Container for errors -->
+                    <div class="cart_item_errors" data-ajax-cart-messages="{{ item.key }}"></div>
+                    <div class="visuallyhidden">{{ 'general.cart.label.total' | t }}:
+                      <strong>{{ item.final_line_price | money }}</strong>
+                    </div>
+                  </div>
+                </div>
+
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="cart_footer sidecart_in">
+            <div class="subtotal flex justify-between">
+              <div class="font-thin">{{ 'general.cart.subtotal' | t }}:</div>
+              <div>{{ cart.total_price | money_with_currency }}</div>
+            </div>
+
+
+            <button
+              type="submit"
+              name="checkout"
+              class="button go-cart__button">
+              {{ 'general.cart.checkout' | t }}
+            </button>
+
+            {% comment %}
+              <a href="/cart" class="button alt nude">View Cart</a>
+            {% endcomment %}
+            <!-- data-ajax-cart-static-element keeps the container unchanged
+              when the cart and the surrounding HTML get updated -->
+            <div data-ajax-cart-static-element class="my-cart__app-container"></div>
+          </div>
+          {% if inside_scoop %}
+<pre></pre>
+          {% endif %}
+        </div>
+
+      </form>
+    {% else %}
+      <div class="empty_titles">
+        <h3 class="border-bottom">
+          {{ 'general.cart.title' | t }}
+        </h3>
+        <p>{{ 'general.cart.bag_empty' | t }}</p>
+        <p>
+          <a href="/collections/products">{{ 'general.cart.continue_shopping' | t }}</a>
+        </p>
+      </div>
+    {% endif %}
+  </div>
+
+
+  <button id="closeCartx" class="closecart button nude">
+    <svg
+      width="17"
+      height="16"
+      viewBox="0 0 17 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.83958 7.6497L1.07158 14.4671C0.883553 14.6565 0.883553 14.9633 1.07158 15.1527C1.16547 15.2475 1.28875 15.2947 1.4118 15.2947C1.53508 15.2947 1.65812 15.2475 1.75201 15.1527L8.5709 8.28408L15.3898 15.1527C15.4839 15.2475 15.607 15.2947 15.73 15.2947C15.853 15.2947 15.9763 15.2475 16.0702 15.1527C16.2582 14.9633 16.2582 14.6565 16.0702 14.4671L9.30246 7.6497L16.0748 0.827506C16.2628 0.638107 16.2628 0.331267 16.0748 0.141868C15.8867 -0.0472895 15.5821 -0.0472895 15.3943 0.141868L8.57114 7.01533L1.74723 0.142109C1.55921 -0.0470488 1.25483 -0.0470488 1.0668 0.142109C0.878775 0.331508 0.878775 0.638348 1.0668 0.827746L7.83958 7.6497Z" fill="#1D1D1B" />
+    </svg>
+  </button>
+
+
+</div>
+<button class="cart_close button nude" id="closeCart">
+  <span class="visuallyhidden">Close Cart Drawer</span>
+  <div></div>
+</button>
+
+
+{% schema %}
+  {
+    "name": "My Cart",
+    "settings": []
+  }
+
+{% endschema %}

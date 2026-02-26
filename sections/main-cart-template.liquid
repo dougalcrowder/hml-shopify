@@ -1,0 +1,261 @@
+{{ 'styles-cart.css' | asset_url | stylesheet_tag }}
+
+<div class="cart_header inner">
+  <h1 class="cart_header-title text-center">{{ 'general.cart.title' | t }}</h1>
+</div>
+
+<div class="cart_page inner">
+  {% if cart.item_count == 0 %}<div class="hide">{% endif %}
+  <form action="{{ routes.cart_url }}" method="post" class="cart_form">
+      <div data-ajax-cart-section class="grid items-start">
+        <div>
+          {% assign freebeevar = settings.freebeevar | times: 1 %}
+          {% assign autoaddprod = settings.autoaddprod | times: 1 %}
+          <div class="cart_form-items" data-ajax-cart-section-scroll>
+            {% for item in cart.items %}
+              {% assign item_index = forloop.index %}
+
+              <div class="cart_form-item flex nowrap items-center {{ item.product.id }}">
+                  <a class="cart_form-image" href="{{ item.url }}">
+                    <picture class="productShots">
+                      <source srcset="{{  item.image | image_url: width: 220, height: 220, crop: 'bottom' }}, {{  item.image | image_url:  width: 110, height: 110, crop: 'bottom' }}" media="(min-width: 320px)" />
+                      <source srcset="{{  item.image | image_url:  width: 220, height: 220, crop: 'bottom' }}, {{  item.image | image_url:  width: 110, height: 110, crop: 'bottom' }}" media="(min-width: 300px)" />
+                    <img class="prod-shot" src="{{  item.image | image_url:  width: 110, height: 110, crop: 'bottom' }}" alt="{{  item.image.alt | escape }}" width="110" height="110" />
+                  </picture>
+              </a>
+                  <div class="cart_form-text">
+                    <a href="{{ item.url }}">{{ item.product.title }}</a> 
+              
+                    {%- if item.product.has_only_default_variant == false
+                      or item.properties.size != 0
+                      or item.selling_plan_allocation != null
+                    -%}
+                    <ul class="product-options">
+                      {%- if item.product.has_only_default_variant == false -%}
+                        {%- for option in item.options_with_values -%}
+                          <li>{% comment %}{{ option.name }}: {% endcomment %}{{ option.value }}</li>
+                        {%- endfor -%}
+                      {%- endif -%}
+                      
+                    {%- for property in item.properties -%}
+                      {%- assign property_first_char = property.first | slice: 0 -%}
+                      {%- if property.last != blank and property_first_char != '_' -%}
+                          <li>{{ property.first }}:
+                            {%- if property.last contains '/uploads/' -%}
+                              <a href="{{ property.last }}" class="link" target="_blank">
+                                {{ property.last | split: '/' | last }}
+                              </a>
+                            {%- else -%}
+                              {{ property.last }}
+                            {%- endif -%}
+                          </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                    
+                      <li class="product-option selling_plan">{{ item.selling_plan_allocation.selling_plan.name }}</li>
+                    </ul> 
+                    {%- endif -%}
+              
+                    <div class="amount_price flex justify-between">
+                      <div class="flex cart_qty">
+                        <label class="visuallyhidden">Quantity:</label>
+                        <!-- data-ajax-cart-quantity-input ajaxifies the line item quantity input -->
+                        <!-- Use routes.cart_change_url for "Plus", "Minus", "Remove" buttons,
+                        add the data-ajax-cart-request-button attribute to ajaxify them -->
+                        {% if item.product.type == 'Sample' %}
+                        <a class="qty_adjust" data-ajax-cart-request-button href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity=1" > 
+                          - 
+                        </a>
+                        
+                        <!-- Add the data-ajax-cart-quantity-input attribute to quantity input fields -->
+                        <input data-ajax-cart-quantity-input="{{ item_index }}" name="updates[]" value="1" type="number" />
+                        
+                        <a class="qty_adjust" data-ajax-cart-request-button href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity=1"> 
+                          +
+                        </a>
+                        {% else %}
+                        <a class="qty_adjust" data-ajax-cart-request-button href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | minus: 1 }}" > 
+                          - 
+                        </a>
+                        
+                        <!-- Add the data-ajax-cart-quantity-input attribute to quantity input fields -->
+                        <input data-ajax-cart-quantity-input="{{ item_index }}" name="updates[]" value="{{ item.quantity }}" type="number" />
+                        
+                        <a class="qty_adjust" data-ajax-cart-request-button href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | plus: 1 }}"> 
+                          +
+                        </a>
+                        {% endif %}
+                      </div>
+                      <div class="price_with_discounts text-right">
+                        {% if item.original_price > item.final_price %}
+                          <s>{{ item.original_price | money }}</s>
+                        {% endif %}
+                        
+                        {{ item.final_price | money }}
+                        
+                        {% if item.line_level_discount_allocations.size > 0 %}
+                          <div class="text-m-80">
+                            <span class="visuallyhidden">Discounts:</span>
+                            {% for discount_allocation in item.line_level_discount_allocations %}
+                              <span class="pill flex items-center">
+                                {{- 'icon-discount.svg' | inline_asset_content -}} {{ discount_allocation.discount_application.title }}
+                              </span>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                        
+                      </div>
+                    </div>
+              
+                    <!-- Container for errors -->
+                    <div data-ajax-cart-messages="{{ item.key }}"></div>
+
+                  </div>
+
+                  <a href="/cart/change?line={{ item_index }}&amp;quantity=0" class="remove-button cart_remove" data-ajax-cart-request-button="">
+                    <small class="close_left">Remove</small>
+                  </a>
+
+                </div>
+    
+            {% endfor %}
+        </div>
+      
+        <div class="visuallyhidden">
+          <!-- data-ajax-cart-property-input ajaxifies the cart note textarea -->
+          <textarea data-ajax-cart-property-input
+            name="note" 
+            placeholder="Cart note">
+            {{ cart.note }}
+          </textarea>
+        </div>
+          
+          <!-- data-ajax-cart-static-element keeps the container unchanged
+          when the cart and the surrounding HTML get updated -->
+          <div data-ajax-cart-static-element class="my-cart__app-container"></div>
+          
+        </div>
+        
+        <div class="summary bg-tonal2">
+          {% assign got_subs = false %}
+          {% if settings.enable_free_subs_shippings %}
+            {% for item in cart.items %}
+              {% if item.selling_plan_allocation != null %}
+                  {% assign got_subs = true %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          
+          {% if settings.enable_cart_progress %}
+          <div class="x-till">
+            
+            {% assign shipping_value = settings.shipping_value %}
+            {% assign zero = 0 %}
+            {% assign cart_total = cart.total_price %}
+            {% assign shipping_value_left = shipping_value | minus: cart_total %}
+            
+            {% assign cart_total_upped = cart_total | times: 100 %}
+            
+            {% assign firsval = cart_total_upped | divided_by: shipping_value %}
+            {% if firsval > 100 %}
+            {% assign percentage = 100 %}
+            {% else %}
+            {% assign percentage = firsval %}
+            {% endif %}
+            
+            <div class="shipping-savings-message">
+              {% if got_subs %}
+              
+              {% if shipping_value == 0 %}
+              <div class="shipping_message"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="var(--color-green)" fill-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm3.098 4L5.7 10.001l-1.803-2.01L3 9 5.7 12 12 4.996 11.098 4Z"/></svg> {{ settings.cartbarsuccess }}</div>
+              {% else %}
+              <div class="shipping_message"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="var(--color-green)" fill-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm3.098 4L5.7 10.001l-1.803-2.01L3 9 5.7 12 12 4.996 11.098 4Z"/></svg> {{ settings.cartbartitle }}</div>
+              <div class="bar_holder-wrap flex nowrap items-center">
+                  <div class="x_till-price">{{ zero | money}}</div>
+                  <div class="bar_holder">
+                    <div class="progress" id="progressReport" data-starget="{{ shipping_value }}" data-svalue="{{ cart_total }}" style="width:100%"></div>
+                  </div>
+                <div class="x_till-price">{{ shipping_value | money }}</div>
+                </div>
+              {% endif %}
+              
+              {% elsif shipping_value == 0 %}
+              <div class="shipping_message"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="var(--color-green)" fill-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm3.098 4L5.7 10.001l-1.803-2.01L3 9 5.7 12 12 4.996 11.098 4Z"/></svg> {{ settings.cartbarsuccess }}</div>
+              {% else %}
+                {% if shipping_value_left > 0 %}
+              <div class="shipping_message">{{ shipping_value_left | money }} {{ settings.togotitle }}</div>
+                {% else %}
+              <div class="shipping_message"><svg width="16" height="16" viewBox="0 0 16 16"><path fill="var(--color-green)" fill-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm3.098 4L5.7 10.001l-1.803-2.01L3 9 5.7 12 12 4.996 11.098 4Z"/></svg> {{ settings.cartbarsuccess }}</div>
+                {% endif %}
+              <div class="bar_holder-wrap flex nowrap items-center">
+                <div class="x_till-price">{{ zero | money}}</div>
+                <div class="bar_holder">
+                  <div class="progress" id="progressReport" data-starget="{{ shipping_value }}" data-svalue="{{ cart_total }}" style="width:{{ percentage }}%"></div>
+                </div>
+                <div class="x_till-price">{{ shipping_value | money }}</div>
+              </div>
+              {% endif %}
+            </div>
+            
+          </div>
+          {% endif %}
+          
+          <div class="totals text-right">
+            <p class="totals__subtotal-value">{{ 'general.cart.subtotal' | t }}: {{ cart.total_price | money_with_currency }}</p>
+          </div>
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <div class="totals discounts text-right">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <p class="discounts__discount discounts__discount--position">
+                  {{ discount.title }}
+                  (-{{ discount.total_allocated_amount | money }})
+                </p>
+              {%- endfor -%}
+            </div>
+            {%- endif -%}
+          
+
+          <div class="text-center">
+            <button type="submit" name="checkout" class="go-cart__button">
+              {{ 'general.cart.checkout' | t }}
+            </button>
+            
+            <a class="button nude" href="/collections/products">{{ 'general.cart.continue_shopping' | t }}</a>
+            
+          </div>
+          {%- if additional_checkout_buttons -%}
+            <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+              {{ content_for_additional_checkout_buttons }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </form>
+  </div>
+  {% if cart.item_count == 0 %}</div>{% endif %}
+
+
+
+{% if cart.item_count == 0 %}
+<div class="pt-s pb-l">
+  <div class="empty-page-content text-center inner">
+    <p class="cart--empty-message">{{ 'general.cart.empty' | t }}</p>
+    <a href="{{ routes.root_url }}" class="btn btn--has-icon-after cart__continue-btn">{{ 'general.404.link' | t }}</a>
+  </div>
+</div>
+{% endif %}
+
+
+<div>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Cart page"
+}
+{% endschema %}

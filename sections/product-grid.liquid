@@ -10,7 +10,8 @@
 <div class="swag">
   <div class="products containerCat grid" id="grid">
     {%- for product in collection.products -%}
-      {% render 'product-card', product: product %}
+      {% render 'product-card'
+        , product: product %}
     {%- else -%}
       <p class="no-products">{{ 'collections.general.no_matches' | t }}</p>
     {%- endfor -%}
@@ -24,7 +25,7 @@
 
       <div class="filter-panel" id="filterPanel">
         <button class="filter-close" id="filterClose">Close</button>
-        
+
         <div class="filter-section">
           <h3>Type</h3>
           <ul class="filter-list" data-filter-type="type">
@@ -33,8 +34,12 @@
               {%- if type != blank -%}
                 <li>
                   <label>
-                    <input type="checkbox" value="{{ type | handle }}" data-count="{{ collection.products | where: 'type', type | size }}">
-                    {{ type }} <span class="count">{{ collection.products | where: 'type', type | size }}</span>
+                    <input
+                      type="checkbox"
+                      value="{{ type | handle }}"
+                      data-count="{{ collection.products | where: 'type', type | size }}">
+                    {{ type }}
+                    <span class="count">{{ collection.products | where: 'type', type | size }}</span>
                   </label>
                 </li>
               {%- endif -%}
@@ -42,7 +47,8 @@
             <li>
               <label>
                 <input type="checkbox" value="all">
-                This is everything <span class="count">{{ collection.products.size }}</span>
+                This is everything
+                <span class="count">{{ collection.products.size }}</span>
               </label>
             </li>
           </ul>
@@ -62,8 +68,12 @@
                 {%- endfor -%}
                 <li>
                   <label>
-                    <input type="checkbox" value="{{ tag | handle }}" data-count="{{ tag_count }}">
-                    {{ tag }} <span class="count">{{ tag_count }}</span>
+                    <input
+                      type="checkbox"
+                      value="{{ tag | handle }}"
+                      data-count="{{ tag_count }}">
+                    {{ tag }}
+                    <span class="count">{{ tag_count }}</span>
                   </label>
                 </li>
               {%- endif -%}
@@ -78,9 +88,9 @@
 </div>
 
 {%- if section.settings.show_filters and collection.products.size > 16 -%}
-<script>
-  // Product Grid Filtering
-  (function() {
+  <script>
+      // Product Grid Filtering
+      (function() {
     const filterToggle = document.getElementById('filterToggle');
     const filterPanel = document.getElementById('filterPanel');
     const filterClose = document.getElementById('filterClose');
@@ -147,7 +157,12 @@
       cb.addEventListener('change', applyFilters);
     });
 
-    // Product grid animation stagger
+      })();
+  </script>
+{%- endif -%}
+
+<script>
+  // Product grid animation stagger
     setTimeout(() => {
       products.forEach((product, index) => {
         setTimeout(() => {
@@ -155,50 +170,41 @@
         }, Math.random() * 35000);
       });
     }, 12000);
-  })();
 </script>
-{%- endif -%}
 
 {% schema %}
-{
-  "name": "Product Grid",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_section_css",
-      "label": "Enable section CSS",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_filters",
-      "label": "Show filters",
-      "default": true,
-      "info": "Displays if collection has more than 16 products"
-    },
-    {
-      "type": "range",
-      "id": "products_per_row_desktop",
-      "min": 2,
-      "max": 5,
-      "step": 1,
-      "label": "Products per row (desktop)",
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "products_per_row_mobile",
-      "min": 1,
-      "max": 3,
-      "step": 1,
-      "label": "Products per row (mobile)",
-      "default": 2
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Grid"
-    }
-  ]
-}
+  {
+    "name": "Product Grid",
+    "class": "relative z8",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_filters",
+        "label": "Show filters",
+        "default": true,
+        "info": "Displays if collection has more than 16 products"
+      }, {
+        "type": "range",
+        "id": "products_per_row_desktop",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "label": "Products per row (desktop)",
+        "default": 4
+      }, {
+        "type": "range",
+        "id": "products_per_row_mobile",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "label": "Products per row (mobile)",
+        "default": 2
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Grid"
+      }
+    ]
+  }
 {% endschema %}

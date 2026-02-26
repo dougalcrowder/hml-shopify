@@ -213,6 +213,7 @@ p {
 
 // Lyrics sections use fittext and outline class
 .lyrics {
+  background-color: var(--colour-bg);
   position: relative;
   z-index: 23;
   padding: 32px 16px 0;

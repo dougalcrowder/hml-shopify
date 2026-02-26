@@ -3,8 +3,6 @@
   Always loads section-campaigns.css for drukster styles
 {% endcomment %}
 
-{{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
-
 <section class="lyrics hiya">
   <div class="lyric">
     {%- assign all_lyrics = shop.metaobjects.rad_lyrics.values -%}

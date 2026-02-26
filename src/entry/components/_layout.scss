@@ -65,6 +65,97 @@ body {
     align-items: stretch;
     align-content: stretch;
 }
+.justify-start {
+  justify-content: flex-start; 
+}
+.justify-end {
+  justify-content: flex-end; 
+}
+.justify-between {
+  justify-content: space-between; 
+}
+.justify-around {
+  justify-content: space-around; 
+}
+.justify-center {
+  justify-content: center; 
+}
+.justify-button-bottom {
+  justify-content: flex-start;
+  .button_block {
+    margin-top: auto;
+  }
+}
+
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.shopify-block:has(.align-end) {
+  margin-top: auto;
+}
+
+.content-center {
+  align-content: center;
+}
+.content-start {
+  align-content: flex-start;
+}
+.content-end {
+  align-content: flex-end;
+}
+.content-between {
+  align-content: space-between;
+}
+.content-around {
+  align-content: space-around;
+}
+
+//self alignment
+.flex-end {
+  align-self: flex-end;
+}
+.flex-start {
+  align-self: flex-start;
+}
+.flex-center {
+  align-self: center;
+}
+
+.nowrap {
+  display: flex;
+  flex-wrap: nowrap;  
+}
+@media screen and (min-width: 768px) {
+  .nowrap_d {
+    flex-wrap: nowrap;  
+  }
+}
+@media screen and (max-width: 768px) {
+  .nowrap_m {
+    flex-wrap: nowrap;  
+  }
+}
+
+//text
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .fullbrowser {
     img {

@@ -36,13 +36,6 @@
     <!-- Critical CSS -->
     {% comment %} {{ 'styles-top.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
-    <!-- Dawn Infrastructure CSS -->
-    {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-    {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
-    {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
-    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-    {{ 'component-price.css' | asset_url | stylesheet_tag }}
     {{ 'styles.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
 
@@ -73,41 +66,16 @@
       </main>
 
       {% section 'footer' %}
-  </div>
-
-    <!-- Cart Drawer -->
-  {% render 'cart-drawer' %}
-
-    <!-- Cart Notification -->
-    {% render 'cart-notification' %}
-
+    </div>
+    {% unless template == 'cart' %}
+      <!-- Cart Drawer -->
+      {% section 'sidecart' %}
+    {% endunless %}
+    {% render 'liquid-ajax-cart' %}
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
-
-    <script>
-      window.shopUrl = '{{ request.origin }}';
-      window.routes = {
-        cart_add_url: '{{ routes.cart_add_url }}',
-        cart_change_url: '{{ routes.cart_change_url }}',
-        cart_update_url: '{{ routes.cart_update_url }}',
-        cart_url: '{{ routes.cart_url }}',
-        predictive_search_url: '{{ routes.predictive_search_url }}'
-      };
-
-      window.cartStrings = {
-        error: `{{ 'sections.cart.cart_error' | t }}`,
-        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
-      };
-
-      window.variantStrings = {
-        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-        soldOut: `{{ 'products.product.sold_out' | t }}`,
-        unavailable: `{{ 'products.product.unavailable' | t }}`,
-        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
-      };
-    </script>
 
     <script src="{{ 'fitty.js' | asset_url }}"></script>
     <script src="{{ 'scripts.js' | asset_url }}"></script>

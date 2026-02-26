@@ -1,0 +1,404 @@
+// .sidecart-active {
+//   .needsclick {
+//     display: none;
+//     visibility: hidden;
+//   }
+// }
+
+
+#shopify-section-sidecart {
+  z-index: 9999;
+}
+
+button.cart_close.button {
+  padding: 0;
+  border: 0;
+  z-index: -2;
+  background-color: rgba(255,255,255,0.0);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 0px;
+  transition: none;
+  > div {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    background-color: #ebe9e140;
+    backdrop-filter: blur(6px);
+    transition: var(--transit);
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      background-color: hsl(94 12% 33% / 25%);
+    }
+  }
+}
+
+.sidecart {
+  text-align: left;
+  z-index: -1;
+  min-height: 100%;
+  background: #fff;
+  color: var(--color-black);
+  padding: 0;
+  padding-bottom: 196px;
+  border-radius: 0;
+  top: 0;
+  bottom: 0;
+  overflow-x: auto;
+  > div.mr_ajax {
+    min-height: calc(100dvh - 380px);
+    @media screen and (min-width: 960px) {
+      min-height: calc(100dvh - 420px);
+    }
+  }
+  &.no_scoop {
+    padding-bottom: 140px;
+  }
+  div.h2 {
+    padding: 0 12px;
+    margin: 12px 0 12px 0;
+    @media screen and (min-width: 600px) {
+      padding: 0 24px;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    max-width: 520px;
+    width: 520px;
+    right: -520px;
+    padding-bottom: 240px;
+    &.no_scoop {
+      padding-bottom: 180px;
+    }
+  }
+  .line_items {
+    // height: calc(100vh - 381px);
+    //overflow-y: auto;
+    padding: 0 10px;
+    margin: 0 10px;
+    &.no_scoop {
+      // height: calc(100vh - 315px);
+      padding: 0 6px;
+    }
+    @media screen and (min-width: 600px) {
+      // height: calc(100vh - 421px);
+      padding: 0 12px;
+      margin: 0 12px;
+      &.no_scoop {
+        // height: calc(100vh - 355px);
+        padding: 0 12px;
+      }
+    }
+  }
+  .cart_header {
+    top: 0;
+    background: white;
+  }
+  .cart_footer {
+    padding: 4px 20px 4px 20px;
+    bottom: 0;
+    z-index: 99;
+    background-color: var(--color-warm-stone);
+    @media screen and (min-width: 600px) {
+      padding: 4px 24px 12px 24px;
+    }
+    .subtotal {
+      padding: 8px 0;
+    }
+    .accepted_methods {
+      gap: 4px;
+      li {
+        flex: 1;
+        svg {
+          max-height: 24px;
+          @media screen and (min-width: 600px) {
+            max-height: 32px;
+          }
+        }
+      }
+    }
+  }
+  button.button {
+    width: 100%;
+    margin-bottom: 20px;
+    &.clickstyle {
+      margin-bottom: 0;
+      position: relative;
+      &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 0;
+        background-color: var(--color-border);
+        opacity: 15%;
+        height: 1px;
+      }
+    }
+  }
+  .clicker {
+    bottom: 110px;
+    z-index: 3;
+    @media screen and (min-width: 600px) {
+      bottom: 146px;
+    }
+  }
+  .clickstyle {
+    border-bottom: 1px solid var(--color-tonal4);
+    padding: 8px 20px;
+    background-color: var(--color-warm-stone);
+    img {
+      width: 50px;
+    }
+    &:hover {
+      border-color: white;
+    }
+  }
+  form:has(pre) {
+    + .clicker {
+      opacity: 0;
+      //visibility: hidden;
+      z-index: -1;
+    }
+  }
+  form.my-cart {
+    padding: 30px 0 6px 0;
+    background: #FFF;
+    margin: 0;
+    position: relative;
+    z-index:1;
+    min-height: calc(100dvh - 450px);
+    @media screen and (min-width: 600px) {
+      padding: 30px 0 12px 0;
+      min-height: calc(100dvh - 520px);
+    }
+    .cart_item {
+      position: relative;
+      padding: 10px 0 10px 0;
+      gap: 8px;
+      //border-bottom: 1px solid var(--color-tonal8);
+      border-bottom: 1px solid var(--color-tonal3);
+      &:last-child {
+        margin-bottom: 0;
+      }
+      picture img {
+        display: block;
+        height: auto;
+      }
+      .cart_item_image {
+        flex: 0;
+        flex-basis: 55px;
+        @media screen and (min-width: 600px) {
+          flex-basis: 100px;
+        }
+      }
+      .cart_item_text {
+        flex: 0;
+        flex-basis: calc(100% - 61px);
+        @media screen and (min-width: 600px) {
+          padding: 12px 0;
+          flex-basis: calc(100% - 120px);
+        }
+      }
+      h4 {
+        margin: 0;
+        font-size: 100%;
+      }
+      .product-option {
+        font-size: 81.25%;
+        opacity: 0.8;
+      }
+      .cart_item_text {
+        z-index: 3;
+        position: relative;
+        gap: 4px;
+        .title {
+          width: 100%;
+        }
+        .amount_price {
+          font-size: 87.5%;
+          width: 100%;
+          s {
+            font-family: var(--font-stack-header);
+            padding-right: 8px;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cart_qty {
+  justify-content: flex-start;
+  margin-bottom: 2px;
+  label {
+    flex: 0 1 auto;
+  }
+  input {
+    flex: 0 1 auto;
+    min-width: 20px;
+    max-width: 30px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #f5f5f5;
+    text-align: center;
+    -moz-appearance: textfield;
+    font-size: 100%;
+    line-height: 22px;
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .qty_adjust {
+    align-items: center;
+    border: 1px solid #f5f5f5;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    height: 24px;
+    justify-content: center;
+    margin: 0 2px;
+    padding: 0 5px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: 24px;
+  }
+}
+
+
+.sidecart_in {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  max-width: 100vw;
+  width: 100vw;
+  right: -100vw;
+  transition:  var(--transit);
+  @media screen and (min-width: 520px) {
+    max-width: 520px;
+    width: 520px;
+    right: -520px;
+  }
+}
+.sidecart.alive, .sidecart.alive .sidecart_in {
+  display: block;
+  visibility: visible;
+}
+.sidecart.active, .sidecart.active .sidecart_in {
+  opacity: 1;
+  z-index: 99999;
+  right: 0;
+  &+.button.cart_close.button {
+    height: 100vh;
+    width: 100vw;
+    z-index: 99998;
+    cursor: default;
+    > div {
+      opacity: 1;
+    }
+  }
+}
+// we need to get this in there quick so the cart goes over the backdrop bg_closer
+.sidecart-active {
+  .sidecart_in {
+    z-index: 99999;
+  }
+}
+Opens the cart for dev
+.sidecart {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  z-index: 99999;
+  right: 0;
+}
+
+.remove-button.cart_remove {
+  cursor: pointer;
+  height: 40px;
+  padding-bottom: 20px;
+  position: absolute;
+  right: 0;
+  text-indent: -99999px;
+  top: 4px;
+  width: 40px;
+  z-index: 8;
+  @media screen and (min-width: 600px) {
+    top: 19px;
+  }
+  &:after {
+    bottom: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--color-text);
+    content: "×";
+    display: block;
+    font-weight: 100;
+    font-size: 160%;
+    left: 0;
+    line-height: 20px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    text-indent: 0;
+    top: 0
+  }
+  &:hover:after {
+      color: var(--color-error)
+  }
+}
+
+.sidecart .button.closecart {
+  position: absolute;
+  top: 8px;
+  right: 4px;
+  width: 40px;
+  z-index: 999999;
+  .js-ajax-cart-empty & {
+    top: 12px;
+  }
+}
+
+
+.empty_titles {
+  transition: var(--transit);
+  h3, p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  h3 {
+    font-size: 120%;
+    margin-top: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1;
+    border-color: var(--color-border);
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
+.price_with_discounts {
+  .pill {
+    background-color: black;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 4px;
+    gap: 6px;
+    .icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

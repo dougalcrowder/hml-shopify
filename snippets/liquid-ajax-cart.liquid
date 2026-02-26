@@ -1,0 +1,29 @@
+<script type="application/json" data-ajax-cart-initial-state>
+         {{ cart | json }}
+</script>
+
+
+<script type="module">
+  import '{{ "liquid-ajax-cart-v2.1.2.js" | asset_url }}';
+
+  liquidAjaxCart.conf("quantityTagAllowZero", true);
+  
+  document.addEventListener('liquid-ajax-cart:request-end', event => {
+    const {requestState} = event.detail;
+
+    if (requestState.requestType === 'add' && requestState.responseData?.ok) {
+
+
+      let sideCart = document.getElementById('sidecart'); 
+      document.body.classList.add("sidecart-active");
+      sideCart.classList.add('alive');
+      setTimeout(function() {
+        sideCart.classList.add('active');
+      }, 50);
+
+    }
+
+  });
+
+
+</script>

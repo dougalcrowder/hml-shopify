@@ -1,240 +1,385 @@
-{% comment %}
+{%- comment -%}
   Product Template - Main Product Display
-  Includes gallery, details, accordions, and add to cart
-{% endcomment %}
+  Replicates the productfly section from the live site
+{%- endcomment -%}
+{{ 'product_page.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.enable_section_css -%}
-  {{ 'section-product-template.css' | asset_url | stylesheet_tag }}
-{%- endif -%}
+  <div class="flex">
 
-<div class="product-template">
-  <div class="product-gallery">
+  {%- comment -%} Left: Product Images {%- endcomment -%}
+  <div class="product-images">
     {%- if product.images.size > 0 -%}
-      <div class="gallery-main" id="productGallery">
+      <div class="product_images" id="images">
         {%- for image in product.images -%}
-          <a href="{{ image | image_url: width: 2560 }}" 
-             class="gallery-item{% if forloop.first %} active{% endif %}"
-             data-index="{{ forloop.index0 }}">
-            <img src="{{ image | image_url: width: 1200 }}"
-                 srcset="{{ image | image_url: width: 600 }} 600w,
-                         {{ image | image_url: width: 1200 }} 1200w,
-                         {{ image | image_url: width: 1800 }} 1800w"
-                 sizes="(max-width: 767px) 100vw, 50vw"
-                 alt="{{ image.alt | default: product.title }}"
-                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+          {%- assign img_index = forloop.index -%}
+          <a
+            class="imager i-{{ img_index }}{% if forloop.first %} intersecting{% endif %}"
+            data-dot="doti-{{ img_index }}"
+            href="{{ image | image_url: width: 2560, height: 2560, crop: 'center' }}"
+            data-img="{{ image | image_url: width: 2560, height: 2560, crop: 'center' }}"
+            data-thumb="{{ image | image_url: width: 100, height: 100, crop: 'center' }}"
+            data-alt="{{ image.alt | default: product.title | escape }}"
+            data-height="{{ image.height }}"
+            data-width="{{ image.width }}">
+            <picture>
+              <source srcset="{{ image | image_url: width: 1240, height: 1240, crop: 'center' }} 1x, {{ image | image_url: width: 2480, height: 2480, crop: 'center' }} 2x" media="(min-width: 1921px)">
+              <source srcset="{{ image | image_url: width: 920, height: 920, crop: 'center' }} 1x, {{ image | image_url: width: 1840, height: 1840, crop: 'center' }} 2x" media="(min-width: 1441px)">
+              <source srcset="{{ image | image_url: width: 680, height: 680, crop: 'center' }} 1x, {{ image | image_url: width: 1360, height: 1360, crop: 'center' }} 2x" media="(min-width: 1261px)">
+              <source srcset="{{ image | image_url: width: 590, height: 590, crop: 'center' }} 1x, {{ image | image_url: width: 1180, height: 1180, crop: 'center' }} 2x" media="(min-width: 1025px)">
+              <source srcset="{{ image | image_url: width: 472, height: 472, crop: 'center' }} 1x, {{ image | image_url: width: 944, height: 944, crop: 'center' }} 2x" media="(min-width: 861px)">
+              <source srcset="{{ image | image_url: width: 370, height: 370, crop: 'center' }} 1x, {{ image | image_url: width: 740, height: 740, crop: 'center' }} 2x" media="(min-width: 768px)">
+              <source srcset="{{ image | image_url: width: 747, height: 747, crop: 'center' }} 1x, {{ image | image_url: width: 1494, height: 1494, crop: 'center' }} 2x" media="(min-width: 415px)">
+              <source srcset="{{ image | image_url: width: 394, height: 394, crop: 'center' }} 1x, {{ image | image_url: width: 788, height: 788, crop: 'center' }} 2x" media="(min-width: 376px)">
+              <source srcset="{{ image | image_url: width: 355, height: 355, crop: 'center' }} 1x, {{ image | image_url: width: 710, height: 710, crop: 'center' }} 2x">
+              <img
+                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="{{ image.alt | default: product.title | escape }}"
+                width="100"
+                height="100">
+            </picture>
           </a>
         {%- endfor -%}
       </div>
-    {%- endif -%}
-  </div>
 
-  <div class="product-details">
-    <h1 class="product-title">{{ product.title }}</h1>
-
-    <div class="product-price">
-      {%- if product.compare_at_price > product.price -%}
-        <span class="price-compare">{{ product.compare_at_price | money }}</span>
-        <span class="price-sale">{{ product.price | money }}</span>
-      {%- else -%}
-        <span class="price">{{ product.price | money }}</span>
-      {%- endif -%}
-
-      {%- comment -%} Price ex VAT {%- endcomment -%}
-      <br>
-      {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
-      {%- if product.compare_at_price > product.price -%}
-        {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
-        <span class="price-compare">{{ compare_ex_vat | money }}</span>
-      {%- endif -%}
-      <span class="price{% if product.compare_at_price > product.price %}-sale{% endif %}">
-        {{ price_ex_vat | money }}
-      </span>
-    </div>
-
-    {%- if product.description != blank -%}
-      <div class="product-description">
-        {{ product.description }}
-      </div>
-    {%- endif -%}
-
-    {%- comment -%} Product Details Accordions {%- endcomment -%}
-    {%- if section.blocks.size > 0 -%}
-      <div class="product-accordions">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'accordion' -%}
-              <details class="accordion" {{ block.shopify_attributes }}>
-                <summary>{{ block.settings.title }}</summary>
-                <div class="accordion-content">
-                  {{ block.settings.content }}
-                </div>
-              </details>
-          {%- endcase -%}
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-
-    {%- comment -%} Product Form {%- endcomment -%}
-    {% form 'product', product, id: 'product-form' %}
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-
-      {%- unless product.has_only_default_variant -%}
-        <div class="product-variants">
-          {%- for option in product.options_with_values -%}
-            <div class="product-option">
-              <label for="Option{{ option.position }}">{{ option.name }}</label>
-              <select id="Option{{ option.position }}" 
-                      name="options[{{ option.name | escape }}]"
-                      class="product-option-select">
-                {%- for value in option.values -%}
-                  <option value="{{ value | escape }}"
-                          {% if option.selected_value == value %}selected{% endif %}>
-                    {{ value }}
-                  </option>
-                {%- endfor -%}
-              </select>
-            </div>
-          {%- endfor -%}
-        </div>
-      {%- endunless -%}
-
-      {%- if section.settings.show_quantity -%}
-        <div class="product-quantity">
-          <label for="Quantity">Quantity</label>
-          <input type="number" 
-                 id="Quantity" 
-                 name="quantity" 
-                 value="1" 
-                 min="1">
-        </div>
-      {%- endif -%}
-
-      <button type="submit" 
-              name="add"
-              class="product-submit"
-              {% unless product.available %}disabled{% endunless %}>
-        {%- if product.available -%}
-          {{ 'products.product.add_to_cart' | t }}
-        {%- else -%}
-          {{ 'products.product.sold_out' | t }}
-        {%- endif -%}
-      </button>
-
-      {%- if section.settings.show_note -%}
-        <p class="product-note">{{ section.settings.note_text }}</p>
-      {%- endif -%}
-    {% endform %}
-  </div>
-</div>
-
-{%- comment -%} Gallery click functionality {%- endcomment -%}
-<script>
-  (function() {
-    const galleryItems = document.querySelectorAll('#productGallery .gallery-item');
-    
-    galleryItems.forEach((item, index) => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        // You can integrate a lightbox library here if needed
-        // For now, just cycle through images
-        galleryItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
-
-    // Variant selection
-    const selects = document.querySelectorAll('.product-option-select');
-    const form = document.getElementById('product-form');
-    
-    if (selects.length > 0) {
-      selects.forEach(select => {
-        select.addEventListener('change', () => {
-          // Find matching variant
-          const options = Array.from(selects).map(s => s.value);
-          const variant = {{ product.variants | json }}.find(v => {
-            return options.every((opt, i) => v.options[i] === opt);
-          });
-          
-          if (variant) {
-            form.querySelector('input[name="id"]').value = variant.id;
-            
-            // Update price
-            const priceEl = document.querySelector('.product-price .price, .product-price .price-sale');
-            if (priceEl && variant.price) {
-              priceEl.textContent = new Intl.NumberFormat('en-GB', {
-                style: 'currency',
-                currency: '{{ cart.currency.iso_code }}'
-              }).format(variant.price / 100);
-            }
-
-            // Update availability
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (variant.available) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = {{ 'products.product.add_to_cart' | t | json }};
-            } else {
-              submitBtn.disabled = true;
-              submitBtn.textContent = {{ 'products.product.sold_out' | t | json }};
+      <script>
+          function scrollTo(el, eel) {
+            const elLeft = el.offsetLeft + el.offsetWidth;
+            const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
+            if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
+              el.parentNode.scrollLeft = elLeft - elParentLeft;
+              eel.classList.add('alive');
+            } else if (elLeft <= el.parentNode.offsetLeft + el.parentNode.scrollLeft) {
+              el.parentNode.scrollLeft = el.offsetLeft - el.parentNode.offsetLeft;
             }
           }
+
+          function handler(entries, observer) {
+            for (entry of entries) {
+              let doti = entry.target.dataset.dot;
+              let butto = document.querySelector('.' + doti);
+              if (entry.isIntersecting) {
+                entry.target.classList.add('intersecting');
+                butto.classList.add('intersecting');
+              } else {
+                butto.classList.remove('intersecting');
+                entry.target.classList.remove('intersecting');
+              }
+            }
+          }
+
+          let observer = new IntersectionObserver(handler);
+      </script>
+
+      <div class="mobile_slideNav length-{{ product.images.size }} flex">
+        {%- for image in product.images -%}
+          {%- assign dot_index = forloop.index -%}
+          <button class="naked dotty doti-{{ dot_index }}{% if forloop.first %} intersecting{% endif %}">
+            <span></span>
+          </button>
+          <script>
+              document.querySelector('.doti-{{ dot_index }}').onclick = function () {
+                let slide = document.querySelector('.i-{{ dot_index }}');
+                let dot = document.querySelector('.doti-{{ dot_index }}');
+                scrollTo(slide, dot);
+              };
+              observer.observe(document.querySelector('.i-{{ dot_index }}'));
+          </script>
+        {%- endfor -%}
+      </div>
+
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Right: Product Details {%- endcomment -%}
+  <div class="product-details">
+    <div class="details_inner flex">
+
+      {%- comment -%} First holall: title, price, description, accordions {%- endcomment -%}
+      <div class="holall">
+        <h1>{{ product.title }}</h1>
+
+        <div id="product-price" class="product-price">
+          {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
+          {%- if product.compare_at_price > product.price -%}
+            {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
+          {%- endif -%}
+
+          <span class="firstPrice checkme" data-fakeid="id-none">
+            <i class="vat">
+              <span class="gbp">
+                {%- if product.compare_at_price > product.price -%}
+                  {{ product.compare_at_price | money }}
+                {%- else -%}
+                  {{ product.price | money }}
+                {%- endif -%}
+              </span>
+            </i>
+            <i class="noVat">
+              <span class="gbp">
+                {%- if product.compare_at_price > product.price -%}
+                  {{ compare_ex_vat | money }}
+                {%- else -%}
+                  {{ price_ex_vat | money }}
+                {%- endif -%}
+              </span>
+            </i>
+          </span>
+
+          {%- for variant in product.variants -%}
+            {%- assign variant_price_ex_vat = variant.price | divided_by: 1.2 -%}
+            <span class="updatePrice" data-fakeid="id-{{ variant.id }}">
+              <i class="vat">
+                <span class="gbp">
+                  {%- if variant.compare_at_price > variant.price -%}
+                    {{ variant.compare_at_price | money }}
+                  {%- else -%}
+                    {{ variant.price | money }}
+                  {%- endif -%}
+                </span>
+              </i>
+              <i class="noVat">
+                <span class="gbp">
+                  {%- if variant.compare_at_price > variant.price -%}
+                    {%- assign variant_compare_ex_vat = variant.compare_at_price | divided_by: 1.2 -%}
+                    {{ variant_compare_ex_vat | money }}
+                  {%- else -%}
+                    {{ variant_price_ex_vat | money }}
+                  {%- endif -%}
+                </span>
+              </i>
+            </span>
+          {%- endfor -%}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="introtext">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="accordion-container">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'accordion' -%}
+                  <div
+                    class="ac js-enabled{% if forloop.first %} is-active{% endif %}"
+                    id="ac-{{ forloop.index0 }}"
+                    {{ block.shopify_attributes }}>
+                    <h2 class="ac-q ac-header" tabindex="{{ forloop.index0 }}">
+                      <span
+                        class="ac-trigger"
+                        id="ac-trigger-{{ forloop.index0 }}"
+                        role="button"
+                        aria-controls="ac-panel-{{ forloop.index0 }}"
+                        aria-disabled="false"
+                        aria-expanded="{{ forloop.first | json }}">
+                        {{ block.settings.title }}
+                      </span>
+                    </h2>
+                    <div
+                      class="ac-a ac-panel"
+                      id="ac-panel-{{ forloop.index0 }}"
+                      role="region"
+                      aria-labelledby="ac-trigger-{{ forloop.index0 }}"
+                      style="transition-duration: 600ms;{% if forloop.first %} height: auto;{% else %} height: 0px;{% endif %}">
+                      <div class="ac-inner ac-text">
+                        {{ block.settings.content }}
+                      </div>
+                    </div>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Second holall: product form {%- endcomment -%}
+      <div class="holall">
+        <div id="prodform">
+          <ajax-cart-product-form>
+            {%- assign product_type_class = product.type | downcase | replace: ' ', '-' -%}
+            {% form 'product'
+              , product
+              , id: 'product-form-productfly' %}
+              <div class="addto flex variants-{{ product.variants.size }} {{ product_type_class }}">
+
+                {%- unless product.has_only_default_variant -%}
+                  <div class="field">
+                    <label>
+                      <select
+                        name="id"
+                        id="purchasableId"
+                        class="purchasableId {{ product_type_class }}">
+                        <option
+                          value=""
+                          disabled
+                          selected>
+                          {%- if product.options.first == 'Size' or product.options.first == 'Ring Size' -%}
+                            Size Option
+                          {%- else -%}
+                            {{ product.options.first }} Option
+                          {%- endif -%}
+                        </option>
+                        {%- for variant in product.variants -%}
+                          <option value="{{ variant.id }}">
+                            {{ variant.title }}
+                          </option>
+                        {%- endfor -%}
+                      </select>
+                    </label>
+                  </div>
+                {%- else -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.variants.first.id }}">
+                {%- endunless -%}
+
+                <div class="buttons">
+                  <input
+                    type="submit"
+                    class="button outline"
+                    value="{{ 'products.product.add_to_cart' | t }}"
+                    id="addToCart"
+                    {% if product.has_only_default_variant %}
+                    {% unless product.available %}
+                    disabled{% endunless %}
+                    {% else %}
+                    disabled
+                    {% endif %}>
+                </div>
+
+                {%- if section.settings.leadtime_text != blank -%}
+                  <div class="leadtime-container">
+                    <div class="leadtime">
+                      {{ section.settings.leadtime_text }}
+                    </div>
+                  </div>
+                {%- endif -%}
+
+              </div>
+            {% endform %}
+          </ajax-cart-product-form>
+          <script>
+              document.addEventListener('change', function (event) {
+                if (event.target.id !== 'purchasableId') return;
+                let selectedValue = event.target.value;
+                if (!selectedValue) {
+                  document.getElementById('addToCart').disabled = true;
+                } else {
+                  let ourValue = 'id-' + selectedValue;
+                  document.querySelectorAll('#product-price span').forEach(function (priceItem) {
+                    let ourId = priceItem.dataset.fakeid;
+                    if (ourId !== ourValue) {
+                      priceItem.classList.remove('checkme');
+                    } else {
+                      priceItem.classList.add('checkme');
+                    }
+                  });
+                  document.getElementById('addToCart').disabled = false;
+                }
+              }, false);
+          </script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bigger-picture@0.0.12/dist/bigger-picture.umd.min.js"></script>
+<script>
+  
+  // initialize BiggerPicture
+  let bp = BiggerPicture({
+    target: document.body
+  });
+  
+  // grab image links
+  let imageLinks = document.querySelectorAll("#images > a");
+  
+  // add click listener to open BiggerPicture
+  for (let i = 0; i < imageLinks.length; i++) {
+    imageLinks[i].addEventListener("click", openGallery);
+  }
+  
+  // open BiggerPicture
+  function openGallery(e) {
+    e.preventDefault();
+    bp.open({
+      items: imageLinks,
+      el: e.currentTarget
+    });
+  }
+
+
+  // Accordion is handled by the custom JS below
+</script>
+
+<script>
+  (function () {
+    const acItems = document.querySelectorAll('.productfly .ac');
+    acItems.forEach(function (ac) {
+      const trigger = ac.querySelector('.ac-trigger');
+      const panel = ac.querySelector('.ac-panel');
+      if (!trigger || !panel) return;
+      trigger.addEventListener('click', function () {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        acItems.forEach(function (otherAc) {
+          const otherTrigger = otherAc.querySelector('.ac-trigger');
+          const otherPanel = otherAc.querySelector('.ac-panel');
+          if (otherTrigger && otherPanel) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherPanel.style.height = '0px';
+            otherAc.classList.remove('is-active');
+          }
         });
+        if (!isExpanded) {
+          trigger.setAttribute('aria-expanded', 'true');
+          panel.style.height = 'auto';
+          ac.classList.add('is-active');
+        }
       });
-    }
+    });
   })();
 </script>
 
 {% schema %}
-{
-  "name": "Product Template",
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "enable_section_css",
-      "label": "Enable section CSS",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_quantity",
-      "label": "Show quantity selector",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_note",
-      "label": "Show product note",
-      "default": false
-    },
-    {
-      "type": "richtext",
-      "id": "note_text",
-      "label": "Product note text",
-      "info": "E.g., 'Depending on the size you choose, we may need 5-7 weeks to make to order.'"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "accordion",
-      "name": "Accordion Item",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Product Details"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Template"
-    }
-  ]
-}
+  {
+    "name": "Product Template",
+    "class": "productfly",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "leadtime_text",
+        "label": "Lead time text",
+        "info": "Shown beneath the add to cart button. E.g. 'Depending on the size you choose, we may need 5-7 weeks to make to order.'",
+        "default": "<p>Depending on the size you choose, we may need 5-7 weeks to make to order.</p>"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "accordion",
+        "name": "Accordion Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Product Details"
+          }, {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Template"
+      }
+    ]
+  }
 {% endschema %}
