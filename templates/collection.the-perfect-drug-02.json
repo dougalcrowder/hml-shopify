@@ -50,7 +50,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -118,7 +118,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -186,7 +186,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -220,7 +220,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -254,7 +254,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -288,7 +288,7 @@
           "type": "grid-scrolling-images",
           "name": "grid-scrolling-images",
           "settings": {
-            "z_index": 20,
+            "z_index": 6,
             "heightimage": "shopify://shop_images/The-Full-Spectrum-Strap-Ring-3_feb2ce24-5b9c-4005-abed-79501f04f89a.jpg"
           },
           "blocks": {
