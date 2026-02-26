@@ -50,7 +50,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 1,
+            "z_index": 20,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -118,7 +118,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 1,
+            "z_index": 20,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -186,7 +186,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 1,
+            "z_index": 20,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -220,7 +220,7 @@
           "type": "grid-column-row",
           "name": "Column Row",
           "settings": {
-            "z_index": 1,
+            "z_index": 20,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
@@ -250,106 +250,30 @@
             "grid_column_item_GW9VeK"
           ]
         },
-        "grid_column_row_wXymib": {
+        "grid_column_row_jCRjTE": {
           "type": "grid-column-row",
           "name": "Column Row",
-          "disabled": true,
           "settings": {
-            "z_index": 6,
+            "z_index": 20,
             "padding_top": "medium",
             "padding_bottom": "medium"
           },
           "blocks": {
-            "grid_column_item_bQfDVR": {
+            "grid_column_item_8gqhUh": {
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/ANAOR_5.png",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 6,
-                "desktop_width": 7,
-                "desktop_row": 1,
-                "tablet_start": 6,
-                "tablet_width": 7,
-                "tablet_row": 1,
-                "mobile_start": 6,
-                "mobile_width": 7,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "grid_column_item_bQfDVR"
-          ]
-        },
-        "grid_column_row_6mCkjb": {
-          "type": "grid-column-row",
-          "name": "Column Row",
-          "disabled": true,
-          "settings": {
-            "z_index": 1,
-            "padding_top": "medium",
-            "padding_bottom": "medium"
-          },
-          "blocks": {
-            "grid_column_item_kz9U6Y": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/ANAOR_3.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 9,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 9,
-                "tablet_width": 4,
-                "tablet_row": 1,
-                "mobile_start": 9,
-                "mobile_width": 4,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
-            "grid_column_item_UzcaaH": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/ANAOR_2.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 5,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 5,
-                "tablet_width": 4,
-                "tablet_row": 1,
-                "mobile_start": 5,
-                "mobile_width": 4,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
-            "grid_column_item_VBAnJM": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/ANAOR_1.jpg",
+                "image": "shopify://shop_images/HM-PD02-8-Under-1.png",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 1,
-                "desktop_width": 4,
+                "desktop_width": 12,
                 "desktop_row": 1,
                 "tablet_start": 1,
-                "tablet_width": 4,
+                "tablet_width": 12,
                 "tablet_row": 1,
                 "mobile_start": 1,
-                "mobile_width": 4,
+                "mobile_width": 12,
                 "mobile_row": 1,
                 "z_index": 1
               },
@@ -357,9 +281,7 @@
             }
           },
           "block_order": [
-            "grid_column_item_kz9U6Y",
-            "grid_column_item_UzcaaH",
-            "grid_column_item_VBAnJM"
+            "grid_column_item_8gqhUh"
           ]
         },
         "grid_scrolling_images_rhgPbE": {
@@ -464,8 +386,7 @@
         "grid_column_row_qkUnKq",
         "grid_column_row_bcfn3m",
         "grid_column_row_THcjhG",
-        "grid_column_row_wXymib",
-        "grid_column_row_6mCkjb",
+        "grid_column_row_jCRjTE",
         "grid_scrolling_images_rhgPbE"
       ],
       "name": "The Grid",
