@@ -4,9 +4,9 @@
 */
 
 .product-recommendations {
-  padding: 48px 20px;
+  padding: 20px;
   background: #f9f9f9;
-  margin-top: 48px;
+  margin-top: 0;
 }
 
 @media (min-width: 768px) {
