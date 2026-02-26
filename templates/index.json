@@ -37,10 +37,17 @@
             "button_link": "",
             "make_button_white": false
           }
+        },
+        "blank_fadRfQ": {
+          "type": "blank",
+          "settings": {
+            "height": 50
+          }
         }
       },
       "block_order": [
-        "video_file_atJgrY"
+        "video_file_atJgrY",
+        "blank_fadRfQ"
       ],
       "name": "Campaign One Column",
       "settings": {}
