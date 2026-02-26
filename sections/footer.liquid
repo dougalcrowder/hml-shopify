@@ -195,20 +195,8 @@
 
       <div class="col5">
         {%- if section.settings.footer_menu_7 != blank -%}
-          {%- assign menu_7 = linklists[section.settings.footer_menu_7] -%}
           <nav class="contact">
-            <h4>{{ menu_7.title }}</h4>
-            <ul class="footNav">
-              {%- for link in menu_7.links -%}
-                <li>
-                  {%- if link.url contains 'tel:' or link.url contains 'mailto:' -%}
-                    <a itemprop="url" href="{{ link.url }}">{{ link.title }}</a>
-                  {%- else -%}
-                    <p>{{ link.title }}</p>
-                  {%- endif -%}
-                </li>
-              {%- endfor -%}
-            </ul>
+            {{ section.settings.footer_menu_7 }}
           </nav>
         {%- endif -%}
 
@@ -265,7 +253,7 @@
         "id": "footer_menu_6",
         "label": "About menu (col4)"
       }, {
-        "type": "link_list",
+        "type": "liquid",
         "id": "footer_menu_7",
         "label": "Contact menu (col5)"
       }
