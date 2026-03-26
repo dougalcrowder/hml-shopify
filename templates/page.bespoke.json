@@ -11,10 +11,71 @@
   "sections": {
     "main-page": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
+    },
+    "campaign_image_BJ8U47": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/01-hey.jpg",
+        "heading": "Bespoke service by Hannah Martin",
+        "loading": "eager",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "campaign_image_bQhYRd": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/02-Get-in-touch.jpg",
+        "heading": "Bespoke service by Hannah Martin",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "hero_video_EQLcer": {
+      "type": "hero-video",
+      "name": "Hero Video/Image",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/videos/04-Get-in-touch.mp4",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "mobile_respect": true,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
+      }
+    },
+    "hero_video_bb69R7": {
+      "type": "hero-video",
+      "name": "Hero Video/Image",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/videos/05-Make-an-appointment-with-studio.mp4",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "mobile_respect": true,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
+      }
     }
   },
   "order": [
-    "main-page"
+    "main-page",
+    "campaign_image_BJ8U47",
+    "campaign_image_bQhYRd",
+    "hero_video_EQLcer",
+    "hero_video_bb69R7"
   ]
 }
