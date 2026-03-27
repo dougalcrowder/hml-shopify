@@ -1,7 +1,19 @@
 
 <article class="info">
   <h1 class="drukster outline page">{{ page.title }}</h1>
-  <div class="rte">{{ page.content }}</div>
+  {% if product.metafields.custom.text_column_2.value != blank %}
+    <div class="flex infoinners">
+      <div class="firstblock">
+        {{ page.content }}
+      </div>
+      <div class="secondblock">
+        {{ product.metafields.custom.text_column_2.value }}
+      </div>
+    </div>
+  {% else %}
+    <div class="rte">{{ page.content }}</div>
+  {% endif %}
+  
 </article>
 
 
