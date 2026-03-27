@@ -7,7 +7,7 @@
         {{ page.content }}
       </div>
       <div class="secondblock">
-        {{ page.metafields.custom.text_column_2.value }}
+        {{ page.metafields.custom.text_column_2 | metafield_tag }}
       </div>
     </div>
   {% else %}
