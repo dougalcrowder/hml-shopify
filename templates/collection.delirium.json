@@ -25,17 +25,17 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/AguilaDorada_1.jpg",
+                "image": "shopify://shop_images/hannah-martin-fine-jewellery-delerium-arc-necklace-studded-spike-sapphire-ring-e02.jpg",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 1,
-                "desktop_width": 12,
+                "desktop_width": 5,
                 "desktop_row": 1,
                 "tablet_start": 1,
-                "tablet_width": 12,
+                "tablet_width": 7,
                 "tablet_row": 1,
                 "mobile_start": 1,
-                "mobile_width": 12,
+                "mobile_width": 7,
                 "mobile_row": 1,
                 "z_index": 1
               },
@@ -59,37 +59,17 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/AguilaDorada_2.jpg",
+                "image": "shopify://shop_images/Delirium_Collage.png",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 1,
-                "desktop_width": 6,
+                "desktop_start": 2,
+                "desktop_width": 10,
                 "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 6,
+                "tablet_start": 2,
+                "tablet_width": 10,
                 "tablet_row": 1,
                 "mobile_start": 1,
-                "mobile_width": 6,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            },
-            "grid_column_item_ekTzFz": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/AguilaDorada_3.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 7,
-                "desktop_width": 6,
-                "desktop_row": 1,
-                "tablet_start": 7,
-                "tablet_width": 6,
-                "tablet_row": 1,
-                "mobile_start": 71,
-                "mobile_width": 6,
+                "mobile_width": 12,
                 "mobile_row": 1,
                 "z_index": 2
               },
@@ -97,8 +77,7 @@
             }
           },
           "block_order": [
-            "grid_column_item_8W6rTq",
-            "grid_column_item_ekTzFz"
+            "grid_column_item_8W6rTq"
           ]
         }
       },
