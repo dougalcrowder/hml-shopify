@@ -1,0 +1,141 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "the_grid_wrk8GC": {
+      "type": "the-grid",
+      "blocks": {
+        "grid_column_row_U93MWi": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 1,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_rLriAX": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/4_OnlyPerformanceSketchbook_Web_4f5e071d-980a-47c6-a540-e859e8df22cf.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 1,
+                "desktop_width": 10,
+                "desktop_row": 1,
+                "tablet_start": 1,
+                "tablet_width": 11,
+                "tablet_row": 1,
+                "mobile_start": 1,
+                "mobile_width": 11,
+                "mobile_row": 2,
+                "z_index": 2
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_rLriAX"
+          ]
+        },
+        "grid_column_row_mm99TW": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 6,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_8W6rTq": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/3_OnlyPerformanceSketchbook_Web.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 3,
+                "desktop_width": 10,
+                "desktop_row": 1,
+                "tablet_start": 2,
+                "tablet_width": 11,
+                "tablet_row": 1,
+                "mobile_start": 2,
+                "mobile_width": 11,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_8W6rTq"
+          ]
+        },
+        "grid_column_row_tCaBLm": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 6,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_7RParn": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/OnlyPerformance_Cover.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 3,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 7,
+                "tablet_width": 10,
+                "tablet_row": 1,
+                "mobile_start": 6,
+                "mobile_width": 10,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_7RParn"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_column_row_U93MWi",
+        "grid_column_row_mm99TW",
+        "grid_column_row_tCaBLm"
+      ],
+      "name": "The Grid",
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 48,
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": false,
+        "enable_load_more": false
+      }
+    }
+  },
+  "order": [
+    "the_grid_wrk8GC",
+    "product-grid"
+  ]
+}
