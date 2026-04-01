@@ -21,6 +21,26 @@
             "padding_bottom": "medium"
           },
           "blocks": {
+            "grid_column_item_JrHiXz": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/hannah-martin-fine-jewellery-spur-pendant-pearls-e02.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 7,
+                "desktop_width": 5,
+                "desktop_row": 1,
+                "tablet_start": 7,
+                "tablet_width": 5,
+                "tablet_row": 1,
+                "mobile_start": 7,
+                "mobile_width": 6,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
             "grid_column_item_WQf6G4": {
               "type": "grid-column-item",
               "name": "Column Item",
@@ -37,12 +57,13 @@
                 "mobile_start": 1,
                 "mobile_width": 6,
                 "mobile_row": 1,
-                "z_index": 2
+                "z_index": 0
               },
               "blocks": {}
             }
           },
           "block_order": [
+            "grid_column_item_JrHiXz",
             "grid_column_item_WQf6G4"
           ]
         },
@@ -59,7 +80,7 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/StrapsPunkFetish-Story_1.png",
+                "image": "shopify://shop_images/hannah-martin-RocknRoll4.jpg",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 2,
@@ -70,8 +91,8 @@
                 "tablet_row": 1,
                 "mobile_start": 1,
                 "mobile_width": 6,
-                "mobile_row": 2,
-                "z_index": 1
+                "mobile_row": 1,
+                "z_index": 2
               },
               "blocks": {}
             },
@@ -79,19 +100,19 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/HM10-Wrist-04v4-Colours-FINAL.png",
+                "image": "shopify://shop_images/hannah-martin-RocknRoll5.jpg",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 8,
-                "desktop_width": 4,
+                "desktop_start": 7,
+                "desktop_width": 5,
                 "desktop_row": 1,
-                "tablet_start": 8,
+                "tablet_start": 7,
                 "tablet_width": 5,
                 "tablet_row": 1,
                 "mobile_start": 7,
                 "mobile_width": 6,
                 "mobile_row": 2,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
@@ -100,172 +121,11 @@
             "grid_column_item_8W6rTq",
             "grid_column_item_ekTzFz"
           ]
-        },
-        "grid_column_row_kmhjbG": {
-          "type": "grid-column-row",
-          "name": "Column Row",
-          "settings": {
-            "z_index": 1,
-            "padding_top": "medium",
-            "padding_bottom": "medium"
-          },
-          "blocks": {
-            "grid_column_item_VQwAWU": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/HM_10_Statement.png",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 2,
-                "desktop_width": 9,
-                "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 10,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 12,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "grid_column_item_VQwAWU"
-          ]
-        },
-        "grid_column_row_VtL8ir": {
-          "type": "grid-column-row",
-          "name": "Column Row",
-          "settings": {
-            "z_index": 6,
-            "padding_top": "medium",
-            "padding_bottom": "medium"
-          },
-          "blocks": {
-            "grid_column_item_9GxdiU": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/XPRO3332.png",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 5,
-                "desktop_width": 8,
-                "desktop_row": 1,
-                "tablet_start": 5,
-                "tablet_width": 8,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 12,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            },
-            "grid_column_item_cGawcY": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/Studded-Strap-Ring-01_044c6afd-3ade-47b1-bf1b-08174ef2b391.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 1,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 4,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 4,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "grid_column_item_9GxdiU",
-            "grid_column_item_cGawcY"
-          ]
-        },
-        "grid_column_row_qkUnKq": {
-          "type": "grid-column-row",
-          "name": "Column Row",
-          "settings": {
-            "z_index": 1,
-            "padding_top": "medium",
-            "padding_bottom": "medium"
-          },
-          "blocks": {
-            "grid_column_item_E9rBqH": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/HM_WEBSITE_BANNER_1400x653PX_72DPI_01.png",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 1,
-                "desktop_width": 12,
-                "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 12,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 12,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "grid_column_item_E9rBqH"
-          ]
-        },
-        "grid_column_row_bcfn3m": {
-          "type": "grid-column-row",
-          "name": "Column Row",
-          "settings": {
-            "z_index": 6,
-            "padding_top": "medium",
-            "padding_bottom": "medium"
-          },
-          "blocks": {
-            "grid_column_item_aBG4h9": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/HM10-QR-CODE.png",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 8,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 8,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 12,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "grid_column_item_aBG4h9"
-          ]
         }
       },
       "block_order": [
         "grid_column_row_U93MWi",
-        "grid_column_row_mm99TW",
-        "grid_column_row_kmhjbG",
-        "grid_column_row_VtL8ir",
-        "grid_column_row_qkUnKq",
-        "grid_column_row_bcfn3m"
+        "grid_column_row_mm99TW"
       ],
       "name": "The Grid",
       "settings": {}
