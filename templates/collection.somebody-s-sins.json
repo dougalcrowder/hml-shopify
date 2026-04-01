@@ -25,27 +25,7 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/Solaris_1.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 1,
-                "desktop_width": 6,
-                "desktop_row": 1,
-                "tablet_start": 1,
-                "tablet_width": 6,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 6,
-                "mobile_row": 1,
-                "z_index": 2
-              },
-              "blocks": {}
-            },
-            "grid_column_item_cUDfkQ": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/Solaris_2.jpg",
+                "image": "shopify://shop_images/SomebodySin_4.jpg",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 7,
@@ -63,8 +43,7 @@
             }
           },
           "block_order": [
-            "grid_column_item_rLriAX",
-            "grid_column_item_cUDfkQ"
+            "grid_column_item_rLriAX"
           ]
         },
         "grid_column_row_mm99TW": {
@@ -80,16 +59,112 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/Solaris_Cover.jpg",
+                "image": "shopify://shop_images/SomebodySin_2.jpg",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 6,
-                "desktop_width": 6,
+                "desktop_start": 1,
+                "desktop_width": 4,
                 "desktop_row": 1,
-                "tablet_start": 6,
-                "tablet_width": 6,
+                "tablet_start": 1,
+                "tablet_width": 4,
                 "tablet_row": 1,
-                "mobile_start": 6,
+                "mobile_start": 1,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_4dRdHd": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/SomebodySin_6.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 5,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 5,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 5,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_fnGgtr": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/SomebodySin_5.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 9,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 9,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 9,
+                "mobile_width": 4,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_8W6rTq",
+            "grid_column_item_4dRdHd",
+            "grid_column_item_fnGgtr"
+          ]
+        },
+        "grid_column_row_LpprL3": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 6,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_33HDrM": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/SomebodySin_3.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 2,
+                "desktop_width": 5,
+                "desktop_row": 1,
+                "tablet_start": 2,
+                "tablet_width": 5,
+                "tablet_row": 1,
+                "mobile_start": 1,
+                "mobile_width": 6,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_rgrACw": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/SomebodySin_1.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 7,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 7,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 7,
                 "mobile_width": 6,
                 "mobile_row": 1,
                 "z_index": 1
@@ -98,13 +173,15 @@
             }
           },
           "block_order": [
-            "grid_column_item_8W6rTq"
+            "grid_column_item_33HDrM",
+            "grid_column_item_rgrACw"
           ]
         }
       },
       "block_order": [
         "grid_column_row_U93MWi",
-        "grid_column_row_mm99TW"
+        "grid_column_row_mm99TW",
+        "grid_column_row_LpprL3"
       ],
       "name": "The Grid",
       "settings": {}
