@@ -25,46 +25,25 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/hannah-martin-fine-jewellery-spur-pendant-pearls-e02.jpg",
+                "image": "shopify://shop_images/AguilaDorada_1.jpg",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 7,
-                "desktop_width": 5,
+                "desktop_start": 1,
+                "desktop_width": 12,
                 "desktop_row": 1,
-                "tablet_start": 7,
-                "tablet_width": 5,
-                "tablet_row": 1,
-                "mobile_start": 7,
-                "mobile_width": 6,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
-            "grid_column_item_WQf6G4": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/19-05-21_HM5387.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 2,
-                "desktop_width": 5,
-                "desktop_row": 1,
-                "tablet_start": 2,
-                "tablet_width": 5,
+                "tablet_start": 1,
+                "tablet_width": 12,
                 "tablet_row": 1,
                 "mobile_start": 1,
-                "mobile_width": 6,
+                "mobile_width": 12,
                 "mobile_row": 1,
-                "z_index": 0
+                "z_index": 1
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "grid_column_item_JrHiXz",
-            "grid_column_item_WQf6G4"
+            "grid_column_item_JrHiXz"
           ]
         },
         "grid_column_row_mm99TW": {
@@ -80,14 +59,14 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/hannah-martin-RocknRoll4.jpg",
+                "image": "shopify://shop_images/AguilaDorada_2.jpg",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 2,
-                "desktop_width": 5,
+                "desktop_start": 1,
+                "desktop_width": 6,
                 "desktop_row": 1,
-                "tablet_start": 2,
-                "tablet_width": 5,
+                "tablet_start": 1,
+                "tablet_width": 6,
                 "tablet_row": 1,
                 "mobile_start": 1,
                 "mobile_width": 6,
@@ -100,18 +79,18 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/hannah-martin-RocknRoll5.jpg",
+                "image": "shopify://shop_images/AguilaDorada_3.jpg",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 7,
-                "desktop_width": 5,
+                "desktop_width": 6,
                 "desktop_row": 1,
                 "tablet_start": 7,
-                "tablet_width": 5,
+                "tablet_width": 6,
                 "tablet_row": 1,
-                "mobile_start": 7,
+                "mobile_start": 71,
                 "mobile_width": 6,
-                "mobile_row": 2,
+                "mobile_row": 1,
                 "z_index": 2
               },
               "blocks": {}
