@@ -25,25 +25,46 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/SomebodySin_4.jpg",
+                "image": "shopify://shop_images/Vincent_4.png",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 7,
-                "desktop_width": 6,
+                "desktop_start": 3,
+                "desktop_width": 5,
                 "desktop_row": 1,
-                "tablet_start": 7,
-                "tablet_width": 6,
+                "tablet_start": 3,
+                "tablet_width": 5,
                 "tablet_row": 1,
-                "mobile_start": 7,
-                "mobile_width": 6,
+                "mobile_start": 3,
+                "mobile_width": 5,
                 "mobile_row": 1,
-                "z_index": 2
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_9rqGfA": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Vincent_Cover.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 8,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 8,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 4,
+                "mobile_width": 8,
+                "mobile_row": 1,
+                "z_index": 1
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "grid_column_item_rLriAX"
+            "grid_column_item_rLriAX",
+            "grid_column_item_9rqGfA"
           ]
         },
         "grid_column_row_mm99TW": {
@@ -59,67 +80,25 @@
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/SomebodySin_2.jpg",
+                "image": "shopify://shop_images/Vincent_1.jpg",
                 "col_title": "",
                 "description": "",
                 "desktop_start": 1,
                 "desktop_width": 4,
                 "desktop_row": 1,
                 "tablet_start": 1,
-                "tablet_width": 4,
+                "tablet_width": 5,
                 "tablet_row": 1,
                 "mobile_start": 1,
-                "mobile_width": 4,
+                "mobile_width": 5,
                 "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
-            "grid_column_item_4dRdHd": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/SomebodySin_6.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 5,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 5,
-                "tablet_width": 4,
-                "tablet_row": 1,
-                "mobile_start": 5,
-                "mobile_width": 4,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
-            "grid_column_item_fnGgtr": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/SomebodySin_5.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 9,
-                "desktop_width": 4,
-                "desktop_row": 1,
-                "tablet_start": 9,
-                "tablet_width": 4,
-                "tablet_row": 1,
-                "mobile_start": 9,
-                "mobile_width": 4,
-                "mobile_row": 1,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "grid_column_item_8W6rTq",
-            "grid_column_item_4dRdHd",
-            "grid_column_item_fnGgtr"
+            "grid_column_item_8W6rTq"
           ]
         },
         "grid_column_row_LpprL3": {
@@ -131,41 +110,21 @@
             "padding_bottom": "medium"
           },
           "blocks": {
-            "grid_column_item_33HDrM": {
-              "type": "grid-column-item",
-              "name": "Column Item",
-              "settings": {
-                "image": "shopify://shop_images/SomebodySin_3.jpg",
-                "col_title": "",
-                "description": "",
-                "desktop_start": 2,
-                "desktop_width": 5,
-                "desktop_row": 1,
-                "tablet_start": 2,
-                "tablet_width": 5,
-                "tablet_row": 1,
-                "mobile_start": 1,
-                "mobile_width": 6,
-                "mobile_row": 1,
-                "z_index": 1
-              },
-              "blocks": {}
-            },
             "grid_column_item_rgrACw": {
               "type": "grid-column-item",
               "name": "Column Item",
               "settings": {
-                "image": "shopify://shop_images/SomebodySin_1.jpg",
+                "image": "shopify://shop_images/Vincent_2.jpg",
                 "col_title": "",
                 "description": "",
-                "desktop_start": 7,
-                "desktop_width": 4,
+                "desktop_start": 4,
+                "desktop_width": 9,
                 "desktop_row": 1,
-                "tablet_start": 7,
-                "tablet_width": 4,
+                "tablet_start": 4,
+                "tablet_width": 9,
                 "tablet_row": 1,
-                "mobile_start": 7,
-                "mobile_width": 6,
+                "mobile_start": 4,
+                "mobile_width": 9,
                 "mobile_row": 1,
                 "z_index": 1
               },
@@ -173,7 +132,6 @@
             }
           },
           "block_order": [
-            "grid_column_item_33HDrM",
             "grid_column_item_rgrACw"
           ]
         }
