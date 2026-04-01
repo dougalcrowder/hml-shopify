@@ -1,0 +1,162 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "the_grid_wrk8GC": {
+      "type": "the-grid",
+      "blocks": {
+        "grid_column_row_U93MWi": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 1,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_rLriAX": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Vincent_4.png",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 3,
+                "desktop_width": 5,
+                "desktop_row": 1,
+                "tablet_start": 3,
+                "tablet_width": 5,
+                "tablet_row": 1,
+                "mobile_start": 3,
+                "mobile_width": 5,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            },
+            "grid_column_item_9rqGfA": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Vincent_Cover.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 8,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 8,
+                "tablet_width": 4,
+                "tablet_row": 1,
+                "mobile_start": 4,
+                "mobile_width": 8,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_rLriAX",
+            "grid_column_item_9rqGfA"
+          ]
+        },
+        "grid_column_row_mm99TW": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 6,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_8W6rTq": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Vincent_1.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 1,
+                "desktop_width": 4,
+                "desktop_row": 1,
+                "tablet_start": 1,
+                "tablet_width": 5,
+                "tablet_row": 1,
+                "mobile_start": 1,
+                "mobile_width": 5,
+                "mobile_row": 1,
+                "z_index": 2
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_8W6rTq"
+          ]
+        },
+        "grid_column_row_LpprL3": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 6,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_rgrACw": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Vincent_2.jpg",
+                "col_title": "",
+                "description": "",
+                "desktop_start": 4,
+                "desktop_width": 9,
+                "desktop_row": 1,
+                "tablet_start": 4,
+                "tablet_width": 9,
+                "tablet_row": 1,
+                "mobile_start": 4,
+                "mobile_width": 9,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_rgrACw"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_column_row_U93MWi",
+        "grid_column_row_mm99TW",
+        "grid_column_row_LpprL3"
+      ],
+      "name": "The Grid",
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 48,
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": false,
+        "enable_load_more": false
+      }
+    }
+  },
+  "order": [
+    "the_grid_wrk8GC",
+    "product-grid"
+  ]
+}
