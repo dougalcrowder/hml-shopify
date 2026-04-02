@@ -1,0 +1,114 @@
+<div class="faqs-section">
+  <h2 class="faqs-title">{{ section.settings.title }}</h2>
+
+  <div class="faqs-container">
+    {% for block in section.blocks %}
+      <details class="faq-item">
+        <summary class="faq-question">
+          {{ block.settings.question }}
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-answer">
+          {{ block.settings.answer }}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .faqs-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .faqs-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .faq-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+    background-color: #f8f8f8;
+    transition: background-color 0.2s;
+  }
+
+  .faq-question:hover {
+    background-color: #f0f0f0;
+  }
+
+  .faq-icon {
+    font-size: 20px;
+    transition: transform 0.3s;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 16px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    line-height: 1.6;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "Frequently Asked Questions"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_item",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "question",
+            "label": "Question"
+          }, {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQs",
+        "blocks": [
+          {
+            "type": "faq_item",
+            "settings": {
+              "question": "What is your return policy?",
+              "answer": "<p>We offer 30-day returns on all items.</p>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
