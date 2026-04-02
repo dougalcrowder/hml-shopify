@@ -38,12 +38,28 @@
         "link": ""
       }
     },
+    "hero_video_URCFW8": {
+      "type": "hero-video",
+      "name": "Hero Video/Image",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "https://cdn.shopify.com/videos/c/o/v/b26b1b4c8b0f4fe3864dfe90962036eb.mp4",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "mobile_respect": true,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
+      }
+    },
     "hero_video_EQLcer": {
       "type": "hero-video",
       "name": "Hero Video/Image",
       "settings": {
         "enable_section_css": true,
-        "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/videos/04-Get-in-touch.mp4",
+        "video_file": "https://cdn.shopify.com/videos/c/o/v/f43d1148513c4f4d96f6d879ac2a0e5d.mp4",
         "autoplay": true,
         "loop": true,
         "muted": true,
@@ -59,7 +75,7 @@
       "name": "Hero Video/Image",
       "settings": {
         "enable_section_css": true,
-        "video_file": "https://s3.eu-west-2.amazonaws.com/hannahmartin/videos/05-Make-an-appointment-with-studio.mp4",
+        "video_file": "https://cdn.shopify.com/videos/c/o/v/8937ba8d2a1a406e912127b05be49697.mp4",
         "autoplay": true,
         "loop": true,
         "muted": true,
@@ -70,12 +86,24 @@
         "button_color": "black"
       }
     },
-    "hero_video_URCFW8": {
+    "campaign_image_3AaJFd": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/06_-_Make_an_appointment_with_studio.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "hero_video_pzBxt4": {
       "type": "hero-video",
       "name": "Hero Video/Image",
       "settings": {
         "enable_section_css": true,
-        "video_file": "",
+        "video_file": "https://cdn.shopify.com/videos/c/o/v/d7980053d29a4d1597d14d49b5761628.mp4",
         "autoplay": true,
         "loop": true,
         "muted": true,
@@ -93,6 +121,8 @@
     "campaign_image_bQhYRd",
     "hero_video_URCFW8",
     "hero_video_EQLcer",
-    "hero_video_bb69R7"
+    "hero_video_bb69R7",
+    "campaign_image_3AaJFd",
+    "hero_video_pzBxt4"
   ]
 }
