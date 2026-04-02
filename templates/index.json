@@ -208,7 +208,7 @@
       ],
       "name": "Campaign Three Column",
       "settings": {
-        "column_gap": false
+        "column_gap": true
       }
     }
   },
