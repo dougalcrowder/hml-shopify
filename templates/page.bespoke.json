@@ -69,12 +69,29 @@
         "button_link": "",
         "button_color": "black"
       }
+    },
+    "hero_video_URCFW8": {
+      "type": "hero-video",
+      "name": "Hero Video/Image",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "mobile_respect": true,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
+      }
     }
   },
   "order": [
     "main-page",
     "campaign_image_BJ8U47",
     "campaign_image_bQhYRd",
+    "hero_video_URCFW8",
     "hero_video_EQLcer",
     "hero_video_bb69R7"
   ]
