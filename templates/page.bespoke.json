@@ -113,6 +113,70 @@
         "button_link": "",
         "button_color": "black"
       }
+    },
+    "hero_video_3mk3aQ": {
+      "type": "hero-video",
+      "name": "Hero Video/Image",
+      "settings": {
+        "enable_section_css": true,
+        "video_file": "https://cdn.shopify.com/videos/c/o/v/a771f8556ba344e59b2a2ceb729009de.mp4",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "mobile_respect": true,
+        "show_button": false,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "black"
+      }
+    },
+    "campaign_image_XepiUi": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/09_-_Choice_of_sketches.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "campaign_image_iEbzXU": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/10_-_Choice_of_sketches.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "campaign_image_m3RCC7": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/11_-_Choice_of_sketches.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "campaign_image_W3kAma": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/12.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
     }
   },
   "order": [
@@ -123,6 +187,11 @@
     "hero_video_EQLcer",
     "hero_video_bb69R7",
     "campaign_image_3AaJFd",
-    "hero_video_pzBxt4"
+    "hero_video_pzBxt4",
+    "hero_video_3mk3aQ",
+    "campaign_image_XepiUi",
+    "campaign_image_iEbzXU",
+    "campaign_image_m3RCC7",
+    "campaign_image_W3kAma"
   ]
 }
