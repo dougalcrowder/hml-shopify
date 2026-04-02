@@ -1,5 +1,5 @@
 <div class="faqs-section">
-  <h2 class="faqs-title">{{ section.settings.title }}</h2>
+  {% if section.settings.show_title %}<h2 class="faqs-title">{{ section.settings.title }}</h2>{% endif %}
 
   <div class="faqs-container">
     {% assign faqs = metaobjects.frequently_asked_questions.values %}
@@ -21,19 +21,17 @@
   .faqs-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 10px 20px;
   }
 
   .faqs-title {
     font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
+    margin-bottom: 20px;
   }
 
   .faq-item {
-    border: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     margin-bottom: 10px;
-    border-radius: 4px;
   }
 
   .faq-question {
@@ -42,14 +40,7 @@
     align-items: center;
     padding: 16px;
     cursor: pointer;
-    font-weight: 600;
     user-select: none;
-    background-color: #f8f8f8;
-    transition: background-color 0.2s;
-  }
-
-  .faq-question:hover {
-    background-color: #f0f0f0;
   }
 
   .faq-icon {
@@ -63,8 +54,6 @@
 
   .faq-answer {
     padding: 16px;
-    background-color: #fff;
-    border-top: 1px solid #ddd;
     line-height: 1.6;
   }
 </style>
@@ -79,6 +68,12 @@
         "label": "Section Title",
         "default": "Frequently Asked Questions",
         "info": "Show the frequently asked questions that can be edited in their metabject here https://admin.shopify.com/store/hannah-martin-jewellery/content/metaobjects/entries/frequently_asked_questions"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show Title",
+        "default":true
       }
     ],
     "presets": [
