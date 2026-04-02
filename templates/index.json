@@ -59,7 +59,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Hero-Desktop-2.jpg",
-            "image_link": ""
+            "image_link": "shopify://collections/the-perfect-drug-02"
           }
         }
       },
@@ -126,7 +126,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Bespoke-Desktop-1.jpg",
-            "image_link": "#",
+            "image_link": "shopify://pages/bespoke",
             "make_bigger": false,
             "headline": "BESPOKE",
             "subtitle": "A journey of discovery, discussion, collaboration and creation. One-of-a-kind jewels designed for you and with you. Get in touch with us and join the family.",
@@ -139,7 +139,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-For-Lovers-Desktop_2025-09-10-142408_esoe.jpg",
-            "image_link": "shopify://collections/rings",
+            "image_link": "shopify://collections/mad-love",
             "make_bigger": false,
             "headline": "For Lovers",
             "subtitle": "Engagement Rings, Weddings Bands and everything in between. Seal your pact with gold, whatever form it may take.",
@@ -158,39 +158,42 @@
         "column_gap": true
       }
     },
-    "campaign_three_column_KpRWHV": {
+    "campaign_three_column_j4Dq8V": {
       "type": "campaign-three-column",
       "blocks": {
-        "image_QP7xMG": {
+        "image_BQYwww": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
-            "image_link": "shopify://collections/rings",
-            "headline": "Rings",
+            "image": "shopify://shop_images/HML-HM10-Homepage-About_Us_2025-09-10-142509_xuys.jpg",
+            "mobile_image": "shopify://shop_images/HML-HM10-Homepage-About_Us_2025-09-10-142509_xuys.jpg",
+            "image_link": "",
+            "headline": "About us",
             "subtitle": "",
             "link_is_button": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
         },
-        "image_6kgLcL": {
+        "image_yDKYdg": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
-            "image_link": "shopify://collections/necklaces",
-            "headline": "Necklaces",
+            "image": "shopify://shop_images/HML-HM10-Homepage-HMP_2025-09-11-174956_bcwh.jpg",
+            "mobile_image": "shopify://shop_images/HML-HM10-Homepage-HMP_2025-09-11-174956_bcwh.jpg",
+            "image_link": "https://hannahmartinpierced.com/",
+            "headline": "HMPierced",
             "subtitle": "",
             "link_is_button": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
         },
-        "image_pnxXpa": {
+        "image_iWRK3h": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
-            "image_link": "shopify://collections/bracelets",
-            "headline": "Bracelets",
+            "image": "shopify://shop_images/HML-HM10-Homepage-Press-1.jpg",
+            "mobile_image": "shopify://shop_images/HML-HM10-Homepage-Press-1.jpg",
+            "image_link": "",
+            "headline": "Press",
             "subtitle": "",
             "link_is_button": false,
             "button_text": "",
@@ -199,13 +202,13 @@
         }
       },
       "block_order": [
-        "image_QP7xMG",
-        "image_6kgLcL",
-        "image_pnxXpa"
+        "image_BQYwww",
+        "image_yDKYdg",
+        "image_iWRK3h"
       ],
       "name": "Campaign Three Column",
       "settings": {
-        "column_gap": true
+        "column_gap": false
       }
     }
   },
@@ -215,6 +218,6 @@
     "campaign_one_column_hWixMj",
     "campaign_three_column_VXCF3G",
     "campaign_two_column_EkPHBQ",
-    "campaign_three_column_KpRWHV"
+    "campaign_three_column_j4Dq8V"
   ]
 }
