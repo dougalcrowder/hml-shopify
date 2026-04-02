@@ -71,7 +71,7 @@
                 "mobile_start": 1,
                 "mobile_width": 12,
                 "mobile_row": 1,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
@@ -139,7 +139,7 @@
                 "mobile_start": 1,
                 "mobile_width": 12,
                 "mobile_row": 1,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
@@ -207,7 +207,7 @@
                 "mobile_start": 1,
                 "mobile_width": 12,
                 "mobile_row": 1,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
@@ -241,7 +241,7 @@
                 "mobile_start": 1,
                 "mobile_width": 12,
                 "mobile_row": 1,
-                "z_index": 1
+                "z_index": 2
               },
               "blocks": {}
             }
