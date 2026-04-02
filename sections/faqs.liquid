@@ -2,7 +2,7 @@
   <h2 class="faqs-title">{{ section.settings.title }}</h2>
 
   <div class="faqs-container">
-    {% assign faqs = shop.metaobjects.frequently_asked_questions.all %}
+    {% assign faqs = metaobjects.frequently_asked_questions.values %}
     {% for faq in faqs %}
       <details class="faq-item">
         <summary class="faq-question">
