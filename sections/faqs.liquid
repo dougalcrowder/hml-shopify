@@ -2,14 +2,15 @@
   <h2 class="faqs-title">{{ section.settings.title }}</h2>
 
   <div class="faqs-container">
-    {% for block in section.blocks %}
+    {% assign faqs = shop.metaobjects.frequently_asked_questions.all %}
+    {% for faq in faqs %}
       <details class="faq-item">
         <summary class="faq-question">
-          {{ block.settings.question }}
+          {{ faq.question.value }}
           <span class="faq-icon">+</span>
         </summary>
         <div class="faq-answer">
-          {{ block.settings.answer }}
+          {{ faq.answer.value }}
         </div>
       </details>
     {% endfor %}
@@ -76,38 +77,13 @@
         "type": "text",
         "id": "title",
         "label": "Section Title",
-        "default": "Frequently Asked Questions"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "faq_item",
-        "name": "FAQ Item",
-        "settings": [
-          {
-            "type": "text",
-            "id": "question",
-            "label": "Question"
-          }, {
-            "type": "richtext",
-            "id": "answer",
-            "label": "Answer"
-          }
-        ]
+        "default": "Frequently Asked Questions",
+        "info": "Show the frequently asked questions that can be edited in their metabject here https://admin.shopify.com/store/hannah-martin-jewellery/content/metaobjects/entries/frequently_asked_questions"
       }
     ],
     "presets": [
       {
-        "name": "FAQs",
-        "blocks": [
-          {
-            "type": "faq_item",
-            "settings": {
-              "question": "What is your return policy?",
-              "answer": "<p>We offer 30-day returns on all items.</p>"
-            }
-          }
-        ]
+        "name": "FAQs"
       }
     ]
   }
