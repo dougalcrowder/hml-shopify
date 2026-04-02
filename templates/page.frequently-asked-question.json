@@ -12,9 +12,17 @@
     "main-page": {
       "type": "main-page",
       "settings": {}
+    },
+    "faqs_yypM4E": {
+      "type": "faqs",
+      "name": "FAQs",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
-    "main-page"
+    "main-page",
+    "faqs_yypM4E"
   ]
 }
