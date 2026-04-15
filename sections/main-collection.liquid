@@ -90,7 +90,7 @@ function getNextUrl(container) {
     if (!nextUrl) return;
 
     btn.disabled    = true;
-    btn.textContent = {{ 'general.accessibility.loading' | default: 'Loading…' | json }};
+    btn.textContent = {{ 'general.accessibility.loading' | t | json }};
 
     fetch(nextUrl)
       .then(function (res) {
