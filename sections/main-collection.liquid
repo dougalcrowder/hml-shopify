@@ -63,10 +63,10 @@
 
   // Find the "next page" link Dawn's pagination snippet renders.
   // Dawn uses rel="next" on the <a> tag for the next-page link.
-  function getNextUrl(container) {
-    var link = container.querySelector('a[rel="next"]');
-    return link ? link.href : null;
-  }
+function getNextUrl(container) {
+  var link = container.querySelector('a[aria-label="Next page"]');
+  return link ? link.href : null;
+}
 
   var nextUrl = getNextUrl(paginationWrap);
 
