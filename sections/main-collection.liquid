@@ -6,29 +6,24 @@
 <div class="collection-page" data-id="{{ section.id }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
 
-    <!-- Dawn's Filtering and Sorting -->
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <div class="facets-container page-width">
-        {% render 'facets'
-          , results: collection
-          , enable_filtering: section.settings.enable_filtering
-          , enable_sorting: section.settings.enable_sorting
-          , filter_type: section.settings.filter_type
+        {% render 'facets',
+          results: collection,
+          enable_filtering: section.settings.enable_filtering,
+          enable_sorting: section.settings.enable_sorting,
+          filter_type: section.settings.filter_type
         %}
       </div>
     {%- endif -%}
 
-    <!-- Hannah Martin Custom Product Grid -->
     <div class="swag" id="swag">
       <div
         class="products grid containerCat{% if collection.products_count == 0 %} is-empty{% endif %}"
         id="grid"
         data-id="{{ section.id }}">
         {%- if collection.products.size == 0 -%}
-          <div
-            class="collection-product-list"
-            id="product-grid"
-            data-id="{{ section.id }}">
+          <div class="collection-product-list" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
               <h2 class="title title--primary">
@@ -39,92 +34,152 @@
           </div>
         {%- else -%}
           {%- for product in collection.products -%}
-            {% render 'product-card'
-              , product: product
-              , section_id: section.id %}
+            {% render 'product-card', product: product, section_id: section.id %}
           {%- endfor -%}
         {%- endif -%}
       </div>
     </div>
-    <!-- Pagination -->
+
+    <!--
+      Pagination: rendered for no-JS users.
+      JS will hide this and inject a Load More button instead.
+    -->
     {%- if paginate.pages > 1 -%}
-      <div class="pagination-wrapper">
-        {% render 'pagination'
-          , paginate: paginate
-          , anchor: '' %}
+      <div class="pagination-wrapper" id="pagination-wrapper">
+        {% render 'pagination', paginate: paginate, anchor: '' %}
       </div>
     {%- endif -%}
 
   {%- endpaginate -%}
-
-  <!-- Load More Button (if needed) -->
-  {%- if section.settings.enable_load_more and paginate.next -%}
-    <div class="swag">
-      <button class="button" data-load-more="{{ paginate.next.url }}">
-        {{ 'sections.collection_template.load_more' | t }}
-      </button>
-    </div>
-  {%- endif -%}
 </div>
 
-{% schema %}
-  {
-    "name": "Product Grid",
-    "class": "section z8 relative",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Product Grid"
-      },
-      {
-        "type": "range",
-        "id": "products_per_page",
-        "min": 12,
-        "max": 48,
-        "step": 12,
-        "default": 24,
-        "label": "Products per page"
-      },
-      {
-        "type": "header",
-        "content": "Filtering and Sorting"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_filtering",
-        "label": "Enable filtering",
-        "default": true,
-        "info": "Uses Dawn's faceted filtering system"
-      }, {
-        "type": "select",
-        "id": "filter_type",
-        "options": [
-          {
-            "value": "horizontal",
-            "label": "Horizontal"
-          }, {
-            "value": "vertical",
-            "label": "Vertical"
-          }, {
-            "value": "drawer",
-            "label": "Drawer"
-          }
-        ],
-        "default": "drawer",
-        "label": "Filter layout",
-        "info": "Drawer is recommended for mobile-first design"
-      }, {
-        "type": "checkbox",
-        "id": "enable_sorting",
-        "label": "Enable sorting",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "enable_load_more",
-        "label": "Enable load more button",
-        "default": false,
-        "info": "Show load more instead of pagination numbers"
-      }
-    ]
+<script>
+(function () {
+  var grid            = document.getElementById('grid');
+  var paginationWrap  = document.getElementById('pagination-wrapper');
+
+  // If there's no grid or no pagination, nothing to do.
+  if (!grid || !paginationWrap) return;
+
+  // Find the "next page" link Dawn's pagination snippet renders.
+  // Dawn uses rel="next" on the <a> tag for the next-page link.
+  function getNextUrl(container) {
+    var link = container.querySelector('a[rel="next"]');
+    return link ? link.href : null;
   }
+
+  var nextUrl = getNextUrl(paginationWrap);
+
+  // No next page — leave pagination as-is.
+  if (!nextUrl) return;
+
+  // JS is available: hide numbered pagination, inject Load More button.
+  paginationWrap.hidden = true;
+
+  var btn = document.createElement('button');
+  btn.className   = 'button load-more-btn';
+  btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
+  btn.setAttribute('aria-label', btn.textContent);
+
+  var btnWrap = document.createElement('div');
+  btnWrap.className = 'swag load-more-wrapper';
+  btnWrap.appendChild(btn);
+  paginationWrap.insertAdjacentElement('afterend', btnWrap);
+
+  btn.addEventListener('click', function () {
+    if (!nextUrl) return;
+
+    btn.disabled    = true;
+    btn.textContent = {{ 'general.accessibility.loading' | default: 'Loading…' | json }};
+
+    fetch(nextUrl)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.text();
+      })
+      .then(function (html) {
+        // Parse the fetched page.
+        var parser  = new DOMParser();
+        var doc     = parser.parseFromString(html, 'text/html');
+
+        // Extract product cards from the remote grid.
+        var remoteGrid = doc.getElementById('grid');
+        if (remoteGrid) {
+          // Move each child node into the live grid.
+          Array.from(remoteGrid.childNodes).forEach(function (node) {
+            grid.appendChild(document.importNode(node, true));
+          });
+        }
+
+        // Find the next page's "next" link from the remote pagination block.
+        var remotePagination = doc.getElementById('pagination-wrapper');
+        nextUrl = remotePagination ? getNextUrl(remotePagination) : null;
+
+        if (nextUrl) {
+          // More pages still exist — re-enable the button.
+          btn.disabled    = false;
+          btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
+        } else {
+          // No more pages — remove the button entirely.
+          btnWrap.remove();
+        }
+      })
+      .catch(function (err) {
+        console.error('[Load More] Failed to fetch next page:', err);
+        btn.disabled    = false;
+        btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
+      });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "class": "section z8 relative",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Grid"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 12,
+      "default": 24,
+      "label": "Products per page"
+    },
+    {
+      "type": "header",
+      "content": "Filtering and Sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Enable filtering",
+      "default": true,
+      "info": "Uses Dawn's faceted filtering system"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        { "value": "horizontal", "label": "Horizontal" },
+        { "value": "vertical",   "label": "Vertical"   },
+        { "value": "drawer",     "label": "Drawer"     }
+      ],
+      "default": "drawer",
+      "label": "Filter layout",
+      "info": "Drawer is recommended for mobile-first design"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Enable sorting",
+      "default": true
+    }
+  ]
+}
 {% endschema %}
