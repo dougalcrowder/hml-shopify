@@ -63,10 +63,10 @@
 
   // Find the "next page" link Dawn's pagination snippet renders.
   // Dawn uses rel="next" on the <a> tag for the next-page link.
-  function getNextUrl(container) {
-    var link = container.querySelector('a[rel="next"]');
-    return link ? link.href : null;
-  }
+function getNextUrl(container) {
+  var link = container.querySelector('a[aria-label="Next page"]');
+  return link ? link.href : null;
+}
 
   var nextUrl = getNextUrl(paginationWrap);
 
@@ -82,7 +82,7 @@
   btn.setAttribute('aria-label', btn.textContent);
 
   var btnWrap = document.createElement('div');
-  btnWrap.className = 'swag load-more-wrapper';
+  btnWrap.className = 'swag load-more-wrapper text-center';
   btnWrap.appendChild(btn);
   paginationWrap.insertAdjacentElement('afterend', btnWrap);
 
@@ -90,7 +90,7 @@
     if (!nextUrl) return;
 
     btn.disabled    = true;
-    btn.textContent = {{ 'general.accessibility.loading' | default: 'Loading…' | json }};
+    btn.textContent = {{ 'general.accessibility.loading' | t | json }};
 
     fetch(nextUrl)
       .then(function (res) {
