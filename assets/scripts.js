@@ -492,5 +492,7 @@ function cartToggleTwo() {
 
 if(document.getElementById('cartToggle')) {
       cartToggle();
+}
+if(document.getElementById('cartToggleTwo')) {
       cartToggleTwo();
-    }
+}
