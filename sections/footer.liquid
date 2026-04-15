@@ -117,11 +117,7 @@
 
         <div class="news">
           <h4>Newsletter</h4>
-          <form
-            id="newsletterForm"
-            method="post"
-            action="/contact#contact_form"
-            accept-charset="UTF-8">
+          <form id="newsletterForm">
             <input
               type="hidden"
               name="form_type"
@@ -134,6 +130,10 @@
               type="hidden"
               name="contact[tags]"
               value="newsletter">
+            <input
+              type="hidden"
+              name="contact[accepts_marketing]"
+              value="true">
 
             <div class="hm-forms">
               <div class="freeform-row">
@@ -141,7 +141,6 @@
                   <p>Sign up to our newsletter</p>
                 </div>
               </div>
-
               <div class="freeform-row">
                 <div class="freeform-column text">
                   <label for="form-input-firstName" class="freeform-label">First Name</label>
@@ -172,14 +171,17 @@
                     required>
                 </div>
               </div>
-
               <div class="freeform-row">
                 <div class="freeform-column html">
                   <small>By signing up, you accept the terms of Hannah Martin's
-                    <a href="/pages/privacy-policy">Privacy Policy</a>.</small>
+                    <a href="/pages/privacy-policy">Privacy Policy</a>.
+                  </small>
                 </div>
               </div>
-
+              <div
+                id="formMessage"
+                class="form-message"
+                role="alert"></div>
               <div class="freeform-row">
                 <div class="freeform-column freeform-column-content-align-left submit">
                   <button
@@ -191,6 +193,46 @@
             </div>
           </form>
         </div>
+
+        <script>
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+
+              var form = this;
+              var btn = document.getElementById('newsubscribe');
+              var msg = document.getElementById('formMessage');
+
+              btn.disabled = true;
+              btn.textContent = 'Subscribing…';
+              msg.className = 'form-message';
+              msg.textContent = '';
+
+              var data = new FormData(form);
+
+              fetch('/contact', {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                body: data
+              })
+              .then(function(response) {
+                if (response.ok) {
+                  msg.textContent = 'Thanks for subscribing! Please check your email to confirm.';
+                  msg.className = 'form-message success';
+                  form.reset();
+                } else {
+                  throw new Error('Server error: ' + response.status);
+                }
+              })
+              .catch(function(err) {
+                msg.textContent = 'Something went wrong — please try again or contact us directly.';
+                msg.className = 'form-message error';
+              })
+              .finally(function() {
+                btn.disabled = false;
+                btn.textContent = 'Subscribe';
+              });
+            });
+        </script>
       </div>
 
       <div class="col5">
