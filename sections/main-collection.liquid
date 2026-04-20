@@ -8,11 +8,11 @@
 
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <div class="facets-container page-width">
-        {% render 'facets',
-          results: collection,
-          enable_filtering: section.settings.enable_filtering,
-          enable_sorting: section.settings.enable_sorting,
-          filter_type: section.settings.filter_type
+        {% render 'facets'
+          , results: collection
+          , enable_filtering: section.settings.enable_filtering
+          , enable_sorting: section.settings.enable_sorting
+          , filter_type: section.settings.filter_type
         %}
       </div>
     {%- endif -%}
@@ -23,7 +23,10 @@
         id="grid"
         data-id="{{ section.id }}">
         {%- if collection.products.size == 0 -%}
-          <div class="collection-product-list" id="product-grid" data-id="{{ section.id }}">
+          <div
+            class="collection-product-list"
+            id="product-grid"
+            data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
               <h2 class="title title--primary">
@@ -34,7 +37,9 @@
           </div>
         {%- else -%}
           {%- for product in collection.products -%}
-            {% render 'product-card', product: product, section_id: section.id %}
+            {% render 'product-card'
+              , product: product
+              , section_id: section.id %}
           {%- endfor -%}
         {%- endif -%}
       </div>
@@ -46,7 +51,9 @@
     -->
     {%- if paginate.pages > 1 -%}
       <div class="pagination-wrapper" id="pagination-wrapper">
-        {% render 'pagination', paginate: paginate, anchor: '' %}
+        {% render 'pagination'
+          , paginate: paginate
+          , anchor: '' %}
       </div>
     {%- endif -%}
 
@@ -54,7 +61,7 @@
 </div>
 
 <script>
-(function () {
+  (function () {
   var grid            = document.getElementById('grid');
   var paginationWrap  = document.getElementById('pagination-wrapper');
 
@@ -63,10 +70,10 @@
 
   // Find the "next page" link Dawn's pagination snippet renders.
   // Dawn uses rel="next" on the <a> tag for the next-page link.
-function getNextUrl(container) {
+  function getNextUrl(container) {
   var link = container.querySelector('a[aria-label="Next page"]');
   return link ? link.href : null;
-}
+  }
 
   var nextUrl = getNextUrl(paginationWrap);
 
@@ -130,56 +137,61 @@ function getNextUrl(container) {
         btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
       });
   });
-})();
+  })();
 </script>
 
 {% schema %}
-{
-  "name": "Product Grid",
-  "class": "section z8 relative",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Product Grid"
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "min": 12,
-      "max": 48,
-      "step": 12,
-      "default": 24,
-      "label": "Products per page"
-    },
-    {
-      "type": "header",
-      "content": "Filtering and Sorting"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_filtering",
-      "label": "Enable filtering",
-      "default": true,
-      "info": "Uses Dawn's faceted filtering system"
-    },
-    {
-      "type": "select",
-      "id": "filter_type",
-      "options": [
-        { "value": "horizontal", "label": "Horizontal" },
-        { "value": "vertical",   "label": "Vertical"   },
-        { "value": "drawer",     "label": "Drawer"     }
-      ],
-      "default": "drawer",
-      "label": "Filter layout",
-      "info": "Drawer is recommended for mobile-first design"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sorting",
-      "label": "Enable sorting",
-      "default": true
-    }
-  ]
-}
+  {
+    "name": "Product Grid",
+    "class": "section z8 relative",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Grid"
+      },
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 12,
+        "max": 48,
+        "step": 12,
+        "default": 24,
+        "label": "Products per page"
+      },
+      {
+        "type": "header",
+        "content": "Filtering and Sorting"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_filtering",
+        "label": "Enable filtering",
+        "default": true,
+        "info": "Uses Dawn's faceted filtering system"
+      }, {
+        "type": "select",
+        "id": "filter_type",
+        "options": [
+          {
+            "value": "horizontal",
+            "label": "Horizontal"
+          }, {
+            "value": "vertical",
+            "label": "Vertical"
+          }, {
+            "value": "drawer",
+            "label": "Drawer"
+          }
+        ],
+        "default": "drawer",
+        "label": "Filter layout",
+        "info": "Drawer is recommended for mobile-first design"
+      }, {
+        "type": "checkbox",
+        "id": "enable_sorting",
+        "label": "Enable sorting",
+        "default": true
+      }
+    ]
+  }
 {% endschema %}
