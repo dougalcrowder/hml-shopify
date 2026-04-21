@@ -182,6 +182,10 @@
   // Set initial position on load
   update();
 
+  document.getElementById('catGrid').addEventListener('click', function () {
+    sentinel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
 })();
 </script>
 {% endif %}
