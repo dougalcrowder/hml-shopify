@@ -144,7 +144,7 @@
 
 {% if section.settings.sticky_nav %}
 <script>
-  (function () {
+(function () {
   'use strict';
 
   var headerSection = document.getElementById('shopify-section-header');
@@ -152,29 +152,27 @@
 
   if (!headerSection || !sentinel) return;
 
-  // Start relative so header scrolls freely with the page
-  headerSection.style.position = 'relative';
+  // Fix the header in place but let it track the sentinel position
+  headerSection.style.cssText =
+    'position:fixed!important;left:0;right:0;width:100%;z-index:99991;';
 
-  var isFixed = false;
+  var ticking = false;
 
-  new IntersectionObserver(
-    function (entries) {
-      var aboveView = !entries[0].isIntersecting && 
-                       entries[0].boundingClientRect.top < 0;
+  function update() {
+    var sentinelTop = sentinel.getBoundingClientRect().top;
+    headerSection.style.top = Math.max(0, sentinelTop) + 'px';
+    ticking = false;
+  }
 
-      if (aboveView === isFixed) return;
-      isFixed = aboveView;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
 
-      if (isFixed) {
-        headerSection.style.cssText =
-          'position:fixed!important;top:0;left:0;right:0;' +
-          'width:100%;z-index:99992;';
-      } else {
-        headerSection.style.cssText = 'position:relative;';
-      }
-    },
-    { threshold: 0 }
-  ).observe(sentinel);
+  // Set initial position on load
+  update();
 
 })();
 </script>
