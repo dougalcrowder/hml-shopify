@@ -1,0 +1,49 @@
+{%- liquid
+  assign col = collections[section.settings.collection]
+  assign col_image = section.settings.image | default: col.image
+-%}
+
+<section class="product_collection oncats">
+  <div class="category_image">
+    <a href="{{ col.url }}">
+
+      {%- if col_image -%}
+        {{
+          col_image | image_url: width: 2560 | image_tag: widths: '355, 394, 640, 768, 1024, 1440, 2560', sizes: '100vw', alt: col.title, class: 'category_image__img', loading: 'lazy'
+        }}
+      {%- endif -%}
+
+      <div class="h1holder flex">
+        <div>
+          <h3 class="drukster catFit">{{ col.title }}</h3>
+        </div>
+      </div>
+      <span class="action">See next collection</span>
+
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Next Collection",
+    "class": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image override",
+        "info": "Defaults to the collection's featured image if left blank"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Next Collection"
+      }
+    ]
+  }
+{% endschema %}
