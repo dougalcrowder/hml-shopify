@@ -148,61 +148,33 @@
   'use strict';
 
   var headerSection = document.getElementById('shopify-section-header');
-  var productGrid   = document.querySelector('[id$="__product-grid"]');
+  var sentinel      = document.getElementById('navSentinal');
 
-  if (!headerSection || !productGrid) return;
+  if (!headerSection || !sentinel) return;
 
-  var headerH = headerSection.offsetHeight;
-
-  // ─── Override the CSS sticky so header scrolls freely on load ────────────
+  // Start relative so header scrolls freely with the page
   headerSection.style.position = 'relative';
 
-  // ─── Activate: switch to fixed when grid reaches header bottom ───────────
-  function activate() {
-    headerSection.style.cssText =
-      'position:fixed!important;top:0;left:0;right:0;z-index:99992;width:100%;';
-  }
+  var isFixed = false;
 
-  // ─── Deactivate: back to scrolling freely ────────────────────────────────
-  function deactivate() {
-    headerSection.style.cssText = 'position:relative;';
-  }
+  new IntersectionObserver(
+    function (entries) {
+      var aboveView = !entries[0].isIntersecting && 
+                       entries[0].boundingClientRect.top < 0;
 
-  var isFixed  = false;
-  var observer;
+      if (aboveView === isFixed) return;
+      isFixed = aboveView;
 
-  function buildObserver() {
-    if (observer) observer.disconnect();
-
-    observer = new IntersectionObserver(
-      function (entries) {
-        var e           = entries[0];
-        var aboveView   = !e.isIntersecting && e.boundingClientRect.top < 0;
-
-        if (aboveView === isFixed) return;
-        isFixed = aboveView;
-        aboveView ? activate() : deactivate();
-      },
-      {
-        threshold  : 0,
-        rootMargin : '-' + headerH + 'px 0px 0px 0px'
+      if (isFixed) {
+        headerSection.style.cssText =
+          'position:fixed!important;top:0;left:0;right:0;' +
+          'width:100%;z-index:99992;';
+      } else {
+        headerSection.style.cssText = 'position:relative;';
       }
-    );
-
-    observer.observe(productGrid);
-  }
-
-  buildObserver();
-
-  // ─── Resize ───────────────────────────────────────────────────────────────
-  var resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      headerH = headerSection.offsetHeight;
-      buildObserver();
-    }, 150);
-  }, { passive: true });
+    },
+    { threshold: 0 }
+  ).observe(sentinel);
 
 })();
 </script>
