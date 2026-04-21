@@ -137,7 +137,7 @@
         "enable_filtering": false,
         "filter_type": "drawer",
         "enable_sorting": false,
-        "enable_load_more": false
+        "sticky_nav": true
       }
     }
   },
