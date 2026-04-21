@@ -16,7 +16,9 @@
         %}
       </div>
     {%- endif -%}
-
+    {%- if section.settings.sticky_nav -%}
+      <div class="header_placeholder" style="width: 100%; height: 48px"> </div>
+    {%- endif -%}
     <div class="swag" id="swag">
       <div
         class="products grid containerCat{% if collection.products_count == 0 %} is-empty{% endif %}"
