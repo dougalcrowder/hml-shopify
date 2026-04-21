@@ -132,10 +132,18 @@
         "enable_sorting": false,
         "sticky_nav": true
       }
+    },
+    "next_collection_bWRVmh": {
+      "type": "next_collection",
+      "name": "Next Collection",
+      "settings": {
+        "collection": "solaris"
+      }
     }
   },
   "order": [
     "the_grid_wrk8GC",
-    "product-grid"
+    "product-grid",
+    "next_collection_bWRVmh"
   ]
 }
