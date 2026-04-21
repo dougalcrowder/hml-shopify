@@ -17,16 +17,13 @@
       </div>
     {%- endif -%}
 
-    <div class="swag" id="swag">
+    <div class="swag" id="ProductGridContainer">
       <div
-        class="products grid containerCat{% if collection.products_count == 0 %} is-empty{% endif %}"
-        id="grid"
+        class="products grid containerCat collection{% if collection.products_count == 0 %} is-empty{% endif %}"
+        id="product-grid"
         data-id="{{ section.id }}">
         {%- if collection.products.size == 0 -%}
-          <div
-            class="collection-product-list"
-            id="product-grid"
-            data-id="{{ section.id }}">
+          <div class="collection-product-list" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
               <h2 class="title title--primary">
@@ -62,81 +59,92 @@
 
 <script>
   (function () {
-  var grid            = document.getElementById('grid');
-  var paginationWrap  = document.getElementById('pagination-wrapper');
+  var grid = document.getElementById('product-grid');
+  if (!grid) return;
 
-  // If there's no grid or no pagination, nothing to do.
-  if (!grid || !paginationWrap) return;
+  var LOAD_MORE_TEXT = {{ 'sections.collection_template.load_more' | t | json }};
+  var LOADING_TEXT   = {{ 'accessibility.loading' | t | json }};
 
-  // Find the "next page" link Dawn's pagination snippet renders.
-  // Dawn uses rel="next" on the <a> tag for the next-page link.
   function getNextUrl(container) {
-  var link = container.querySelector('a[aria-label="Next page"]');
-  return link ? link.href : null;
+    if (!container) return null;
+    var link = container.querySelector('a[aria-label="Next page"]');
+    return link ? link.href : null;
   }
 
-  var nextUrl = getNextUrl(paginationWrap);
+  var nextUrl = null;
+  var btn     = null;
+  var btnWrap = null;
 
-  // No next page — leave pagination as-is.
-  if (!nextUrl) return;
+  function createButton() {
+    btn = document.createElement('button');
+    btn.className = 'button load-more-btn';
+    btn.textContent = LOAD_MORE_TEXT;
+    btn.setAttribute('aria-label', LOAD_MORE_TEXT);
+    btnWrap = document.createElement('div');
+    btnWrap.className = 'swag load-more-wrapper text-center';
+    btnWrap.appendChild(btn);
+    btn.addEventListener('click', handleClick);
+  }
 
-  // JS is available: hide numbered pagination, inject Load More button.
-  paginationWrap.hidden = true;
-
-  var btn = document.createElement('button');
-  btn.className   = 'button load-more-btn';
-  btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
-  btn.setAttribute('aria-label', btn.textContent);
-
-  var btnWrap = document.createElement('div');
-  btnWrap.className = 'swag load-more-wrapper text-center';
-  btnWrap.appendChild(btn);
-  paginationWrap.insertAdjacentElement('afterend', btnWrap);
-
-  btn.addEventListener('click', function () {
+  function handleClick() {
     if (!nextUrl) return;
-
     btn.disabled    = true;
-    btn.textContent = {{ 'general.accessibility.loading' | t | json }};
-
+    btn.textContent = LOADING_TEXT;
     fetch(nextUrl)
       .then(function (res) {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.text();
       })
       .then(function (html) {
-        // Parse the fetched page.
-        var parser  = new DOMParser();
-        var doc     = parser.parseFromString(html, 'text/html');
-
-        // Extract product cards from the remote grid.
-        var remoteGrid = doc.getElementById('grid');
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var remoteGrid = doc.getElementById('product-grid');
         if (remoteGrid) {
-          // Move each child node into the live grid.
           Array.from(remoteGrid.childNodes).forEach(function (node) {
             grid.appendChild(document.importNode(node, true));
           });
         }
-
-        // Find the next page's "next" link from the remote pagination block.
-        var remotePagination = doc.getElementById('pagination-wrapper');
-        nextUrl = remotePagination ? getNextUrl(remotePagination) : null;
-
+        nextUrl = getNextUrl(doc.getElementById('pagination-wrapper'));
         if (nextUrl) {
-          // More pages still exist — re-enable the button.
           btn.disabled    = false;
-          btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
+          btn.textContent = LOAD_MORE_TEXT;
         } else {
-          // No more pages — remove the button entirely.
           btnWrap.remove();
+          btnWrap = null;
+          btn     = null;
         }
       })
       .catch(function (err) {
         console.error('[Load More] Failed to fetch next page:', err);
         btn.disabled    = false;
-        btn.textContent = {{ 'sections.collection_template.load_more' | t | json }};
+        btn.textContent = LOAD_MORE_TEXT;
       });
-  });
+  }
+
+  window.syncLoadMore = function (sectionHtml) {
+    var doc = new DOMParser().parseFromString(sectionHtml, 'text/html');
+    nextUrl = getNextUrl(doc.getElementById('pagination-wrapper'));
+    if (nextUrl) {
+      if (!btn) createButton();
+      if (!btnWrap.parentNode) {
+        var anchor = document.getElementById('pagination-wrapper') || grid.parentNode;
+        anchor.insertAdjacentElement('afterend', btnWrap);
+      }
+      btn.disabled    = false;
+      btn.textContent = LOAD_MORE_TEXT;
+    } else if (btnWrap) {
+      btnWrap.remove();
+      btnWrap = null;
+      btn     = null;
+    }
+  };
+
+  var paginationWrap = document.getElementById('pagination-wrapper');
+  nextUrl = getNextUrl(paginationWrap);
+  if (nextUrl) {
+    createButton();
+    paginationWrap.hidden = true;
+    paginationWrap.insertAdjacentElement('afterend', btnWrap);
+  }
   })();
 </script>
 

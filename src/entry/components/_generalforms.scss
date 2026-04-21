@@ -279,14 +279,14 @@ input[type="checkbox"] {
 //   display: inline;
 // }
 
-input[type="checkbox"]:checked::before {
-  content: "+ ";
-  display: inline;
-  font-family: var(--font-head);
-  font-weight: var(--font-head-weight);
-  font-style: var(--font-head-style);
-}
-input[type="checkbox"]:checked + label {
+// input[type="checkbox"]:checked + .facet-checkbox__text-label::before {
+//   content: "+ ";
+//   display: inline;
+//   font-family: var(--font-head);
+//   font-weight: var(--font-head-weight);
+//   font-style: var(--font-head-style);
+// }
+.facets__label:has(input:checked) {
   font-family: var(--font-head);
   font-weight: var(--font-head-weight);
   font-style: var(--font-head-style);

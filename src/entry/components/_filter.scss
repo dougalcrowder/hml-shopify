@@ -115,6 +115,9 @@
   // }
 }
 
+.facets-container + .swag {
+  padding-top: 0;
+}
 
 .siteNav {
   &+main .filtration {

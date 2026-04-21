@@ -51,13 +51,12 @@
               -
               <ul>
                 {%- for link in menu_1.links -%}
-                  <li itemprop="name">
-                    <a
-                      itemprop="url"
-                      href="{{ link.url }}"
-                      {% if link.active %}
-                      class="active"
-                      {% endif %}>{{ link.title }}</a>
+                  <li
+                    itemprop="name"
+                    {% if link.active %}
+                    class="active"
+                    {% endif %}>
+                    <a itemprop="url" href="{{ link.url }}">{{ link.title }}</a>
                   </li>
                 {%- endfor -%}
               </ul>
@@ -70,13 +69,12 @@
                 -
                 <ul>
                   {%- for link in menu_2.links -%}
-                    <li itemprop="name">
-                      <a
-                        itemprop="url"
-                        href="{{ link.url }}"
-                        {% if link.active %}
-                        class="active"
-                        {% endif %}>{{ link.title }}</a>
+                    <li
+                      itemprop="name"
+                      {% if link.active %}
+                      class="active"
+                      {% endif %}>
+                      <a itemprop="url" href="{{ link.url }}">{{ link.title }}</a>
                     </li>
                   {%- endfor -%}
                 </ul>
@@ -93,13 +91,12 @@
               -
               <ul>
                 {%- for link in menu_3.links -%}
-                  <li itemprop="name">
-                    <a
-                      itemprop="url"
-                      href="{{ link.url }}"
-                      {% if link.active %}
-                      class="active"
-                      {% endif %}>{{ link.title }}</a>
+                  <li
+                    itemprop="name"
+                    {% if link.active %}
+                    class="active"
+                    {% endif %}>
+                    <a itemprop="url" href="{{ link.url }}">{{ link.title }}</a>
                   </li>
                 {%- endfor -%}
               </ul>
@@ -117,13 +114,12 @@
               -
               <ul>
                 {%- for link in menu_4.links -%}
-                  <li itemprop="name">
-                    <a
-                      itemprop="url"
-                      href="{{ link.url }}"
-                      {% if link.active %}
-                      class="active"
-                      {% endif %}>{{ link.title }}</a>
+                  <li
+                    itemprop="name"
+                    {% if link.active %}
+                    class="active"
+                    {% endif %}>
+                    <a itemprop="url" href="{{ link.url }}">{{ link.title }}</a>
                   </li>
                 {%- endfor -%}
               </ul>

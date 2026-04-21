@@ -67,6 +67,7 @@ class FacetFiltersForm extends HTMLElement {
         FacetFiltersForm.renderFilters(html, event);
         FacetFiltersForm.renderProductGridContainer(html);
         FacetFiltersForm.renderProductCount(html);
+        if (typeof window.syncLoadMore === 'function') window.syncLoadMore(html);
         if (typeof initializeScrollAnimationTrigger === 'function') initializeScrollAnimationTrigger(html.innerHTML);
       });
   }
@@ -76,6 +77,7 @@ class FacetFiltersForm extends HTMLElement {
     FacetFiltersForm.renderFilters(html, event);
     FacetFiltersForm.renderProductGridContainer(html);
     FacetFiltersForm.renderProductCount(html);
+    if (typeof window.syncLoadMore === 'function') window.syncLoadMore(html);
     if (typeof initializeScrollAnimationTrigger === 'function') initializeScrollAnimationTrigger(html.innerHTML);
   }
 
@@ -93,9 +95,11 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderProductCount(html) {
-    const count = new DOMParser().parseFromString(html, 'text/html').getElementById('ProductCount').innerHTML;
+    const sourceCount = new DOMParser().parseFromString(html, 'text/html').getElementById('ProductCount');
     const container = document.getElementById('ProductCount');
     const containerDesktop = document.getElementById('ProductCountDesktop');
+    if (!sourceCount || !container) return;
+    const count = sourceCount.innerHTML;
     container.innerHTML = count;
     container.classList.remove('loading');
     if (containerDesktop) {
@@ -196,7 +200,8 @@ class FacetFiltersForm extends HTMLElement {
       document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
     });
 
-    document.getElementById('FacetFiltersFormMobile').closest('menu-drawer').bindEvents();
+    const menuDrawer = document.getElementById('FacetFiltersFormMobile').closest('menu-drawer');
+    if (menuDrawer) menuDrawer.bindEvents();
   }
 
   static renderCounts(source, target) {
