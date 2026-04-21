@@ -300,10 +300,18 @@
         "enable_sorting": false,
         "sticky_nav": true
       }
+    },
+    "next_collection_Fr3DPp": {
+      "type": "next_collection",
+      "name": "Next Collection",
+      "settings": {
+        "collection": "a-new-act-of-rebellion"
+      }
     }
   },
   "order": [
     "the_grid_wrk8GC",
-    "product-grid"
+    "product-grid",
+    "next_collection_Fr3DPp"
   ]
 }
