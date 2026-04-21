@@ -95,12 +95,20 @@
         "enable_filtering": false,
         "filter_type": "drawer",
         "enable_sorting": false,
-        "enable_load_more": false
+        "sticky_nav": true
+      }
+    },
+    "next_collection_7wnbNB": {
+      "type": "next_collection",
+      "name": "Next Collection",
+      "settings": {
+        "collection": "only-performance"
       }
     }
   },
   "order": [
     "the_grid_wrk8GC",
-    "product-grid"
+    "product-grid",
+    "next_collection_7wnbNB"
   ]
 }
