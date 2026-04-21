@@ -193,12 +193,20 @@
         "enable_filtering": false,
         "filter_type": "drawer",
         "enable_sorting": false,
-        "enable_load_more": false
+        "sticky_nav": false
+      }
+    },
+    "next_collection_Mz9tCW": {
+      "type": "next_collection",
+      "name": "Next Collection",
+      "settings": {
+        "collection": "vincent"
       }
     }
   },
   "order": [
     "the_grid_wrk8GC",
-    "product-grid"
+    "product-grid",
+    "next_collection_Mz9tCW"
   ]
 }
