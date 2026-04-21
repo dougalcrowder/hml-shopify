@@ -140,6 +140,71 @@
   })();
 </script>
 
+{% if section.settings.sticky_nav %}
+<script>
+  (function () {
+  'use strict';
+
+  var headerSection = document.getElementById('shopify-section-header');
+  var productGrid   = document.querySelector('[id$="__product-grid"]');
+
+  if (!headerSection || !productGrid) return;
+
+  var headerH = headerSection.offsetHeight;
+
+  // ─── Override the CSS sticky so header scrolls freely on load ────────────
+  headerSection.style.position = 'relative';
+
+  // ─── Activate: switch to fixed when grid reaches header bottom ───────────
+  function activate() {
+    headerSection.style.cssText =
+      'position:fixed!important;top:0;left:0;right:0;z-index:99992;width:100%;';
+  }
+
+  // ─── Deactivate: back to scrolling freely ────────────────────────────────
+  function deactivate() {
+    headerSection.style.cssText = 'position:relative;';
+  }
+
+  var isFixed  = false;
+  var observer;
+
+  function buildObserver() {
+    if (observer) observer.disconnect();
+
+    observer = new IntersectionObserver(
+      function (entries) {
+        var e           = entries[0];
+        var aboveView   = !e.isIntersecting && e.boundingClientRect.top < 0;
+
+        if (aboveView === isFixed) return;
+        isFixed = aboveView;
+        aboveView ? activate() : deactivate();
+      },
+      {
+        threshold  : 0,
+        rootMargin : '-' + headerH + 'px 0px 0px 0px'
+      }
+    );
+
+    observer.observe(productGrid);
+  }
+
+  buildObserver();
+
+  // ─── Resize ───────────────────────────────────────────────────────────────
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      headerH = headerSection.offsetHeight;
+      buildObserver();
+    }, 150);
+  }, { passive: true });
+
+})();
+</script>
+{% endif %}
 {% schema %}
   {
     "name": "Product Grid",
@@ -191,6 +256,11 @@
         "id": "enable_sorting",
         "label": "Enable sorting",
         "default": true
+      }, {
+        "type": "checkbox",
+        "id": "sticky_nav",
+        "label": "Push sticky nav below content",
+        "default": false
       }
     ]
   }
