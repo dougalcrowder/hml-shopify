@@ -1,21 +1,21 @@
 {%- paginate blog.articles by 10 -%}
-
-<div id="blog-articles">
-  {%- for article in blog.articles -%}
-    {{ article.content }}
-  {%- endfor -%}
-</div>
-
-{%- if paginate.next -%}
-  <div id="load-more-container" style="text-align:center;padding:40px 0;">
-    <button
-      class="button"
-      id="loadMoreBtn"
-      data-next-url="{{ paginate.next.url }}">
-      {{ section.settings.load_more_label }}
-    </button>
+  {{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+  <div id="blog-articles">
+    {%- for article in blog.articles -%}
+      {{ article.content }}
+    {%- endfor -%}
   </div>
-{%- endif -%}
+
+  {%- if paginate.next -%}
+    <div id="load-more-container" style="text-align:center;padding:40px 0;">
+      <button
+        class="button"
+        id="loadMoreBtn"
+        data-next-url="{{ paginate.next.url }}">
+        {{ section.settings.load_more_label }}
+      </button>
+    </div>
+  {%- endif -%}
 
 {%- endpaginate -%}
 

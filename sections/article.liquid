@@ -1,9 +1,13 @@
+{% if section.settings.show_html %}
+    {{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
+{{ article.content }}
+  {% else %}
 {{ 'section-article.css' | asset_url | stylesheet_tag }}
 
 <article class="main-article">
-  {% if section.settings.show_html %}
+  
     {{ article.content }}
-  {% else %}
+
     {%- if article.image and section.settings.show_image -%}
       <div class="article-image article-image--{{ section.settings.image_style }}">
         <img
