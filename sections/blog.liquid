@@ -1,11 +1,13 @@
 {%- paginate blog.articles by 10 -%}
   {{ 'section-campaigns.css' | asset_url | stylesheet_tag }}
-  <div id="blog-articles">
-    {%- for article in blog.articles -%}
-      {{ article.content }}
-    {%- endfor -%}
-  </div>
 
+  <div id="content" class="ohmygaad">
+    <div id="campaigns" class="campaigns">
+      {%- for article in blog.articles -%}
+        {{ article.content }}
+      {%- endfor -%}
+    </div>
+  </div>
   {%- if paginate.next -%}
     <div id="load-more-container" style="text-align:center;padding:40px 0;">
       <button
@@ -62,6 +64,51 @@
         });
     });
   })();
+</script>
+
+<script src="{{ 'rellax.min.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  if (document.querySelector('.rellax')) {
+  window.addEventListener('load', function() {
+    var rellax = new Rellax('.rellax', {
+      speed: -2,
+      center: true
+    });
+  })
+  }
+
+  var inactivityTime = function () {
+    var time;
+    window.onload = resetTimer;
+    document.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onmousedown = resetTimer; 
+    document.ontouchstart = resetTimer;
+    document.onclick = resetTimer;  
+    document.onscroll = resetTimer; 
+    document.onkeypress = resetTimer;
+
+    function gowild() {
+        if (document.getElementById('campaigns')) {
+          let content = document.getElementById('content');
+          content.classList.remove('settle');
+          content.classList.add('ohmygaad');
+        }
+    }
+
+    function resetTimer() {
+        clearTimeout(time);
+        let content = document.getElementById('content');
+        if (content.classList.contains('ohmygaad')) {
+          content.classList.remove('ohmygaad');
+          content.classList.add('settle');
+        }
+        time = setTimeout(gowild, 20000)
+        // 1000 milliseconds = 1 second
+    }
+  };
+  inactivityTime();
 </script>
 
 {% schema %}
