@@ -1,8 +1,6 @@
-{{ 'section-product-template.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.enable_section_css -%}
   <link rel="stylesheet" href="{{ 'section-product-template.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- endif -%}
+
 
 {% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 
