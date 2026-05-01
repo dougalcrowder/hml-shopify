@@ -99,56 +99,62 @@
         <h1>{{ product.title }}</h1>
 
         <div id="product-price" class="product-price">
-          {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
-          {%- if product.compare_at_price > product.price -%}
-            {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
-          {%- endif -%}
+          {%- if product.metafields.custom.poa_product == true -%}
+            <span class="firstPrice checkme" data-fakeid="id-none">
+              <i class="vat"><span class="gbp">POA</span></i>
+            </span>
+          {%- else -%}
+            {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
+            {%- if product.compare_at_price > product.price -%}
+              {%- assign compare_ex_vat = product.compare_at_price | divided_by: 1.2 -%}
+            {%- endif -%}
 
-          <span class="firstPrice checkme" data-fakeid="id-none">
-            <i class="vat">
-              <span class="gbp">
-                {%- if product.compare_at_price > product.price -%}
-                  {{ product.compare_at_price | money }}
-                {%- else -%}
-                  {{ product.price | money }}
-                {%- endif -%}
-              </span>
-            </i>
-            <i class="noVat">
-              <span class="gbp">
-                {%- if product.compare_at_price > product.price -%}
-                  {{ compare_ex_vat | money }}
-                {%- else -%}
-                  {{ price_ex_vat | money }}
-                {%- endif -%}
-              </span>
-            </i>
-          </span>
-
-          {%- for variant in product.variants -%}
-            {%- assign variant_price_ex_vat = variant.price | divided_by: 1.2 -%}
-            <span class="updatePrice" data-fakeid="id-{{ variant.id }}">
+            <span class="firstPrice checkme" data-fakeid="id-none">
               <i class="vat">
                 <span class="gbp">
-                  {%- if variant.compare_at_price > variant.price -%}
-                    {{ variant.compare_at_price | money }}
+                  {%- if product.compare_at_price > product.price -%}
+                    {{ product.compare_at_price | money }}
                   {%- else -%}
-                    {{ variant.price | money }}
+                    {{ product.price | money }}
                   {%- endif -%}
                 </span>
               </i>
               <i class="noVat">
                 <span class="gbp">
-                  {%- if variant.compare_at_price > variant.price -%}
-                    {%- assign variant_compare_ex_vat = variant.compare_at_price | divided_by: 1.2 -%}
-                    {{ variant_compare_ex_vat | money }}
+                  {%- if product.compare_at_price > product.price -%}
+                    {{ compare_ex_vat | money }}
                   {%- else -%}
-                    {{ variant_price_ex_vat | money }}
+                    {{ price_ex_vat | money }}
                   {%- endif -%}
                 </span>
               </i>
             </span>
-          {%- endfor -%}
+
+            {%- for variant in product.variants -%}
+              {%- assign variant_price_ex_vat = variant.price | divided_by: 1.2 -%}
+              <span class="updatePrice" data-fakeid="id-{{ variant.id }}">
+                <i class="vat">
+                  <span class="gbp">
+                    {%- if variant.compare_at_price > variant.price -%}
+                      {{ variant.compare_at_price | money }}
+                    {%- else -%}
+                      {{ variant.price | money }}
+                    {%- endif -%}
+                  </span>
+                </i>
+                <i class="noVat">
+                  <span class="gbp">
+                    {%- if variant.compare_at_price > variant.price -%}
+                      {%- assign variant_compare_ex_vat = variant.compare_at_price | divided_by: 1.2 -%}
+                      {{ variant_compare_ex_vat | money }}
+                    {%- else -%}
+                      {{ variant_price_ex_vat | money }}
+                    {%- endif -%}
+                  </span>
+                </i>
+              </span>
+            {%- endfor -%}
+          {%- endif -%}
         </div>
 
         {%- if product.description != blank -%}
@@ -194,93 +200,105 @@
         {%- endif -%}
       </div>
 
-      {%- comment -%} Second holall: product form {%- endcomment -%}
+      {%- comment -%} Second holall: product form or enquiry link {%- endcomment -%}
       <div class="holall">
         <div id="prodform">
-          <ajax-cart-product-form>
-            {%- assign product_type_class = product.type | downcase | replace: ' ', '-' -%}
-            {% form 'product'
-              , product
-              , id: 'product-form-productfly' %}
-              <div class="addto flex variants-{{ product.variants.size }} {{ product_type_class }}">
-
-                {%- unless product.has_only_default_variant -%}
-                  <div class="field">
-                    <label>
-                      <select
-                        name="id"
-                        id="purchasableId"
-                        class="purchasableId {{ product_type_class }}">
-                        <option
-                          value=""
-                          disabled
-                          selected>
-                          {%- if product.options.first == 'Size' or product.options.first == 'Ring Size' -%}
-                            Size Option
-                          {%- else -%}
-                            {{ product.options.first }} Option
-                          {%- endif -%}
-                        </option>
-                        {%- for variant in product.variants -%}
-                          <option value="{{ variant.id }}">
-                            {{ variant.title }}
-                          </option>
-                        {%- endfor -%}
-                      </select>
-                    </label>
-                  </div>
-                {%- else -%}
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ product.variants.first.id }}">
-                {%- endunless -%}
-
-                <div class="buttons">
-                  <input
-                    type="submit"
-                    class="button outline"
-                    value="{{ 'products.product.add_to_cart' | t }}"
-                    id="addToCart"
-                    {% if product.has_only_default_variant %}
-                    {% unless product.available %}
-                    disabled{% endunless %}
-                    {% else %}
-                    disabled
-                    {% endif %}>
-                </div>
-
-                {%- if section.settings.leadtime_text != blank -%}
-                  <div class="leadtime-container">
-                    <div class="leadtime">
-                      {{ section.settings.leadtime_text }}
-                    </div>
-                  </div>
-                {%- endif -%}
-
+          {%- if product.metafields.custom.poa_product == true -%}
+            <div class="addto flex">
+              <div class="buttons">
+                <a
+                  href="/pages/product-enquiry?product={{ product.title | url_encode }}"
+                  class="button outline">
+                  Enquire
+                </a>
               </div>
-            {% endform %}
-          </ajax-cart-product-form>
-          <script>
-              document.addEventListener('change', function (event) {
-                if (event.target.id !== 'purchasableId') return;
-                let selectedValue = event.target.value;
-                if (!selectedValue) {
-                  document.getElementById('addToCart').disabled = true;
-                } else {
-                  let ourValue = 'id-' + selectedValue;
-                  document.querySelectorAll('#product-price span').forEach(function (priceItem) {
-                    let ourId = priceItem.dataset.fakeid;
-                    if (ourId !== ourValue) {
-                      priceItem.classList.remove('checkme');
-                    } else {
-                      priceItem.classList.add('checkme');
-                    }
-                  });
-                  document.getElementById('addToCart').disabled = false;
-                }
-              }, false);
-          </script>
+            </div>
+          {%- else -%}
+            <ajax-cart-product-form>
+              {%- assign product_type_class = product.type | downcase | replace: ' ', '-' -%}
+              {% form 'product'
+                , product
+                , id: 'product-form-productfly' %}
+                <div class="addto flex variants-{{ product.variants.size }} {{ product_type_class }}">
+
+                  {%- unless product.has_only_default_variant -%}
+                    <div class="field">
+                      <label>
+                        <select
+                          name="id"
+                          id="purchasableId"
+                          class="purchasableId {{ product_type_class }}">
+                          <option
+                            value=""
+                            disabled
+                            selected>
+                            {%- if product.options.first == 'Size' or product.options.first == 'Ring Size' -%}
+                              Size Option
+                            {%- else -%}
+                              {{ product.options.first }} Option
+                            {%- endif -%}
+                          </option>
+                          {%- for variant in product.variants -%}
+                            <option value="{{ variant.id }}">
+                              {{ variant.title }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                      </label>
+                    </div>
+                  {%- else -%}
+                    <input
+                      type="hidden"
+                      name="id"
+                      value="{{ product.variants.first.id }}">
+                  {%- endunless -%}
+
+                  <div class="buttons">
+                    <input
+                      type="submit"
+                      class="button outline"
+                      value="{{ 'products.product.add_to_cart' | t }}"
+                      id="addToCart"
+                      {% if product.has_only_default_variant %}
+                      {% unless product.available %}
+                      disabled{% endunless %}
+                      {% else %}
+                      disabled
+                      {% endif %}>
+                  </div>
+
+                  {%- if section.settings.leadtime_text != blank -%}
+                    <div class="leadtime-container">
+                      <div class="leadtime">
+                        {{ section.settings.leadtime_text }}
+                      </div>
+                    </div>
+                  {%- endif -%}
+
+                </div>
+              {% endform %}
+            </ajax-cart-product-form>
+            <script>
+                document.addEventListener('change', function (event) {
+                  if (event.target.id !== 'purchasableId') return;
+                  let selectedValue = event.target.value;
+                  if (!selectedValue) {
+                    document.getElementById('addToCart').disabled = true;
+                  } else {
+                    let ourValue = 'id-' + selectedValue;
+                    document.querySelectorAll('#product-price span').forEach(function (priceItem) {
+                      let ourId = priceItem.dataset.fakeid;
+                      if (ourId !== ourValue) {
+                        priceItem.classList.remove('checkme');
+                      } else {
+                        priceItem.classList.add('checkme');
+                      }
+                    });
+                    document.getElementById('addToCart').disabled = false;
+                  }
+                }, false);
+            </script>
+          {%- endif -%}
         </div>
       </div>
 

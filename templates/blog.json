@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main-blog": {
+      "type": "blog",
+      "settings": {
+        "load_more_label": "Load more"
+      }
+    }
+  },
+  "order": [
+    "main-blog"
+  ]
+}

@@ -13,7 +13,9 @@
     <h3 class="product-title">{{ product.title }}</h3>
 
     <span class="prod_price">
-      {%- if product.compare_at_price > product.price -%}
+      {%- if product.metafields.custom.poa_product == true -%}
+        <i class="vat">POA</i>
+      {%- elsif product.compare_at_price > product.price -%}
         <i class="price-compare strikethrough">
           {{ product.compare_at_price | money }}
         </i>

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "product-enquiry": {
+      "type": "product-enquiry",
+      "settings": {
+        "success_message": "Thank you for your enquiry. We’ll be in touch shortly."
+      }
+    }
+  },
+  "order": [
+    "product-enquiry"
+  ]
+}

@@ -1,0 +1,52 @@
+input[type="email"],
+textarea {
+  transition: var(--transit);
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  width: 100%;
+  font-size: 100%;
+  font-weight: 300;
+  line-height: 38px;
+  padding: 0 4px;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-family: var(--font-body);
+  font-weight: var(--font-body-weight);
+  font-style: var(--font-body-style);
+}
+
+input[type="email"]:hover,
+input[type="email"]:focus,
+textarea:hover,
+textarea:focus {
+  border-color: rgba(0, 0, 0, 1);
+  outline: none;
+}
+
+textarea {
+  line-height: 1.5;
+  padding: 8px 4px;
+  resize: vertical;
+}
+
+.product-enquiry-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.product-enquiry-section .ff-form-success,
+.product-enquiry-section .ff-form-errors {
+  margin-bottom: 16px;
+  padding: 10px 0;
+}
+
+.product-enquiry-section .ff-form-errors {
+  color: var(--colour-red, #c0392b);
+}
+
+.product-enquiry-section .ff-form-success {
+  color: var(--colour-green, #27ae60);
+}
