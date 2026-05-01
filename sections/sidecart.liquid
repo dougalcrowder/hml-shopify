@@ -9,12 +9,11 @@
         {% for item in cart.items %}
         {{ item.product.handle }}
         {% endfor %}>
-        <h3 class="cart_header-title">{{ 'general.cart.title' | t }}</h3>
         <!-- data-ajax-cart-section makes the element's HTML update
           when the cart gets changed -->
         <div class="live_action">
           <div class="cart_header">
-            <div class="h2">{{ section.settings.title }}</div>
+            <div class="h2">{{ 'general.cart.title' | t }}</div>
           </div>
 
           <div class="line_items custom_scroll">
