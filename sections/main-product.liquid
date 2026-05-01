@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{{ 'section-product-template.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 
 {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
