@@ -572,5 +572,11 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "snippets": {
+    "supported_payment_types": {
+      "list_label": "Accepted payment methods",
+      "none": "No payment methods are currently enabled."
+    }
   }
 }
