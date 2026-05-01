@@ -9,6 +9,7 @@
         {% for item in cart.items %}
         {{ item.product.handle }}
         {% endfor %}>
+        <h3 class="cart_header-title">{{ 'general.cart.title' | t }}</h3>
         <!-- data-ajax-cart-section makes the element's HTML update
           when the cart gets changed -->
         <div class="live_action">
