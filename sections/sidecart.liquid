@@ -139,12 +139,11 @@
               {{ 'general.cart.checkout' | t }}
             </button>
 
-            {% comment %}
+
               <a href="/cart" class="button alt nude">View Cart</a>
-            {% endcomment %}
-            <!-- data-ajax-cart-static-element keeps the container unchanged
-              when the cart and the surrounding HTML get updated -->
+            {% render 'buy-buttons' %}
             <div data-ajax-cart-static-element class="my-cart__app-container"></div>
+            {% render 'supported-payment-types' %}
           </div>
           {% if inside_scoop %}
 <pre></pre>
