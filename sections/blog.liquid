@@ -8,63 +8,20 @@
       {%- endfor -%}
     </div>
   </div>
-  {%- if paginate.next -%}
-    <div id="load-more-container" style="text-align:center;padding:40px 0;">
-      <button
-        class="button"
-        id="loadMoreBtn"
-        data-next-url="{{ paginate.next.url }}">
-        {{ section.settings.load_more_label }}
-      </button>
+  <div class="paginate flex">
+    <div class="prev pager">
+      {%- if paginate.previous -%}
+        <a href="{{ paginate.previous.url }}">&lt;&lt; Previous Page</a>
+      {%- endif -%}
     </div>
-  {%- endif -%}
+    <div class="next pager">
+      {%- if paginate.next -%}
+        <a href="{{ paginate.next.url }}">Next Page &gt;&gt;</a>
+      {%- endif -%}
+    </div>
+  </div>
 
 {%- endpaginate -%}
-
-<script>
-  (function () {
-    var btn = document.getElementById('loadMoreBtn');
-    if (!btn) return;
-
-    var container = document.getElementById('blog-articles');
-    var originalLabel = btn.textContent.trim();
-
-    btn.addEventListener('click', function () {
-      var nextUrl = btn.dataset.nextUrl;
-      if (!nextUrl) return;
-
-      btn.disabled = true;
-      btn.textContent = 'Loading…';
-
-      fetch(nextUrl)
-        .then(function (res) {
-          if (!res.ok) throw new Error(res.status);
-          return res.text();
-        })
-        .then(function (html) {
-          var doc = new DOMParser().parseFromString(html, 'text/html');
-
-          var incoming = doc.getElementById('blog-articles');
-          if (incoming) {
-            container.insertAdjacentHTML('beforeend', incoming.innerHTML);
-          }
-
-          var nextBtn = doc.getElementById('loadMoreBtn');
-          if (nextBtn) {
-            btn.dataset.nextUrl = nextBtn.dataset.nextUrl;
-            btn.disabled = false;
-            btn.textContent = originalLabel;
-          } else {
-            document.getElementById('load-more-container').remove();
-          }
-        })
-        .catch(function () {
-          btn.disabled = false;
-          btn.textContent = originalLabel;
-        });
-    });
-  })();
-</script>
 
 <script src="{{ 'rellax.min.js' | asset_url }}" defer="defer"></script>
 
@@ -114,14 +71,7 @@
 {% schema %}
   {
     "name": "Blog",
-    "settings": [
-      {
-        "type": "text",
-        "id": "load_more_label",
-        "label": "Load more button label",
-        "default": "Load more"
-      }
-    ],
+    "settings": [],
     "presets": [
       {
         "name": "Blog"
