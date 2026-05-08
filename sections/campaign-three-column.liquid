@@ -12,7 +12,7 @@
       {%- when 'image' -%}
         <div class="image image-falls" {{ block.shopify_attributes }}>
           {%- if block.settings.image_link != blank -%}
-            <a href="{{ block.settings.image_link }}">
+            <a href="{{ block.settings.image_link }}"{% if block.settings.link_target %} target="_blank"{% endif %}>
           {%- endif -%}
 
           <div class="main_picture">
@@ -196,6 +196,11 @@
             "label": "Show link as button",
             "default": false
           }, {
+            "type": "checkbox",
+            "id": "link_target",
+            "label": "Open link in new window",
+            "default": false
+          },{
             "type": "text",
             "id": "button_text",
             "label": "Button text"
