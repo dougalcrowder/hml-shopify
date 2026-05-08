@@ -80,6 +80,7 @@
             "headline": "Rings",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
@@ -92,6 +93,7 @@
             "headline": "Necklaces",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
@@ -104,6 +106,7 @@
             "headline": "Bracelets",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
@@ -170,6 +173,7 @@
             "headline": "Book A Visit",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": true,
             "button_text": "",
             "image_overlay_opacity": 0
           }
@@ -183,6 +187,7 @@
             "headline": "HMPierced",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
@@ -196,6 +201,7 @@
             "headline": "Press",
             "subtitle": "",
             "link_is_button": false,
+            "link_target": false,
             "button_text": "",
             "image_overlay_opacity": 0
           }
