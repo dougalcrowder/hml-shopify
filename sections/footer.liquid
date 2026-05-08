@@ -196,7 +196,7 @@
 
               var cbName = '_mc_cb_' + Date.now();
               var mcBase = {{ section.settings.mailchimp_url | default: '' | json }};
-              var mcEndpoint = mcBase.replace('/post?', '/post-json?').replace('/post', '/post-json');
+              var mcEndpoint = mcBase.replace(/\/post(?=\?|$)/, '/post-json');
               var url = mcEndpoint + (mcEndpoint.indexOf('?') === -1 ? '?' : '&') + params.toString() + '&c=' + cbName;
 
               window[cbName] = function(response) {
@@ -267,6 +267,7 @@
         "type": "text",
         "id": "mailchimp_url",
         "label": "Mailchimp subscribe URL",
+        "default": "https://dougal.us1.list-manage.com/subscribe/post?u=32bcc9bd8289b8daf8f03523d&id=10803121bb&f_id=00102ee5f0",
         "info": "Paste the full Mailchimp subscribe URL from your audience embed form (e.g. https://xxx.list-manage.com/subscribe/post?u=...)"
       },
       {
