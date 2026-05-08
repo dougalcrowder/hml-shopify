@@ -455,20 +455,24 @@
     transform: translateY(0);
     opacity: 1;
   }
-  10% {
+  5% {
     transform: translateY(100%);
     opacity: 1;
   }
-  90% {
+  40% {
     transform: translateY(100%);
     opacity: 1;
   }
-  99.9% {
+  44.9% {
     transform: translateY(200%);
     opacity: 1;
   }
+  45% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
   100% {
-    transform: translateY(200);
+    transform: translateY(0);
     opacity: 0;
   }
 }
@@ -508,7 +512,7 @@
       /* Applies styles when the user has made no preference known */
       @media screen and (prefers-reduced-motion: no-preference) {
         &.slidebaby .lifestyle_picture {
-          animation: slide-in-top 20s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s infinite both;
+          animation: slide-in-top 40s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s infinite both;
         }
         &:nth-child(5n+1) {
           .lifestyle_picture {
