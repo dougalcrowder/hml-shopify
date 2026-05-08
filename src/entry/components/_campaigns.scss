@@ -75,6 +75,66 @@ section.campaigns {
 .campaigns, .collection_campaigns {
   .flex {
     position: relative;
+      &:nth-child(1) {
+      z-index: 50;
+    }
+    &:nth-child(2) {
+      z-index: 49;
+    }
+    &:nth-child(3) {
+      z-index: 48;
+    }
+    &:nth-child(4) {
+      z-index: 47;
+    }
+    &:nth-child(5) {
+      z-index: 46;
+    }
+    &:nth-child(6) {
+      z-index: 45;
+    }
+    &:nth-child(7) {
+      z-index: 42;
+    }
+    &:nth-child(8) {
+      z-index: 40;
+    }
+    &:nth-child(9) {
+      z-index: 38;
+    }
+    &:nth-child(10) {
+      z-index: 36;
+    }
+    &:nth-child(11) {
+      z-index: 34;
+    }
+    &:nth-child(12) {
+      z-index: 32;
+    }
+    &:nth-child(13) {
+      z-index: 30;
+    }
+    &:nth-child(14) {
+      z-index: 28;
+    }
+    &:nth-child(15) {
+      z-index: 26;
+    }
+    &:nth-child(16) {
+      z-index: 24;
+    }
+    &:nth-child(17) {
+      z-index: 22;
+    }
+    &:nth-child(18) {
+      z-index: 20;
+    }
+    &:nth-child(19) {
+      z-index: 18;
+    }
+    &:nth-child(20) {
+      z-index: 16;
+    }
     &.gap {
       padding-top: 10px;
       gap: 10px;
