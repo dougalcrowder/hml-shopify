@@ -118,23 +118,6 @@
         <div class="news">
           <h4>Newsletter</h4>
           <form id="newsletterForm">
-            <input
-              type="hidden"
-              name="form_type"
-              value="customer">
-            <input
-              type="hidden"
-              name="utf8"
-              value="✓">
-            <input
-              type="hidden"
-              name="contact[tags]"
-              value="newsletter">
-            <input
-              type="hidden"
-              name="contact[accepts_marketing]"
-              value="true">
-
             <div class="hm-forms">
               <div class="freeform-row">
                 <div class="freeform-column html">
@@ -146,7 +129,7 @@
                   <label for="form-input-firstName" class="freeform-label">First Name</label>
                   <input
                     class="freeform-input"
-                    name="contact[first_name]"
+                    name="FNAME"
                     type="text"
                     id="form-input-firstName"
                     placeholder="First Name">
@@ -155,7 +138,7 @@
                   <label for="form-input-lastName" class="freeform-label">Last Name</label>
                   <input
                     class="freeform-input"
-                    name="contact[last_name]"
+                    name="LNAME"
                     type="text"
                     id="form-input-lastName"
                     placeholder="Last Name">
@@ -164,7 +147,7 @@
                   <label for="form-input-newsletter-email" class="freeform-label freeform-required">Email</label>
                   <input
                     class="freeform-input"
-                    name="contact[email]"
+                    name="EMAIL"
                     type="email"
                     id="form-input-newsletter-email"
                     placeholder="Email Address"
@@ -208,29 +191,42 @@
               msg.textContent = '';
 
               var data = new FormData(form);
+              var params = new URLSearchParams();
+              data.forEach(function(value, key) { params.append(key, value); });
 
-              fetch('/contact', {
-                method: 'POST',
-                headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                body: data
-              })
-              .then(function(response) {
-                if (response.ok) {
+              var cbName = '_mc_cb_' + Date.now();
+              var mcBase = {{ section.settings.mailchimp_url | default: '' | json }};
+              var mcEndpoint = mcBase.replace('/post?', '/post-json?').replace('/post', '/post-json');
+              var url = mcEndpoint + (mcEndpoint.indexOf('?') === -1 ? '?' : '&') + params.toString() + '&c=' + cbName;
+
+              window[cbName] = function(response) {
+                delete window[cbName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+                btn.disabled = false;
+                btn.textContent = 'Subscribe';
+                if (response.result === 'success') {
                   msg.textContent = 'Thanks for subscribing! Please check your email to confirm.';
                   msg.className = 'form-message success';
                   form.reset();
                 } else {
-                  throw new Error('Server error: ' + response.status);
+                  msg.textContent = response.msg
+                    ? response.msg.replace(/<[^>]*>/g, '')
+                    : 'Something went wrong — please try again or contact us directly.';
+                  msg.className = 'form-message error';
                 }
-              })
-              .catch(function(err) {
-                msg.textContent = 'Something went wrong — please try again or contact us directly.';
-                msg.className = 'form-message error';
-              })
-              .finally(function() {
+              };
+
+              var script = document.createElement('script');
+              script.src = url;
+              script.onerror = function() {
+                delete window[cbName];
+                if (script.parentNode) script.parentNode.removeChild(script);
                 btn.disabled = false;
                 btn.textContent = 'Subscribe';
-              });
+                msg.textContent = 'Something went wrong — please try again or contact us directly.';
+                msg.className = 'form-message error';
+              };
+              document.head.appendChild(script);
             });
         </script>
       </div>
@@ -267,6 +263,12 @@
   {
     "name": "Footer",
     "settings": [
+      {
+        "type": "text",
+        "id": "mailchimp_url",
+        "label": "Mailchimp subscribe URL",
+        "info": "Paste the full Mailchimp subscribe URL from your audience embed form (e.g. https://xxx.list-manage.com/subscribe/post?u=...)"
+      },
       {
         "type": "link_list",
         "id": "footer_menu_1",
