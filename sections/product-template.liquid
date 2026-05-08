@@ -101,7 +101,9 @@
         <div id="product-price" class="product-price">
           {%- if product.metafields.custom.poa_product == true -%}
             <span class="firstPrice checkme" data-fakeid="id-none">
-              <i class="vat"><span class="gbp">POA</span></i>
+              <i class="vat">
+                <span class="gbp">POA</span>
+              </i>
             </span>
           {%- else -%}
             {%- assign price_ex_vat = product.price | divided_by: 1.2 -%}
@@ -206,9 +208,7 @@
           {%- if product.metafields.custom.poa_product == true -%}
             <div class="addto flex">
               <div class="buttons">
-                <a
-                  href="/pages/product-enquiry?product={{ product.title | url_encode }}"
-                  class="button outline">
+                <a href="/pages/product-enquiry?product={{ product.title | url_encode }}" class="button outline">
                   Enquire
                 </a>
               </div>
@@ -267,13 +267,20 @@
                       {% endif %}>
                   </div>
 
-                  {%- if section.settings.leadtime_text != blank -%}
-                    <div class="leadtime-container">
-                      <div class="leadtime">
-                        {{ section.settings.leadtime_text }}
+                  {%- unless product.available -%}
+                    {%- assign leadtime = product.metafields.custom.product_lead_time | default: section.settings.leadtime_text -%}
+                    {%- if leadtime != blank -%}
+                      <div class="leadtime-container">
+                        <div class="leadtime">
+                          {{ leadtime }}
+                          {%- assign leadtime_message = product.metafields.custom.product_lead_time_custom_message -%}
+                          {%- if leadtime_message != blank -%}
+                            <div class="leadtime_custom_message">{{ leadtime_message }}</div>
+                          {%- endif -%}
+                        </div>
                       </div>
-                    </div>
-                  {%- endif -%}
+                    {%- endif -%}
+                  {%- endunless -%}
 
                 </div>
               {% endform %}
