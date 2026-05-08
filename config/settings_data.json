@@ -41,6 +41,7 @@
       "footer": {
         "type": "footer",
         "settings": {
+          "mailchimp_url": "https://dougal.us1.list-manage.com/subscribe/post?u=32bcc9bd8289b8daf8f03523d&id=10803121bb&f_id=00102ee5f0",
           "footer_menu_1": "collections",
           "footer_menu_2": "pieces",
           "footer_menu_3": "special",
