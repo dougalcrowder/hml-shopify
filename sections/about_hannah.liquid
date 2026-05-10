@@ -5,10 +5,12 @@
       <div class="img top">
         {%- if section.settings.image != blank -%}
           <picture>
-            <source srcset="{{ section.settings.image | image_url: width: 884, height: 1120, crop: 'center' }} 2x, {{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }} 1x" media="(min-width: 1140px)">
-            <source srcset="{{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }}" media="(min-width: 480px)">
+            <source srcset="{{ section.settings.image | image_url: width: 1200 }} " media="(min-width: 1440px)">
+            <source srcset="{{ section.settings.image | image_url: width: 1200 }} 2x, {{ section.settings.image | image_url: width: 600 }} 1x" media="(min-width: 1440px)">
+            <source srcset="{{ section.settings.image | image_url: width: 884 }} 2x, {{ section.settings.image | image_url: width: 442 }} 1x" media="(min-width: 1140px)">
+            <source srcset="{{ section.settings.image | image_url: width: 442 }}" media="(min-width: 480px)">
             <img
-              src="{{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }}"
+              src="{{ section.settings.image | image_url: width: 442 }}"
               alt="{{ section.settings.image.alt | escape }}"
               width="442"
               height="560"
