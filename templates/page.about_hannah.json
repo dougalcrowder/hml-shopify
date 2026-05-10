@@ -12,61 +12,22 @@
     "main-page": {
       "type": "main-page",
       "settings": {
+        "show_title": true,
         "show_content": false
       }
     },
-    "campaign_three_column_gyV9mm": {
-      "type": "campaign-three-column",
-      "blocks": {
-        "image_Rz3py7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/About-the-Maker.jpg",
-            "image_link": "",
-            "headline": "",
-            "subtitle": "",
-            "link_is_button": false,
-            "link_target": false,
-            "button_text": "",
-            "image_overlay_opacity": 0
-          }
-        },
-        "text_MiGzHr": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Hannah Martin was born in the UK in 1980, at a time when England was being convulsed by a social, cultural and political counter-revolution and new wave music emerged in the wake of post-punk.</p><p>After two decades of feeling the volatile pulses of the country’s heartbeat, Hannah moved to London to study jewellery design at Central Saint Martins, and immerse herself in its cultural and sonic riches. Soon after graduating, she moved to Paris to work at the jewellery benches of Cartier on Place Vendôme.</p><p>Empowered with finely tuned, high jewellery making skills, she returned to her cultural home of London and founded the eponymous brand in 2006.</p><p>The references found in Hannah Martin jewellery come from an insatiable appetite to experience, from the atmosphere in the rooms of live music venues and the youth culture soaking it up. Feelings of elation, excitement, pleasure, restraint, awe and revelation, all feed her imagination and inform her work.</p><p>Hannah’s designs are characterised by fluid, gender nonspecific sculptural forms of emotion, bathed in an unapologetic undertone.</p><p>The demand for Hannah’s aesthetic has led to commissions to create complete fine and high jewellery collections for Louis Vuitton and Chaumet, and a fine jewellery collection for Francesca Amfitheatrof.</p><p>Hannah Martin has created catwalk jewellery collections in collaboration with luxury clothing brands such as Martine Rose SS19, Edward Crutchley AW17 and Hussein Chalayan AW12 & SS13.</p>",
-            "simple_title_only": true,
-            "text_title": "",
-            "title_line_2": "",
-            "title_line_3": "",
-            "title_line_4": ""
-          }
-        },
-        "text_VgtQgz": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Beyond jewellery, Hannah has designed medals for The London Design Festival, cocktail sets for Grey Goose Vodka and hand-blown glass hip flasks for Hendricks Gin.</p><p>Available worldwide, Hannah Martin jewellery has become best known for the collections Vincent, Aguila Dorada, and It’s Only Rock n Roll, and is treasured by musicians, authors and designers such as Madonna, Daisy Lowe, Rihanna, Joanna Trollope, Cara Delevigne, Erin O'Conner, Zaha Hadid, Morrissey and Olivier Rousteing.</p>",
-            "simple_title_only": false,
-            "text_title": "",
-            "title_line_2": "",
-            "title_line_3": "",
-            "title_line_4": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_Rz3py7",
-        "text_MiGzHr",
-        "text_VgtQgz"
-      ],
-      "name": "Campaign Three Column",
+    "about_hannah_CfrtWh": {
+      "type": "about_hannah",
+      "name": "About Hannah",
       "settings": {
-        "column_gap": false
+        "image": "shopify://shop_images/About-the-Maker.jpg",
+        "text_1": "<p>Hannah Martin was born in the UK in 1980, at a time when England was being convulsed by a social, cultural and political counter-revolution and new wave music emerged in the wake of post-punk.</p><p>After two decades of feeling the volatile pulses of the country’s heartbeat, Hannah moved to London to study jewellery design at Central Saint Martins, and immerse herself in its cultural and sonic riches. Soon after graduating, she moved to Paris to work at the jewellery benches of Cartier on Place Vendôme.</p><p>Empowered with finely tuned, high jewellery making skills, she returned to her cultural home of London and founded the eponymous brand in 2006.</p><p>The references found in Hannah Martin jewellery come from an insatiable appetite to experience, from the atmosphere in the rooms of live music venues and the youth culture soaking it up. Feelings of elation, excitement, pleasure, restraint, awe and revelation, all feed her imagination and inform her work.</p><p>Hannah’s designs are characterised by fluid, gender nonspecific sculptural forms of emotion, bathed in an unapologetic undertone.</p><p>The demand for Hannah’s aesthetic has led to commissions to create complete fine and high jewellery collections for Louis Vuitton and Chaumet, and a fine jewellery collection for Francesca Amfitheatrof.</p><p>Hannah Martin has created catwalk jewellery collections in collaboration with luxury clothing brands such as Martine Rose SS19, Edward Crutchley AW17 and Hussein Chalayan AW12 & SS13.</p>",
+        "text_2": "<p>Beyond jewellery, Hannah has designed medals for The London Design Festival, cocktail sets for Grey Goose Vodka and hand-blown glass hip flasks for Hendricks Gin.</p><p>Available worldwide, Hannah Martin jewellery has become best known for the collections Vincent, Aguila Dorada, and It’s Only Rock n Roll, and is treasured by musicians, authors and designers such as Madonna, Daisy Lowe, Rihanna, Joanna Trollope, Cara Delevigne, Erin O'Conner, Zaha Hadid, Morrissey and Olivier Rousteing.</p>"
       }
     }
   },
   "order": [
     "main-page",
-    "campaign_three_column_gyV9mm"
+    "about_hannah_CfrtWh"
   ]
 }
