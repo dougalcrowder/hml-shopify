@@ -1,4 +1,4 @@
-<article class="info">
+<article class="{% if section.settings.narrow_page %}info{% else %}wider{% endif %}">
   {% if section.settings.show_title %}
     <h1 class="drukster outline page">{{ page.title }}</h1>
   {% endif %}
@@ -32,6 +32,11 @@
         "type": "checkbox",
         "id": "show_content",
         "label": "Show Content",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "narrow_page",
+        "label": "Make page narrow",
         "default": true
       }
     ]
