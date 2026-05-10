@@ -1,0 +1,64 @@
+<section class="profile flex three">
+
+  <div class="firstblock col">
+    <div class="innercol flex">
+      <div class="img top">
+        {%- if section.settings.image != blank -%}
+          <picture>
+            <source srcset="{{ section.settings.image | image_url: width: 884, height: 1120, crop: 'center' }} 2x, {{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }} 1x" media="(min-width: 1140px)">
+            <source srcset="{{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }}" media="(min-width: 480px)">
+            <img
+              src="{{ section.settings.image | image_url: width: 442, height: 560, crop: 'center' }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              width="442"
+              height="560"
+              loading="lazy">
+          </picture>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="secondblock col">
+    <div class="innercol flex">
+      <div class="rte center">
+        {{ section.settings.text_1 }}
+      </div>
+    </div>
+  </div>
+
+  <div class="thirdblock col">
+    <div class="innercol flex">
+      <div class="rte center">
+        {{ section.settings.text_2 }}
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "About Hannah",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "richtext",
+        "id": "text_1",
+        "label": "Text (left column)"
+      }, {
+        "type": "richtext",
+        "id": "text_2",
+        "label": "Text (right column)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "About Hannah"
+      }
+    ]
+  }
+{% endschema %}

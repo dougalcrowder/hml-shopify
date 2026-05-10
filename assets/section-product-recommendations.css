@@ -5,20 +5,19 @@
 
 .product-recommendations {
   padding: 20px;
-  background: #f9f9f9;
   margin-top: 0;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .product-recommendations {
     padding: 64px 40px;
   }
-}
+} */
 
-.recommendations-container {
+/* .recommendations-container {
   max-width: 1400px;
   margin: 0 auto;
-}
+} */
 
 .recommendations-heading {
   font-size: 24px;
@@ -36,11 +35,11 @@
   }
 }
 
-.product-recommendations .products.grid {
+/* .product-recommendations .products.grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-}
+} */
 
 @media (min-width: 500px) {
   .product-recommendations .products.grid {

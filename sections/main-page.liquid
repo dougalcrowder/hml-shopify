@@ -1,32 +1,39 @@
-
 <article class="info">
-  <h1 class="drukster outline page">{{ page.title }}</h1>
-  {% if page.metafields.custom.text_column_2.value != blank %}
-    <div class="flex infoinners"> 
-      <div class="firstblock">
-        {{ page.content }}
-      </div>
-      <div class="secondblock">
-        {{ page.metafields.custom.text_column_2 | metafield_tag }}
-      </div>
-    </div>
-  {% else %}
-    <div class="rte">{{ page.content }}</div>
+  {% if section.settings.show_title %}
+    <h1 class="drukster outline page">{{ page.title }}</h1>
   {% endif %}
-  
+  {% if section.settings.show_content %}
+    {% if page.metafields.custom.text_column_2.value != blank %}
+      <div class="flex infoinners">
+        <div class="firstblock">
+          {{ page.content }}
+        </div>
+        <div class="secondblock">
+          {{ page.metafields.custom.text_column_2 | metafield_tag }}
+        </div>
+      </div>
+    {% else %}
+      <div class="rte">{{ page.content }}</div>
+    {% endif %}
+  {% endif %}
 </article>
 
 
-
-
 {% schema %}
-{
-  "name": "Page",
-  "settings": [{
-      "type": "checkbox",
-      "id": "show_content",
-      "label": "Show Content",
-      "default": true
-    }]
-}
+  {
+    "name": "Page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_title",
+        "label": "Show Title",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_content",
+        "label": "Show Content",
+        "default": true
+      }
+    ]
+  }
 {% endschema %}
