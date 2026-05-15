@@ -6,7 +6,7 @@
 {% enddoc %}
 
 <ul
-  class="supported-payment-types"
+  class="supported-payment-types flex nowrap"
   aria-label="{{ 'snippets.supported_payment_types.list_label' | t | escape }}"
 >
   {% for type in shop.enabled_payment_types %}
@@ -21,29 +21,3 @@
     </li>
   {% endfor %}
 </ul>
-
-{% stylesheet %}
-  .supported-payment-types {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .supported-payment-types__item {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .supported-payment-types__item svg {
-    width: 2.4rem;
-    height: 1.6rem;
-  }
-
-  .supported-payment-types__item--empty {
-    font-size: 0.875rem;
-    color: #6b7280;
-  }
-{% endstylesheet %}
