@@ -267,7 +267,19 @@
                       {% endif %}>
                   </div>
 
+                  {%- assign show_leadtime_block = false -%}
                   {%- unless product.available -%}
+                    {%- assign show_leadtime_block = true -%}
+                  {%- endunless -%}
+                  {%- unless show_leadtime_block -%}
+                    {%- for variant in product.variants -%}
+                      {%- if variant.inventory_quantity <= 0 and variant.inventory_policy == 'continue' -%}
+                        {%- assign show_leadtime_block = true -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endunless -%}
+                  {%- if show_leadtime_block -%}
                     {%- assign leadtime = product.metafields.custom.product_lead_time | default: section.settings.leadtime_text -%}
                     {%- if leadtime != blank -%}
                       <div class="leadtime-container">
@@ -280,7 +292,7 @@
                         </div>
                       </div>
                     {%- endif -%}
-                  {%- endunless -%}
+                  {%- endif -%}
 
                 </div>
               {% endform %}
