@@ -197,7 +197,7 @@
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Press-1.jpg",
             "mobile_image": "shopify://shop_images/HML-HM10-Homepage-Press-1.jpg",
-            "image_link": "",
+            "image_link": "shopify://blogs/press",
             "headline": "Press",
             "subtitle": "",
             "link_is_button": false,
