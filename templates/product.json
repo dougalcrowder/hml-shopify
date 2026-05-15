@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,15 +15,15 @@
         "details": {
           "type": "accordion",
           "settings": {
-            "title": "Product Details",
-            "content": "<p>Meticulously crafted functioning hinges give this piece its seductive movement.</p>"
+            "title": "{{ product.metafields.custom.accordion_1_title.value }}",
+            "content": "{{ product.metafields.custom.accordion_1_content | metafield_tag }}"
           }
         },
         "materials": {
           "type": "accordion",
           "settings": {
-            "title": "Materials",
-            "content": "<p>18 carat white and yellow gold</p>"
+            "title": "{{ product.metafields.custom.accordion_2_title.value }}",
+            "content": "{{ product.metafields.custom.accordion_2_content | metafield_tag }}"
           }
         },
         "delivery": {
@@ -31,8 +40,7 @@
         "delivery"
       ],
       "settings": {
-        "enable_section_css": true,
-        "show_quantity": true
+        "leadtime_text": "<p>Depending on the size you choose, we may need 5-7 weeks to make to order.</p>"
       }
     },
     "recommendations": {
