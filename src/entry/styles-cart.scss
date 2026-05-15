@@ -71,9 +71,18 @@
         border-top: 1px solid var(--color-tonal4);
       }
     }
+    button.go-cart__button {
+      color: white;
+      background-color: #000;
+      margin-top: 10px;
+      @media screen and (min-width: 600px) {
+        line-height: 48px;
+      }
+    }
     .button.nude {
       font-weight: normal;
       margin: 8px auto;
+      width: 100%;
     }
     .accepted_methods {
       padding: 8px 0 24px 0;
