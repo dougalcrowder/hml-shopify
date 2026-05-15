@@ -240,7 +240,7 @@
 
         <div class="payments">
           <h4>Payments Accepted</h4>
-          <ul class="supported-payment-types flex justify-start" aria-label="{{ 'snippets.supported_payment_types.list_label' | t | escape }}">
+          <ul class="supported-payment-types flex justify-start hide_scrollbars" aria-label="{{ 'snippets.supported_payment_types.list_label' | t | escape }}">
             {% for type in shop.enabled_payment_types %}
               <li class="supported-payment-types__item">
                 {{ type | payment_type_svg_tag }}
