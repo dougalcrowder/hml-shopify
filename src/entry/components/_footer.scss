@@ -45,6 +45,7 @@
           flex-basis: 190px;
           &.col5 {
             flex-basis: 222px;
+            max-width: 222px;
           }
         }
         @media screen and (max-width: 768px) {

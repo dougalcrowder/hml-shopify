@@ -6,7 +6,7 @@
 {% enddoc %}
 
 <ul
-  class="supported-payment-types flex nowrap"
+  class="supported-payment-types flex justify-start nowrap hide_scrollbars"
   aria-label="{{ 'snippets.supported_payment_types.list_label' | t | escape }}"
 >
   {% for type in shop.enabled_payment_types %}

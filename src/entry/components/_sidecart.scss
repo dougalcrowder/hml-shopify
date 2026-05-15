@@ -416,13 +416,11 @@ Opens the cart for dev
 }
 
   .supported-payment-types {
-    flex-wrap: nowrap;
     gap: .5rem;
     list-style: none;
     margin: 10px 0;
     padding: 0;
     overflow: scroll;
-
   }
 
   .supported-payment-types__item {
