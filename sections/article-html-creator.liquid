@@ -2,18 +2,28 @@
   <div class="html-creator" id="html-creator-{{ section.id }}">
     <div class="html-creator__header">
       <span class="html-creator__title">Section HTML</span>
-      <button
-        class="html-creator__copy-btn"
-        id="html-copy-btn-{{ section.id }}"
-        onclick="htmlCreatorCopy_{{ section.id }}()">
-        Copy HTML
-      </button>
+      <div class="html-creator__actions">
+        <button
+          class="html-creator__btn html-creator__generate-btn"
+          id="html-generate-btn-{{ section.id }}"
+          onclick="htmlCreatorGenerate_{{ section.id }}()">
+          Generate HTML
+        </button>
+        <button
+          class="html-creator__btn html-creator__copy-btn"
+          id="html-copy-btn-{{ section.id }}"
+          onclick="htmlCreatorCopy_{{ section.id }}()"
+          disabled>
+          Copy HTML
+        </button>
+      </div>
     </div>
     <textarea
       class="html-creator__output"
       id="html-output-{{ section.id }}"
       readonly
-      spellcheck="false"></textarea>
+      spellcheck="false"
+      placeholder="Click 'Generate HTML' to capture sections above this one."></textarea>
   </div>
 
   <style>
@@ -25,8 +35,7 @@
       overflow: hidden;
       margin: 1rem 0;
     }
-    #html-creator-{{ section.id }}
-    .html-creator__header {
+    #html-creator-{{ section.id }} .html-creator__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -34,14 +43,15 @@
       background: #2d2d2d;
       border-bottom: 1px solid #444;
     }
-    #html-creator-{{ section.id }}
-    .html-creator__title {
+    #html-creator-{{ section.id }} .html-creator__title {
       color: #ccc;
       font-size: 13px;
     }
-    #html-creator-{{ section.id }}
-    .html-creator__copy-btn {
-      background: #0078d4;
+    #html-creator-{{ section.id }} .html-creator__actions {
+      display: flex;
+      gap: 6px;
+    }
+    #html-creator-{{ section.id }} .html-creator__btn {
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -49,11 +59,24 @@
       font-size: 12px;
       cursor: pointer;
     }
-    #html-creator-{{ section.id }}.html-creator__copy-btn:hover {
+    #html-creator-{{ section.id }} .html-creator__generate-btn {
+      background: #2e7d32;
+    }
+    #html-creator-{{ section.id }} .html-creator__generate-btn:hover {
+      background: #388e3c;
+    }
+    #html-creator-{{ section.id }} .html-creator__copy-btn {
+      background: #0078d4;
+    }
+    #html-creator-{{ section.id }} .html-creator__copy-btn:hover:not(:disabled) {
       background: #106ebe;
     }
-    #html-creator-{{ section.id }}
-    .html-creator__output {
+    #html-creator-{{ section.id }} .html-creator__copy-btn:disabled {
+      background: #555;
+      cursor: default;
+      opacity: 0.6;
+    }
+    #html-creator-{{ section.id }} .html-creator__output {
       display: block;
       width: 100%;
       min-height: 300px;
@@ -68,13 +91,13 @@
       white-space: pre;
       tab-size: 2;
     }
-    #html-creator-{{ section.id }}.html-creator__output:focus {
+    #html-creator-{{ section.id }} .html-creator__output:focus {
       outline: none;
     }
   </style>
 
   <script>
-    (function () {
+    function htmlCreatorGenerate_{{ section.id }}() {
       function formatHtml(html) {
         var indent = 0;
         var tab = '  ';
@@ -104,8 +127,11 @@
         return formatHtml(el.outerHTML);
       }).join('\n\n');
 
-      document.getElementById('html-output-{{ section.id }}').value = combined || '(no sections found above this one)';
-    })();
+      var textarea = document.getElementById('html-output-{{ section.id }}');
+      var copyBtn = document.getElementById('html-copy-btn-{{ section.id }}');
+      textarea.value = combined || '(no sections found above this one)';
+      copyBtn.disabled = !combined;
+    }
 
     function htmlCreatorCopy_{{ section.id }}() {
       var textarea = document.getElementById('html-output-{{ section.id }}');
@@ -124,13 +150,13 @@
 {% endif %}
 
 {% schema %}
-  {
-    "name": "HTML Creator",
-    "templates": ["article"],
-    "presets": [
-      {
-        "name": "HTML Creator"
-      }
-    ]
-  }
+{
+  "name": "HTML Creator",
+  "templates": ["article"],
+  "presets": [
+    {
+      "name": "HTML Creator"
+    }
+  ]
+}
 {% endschema %}
