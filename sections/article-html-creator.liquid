@@ -140,11 +140,28 @@
 
     function cleanSection(el) {
       var clone = el.cloneNode(true);
-      clone.querySelectorAll('[data-shopify-editor-section]').forEach(function (node) {
-        node.removeAttribute('data-shopify-editor-section');
+
+      // Strip all data-shopify-* attributes from every element
+      clone.querySelectorAll('*').forEach(function (node) {
+        Array.from(node.attributes).forEach(function (attr) {
+          if (attr.name.startsWith('data-shopify')) node.removeAttribute(attr.name);
+        });
       });
-      clone.removeAttribute('data-shopify-editor-section');
+      Array.from(clone.attributes).forEach(function (attr) {
+        if (attr.name.startsWith('data-shopify')) clone.removeAttribute(attr.name);
+      });
+
+      // Remove Shopify editor comments (<!-- BEGIN/END setting: ... -->)
+      var walker = document.createTreeWalker(clone, NodeFilter.SHOW_COMMENT, null, false);
+      var comments = [];
+      while (walker.nextNode()) comments.push(walker.currentNode);
+      comments.forEach(function (c) { c.parentNode.removeChild(c); });
+
       return clone;
+    }
+
+    function decodeEntities(html) {
+      return html.replace(/&amp;/g, '&');
     }
 
     var main = document.querySelector('main');
@@ -153,7 +170,7 @@
     var sections = all.filter(function (el) { return el !== thisSection; });
 
     var combined = sections.map(function (el) {
-      return formatHtml(cleanSection(el).outerHTML);
+      return decodeEntities(formatHtml(cleanSection(el).outerHTML));
     }).join('\n\n');
 
     var textarea = document.getElementById('html-output-{{ js_id }}');
