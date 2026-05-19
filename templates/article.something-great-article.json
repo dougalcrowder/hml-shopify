@@ -24,19 +24,6 @@
         "show_prev_next": true
       }
     },
-    "campaign_image_qFkVww": {
-      "type": "campaign-image",
-      "name": "Campaign Image",
-      "settings": {
-        "enable_section_css": true,
-        "desktop_image": "shopify://shop_images/HML-HM10-Category-Cufflinks-Desktop.jpg",
-        "mobile_image": "shopify://shop_images/SomebodySin_3.jpg",
-        "heading": "",
-        "loading": "lazy",
-        "enable_flipper": false,
-        "link": ""
-      }
-    },
     "campaign_three_column_mFyXp7": {
       "type": "campaign-three-column",
       "blocks": {
@@ -89,6 +76,19 @@
         "column_gap": false
       }
     },
+    "campaign_image_qFkVww": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/HML-HM10-Category-Cufflinks-Desktop.jpg",
+        "mobile_image": "shopify://shop_images/SomebodySin_3.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
     "article_html_creator_GqL6tU": {
       "type": "article-html-creator",
       "name": "HTML Creator",
@@ -97,8 +97,8 @@
   },
   "order": [
     "main-article",
-    "campaign_image_qFkVww",
     "campaign_three_column_mFyXp7",
+    "campaign_image_qFkVww",
     "article_html_creator_GqL6tU"
   ]
 }
