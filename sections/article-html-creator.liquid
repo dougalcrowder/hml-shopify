@@ -1,6 +1,9 @@
 {% assign js_id = section.id | replace: '-', '_' %}
 
 <div class="html-creator" id="html-creator-{{ section.id }}" style="display:none">
+  <div class="html-creator__instructions">
+    When you have finished creating your masterpiece, please click <strong>Generate HTML</strong>. When you see the HTML has generated, click <strong>Copy HTML</strong>, then save and head over to the Article — in the content input click <strong>Show HTML</strong> and paste inside.
+  </div>
   <div class="html-creator__header">
     <span class="html-creator__title">Section HTML</span>
     <div class="html-creator__actions">
@@ -34,6 +37,17 @@
     border-radius: 6px;
     overflow: hidden;
     margin: 1rem 0;
+  }
+  #html-creator-{{ section.id }} .html-creator__instructions {
+    padding: 10px 12px;
+    background: #2a3a2a;
+    border-bottom: 1px solid #3a5a3a;
+    color: #a5d6a7;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  #html-creator-{{ section.id }} .html-creator__instructions strong {
+    color: #c8e6c9;
   }
   #html-creator-{{ section.id }} .html-creator__header {
     display: flex;
@@ -124,13 +138,22 @@
         .join('\n');
     }
 
-    var thisSection = document.getElementById('html-creator-{{ section.id }}').closest('.shopify-section');
-    var all = Array.from(document.querySelectorAll('.shopify-section'));
-    var idx = all.indexOf(thisSection);
-    var preceding = idx > 0 ? all.slice(0, idx) : [];
+    function cleanSection(el) {
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('[data-shopify-editor-section]').forEach(function (node) {
+        node.removeAttribute('data-shopify-editor-section');
+      });
+      clone.removeAttribute('data-shopify-editor-section');
+      return clone;
+    }
 
-    var combined = preceding.map(function (el) {
-      return formatHtml(el.outerHTML);
+    var main = document.querySelector('main');
+    var thisSection = document.getElementById('html-creator-{{ section.id }}').closest('.shopify-section');
+    var all = main ? Array.from(main.querySelectorAll('.shopify-section')) : [];
+    var sections = all.filter(function (el) { return el !== thisSection; });
+
+    var combined = sections.map(function (el) {
+      return formatHtml(cleanSection(el).outerHTML);
     }).join('\n\n');
 
     var textarea = document.getElementById('html-output-{{ js_id }}');
