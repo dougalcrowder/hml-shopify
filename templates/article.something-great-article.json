@@ -1,0 +1,98 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-article": {
+      "type": "article",
+      "disabled": true,
+      "settings": {
+        "show_html": true,
+        "show_image": true,
+        "image_style": "full",
+        "show_author": true,
+        "show_date": true,
+        "show_reading_time": true,
+        "show_tags": true,
+        "back_label": "Back to Journal",
+        "show_prev_next": true
+      }
+    },
+    "campaign_image_qFkVww": {
+      "type": "campaign-image",
+      "name": "Campaign Image",
+      "settings": {
+        "enable_section_css": true,
+        "desktop_image": "shopify://shop_images/HML-HM10-Category-Cufflinks-Desktop.jpg",
+        "mobile_image": "shopify://shop_images/SomebodySin_3.jpg",
+        "heading": "",
+        "loading": "lazy",
+        "enable_flipper": false,
+        "link": ""
+      }
+    },
+    "campaign_three_column_mFyXp7": {
+      "type": "campaign-three-column",
+      "blocks": {
+        "image_xKAh9J": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HMPRM60WGDWHL.jpg",
+            "mobile_image": "shopify://shop_images/HMPRM59YGPBLDCPSLogo.jpg",
+            "image_link": "",
+            "headline": "Jewels",
+            "subtitle": "",
+            "link_is_button": false,
+            "link_target": false,
+            "button_text": "",
+            "image_overlay_opacity": 3
+          }
+        },
+        "text_MUaNpe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Some test here etc</p>",
+            "simple_title_only": false,
+            "text_title": "Some",
+            "title_line_2": "thing",
+            "title_line_3": "great",
+            "title_line_4": "dudes"
+          }
+        },
+        "image_CJUAFn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Vincent_Cover.jpg",
+            "image_link": "",
+            "headline": "",
+            "subtitle": "",
+            "link_is_button": false,
+            "link_target": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_xKAh9J",
+        "text_MUaNpe",
+        "image_CJUAFn"
+      ],
+      "name": "Campaign Three Column",
+      "settings": {
+        "column_gap": false
+      }
+    }
+  },
+  "order": [
+    "main-article",
+    "campaign_image_qFkVww",
+    "campaign_three_column_mFyXp7"
+  ]
+}
