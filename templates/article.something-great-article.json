@@ -30,32 +30,8 @@
         "image_xKAh9J": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HMPRM60WGDWHL.jpg",
-            "mobile_image": "shopify://shop_images/HMPRM59YGPBLDCPSLogo.jpg",
-            "image_link": "",
-            "headline": "Jewels",
-            "subtitle": "",
-            "link_is_button": false,
-            "link_target": false,
-            "button_text": "",
-            "image_overlay_opacity": 3
-          }
-        },
-        "text_MUaNpe": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Some test here etc</p>",
-            "simple_title_only": false,
-            "text_title": "Some",
-            "title_line_2": "thing",
-            "title_line_3": "great",
-            "title_line_4": "dudes"
-          }
-        },
-        "image_CJUAFn": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Vincent_Cover.jpg",
+            "image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Cover.jpg",
+            "mobile_image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Cover.jpg",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -64,12 +40,37 @@
             "button_text": "",
             "image_overlay_opacity": 0
           }
+        },
+        "image_CJUAFn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Hannah_Martin__StrappedEbonyOrbEarrings.jpg",
+            "mobile_image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Hannah_Martin__StrappedEbonyOrbEarrings.jpg",
+            "image_link": "",
+            "headline": "",
+            "subtitle": "",
+            "link_is_button": false,
+            "link_target": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
+          }
+        },
+        "text_MUaNpe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Condé Nast Traveller features Hannah Martin's <a href=\"https://www.hannahmartinlondon.com/earrings/strapped-ebony-orb-earring\"> Strapped Ebony Orb Earrings </a> in the article ‘Wood Works’ by Jessica Diamond in their latest issue.</p>",
+            "simple_title_only": false,
+            "text_title": "Condé Nast Traveller",
+            "title_line_2": "",
+            "title_line_3": "",
+            "title_line_4": ""
+          }
         }
       },
       "block_order": [
         "image_xKAh9J",
-        "text_MUaNpe",
-        "image_CJUAFn"
+        "image_CJUAFn",
+        "text_MUaNpe"
       ],
       "name": "Campaign Three Column",
       "settings": {
@@ -107,6 +108,7 @@
         "text_cbYqzF",
         "image_ENn83k"
       ],
+      "disabled": true,
       "name": "Campaign Two Column",
       "settings": {
         "column_gap": false
@@ -114,6 +116,7 @@
     },
     "campaign_image_qFkVww": {
       "type": "campaign-image",
+      "disabled": true,
       "name": "Campaign Image",
       "settings": {
         "enable_section_css": true,
