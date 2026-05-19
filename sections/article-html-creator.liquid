@@ -167,7 +167,7 @@
     var main = document.querySelector('main');
     var thisSection = document.getElementById('html-creator-{{ section.id }}').closest('.shopify-section');
     var all = main ? Array.from(main.querySelectorAll('.shopify-section')) : [];
-    var sections = all.filter(function (el) { return el !== thisSection; });
+    var sections = all.filter(function (el) { return el !== thisSection && !el.classList.contains('lyric_section'); });
 
     var combined = sections.map(function (el) {
       return decodeEntities(formatHtml(cleanSection(el).outerHTML));
