@@ -1,0 +1,136 @@
+{% if template == 'article' and request.design_mode %}
+  <div class="html-creator" id="html-creator-{{ section.id }}">
+    <div class="html-creator__header">
+      <span class="html-creator__title">Section HTML</span>
+      <button
+        class="html-creator__copy-btn"
+        id="html-copy-btn-{{ section.id }}"
+        onclick="htmlCreatorCopy_{{ section.id }}()">
+        Copy HTML
+      </button>
+    </div>
+    <textarea
+      class="html-creator__output"
+      id="html-output-{{ section.id }}"
+      readonly
+      spellcheck="false"></textarea>
+  </div>
+
+  <style>
+    #html-creator-{{ section.id }} {
+      font-family: monospace;
+      background: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    #html-creator-{{ section.id }}
+    .html-creator__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #2d2d2d;
+      border-bottom: 1px solid #444;
+    }
+    #html-creator-{{ section.id }}
+    .html-creator__title {
+      color: #ccc;
+      font-size: 13px;
+    }
+    #html-creator-{{ section.id }}
+    .html-creator__copy-btn {
+      background: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    #html-creator-{{ section.id }}.html-creator__copy-btn:hover {
+      background: #106ebe;
+    }
+    #html-creator-{{ section.id }}
+    .html-creator__output {
+      display: block;
+      width: 100%;
+      min-height: 300px;
+      padding: 12px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-size: 12px;
+      line-height: 1.5;
+      border: none;
+      resize: vertical;
+      box-sizing: border-box;
+      white-space: pre;
+      tab-size: 2;
+    }
+    #html-creator-{{ section.id }}.html-creator__output:focus {
+      outline: none;
+    }
+  </style>
+
+  <script>
+    (function () {
+      function formatHtml(html) {
+        var indent = 0;
+        var tab = '  ';
+        return html
+          .replace(/></g, '>\n<')
+          .split('\n')
+          .map(function (line) {
+            line = line.trim();
+            if (!line) return '';
+            if (/^<\//.test(line)) indent = Math.max(0, indent - 1);
+            var out = tab.repeat(indent) + line;
+            if (/^<[^\/!][^>]*[^\/]>$/.test(line) && !/^<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)/i.test(line)) {
+              indent++;
+            }
+            return out;
+          })
+          .filter(function (l) { return l !== ''; })
+          .join('\n');
+      }
+
+      var thisSection = document.getElementById('html-creator-{{ section.id }}').closest('.shopify-section');
+      var all = Array.from(document.querySelectorAll('.shopify-section'));
+      var idx = all.indexOf(thisSection);
+      var preceding = idx > 0 ? all.slice(0, idx) : [];
+
+      var combined = preceding.map(function (el) {
+        return formatHtml(el.outerHTML);
+      }).join('\n\n');
+
+      document.getElementById('html-output-{{ section.id }}').value = combined || '(no sections found above this one)';
+    })();
+
+    function htmlCreatorCopy_{{ section.id }}() {
+      var textarea = document.getElementById('html-output-{{ section.id }}');
+      var btn = document.getElementById('html-copy-btn-{{ section.id }}');
+      navigator.clipboard.writeText(textarea.value).then(function () {
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = 'Copy HTML'; }, 2000);
+      }).catch(function () {
+        textarea.select();
+        document.execCommand('copy');
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = 'Copy HTML'; }, 2000);
+      });
+    }
+  </script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "HTML Creator",
+    "templates": ["article"],
+    "presets": [
+      {
+        "name": "HTML Creator"
+      }
+    ]
+  }
+{% endschema %}
