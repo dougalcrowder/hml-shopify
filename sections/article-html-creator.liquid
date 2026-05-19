@@ -1,17 +1,18 @@
+{% assign js_id = section.id | replace: '-', '_' %}
+
 <div class="html-creator" id="html-creator-{{ section.id }}" style="display:none">
   <div class="html-creator__header">
     <span class="html-creator__title">Section HTML</span>
     <div class="html-creator__actions">
       <button
         class="html-creator__btn html-creator__generate-btn"
-        id="html-generate-btn-{{ section.id }}"
-        onclick="htmlCreatorGenerate_{{ section.id }}()">
+        onclick="htmlCreatorGenerate_{{ js_id }}()">
         Generate HTML
       </button>
       <button
         class="html-creator__btn html-creator__copy-btn"
-        id="html-copy-btn-{{ section.id }}"
-        onclick="htmlCreatorCopy_{{ section.id }}()"
+        id="html-copy-btn-{{ js_id }}"
+        onclick="htmlCreatorCopy_{{ js_id }}()"
         disabled>
         Copy HTML
       </button>
@@ -19,7 +20,7 @@
   </div>
   <textarea
     class="html-creator__output"
-    id="html-output-{{ section.id }}"
+    id="html-output-{{ js_id }}"
     readonly
     spellcheck="false"
     placeholder="Click 'Generate HTML' to capture sections above this one."></textarea>
@@ -96,12 +97,13 @@
 </style>
 
 <script>
-  (function () {
-    if (!window.Shopify || !window.Shopify.designMode) return;
-    document.getElementById('html-creator-{{ section.id }}').style.display = 'block';
-  })();
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.Shopify && window.Shopify.designMode) {
+      document.getElementById('html-creator-{{ section.id }}').style.display = 'block';
+    }
+  });
 
-  function htmlCreatorGenerate_{{ section.id }}() {
+  function htmlCreatorGenerate_{{ js_id }}() {
     function formatHtml(html) {
       var indent = 0;
       var tab = '  ';
@@ -131,15 +133,15 @@
       return formatHtml(el.outerHTML);
     }).join('\n\n');
 
-    var textarea = document.getElementById('html-output-{{ section.id }}');
-    var copyBtn = document.getElementById('html-copy-btn-{{ section.id }}');
+    var textarea = document.getElementById('html-output-{{ js_id }}');
+    var copyBtn = document.getElementById('html-copy-btn-{{ js_id }}');
     textarea.value = combined || '(no sections found above this one)';
     copyBtn.disabled = !combined;
   }
 
-  function htmlCreatorCopy_{{ section.id }}() {
-    var textarea = document.getElementById('html-output-{{ section.id }}');
-    var btn = document.getElementById('html-copy-btn-{{ section.id }}');
+  function htmlCreatorCopy_{{ js_id }}() {
+    var textarea = document.getElementById('html-output-{{ js_id }}');
+    var btn = document.getElementById('html-copy-btn-{{ js_id }}');
     navigator.clipboard.writeText(textarea.value).then(function () {
       btn.textContent = 'Copied!';
       setTimeout(function () { btn.textContent = 'Copy HTML'; }, 2000);
