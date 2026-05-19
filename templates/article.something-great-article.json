@@ -30,22 +30,8 @@
         "image_xKAh9J": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Cover.jpg",
+            "image": "shopify://shop_images/Unknown.jpg",
             "mobile_image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Cover.jpg",
-            "image_link": "",
-            "headline": "",
-            "subtitle": "",
-            "link_is_button": false,
-            "link_target": false,
-            "button_text": "",
-            "image_overlay_opacity": 0
-          }
-        },
-        "image_CJUAFn": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Hannah_Martin__StrappedEbonyOrbEarrings.jpg",
-            "mobile_image": "shopify://shop_images/Conde_Nast_Traveller_April_2026_Hannah_Martin__StrappedEbonyOrbEarrings.jpg",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -58,19 +44,33 @@
         "text_MUaNpe": {
           "type": "text",
           "settings": {
-            "text": "<p>Condé Nast Traveller features Hannah Martin's <a href=\"https://www.hannahmartinlondon.com/earrings/strapped-ebony-orb-earring\"> Strapped Ebony Orb Earrings </a> in the article ‘Wood Works’ by Jessica Diamond in their latest issue.</p>",
+            "text": "<p><em>Something About Rocks highlights Hannah Martin's 20th anniversary with a Q&A feature titled \"The world according to…Hannah Martin\" by Kim Parker, alongside coverage of</em><a href=\"https://www.hannahmartinlondon.com/collections/the-perfect-drug-02\">The Perfect Drug (02) </a><em>collection and</em><a href=\"https://www.hannahmartinlondon.com/books/hannah-martin-iconoclast-a-jewellery-rebellion\">Iconoclast - A Jewellery Rebellion </a><em>.</em></p>",
             "simple_title_only": false,
-            "text_title": "Condé Nast Traveller",
+            "text_title": "Something About Rocks",
             "title_line_2": "",
             "title_line_3": "",
             "title_line_4": ""
+          }
+        },
+        "image_CJUAFn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Something_About_Rocks_05_02_2026_HannahMartin2.jpg",
+            "mobile_image": "shopify://shop_images/Something_About_Rocks_05_02_2026_HannahMartin2.jpg",
+            "image_link": "",
+            "headline": "",
+            "subtitle": "",
+            "link_is_button": false,
+            "link_target": false,
+            "button_text": "",
+            "image_overlay_opacity": 0
           }
         }
       },
       "block_order": [
         "image_xKAh9J",
-        "image_CJUAFn",
-        "text_MUaNpe"
+        "text_MUaNpe",
+        "image_CJUAFn"
       ],
       "name": "Campaign Three Column",
       "settings": {
