@@ -88,11 +88,17 @@
       "settings": {
         "column_gap": false
       }
+    },
+    "article_html_creator_GqL6tU": {
+      "type": "article-html-creator",
+      "name": "HTML Creator",
+      "settings": {}
     }
   },
   "order": [
     "main-article",
     "campaign_image_qFkVww",
-    "campaign_three_column_mFyXp7"
+    "campaign_three_column_mFyXp7",
+    "article_html_creator_GqL6tU"
   ]
 }
