@@ -169,8 +169,22 @@
     var all = main ? Array.from(main.querySelectorAll('.shopify-section')) : [];
     var sections = all.filter(function (el) { return el !== thisSection && !el.classList.contains('lyric_section'); });
 
+    var seenCss = new Set();
+
     var combined = sections.map(function (el) {
-      return decodeEntities(formatHtml(cleanSection(el).outerHTML));
+      var clone = cleanSection(el);
+
+      // Deduplicate CSS link tags across sections
+      clone.querySelectorAll('link[rel="stylesheet"]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (seenCss.has(href)) {
+          link.parentNode.removeChild(link);
+        } else {
+          seenCss.add(href);
+        }
+      });
+
+      return decodeEntities(formatHtml(clone.innerHTML));
     }).join('\n\n');
 
     var textarea = document.getElementById('html-output-{{ js_id }}');
