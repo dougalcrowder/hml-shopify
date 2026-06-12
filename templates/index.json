@@ -76,7 +76,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
-            "image_link": "shopify://collections/rings",
+            "image_link": "",
             "headline": "Rings",
             "subtitle": "",
             "link_is_button": false,
@@ -101,9 +101,9 @@
         "image_DLGMTy": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/HML-HM10-Homepage-Bracelets-Desktop_2025-09-11-174937_gxdh.jpg",
-            "image_link": "shopify://collections/bracelets",
-            "headline": "Bracelets",
+            "image": "shopify://shop_images/MAD_LOVE_DSCF7056.jpg",
+            "image_link": "shopify://collections/hmp",
+            "headline": "HM Pierced",
             "subtitle": "",
             "link_is_button": false,
             "link_target": false,
@@ -184,7 +184,7 @@
             "image": "shopify://shop_images/HML-HM10-Homepage-HMP_2025-09-11-174956_bcwh.jpg",
             "mobile_image": "shopify://shop_images/HML-HM10-Homepage-HMP_2025-09-11-174956_bcwh.jpg",
             "image_link": "https://hannahmartinpierced.com/",
-            "headline": "HMPierced",
+            "headline": "HMp",
             "subtitle": "",
             "link_is_button": false,
             "link_target": false,
