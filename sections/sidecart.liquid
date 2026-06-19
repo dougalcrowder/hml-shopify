@@ -49,8 +49,8 @@
                       {%- endif -%}
                       {%- for property in item.properties -%}
                         {%- assign property_first_char = property.first | slice: 0 -%}
-                        {%- if property.last != blank and property_first_char != '_' -%}   
-                            <p class="product-option mb-none">For: {{ property.last }}</p>
+                        {%- if property.last != blank and property_first_char != '_' -%}
+                          <p class="product-option mb-none">{{ property.first }} {{ property.last }}</p>
                         {%- endif -%}
                       {%- endfor -%}
                     </div>
