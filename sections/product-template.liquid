@@ -297,7 +297,7 @@
                 </div>
 
                 {%- if product.metafields.custom.product_lead_time != blank -%}
-                  <input type="hidden" name="properties[Lead Time:]" value="{{ product.metafields.custom.product_lead_time | strip_html | strip }}">
+                  <input type="hidden" name="properties[Lead Time]" value="{{ product.metafields.custom.product_lead_time | strip_html | strip }}">
                 {%- endif -%}
 
               {% endform %}
