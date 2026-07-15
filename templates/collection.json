@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "main-collection-header": {
+      "type": "main-collection-header",
+      "settings": {
+        "image_alt": "",
+        "classes": ""
+      }
+    },
     "product-grid": {
       "type": "main-collection",
       "settings": {
@@ -21,6 +28,7 @@
     }
   },
   "order": [
+    "main-collection-header",
     "product-grid"
   ]
 }
