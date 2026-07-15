@@ -89,8 +89,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Necklaces-Desktop-1.jpg",
-            "image_link": "shopify://collections/necklaces",
-            "headline": "Necklaces",
+            "image_link": "shopify://collections/best-selling",
+            "headline": "Bestselling",
             "subtitle": "",
             "link_is_button": false,
             "link_target": false,
