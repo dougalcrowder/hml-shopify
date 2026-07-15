@@ -76,8 +76,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/HML-HM10-Homepage-Rings-Desktop_2025-09-11-174838_wony.jpg",
-            "image_link": "",
-            "headline": "Rings",
+            "image_link": "shopify://collections/ready-to-ship",
+            "headline": "Ready to ship",
             "subtitle": "",
             "link_is_button": false,
             "link_target": false,
