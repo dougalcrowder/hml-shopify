@@ -50,10 +50,7 @@
                       {%- for property in item.properties -%}
                         {%- assign property_first_char = property.first | slice: 0 -%}
                         {%- if property.last != blank and property_first_char != '_' -%}
-                          {% if property.first == 'Recipient email' %}
-                            <p class="product-option mb-none">For: {{ property.last }}</p>
-                            {% break %}
-                          {% endif %}
+                          <p class="product-option mb-none">{{ property.first }} {{ property.last }}</p>
                         {%- endif -%}
                       {%- endfor -%}
                     </div>

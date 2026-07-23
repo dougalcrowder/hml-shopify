@@ -295,6 +295,14 @@
                   {%- endif -%}
 
                 </div>
+
+                {%- if product.metafields.custom.product_lead_time != blank -%}
+                  <input
+                    type="hidden"
+                    name="properties[Lead Time]"
+                    value="{{ product.metafields.custom.product_lead_time | strip_html | strip }}">
+                {%- endif -%}
+
               {% endform %}
             </ajax-cart-product-form>
             <script>
