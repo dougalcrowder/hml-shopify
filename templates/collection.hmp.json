@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "the_grid_wrk8GC": {
+      "type": "the-grid",
+      "blocks": {
+        "grid_column_row_U93MWi": {
+          "type": "grid-column-row",
+          "name": "Column Row",
+          "settings": {
+            "z_index": 1,
+            "padding_top": "medium",
+            "padding_bottom": "medium"
+          },
+          "blocks": {
+            "grid_column_item_4KwDen": {
+              "type": "grid-column-item",
+              "name": "Column Item",
+              "settings": {
+                "image": "shopify://shop_images/Frame_237.png",
+                "col_title": "HMp",
+                "description": "",
+                "desktop_start": 1,
+                "desktop_width": 12,
+                "desktop_row": 1,
+                "tablet_start": 1,
+                "tablet_width": 12,
+                "tablet_row": 1,
+                "mobile_start": 1,
+                "mobile_width": 12,
+                "mobile_row": 1,
+                "z_index": 1
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "grid_column_item_4KwDen"
+          ]
+        }
+      },
+      "block_order": [
+        "grid_column_row_U93MWi"
+      ],
+      "name": "The Grid",
+      "settings": {}
+    },
+    "product-grid": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 48,
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": false,
+        "sticky_nav": true
+      }
+    },
+    "next_collection_YrpiEN": {
+      "type": "next_collection",
+      "name": "Next Collection",
+      "settings": {
+        "collection": "the-perfect-drug-02"
+      }
+    }
+  },
+  "order": [
+    "the_grid_wrk8GC",
+    "product-grid",
+    "next_collection_YrpiEN"
+  ]
+}
