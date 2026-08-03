@@ -30,9 +30,9 @@
         "text_MUaNpe": {
           "type": "text",
           "settings": {
-            "text": "<p>EE72 features Hannah Martin's <a href=\"https://www.hannahmartinlondon.com/earrings/strapped-earring-studded-short\">Strapped Earring Studded (Short)</a>, <a href=\"https://www.hannahmartinlondon.com/earrings/strapped-earring-studded-xl\">Strapped Earrings Studded (XL)</a>, and <a href=\"https://www.hannahmartinlondon.com/rings/orbit-super-size-white-gold-ring\">Orbit Super Size White Gold Ring</a> in a shoot with Georgia Palmer by Felix Bischof in their latest issue.</p>",
+            "text": "<p>BADLON features Hannah Martin's <a href=\"/products/fluid-strap-two-tone-hoop\" title=\"Fluid Strap Two-Tone Hoop\">Fluid Strap Two-Tone Hoop</a>, <a href=\"/products/studded-strap-ring\" title=\"Studded Strap Ring\">Studded Strap Ring</a>, <a href=\"/products/all-access-two-tone-bracelet\" title=\"All Access Two-Tone Bracelet\">All Access Two-Tone Bracelet,</a> <a href=\"/products/pearl-orb-harness-ring\" title=\"Pearl Orb Harness Ring\">Pearl Orb Harness Ring </a>and <a href=\"/products/fluid-strap-two-tone-chain\" title=\"Fluid Strap Two-Tone Chain\">Fluid Strap Two-Tone Chain</a> in their latest coverage 'Body Mutation'. </p><p><a href=\"https://www.badlonmagazine.com/web/body-mutation\" target=\"_blank\" title=\"https://www.badlonmagazine.com/web/body-mutation\">Read more</a></p>",
             "simple_title_only": false,
-            "text_title": "EE72",
+            "text_title": "BADLON",
             "title_line_2": "",
             "title_line_3": "",
             "title_line_4": ""
@@ -41,8 +41,8 @@
         "image_xKAh9J": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/EE72_Spring_2026_Hannah_Martin_1.jpg",
-            "mobile_image": "shopify://shop_images/EE72_Spring_2026_Hannah_Martin_1.jpg",
+            "image": "shopify://shop_images/2026-04-25_BadlonMagazine5826.jpg",
+            "mobile_image": "shopify://shop_images/2026-04-25_BadlonMagazine5826.jpg",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -55,8 +55,8 @@
         "image_CJUAFn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/EE72_Spring_2026_Hannah_Martin_2.jpg",
-            "mobile_image": "shopify://shop_images/EE72_Spring_2026_Hannah_Martin_2.jpg",
+            "image": "shopify://shop_images/2026-04-25_BadlonMagazine6658.jpg",
+            "mobile_image": "shopify://shop_images/2026-04-25_BadlonMagazine6658.jpg",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -72,7 +72,6 @@
         "image_xKAh9J",
         "image_CJUAFn"
       ],
-      "disabled": true,
       "name": "Campaign Three Column",
       "settings": {
         "column_gap": false
@@ -109,6 +108,7 @@
         "image_ENn83k",
         "text_cbYqzF"
       ],
+      "disabled": true,
       "name": "Campaign Two Column",
       "settings": {
         "column_gap": false
