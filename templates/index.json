@@ -33,7 +33,7 @@
           "settings": {
             "video_mp4": "https://s3.eu-west-2.amazonaws.com/hannahmartin/PD2-Web-Banner-9mb.mp4",
             "disrespect_mobile": false,
-            "button_text": "",
+            "button_text": "Hannah Martin London | Fine Jewellery London",
             "button_link": "",
             "make_button_white": false
           }
@@ -49,6 +49,7 @@
         "video_file_atJgrY",
         "blank_fadRfQ"
       ],
+      "custom_css": [],
       "name": "Campaign One Column",
       "settings": {}
     },
