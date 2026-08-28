@@ -123,7 +123,7 @@
       "type": "next_collection",
       "name": "Next Collection",
       "settings": {
-        "collection": "solaris-1"
+        "collection": "delirium"
       }
     }
   },
