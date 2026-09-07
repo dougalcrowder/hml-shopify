@@ -72,6 +72,7 @@
         "image_xKAh9J",
         "image_CJUAFn"
       ],
+      "disabled": true,
       "name": "Campaign Three Column",
       "settings": {
         "column_gap": false
@@ -83,9 +84,9 @@
         "image_ENn83k": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Unknown-7_f0a5b775-a5d5-4f7f-a67f-49d6e771e43c.jpg",
+            "image": "shopify://shop_images/Wallpaper__October_2026_Hannah_Martin_2.png",
             "image_link": "",
-            "make_bigger": false,
+            "make_bigger": true,
             "headline": "",
             "subtitle": "",
             "link_is_button": false,
@@ -96,8 +97,8 @@
         "text_cbYqzF": {
           "type": "text",
           "settings": {
-            "text": "<p>Foxes magazine features Hannah Martin's <a href=\"/products/strapped-earring-xl\" title=\"Strapped Earring (XL)\">Strapped Earring (XL) </a>in a cover shoot with Floria Sigismondi in their latest artist issue.</p>",
-            "text_title": "Foxes",
+            "text": "<p><em>Wallpaper* magazine features Hannah Martin's designed cake to celebrate the magazine's 30th anniversary.</em></p>",
+            "text_title": "Wallpaper*",
             "title_line_2": "",
             "title_line_3": "",
             "title_line_4": ""
@@ -108,7 +109,6 @@
         "image_ENn83k",
         "text_cbYqzF"
       ],
-      "disabled": true,
       "name": "Campaign Two Column",
       "settings": {
         "column_gap": false
