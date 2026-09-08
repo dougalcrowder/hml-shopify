@@ -27,22 +27,11 @@
     "campaign_three_column_mFyXp7": {
       "type": "campaign-three-column",
       "blocks": {
-        "text_MUaNpe": {
-          "type": "text",
-          "settings": {
-            "text": "<p>BADLON features Hannah Martin's <a href=\"/products/fluid-strap-two-tone-hoop\" title=\"Fluid Strap Two-Tone Hoop\">Fluid Strap Two-Tone Hoop</a>, <a href=\"/products/studded-strap-ring\" title=\"Studded Strap Ring\">Studded Strap Ring</a>, <a href=\"/products/all-access-two-tone-bracelet\" title=\"All Access Two-Tone Bracelet\">All Access Two-Tone Bracelet,</a> <a href=\"/products/pearl-orb-harness-ring\" title=\"Pearl Orb Harness Ring\">Pearl Orb Harness Ring </a>and <a href=\"/products/fluid-strap-two-tone-chain\" title=\"Fluid Strap Two-Tone Chain\">Fluid Strap Two-Tone Chain</a> in their latest coverage 'Body Mutation'. </p><p><a href=\"https://www.badlonmagazine.com/web/body-mutation\" target=\"_blank\" title=\"https://www.badlonmagazine.com/web/body-mutation\">Read more</a></p>",
-            "simple_title_only": false,
-            "text_title": "BADLON",
-            "title_line_2": "",
-            "title_line_3": "",
-            "title_line_4": ""
-          }
-        },
         "image_xKAh9J": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2026-04-25_BadlonMagazine5826.jpg",
-            "mobile_image": "shopify://shop_images/2026-04-25_BadlonMagazine5826.jpg",
+            "image": "shopify://shop_images/5Eleven_AW26_Cover.png",
+            "mobile_image": "shopify://shop_images/5Eleven_AW26_Cover.png",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -52,11 +41,22 @@
             "image_overlay_opacity": 0
           }
         },
+        "text_MUaNpe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>5'Eleven\" features Hannah Martin's <a href=\"/products/unchained-warrior-foursome-cuff\" title=\"Unchained Warrior Foursome Cuff\">Unchained Warrior Foursome Cuff</a> in their latest coverage.</p>",
+            "simple_title_only": false,
+            "text_title": "5'Eleven\"",
+            "title_line_2": "",
+            "title_line_3": "",
+            "title_line_4": ""
+          }
+        },
         "image_CJUAFn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2026-04-25_BadlonMagazine6658.jpg",
-            "mobile_image": "shopify://shop_images/2026-04-25_BadlonMagazine6658.jpg",
+            "image": "shopify://shop_images/Unknown-1_copy.png",
+            "mobile_image": "shopify://shop_images/Unknown-1_copy.png",
             "image_link": "",
             "headline": "",
             "subtitle": "",
@@ -68,11 +68,10 @@
         }
       },
       "block_order": [
-        "text_MUaNpe",
         "image_xKAh9J",
+        "text_MUaNpe",
         "image_CJUAFn"
       ],
-      "disabled": true,
       "name": "Campaign Three Column",
       "settings": {
         "column_gap": false
@@ -84,7 +83,7 @@
         "image_ENn83k": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Wallpaper__October_2026_Hannah_Martin_2.png",
+            "image": "shopify://shop_images/5Eleven_AW26_Hannah_Martin_3.png",
             "image_link": "",
             "make_bigger": true,
             "headline": "",
@@ -109,6 +108,7 @@
         "image_ENn83k",
         "text_cbYqzF"
       ],
+      "disabled": true,
       "name": "Campaign Two Column",
       "settings": {
         "column_gap": false
