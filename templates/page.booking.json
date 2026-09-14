@@ -11,6 +11,9 @@
   "sections": {
     "main-page": {
       "type": "main-page",
+      "custom_css": [
+        "h1.drukster.outline.page {font-size: 10rem;}"
+      ],
       "settings": {
         "show_title": true,
         "show_content": true,
