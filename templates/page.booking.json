@@ -17,7 +17,7 @@
       "settings": {
         "show_title": true,
         "show_content": true,
-        "narrow_page": false
+        "narrow_page": true
       }
     }
   },
