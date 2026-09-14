@@ -13,7 +13,7 @@
       "type": "main-page",
       "custom_css": [
         "h1.drukster.outline.page {font-size: 10rem; margin-top: 0;}",
-        "@media (max-width: 768px) {h1.drukster.outline.page {font-size: 4rem; }}"
+        "@media (max-width: 768px) {h1.drukster.outline.page {font-size: 6rem; }}"
       ],
       "settings": {
         "show_title": true,
