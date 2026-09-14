@@ -11,7 +11,11 @@
   "sections": {
     "main-page": {
       "type": "main-page",
-      "settings": {}
+      "settings": {
+        "show_title": true,
+        "show_content": true,
+        "narrow_page": false
+      }
     }
   },
   "order": [
